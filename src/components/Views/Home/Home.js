@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Style from '../../../styles/GlobalStyles';
+import Header from '../../Header/Header';
 
 export default class Home extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View style={styles.container}>
-                <Text style={styles.p}>width: {Style.CARD_WIDTH}</Text>
-                <Text>height: {Style.CARD_HEIGHT}</Text>
-                <Text>padding: {Style.CARD_PADDING_X}</Text>
-                <Text>paddingTop: {Style.CARD_PADDING_Y}</Text>
+            <View>
+                <Header />
+                <View style={styles.container}>
+                    <Text style={styles.p}>width: {Style.CARD_WIDTH}</Text>
+                    <Text>height: {Style.CARD_HEIGHT}</Text>
+                    <Text>padding: {Style.CARD_PADDING_X}</Text>
+                    <Text>paddingTop: {Style.CARD_PADDING_Y}</Text>
+                </View>
             </View>
         );
     }
@@ -18,11 +22,11 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: Style.CARD_WIDTH,
+        // width: Style.CARD_WIDTH,
         height: Style.CARD_HEIGHT,
         padding: Style.CARD_PADDING_X,
-        paddingTop: Style.CARD_PADDING_Y,
-        paddingBottom: Style.CARD_PADDING_Y,
+        backgroundColor: 'gray',
+        alignItems: 'stretch',
     },
     p: {
         fontSize: Style.FONT_SIZE,

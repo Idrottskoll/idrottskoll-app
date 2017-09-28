@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Style from '../../../styles/GlobalStyles';
+import Style from '../../../assets/styles/GlobalStyles';
 import Header from '../../Header/Header';
 
 export default class Home extends React.Component {
@@ -22,7 +22,6 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        // width: Style.CARD_WIDTH,
         height: Style.CARD_HEIGHT,
         padding: Style.CARD_PADDING_X,
         backgroundColor: 'gray',

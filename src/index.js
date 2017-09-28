@@ -5,7 +5,6 @@ import Home from './components/Views/Home/Home';
 import Information from './components/Views/Information/Information';
 import Videos from './components/Views/Videos/Videos';
 import Profile from './components/Views/Profile/Profile';
-
 const Tabs = TabNavigator({
     Home: {
         screen: Home,
@@ -13,8 +12,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'IDK Hem',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./icons/ic.png')
-                    : require('./icons/ic.png');
+                    ? require('./assets/icons/ic.png')
+                    : require('./assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -25,8 +24,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Information',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./icons/ic.png')
-                    : require('./icons/ic.png');
+                    ? require('./assets/icons/ic.png')
+                    : require('./assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -37,8 +36,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Videos',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./icons/ic.png')
-                    : require('./icons/ic.png');
+                    ? require('./assets/icons/ic.png')
+                    : require('./assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -49,8 +48,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Profile',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./icons/ic.png')
-                    : require('./icons/ic.png');
+                    ? require('./assets/icons/ic.png')
+                    : require('./assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },

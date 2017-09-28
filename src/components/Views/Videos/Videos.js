@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Style from '../../../styles/GlobalStyles';
+import Style from '../../../assets/styles/GlobalStyles';
 import Header from '../../Header/Header';
 
 export default class Videos extends React.Component {

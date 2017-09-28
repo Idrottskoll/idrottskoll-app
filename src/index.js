@@ -1,9 +1,9 @@
 import React from 'react';
 import {TabNavigator} from 'react-navigation';
-import {StyleSheet, Image} from 'react-native';
-const iconStyle = require('./styles/NavStyles');
+import {Image, StyleSheet} from 'react-native';
 import Home from './components/Views/Home/Home';
-const App = TabNavigator({
+
+const Tabs = TabNavigator({
     Home: { screen: Home,
         navigationOptions: {
             tabBarLabel: 'IDK Hem',
@@ -11,11 +11,17 @@ const App = TabNavigator({
                 const imgSource = focused ? require('./icons/ic.png') : require('./icons/ic.png');
                 return <Image
                 source={imgSource}
-                style={iconStyle.icon}
+                style={styles.icon}
                 />
             },
         },
     },
 });
 
-export default App;
+const styles = StyleSheet.create({
+  icon: {
+    width: 26,
+    height: 26,
+  },
+});
+export default Tabs;

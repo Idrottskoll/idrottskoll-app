@@ -1,10 +1,10 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Image, StyleSheet } from 'react-native';
-import Home from './components/Views/Home/Home';
-import Information from './components/Views/Information/Information';
-import Videos from './components/Views/Videos/Videos';
-import Profile from './components/Views/Profile/Profile';
+import Home from './Views/Home/Home';
+import Information from './Views/Information/Information';
+import Videos from './Views/Videos/Videos';
+import Profile from './Views/Profile/Profile';
 const Tabs = TabNavigator({
     Home: {
         screen: Home,

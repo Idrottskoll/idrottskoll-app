@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Style from '../../../assets/styles/GlobalStyles';
-import Header from '../../Header/Header';
+import Style from '../../assets/styles/GlobalStyles';
+import Header from '../../components/Header/Header';
 
-export default class Information extends React.Component {
+export default class Videos extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View>
                 <Header />
                 <View style={styles.container}>
-                    <Text style={styles.p}>Information</Text>
+                    <Text style={styles.p}>Videos</Text>
                 </View>
             </View>
         );

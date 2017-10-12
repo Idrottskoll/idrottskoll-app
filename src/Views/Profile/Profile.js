@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import Style from '../../../assets/styles/GlobalStyles';
-import Header from '../../Header/Header';
+import Style from '../../assets/styles/GlobalStyles';
+import Header from '../../components/Header/Header';
 
 export default class Profile extends React.Component {
     render() {

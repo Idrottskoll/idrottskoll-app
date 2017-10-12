@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     container: {
         height: Style.CARD_HEIGHT,
         padding: Style.CARD_PADDING_X,
-        backgroundColor: 'gray',
         alignItems: 'stretch',
     },
     p: {

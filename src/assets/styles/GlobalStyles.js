@@ -29,6 +29,7 @@ export default (Style = {
     RATIO_Y: ratioY,
     UNIT: em(1),
     PADDING: em(1.25),
+    MARGIN: 15,
 
     // CARD
     CARD_WIDTH: x - em(1.25) * 2,
@@ -41,4 +42,15 @@ export default (Style = {
     FONT_SIZE_SMALLER: em(0.75),
     FONT_SIZE_SMALL: em(0.875),
     FONT_SIZE_TITLE: em(1.25),
+
+    // colors
+    // MAIN_BACKGROUND_COLOR: '#EFEFF4',
+    // CARD_BACKGROUND_COLOR: '#FFFFF',
+    // TEXT_COLOR: '#00000',
+    // BLUE_COLOR: '#26435A',
+    // GREEN_COLOR: '#80C38F',
+    // BLUE_GRADIENT_COLOR: '#4E7893',
+    // GREEN_GRADIENT_COLOR: '#9BCAA5',
+    // ORANGE_COLOR: '#F5A623',
+    // RED_COLOR: '#D0021B',
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import Style from '../../assets/styles/GlobalStyles';
 
 export default class Header extends React.Component {
     render() {
@@ -16,11 +17,17 @@ export default class Header extends React.Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffffff',
-        paddingTop: Style.CARD_PADDING_Y,
-        padding: Style.CARD_PADDING_X,
+        alignItems: 'flex-end',
+        padding: 15,
+        height: 88,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderBottomColor: 'red',
-        borderBottomWidth: 0.5,
+        shadowColor: '#000000',
+        shadowOpacity: 0.3,
+        shadowOffset: {
+            height: 0.5,
+            width: 0.5,
+        },
+        marginBottom: Style.MARGIN,
     },
 });

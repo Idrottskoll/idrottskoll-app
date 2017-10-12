@@ -11,12 +11,11 @@ export default class Home extends React.Component {
             <View>
                 <Header />
                 <View style={styles.container}>
-                    <View>
+                    <View style={styles.card}>
                         <Text style={styles.p}>width: {Style.CARD_WIDTH}</Text>
                         <Text>height: {Style.CARD_HEIGHT}</Text>
                         <Text>padding: {Style.CARD_PADDING_X}</Text>
                         <Text>paddingTop: {Style.CARD_PADDING_Y}</Text>
-                        <MainCard />
                     </View>
                 </View>
             </View>
@@ -26,10 +25,22 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        backgroundColor: '#EFEFF4',
+    },
+    card: {
         height: Style.CARD_HEIGHT,
         padding: Style.CARD_PADDING_X,
-        backgroundColor: 'gray',
+        backgroundColor: '#ffffff',
         alignItems: 'stretch',
+        margin: Style.MARGIN,
+        shadowColor: '#000000',
+        shadowOpacity: 0.3,
+        shadowOffset: {
+            height: 0.5,
+            width: 0.5,
+        },
+        borderRadius: 3,
     },
     p: {
         fontSize: Style.FONT_SIZE,

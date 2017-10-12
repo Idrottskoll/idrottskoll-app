@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Style from '../../../assets/styles/GlobalStyles';
 import Header from '../../Header/Header';
-import Auth from '../../auth/Auth';
 
 export default class Profile extends React.Component {
     render() {
@@ -12,7 +11,6 @@ export default class Profile extends React.Component {
                 <Header />
                 <View style={styles.container}>
                     <Text style={styles.p}>Profile</Text>
-                    <Auth />
                 </View>
             </View>
         );

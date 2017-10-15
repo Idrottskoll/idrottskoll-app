@@ -1,29 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
-import StyleRules from '../../assets/styles/StyleRules';
+import { ScrollView, View } from 'react-native';
+import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
+import DefaultCard from '../../components/Cards/DefaultCard';
 
 export default class Profile extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View>
+            <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />
-                <View style={styles.container}>
-                    <Text style={styles.p}>Profile</Text>
-                </View>
+                <ScrollView>
+                    <DefaultCard title="hej hej" taglinne="idk idk" />
+                </ScrollView>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: StyleRules.CARD_HEIGHT,
-        padding: StyleRules.CARD_PADDING_X,
-        alignItems: 'stretch',
-    },
-    p: {
-        fontSize: StyleRules.FONT_SIZE,
-    },
-});

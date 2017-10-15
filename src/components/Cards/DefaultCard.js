@@ -2,22 +2,18 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import StyleRules from '../../assets/styles/StyleRules';
 
-export default class DefaultCard extends React.Component {
-    render() {
+const DefaultCard = props => {
+    if (props.title || props.taglinne) {
         return (
             <View style={[styles.card]}>
-                <Text style={styles.title}>Hej</Text>
-                <Text>
-                    Look around you. You'll see two councilmen, a union
-                    official, couple off-duty cops and a judge. I wouldn't have
-                    a second's hesitation of blowing your head off in front of
-                    them. Now, that's power you can't buy. That's the power of
-                    fear.
-                </Text>
+                <Text style={styles.title}>{props.title}</Text>
+                <Text style={styles.taglinne}>{props.taglinne}</Text>
             </View>
         );
+    } else {
+        return <View />;
     }
-}
+};
 
 const styles = StyleSheet.create({
     card: {
@@ -37,4 +33,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 18,
     },
+    taglinne: {},
 });
+
+export default DefaultCard;

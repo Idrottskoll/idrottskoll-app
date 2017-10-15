@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     card: {
         alignItems: 'stretch',
         padding: StyleRules.CARD_PADDING_X,
-        backgroundColor: '#ffffff',
+        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         margin: StyleRules.MARGIN,
-        shadowColor: '#000000',
+        shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOpacity: 0.3,
         shadowOffset: {
             height: 0.5,

@@ -5,6 +5,7 @@ import Home from './views/Home/Home';
 import Information from './views/Information/Information';
 import Videos from './views/Videos/Videos';
 import Profile from './views/Profile/Profile';
+
 const Tabs = TabNavigator({
     Home: {
         screen: Home,

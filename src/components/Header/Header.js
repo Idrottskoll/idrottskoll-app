@@ -16,13 +16,13 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ffffff',
+        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         alignItems: 'flex-end',
         padding: 15,
         height: 88,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        shadowColor: '#000000',
+        shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOpacity: 0.3,
         shadowOffset: {
             height: 0.5,

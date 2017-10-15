@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Style from '../../assets/styles/GlobalStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 
 export default class Header extends React.Component {
     render() {
@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
             height: 0.5,
             width: 0.5,
         },
-        marginBottom: Style.MARGIN,
+        marginBottom: StyleRules.MARGIN,
     },
 });

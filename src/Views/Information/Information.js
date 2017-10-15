@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Style from '../../assets/styles/GlobalStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 import Header from '../../components/Header/Header';
 
 export default class Information extends React.Component {
@@ -19,11 +19,11 @@ export default class Information extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: Style.CARD_HEIGHT,
-        padding: Style.CARD_PADDING_X,
+        height: StyleRules.CARD_HEIGHT,
+        padding: StyleRules.CARD_PADDING_X,
         alignItems: 'stretch',
     },
     p: {
-        fontSize: Style.FONT_SIZE,
+        fontSize: StyleRules.FONT_SIZE,
     },
 });

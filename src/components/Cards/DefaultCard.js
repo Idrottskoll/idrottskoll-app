@@ -1,24 +1,40 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import StyleRules from '../../assets/styles/StyleRules';
 
 export default class DefaultCard extends React.Component {
     render() {
-        return <View style={[styles.container, styles.card]} />;
+        return (
+            <View style={[styles.card]}>
+                <Text style={styles.title}>Hej</Text>
+                <Text>
+                    Look around you. You'll see two councilmen, a union
+                    official, couple off-duty cops and a judge. I wouldn't have
+                    a second's hesitation of blowing your head off in front of
+                    them. Now, that's power you can't buy. That's the power of
+                    fear.
+                </Text>
+            </View>
+        );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#ffffff',
-        paddingTop: Style.CARD_PADDING_Y,
-        padding: Style.CARD_PADDING_X,
-        flex: 1,
-    },
     card: {
-        shadowOpacity: 1,
+        alignItems: 'stretch',
+        padding: StyleRules.CARD_PADDING_X,
+        backgroundColor: '#ffffff',
+        margin: StyleRules.MARGIN,
+        shadowColor: '#000000',
+        shadowOpacity: 0.3,
         shadowOffset: {
-            width: 1,
-            height: 1,
+            height: 0.5,
+            width: 0.5,
         },
+        borderRadius: 3,
+    },
+    title: {
+        fontSize: 18,
+        marginBottom: 18,
     },
 });

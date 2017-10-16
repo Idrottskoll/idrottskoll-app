@@ -1,8 +1,16 @@
 import React from 'react';
-import { ScrollView, View, TextInput, StyleSheet, Button } from 'react-native';
+import {
+    ScrollView,
+    View,
+    Text,
+    TextInput,
+    StyleSheet,
+    Button,
+} from 'react-native';
 
 import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
+import Signin from '../../components/auth/Signin';
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -14,7 +22,10 @@ export default class Profile extends React.Component {
         return (
             <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />
-                <ScrollView />
+                <ScrollView>
+                    <Text>Logga in</Text>
+                    <Signin />
+                </ScrollView>
             </View>
         );
     }

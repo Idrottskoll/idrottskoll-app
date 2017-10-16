@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import appData from '../dataReducer';
+import { reducer as form } from 'redux-form';
 
+// obj shall be form: form
 const rootReducer = combineReducers({
-    appData,
+    form,
 });
 
 export default rootReducer;

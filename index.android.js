@@ -3,7 +3,7 @@ import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import reducers from './reducers';
+import reducers from './src/reducers';
 import configureStore from './configureStore';
 import App from './src';
 

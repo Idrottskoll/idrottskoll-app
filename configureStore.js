@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import app from './reducers';
+import app from './src/reducers';
 
 export default function configureStore() {
     let store = createStore(app);

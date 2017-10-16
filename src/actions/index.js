@@ -6,16 +6,16 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from './types';
 
 export function signInUser({ email, password }) {
     return function(dispatch) {
-        axios.post(ROOT_URL + SIGNIN_URL, { email, password })
-        .then(response => {
-            dispatch({ type: AUTH_USER });
-            await AsyncStorage.setItem(
-                'token',
-                SPECIAL_TOKEN + response.data.token
-            );
-            .catch(() => {
-                dispatch(authError('Bad Login Info'));
+        axios
+            .post(ROOT_URL + SIGNIN_URL, { email, password })
+            .then(async response => {
+                dispatch({ type: AUTH_USER });
+                await AsyncStorage.setItem(
+                    'token',
+                    SPECIAL_TOKEN + response.data.token,
+                ).catch(() => {
+                    dispatch(authError('Bad Login Info'));
+                });
             });
-        });
     };
 }

@@ -1,4 +1,4 @@
-# idrottskoll-app
+# (Idrottskoll)[http://www.idrottskoll.se/]
 
 ## Installing
 

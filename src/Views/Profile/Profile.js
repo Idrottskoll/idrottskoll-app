@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, TextInput, StyleSheet, Button } from 'react-native';
-import * as actions from '../../actions';
+
 import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
 

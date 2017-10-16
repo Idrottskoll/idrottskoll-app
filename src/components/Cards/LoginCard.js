@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
-import StyleRules from '../../assets/styles/StyleRules';
+import MainStyles from '../../assets/styles/MainStyles';
 
-const DefaultCard = props => {
+const LoginCard = props => {
     return (
-        <View style={[styles.card]}>
+        <View style={[MainStyles.MAIN_CARD]}>
             <TextInput
+                style={[styles.input, styles.email]}
                 autoCorrect={false}
                 keyboardType="email-address"
                 placeholder="E-post Adress"
@@ -13,6 +14,7 @@ const DefaultCard = props => {
             />
 
             <TextInput
+                style={[styles.input, styles.password]}
                 secureTextEntry={true}
                 autoCorrect={false}
                 placeholder="Lösenord"
@@ -23,19 +25,11 @@ const DefaultCard = props => {
 };
 
 const styles = StyleSheet.create({
-    card: {
-        alignItems: 'stretch',
-        padding: StyleRules.CARD_PADDING_X,
-        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
-        margin: StyleRules.MARGIN,
-        shadowColor: StyleRules.MAIN_SHADOW_COLOR,
-        shadowOpacity: 0.3,
-        shadowOffset: {
-            height: 0.5,
-            width: 0.5,
-        },
-        borderRadius: 3,
-    },
+    input: {},
+
+    email: {},
+
+    password: {},
 });
 
-export default DefaultCard;
+export default LoginCard;

@@ -1,4 +1,4 @@
-# (Idrottskoll)[http://www.idrottskoll.se/]
+# [Idrottskoll](http://www.idrottskoll.se/)
 
 ## Installing
 

@@ -1,7 +1,7 @@
 # Idrottskoll
-[Web App](http://www.idrottskoll.se/)
-[iOS App store](https://github.com/Idrottskoll)
-[Google play store](https://github.com/Idrottskoll)
+* [Web App](http://www.idrottskoll.se/)
+* [iOS App store](https://github.com/Idrottskoll)
+* [Google play store](https://github.com/Idrottskoll)
 ## Installing
 
 ```BASH

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
+import * as actions from '../../actions';
 import StyleRules from '../../assets/styles/StyleRules';
 
 class Signin extends React.Component {
@@ -16,7 +17,7 @@ class Signin extends React.Component {
     * @return
     */
     handleFormSubmit({ email, password }) {
-        alert(email, password);
+        this.props.signinUser({ email, password });
     }
 
     render() {
@@ -45,7 +46,11 @@ class Signin extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'signin',
-    fields: ['email', 'password'],
-})(Signin);
+export default reduxForm(
+    {
+        form: 'signin',
+        fields: ['email', 'password'],
+    },
+    null,
+    actions,
+)(Signin);

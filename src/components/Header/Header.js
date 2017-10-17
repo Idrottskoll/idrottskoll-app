@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
             height: 0.5,
             width: 0.5,
         },
-        marginBottom: StyleRules.MARGIN,
+        zIndex: 1,
     },
 });

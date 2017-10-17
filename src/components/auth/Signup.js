@@ -26,7 +26,7 @@ class Signup extends React.Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <View>
+                <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
                     <Text style={MainStyles.ERROR_TEXT}>
                         {this.props.errorMessage}
                     </Text>
@@ -58,11 +58,16 @@ class Signup extends React.Component {
                     </Text>
                 </View>
 
-                <View>
+                <View style={MainStyles.FORM_GROUP}>
                     <Text style={MainStyles.INPUT_LABEL}>Namn</Text>
                     <TextInput
                         {...name}
-                        style={MainStyles.AUTH_INPUT}
+                        style={[
+                            MainStyles.AUTH_INPUT,
+                            !name.touched && name.error
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'name'}
                     />
                     {name.touched &&
@@ -73,11 +78,16 @@ class Signup extends React.Component {
                         )}
                 </View>
 
-                <View>
+                <View style={MainStyles.FORM_GROUP}>
                     <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
                     <TextInput
                         {...email}
-                        style={MainStyles.AUTH_INPUT}
+                        style={[
+                            MainStyles.AUTH_INPUT,
+                            !email.touched && email.error
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'email'}
                         keyboardType="email-address"
                     />
@@ -89,11 +99,16 @@ class Signup extends React.Component {
                         )}
                 </View>
 
-                <View>
+                <View style={MainStyles.FORM_GROUP}>
                     <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
                     <TextInput
                         {...password}
-                        style={MainStyles.AUTH_INPUT}
+                        style={[
+                            MainStyles.AUTH_INPUT,
+                            !password.touched && password.error
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'password'}
                         returnKeyLabel="send"
                     />
@@ -105,11 +120,16 @@ class Signup extends React.Component {
                         )}
                 </View>
 
-                <View>
+                <View style={MainStyles.FORM_GROUP}>
                     <Text style={MainStyles.INPUT_LABEL}>Upprepa lösenord</Text>
                     <TextInput
                         {...passwordConfirm}
-                        style={MainStyles.AUTH_INPUT}
+                        style={[
+                            MainStyles.AUTH_INPUT,
+                            !passwordConfirm.touched && passwordConfirm.error
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'passwordConfirm'}
                         returnKeyLabel="send"
                     />
@@ -123,14 +143,16 @@ class Signup extends React.Component {
 
                 {this.renderAlert()}
 
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Skapa konto
-                    </Text>
-                </TouchableOpacity>
+                <View style={MainStyles.FORM_GROUP}>
+                    <TouchableOpacity
+                        style={MainStyles.BUTTON_SUCCESS}
+                        onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                    >
+                        <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                            Skapa konto
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         );
     }

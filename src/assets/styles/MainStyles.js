@@ -13,6 +13,7 @@ export default (Style = {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         margin: StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOffset: {
@@ -22,34 +23,30 @@ export default (Style = {
         shadowOpacity: 0.3,
     },
 
+    FORM_GROUP: {
+        marginTop: StyleRules.MARGIN,
+    },
+
     INPUT_LABEL: {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
     },
 
-    ERROR_TEXT: {
-        color: StyleRules.RED_COLOR,
-        fontWeight: 'bold',
-    },
-
     AUTH_INPUT: {
         alignItems: 'stretch',
-        borderColor: StyleRules.BLUE_GRADIENT_COLOR,
         borderRadius: 3,
         borderWidth: 1,
         height: 44,
-        marginVertical: StyleRules.MARGIN,
         paddingHorizontal: StyleRules.MARGIN,
+        marginVertical: 3,
+    },
+
+    AUTH_SUCCESS_INPUT: {
+        borderColor: StyleRules.BLUE_GRADIENT_COLOR,
     },
 
     AUTH_ERROR_INPUT: {
-        alignItems: 'stretch',
         borderColor: StyleRules.RED_COLOR,
-        borderRadius: 3,
-        borderWidth: 1,
-        height: 44,
-        marginVertical: StyleRules.MARGIN,
-        paddingHorizontal: StyleRules.MARGIN,
     },
 
     BUTTON_SUCCESS: {
@@ -62,8 +59,20 @@ export default (Style = {
         borderRadius: 3,
         justifyContent: 'center',
     },
+
     BUTTON_SUCCESS_TEXT: {
         fontWeight: 'bold',
         color: StyleRules.BUTTON_TEXT_COLOR,
+    },
+
+    ERROR_BOX: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    ERROR_TEXT: {
+        color: StyleRules.RED_COLOR,
+        fontSize: StyleRules.FONT_SIZE_SMALLER,
     },
 });

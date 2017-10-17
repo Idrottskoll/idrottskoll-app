@@ -25,7 +25,7 @@ class Signin extends React.Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <View>
+                <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
                     <Text style={MainStyles.ERROR_TEXT}>
                         {this.props.errorMessage}
                     </Text>
@@ -54,44 +54,30 @@ class Signin extends React.Component {
                     </Text>
                 </View>
 
-                <View>
-                    <Text
-                        style={
-                            !this.props.errorMessage
-                                ? MainStyles.INPUT_LABEL
-                                : MainStyles.ERROR_TEXT
-                        }
-                    >
-                        E-post
-                    </Text>
+                <View style={MainStyles.FORM_GROUP}>
+                    <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
                     <TextInput
-                        style={
+                        style={[
+                            MainStyles.AUTH_INPUT,
                             !this.props.errorMessage
-                                ? MainStyles.AUTH_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT
-                        }
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'email'}
                         {...email}
                         keyboardType="email-address"
                     />
                 </View>
 
-                <View>
-                    <Text
-                        style={
-                            !this.props.errorMessage
-                                ? MainStyles.INPUT_LABEL
-                                : MainStyles.ERROR_TEXT
-                        }
-                    >
-                        Lösenord
-                    </Text>
+                <View style={MainStyles.FORM_GROUP}>
+                    <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
                     <TextInput
-                        style={
+                        style={[
+                            MainStyles.AUTH_INPUT,
                             !this.props.errorMessage
-                                ? MainStyles.AUTH_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT
-                        }
+                                ? MainStyles.AUTH_SUCCESS_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT,
+                        ]}
                         name={'password'}
                         returnKeyLabel="send"
                         {...password}
@@ -100,12 +86,16 @@ class Signin extends React.Component {
 
                 {this.renderAlert()}
 
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga in</Text>
-                </TouchableOpacity>
+                <View style={MainStyles.FORM_GROUP}>
+                    <TouchableOpacity
+                        style={MainStyles.BUTTON_SUCCESS}
+                        onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                    >
+                        <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                            Logga in
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         );
     }

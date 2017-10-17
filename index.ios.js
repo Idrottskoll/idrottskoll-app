@@ -18,4 +18,3 @@ const ReduxApp = () => (
 AppRegistry.registerComponent('idrottskollApp', () => ReduxApp);
 
 // https://www.udemy.com/react-redux-tutorial/learn/v4/t/lecture/4963022?start=0
-// http://95.85.49.182/

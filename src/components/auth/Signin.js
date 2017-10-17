@@ -20,6 +20,12 @@ class Signin extends React.Component {
         this.props.signinUser({ email, password });
     }
 
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return <Text>{this.props.errorMessage}</Text>;
+        }
+    }
+
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
@@ -36,6 +42,7 @@ class Signin extends React.Component {
                     returnKeyLabel="send"
                     {...password}
                 />
+                {this.renderAlert()}
                 <TouchableOpacity
                     onPress={handleSubmit(this.handleFormSubmit.bind(this))}
                 >
@@ -46,11 +53,19 @@ class Signin extends React.Component {
     }
 }
 
+/**
+* @param state
+* @return string error
+*/
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.error };
+}
+
 export default reduxForm(
     {
         form: 'signin',
         fields: ['email', 'password'],
     },
-    null,
+    mapStateToProps,
     actions,
 )(Signin);

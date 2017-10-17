@@ -8,7 +8,7 @@
 git clone https://github.com/Idrottskoll/idrottskoll-app.git <My App Name>
 cd idrottskollApp <My App Name>
 npm install
-npm start
+npm run start
 ```
 
 ## Dependencies

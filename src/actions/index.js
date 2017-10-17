@@ -2,7 +2,7 @@ import AsyncStorage from 'react-native';
 import axios from 'axios';
 
 import Home from '../views/Home/Home';
-import { AUTH_USER } from './types';
+import { AUTH_USER, AUTH_ERROR } from './types';
 
 const ROOT_URL = 'http://95.85.49.182';
 
@@ -28,6 +28,15 @@ export function signinUser({ email, password }) {
                 // redirect the user to home screen
                 this.props.navigation.navigate('Home');
             })
-            .catch(() => {});
+            .catch(() => {
+                dispatch(authError('Fel e-post eller lösenord'));
+            });
+    };
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERROR,
+        payload: error,
     };
 }

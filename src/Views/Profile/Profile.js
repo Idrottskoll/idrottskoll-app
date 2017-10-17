@@ -23,7 +23,6 @@ export default class Profile extends React.Component {
             <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />
                 <ScrollView keyboardShouldPersistTaps={'handled'}>
-                    <Text>Logga in</Text>
                     <Signin />
                 </ScrollView>
             </View>

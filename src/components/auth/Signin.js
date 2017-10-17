@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import * as actions from '../../actions';
 import StyleRules from '../../assets/styles/StyleRules';
+import MainStyles from '../../assets/styles/MainStyles';
+import * as actions from '../../actions';
 
 class Signin extends React.Component {
     /**
@@ -22,32 +23,73 @@ class Signin extends React.Component {
 
     renderAlert() {
         if (this.props.errorMessage) {
-            return <Text>{this.props.errorMessage}</Text>;
+            return (
+                <View>
+                    <Text style={MainStyles.ERROR_TEXT}>
+                        {this.props.errorMessage}
+                    </Text>
+                </View>
+            );
         }
     }
 
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
-            <View>
-                <Text>Epost</Text>
-                <TextInput
-                    name={'email'}
-                    {...email}
-                    keyboardType="email-address"
-                />
-                <Text>Lösenord</Text>
-                <TextInput
-                    name={'password'}
-                    returnKeyLabel="send"
-                    {...password}
-                />
+            <View style={[MainStyles.MAIN_CARD]}>
+                <View>
+                    <Text
+                        style={
+                            !this.props.errorMessage
+                                ? MainStyles.INPUT_LABEL
+                                : MainStyles.ERROR_TEXT
+                        }
+                    >
+                        Epost
+                    </Text>
+                    <TextInput
+                        style={
+                            !this.props.errorMessage
+                                ? MainStyles.AUTH_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT
+                        }
+                        name={'email'}
+                        {...email}
+                        keyboardType="email-address"
+                    />
+                </View>
+
+                <View>
+                    <Text
+                        style={
+                            !this.props.errorMessage
+                                ? MainStyles.INPUT_LABEL
+                                : MainStyles.ERROR_TEXT
+                        }
+                    >
+                        Lösenord
+                    </Text>
+                    <TextInput
+                        style={
+                            !this.props.errorMessage
+                                ? MainStyles.AUTH_INPUT
+                                : MainStyles.AUTH_ERROR_INPUT
+                        }
+                        name={'password'}
+                        returnKeyLabel="send"
+                        {...password}
+                    />
+                </View>
+
                 {this.renderAlert()}
-                <TouchableOpacity
-                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
-                >
-                    <Text>Logga in</Text>
-                </TouchableOpacity>
+
+                <View>
+                    <TouchableOpacity
+                        onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                    >
+                        <Text>Logga in</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

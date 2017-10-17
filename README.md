@@ -19,7 +19,8 @@ npm start
 "react-navigation": "^1.0.0-beta.13",
 "react-redux": "^5.0.6",
 "redux": "^3.7.2",
-"redux-form": "^7.1.1"
+"redux-form": "^7.1.1",
+"redux-thunk": "^2.2.0"
 ```
 
 ## Contrbuting

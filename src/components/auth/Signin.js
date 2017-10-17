@@ -11,8 +11,12 @@ import { reduxForm } from 'redux-form';
 import StyleRules from '../../assets/styles/StyleRules';
 
 class Signin extends React.Component {
+    /**
+    * @param string email, string password
+    * @return
+    */
     handleFormSubmit({ email, password }) {
-        console.log(email, password);
+        alert(email, password);
     }
 
     render() {
@@ -20,9 +24,17 @@ class Signin extends React.Component {
         return (
             <View>
                 <Text>Epost</Text>
-                <TextInput {...email} keyboardType="email-address" />
+                <TextInput
+                    name={'email'}
+                    {...email}
+                    keyboardType="email-address"
+                />
                 <Text>Lösenord</Text>
-                <TextInput {...password} />
+                <TextInput
+                    name={'password'}
+                    returnKeyLabel="send"
+                    {...password}
+                />
                 <TouchableOpacity
                     onPress={handleSubmit(this.handleFormSubmit.bind(this))}
                 >

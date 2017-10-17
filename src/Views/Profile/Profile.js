@@ -22,7 +22,7 @@ export default class Profile extends React.Component {
         return (
             <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps={'handled'}>
                     <Text>Logga in</Text>
                     <Signin />
                 </ScrollView>

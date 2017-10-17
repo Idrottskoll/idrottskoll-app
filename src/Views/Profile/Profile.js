@@ -21,8 +21,8 @@ class Profile extends React.Component {
             // if ((this.props.authenticated = true)) {
             return [<Signout key="signout" />];
         } else {
-            return [<Signup key="signup" />];
-            // return [<Signin key="signin" />];
+            // return [<Signup key="signup" />];
+            return [<Signin key="signin" />];
             // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }

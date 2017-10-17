@@ -59,13 +59,14 @@ class Signin extends React.Component {
                     <TextInput
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !this.props.errorMessage
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'email'}
                         {...email}
                         keyboardType="email-address"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        returnKeyType="next"
                     />
                 </View>
 
@@ -74,12 +75,12 @@ class Signin extends React.Component {
                     <TextInput
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !this.props.errorMessage
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'password'}
-                        returnKeyLabel="send"
+                        autoCorrect={false}
+                        returnKeyType="next"
+                        secureTextEntry={true}
                         {...password}
                     />
                 </View>

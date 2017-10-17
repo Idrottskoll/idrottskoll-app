@@ -45,10 +45,6 @@ export default (Style = {
         borderColor: StyleRules.BLUE_GRADIENT_COLOR,
     },
 
-    AUTH_ERROR_INPUT: {
-        borderColor: StyleRules.RED_COLOR,
-    },
-
     BUTTON_SUCCESS: {
         height: 44,
         display: 'flex',

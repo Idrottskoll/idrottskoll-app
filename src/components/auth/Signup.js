@@ -64,11 +64,12 @@ class Signup extends React.Component {
                         {...name}
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !name.touched && name.error
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'name'}
+                        autoCapitalize="words"
+                        autoCorrect={false}
+                        returnKeyType="next"
                     />
                     {name.touched &&
                         name.error && (
@@ -84,12 +85,13 @@ class Signup extends React.Component {
                         {...email}
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !email.touched && email.error
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'email'}
                         keyboardType="email-address"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        returnKeyType="next"
                     />
                     {email.touched &&
                         email.error && (
@@ -105,12 +107,12 @@ class Signup extends React.Component {
                         {...password}
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !password.touched && password.error
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'password'}
-                        returnKeyLabel="send"
+                        autoCorrect={false}
+                        returnKeyType="next"
+                        secureTextEntry={true}
                     />
                     {password.touched &&
                         password.error && (
@@ -126,12 +128,12 @@ class Signup extends React.Component {
                         {...passwordConfirm}
                         style={[
                             MainStyles.AUTH_INPUT,
-                            !passwordConfirm.touched && passwordConfirm.error
-                                ? MainStyles.AUTH_SUCCESS_INPUT
-                                : MainStyles.AUTH_ERROR_INPUT,
+                            MainStyles.AUTH_SUCCESS_INPUT,
                         ]}
                         name={'passwordConfirm'}
-                        returnKeyLabel="send"
+                        autoCorrect={false}
+                        returnKeyType="next"
+                        secureTextEntry={true}
                     />
                     {passwordConfirm.touched &&
                         passwordConfirm.error && (

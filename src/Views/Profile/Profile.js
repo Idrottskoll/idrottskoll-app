@@ -13,6 +13,7 @@ import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
 import Signin from '../../components/auth/Signin';
 import Signout from '../../components/auth/Signout';
+import Signup from '../../components/auth/Signup';
 
 class Profile extends React.Component {
     renderComponent() {
@@ -20,8 +21,9 @@ class Profile extends React.Component {
             // if ((this.props.authenticated = true)) {
             return [<Signout key="signout" />];
         } else {
-            // render more components in array
-            return [<Signin key="signin" />];
+            return [<Signup key="signup" />];
+            // return [<Signin key="signin" />];
+            // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }
 

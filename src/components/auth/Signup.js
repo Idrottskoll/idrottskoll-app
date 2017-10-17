@@ -14,9 +14,30 @@ import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
 
 class Signup extends React.Component {
+    /**
+    * @param obj formProps
+    * @return
+    */
+    handleFormSubmit(formProps) {
+        // call action creater
+        this.props.signupUser(formProps);
+    }
+
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <View>
+                    <Text style={MainStyles.ERROR_TEXT}>
+                        {this.props.errorMessage}
+                    </Text>
+                </View>
+            );
+        }
+    }
+
     render() {
         const {
-            handelSubmit,
+            handleSubmit,
             fields: { name, email, password, passwordConfirm },
         } = this.props;
         return (
@@ -100,9 +121,14 @@ class Signup extends React.Component {
                         )}
                 </View>
 
-                <TouchableOpacity style={MainStyles.BUTTON_SUCCESS}>
+                {this.renderAlert()}
+
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                >
                     <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Skapa Konto
+                        Skapa konto
                     </Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
@@ -118,19 +144,19 @@ function validate(formProps) {
     const errors = {};
 
     if (!formProps.name) {
-        errors.name = 'Vanligen ange ditt namn';
+        errors.name = 'Vänligen ange ditt namn';
     }
 
     if (!formProps.email) {
-        errors.email = 'Vanligen ange din e-post adress';
+        errors.email = 'Vänligen ange din e-post adress';
     }
 
     if (!formProps.password) {
-        errors.password = 'Vanligen ange ditt lösenord';
+        errors.password = 'Vänligen ange ditt lösenord';
     }
 
     if (!formProps.passwordConfirm) {
-        errors.passwordConfirm = 'Vanligen bekräfta ditt lösenord';
+        errors.passwordConfirm = 'Vänligen bekräfta ditt lösenord';
     }
 
     if (formProps.password !== formProps.passwordConfirm) {
@@ -140,8 +166,16 @@ function validate(formProps) {
     return errors;
 }
 
-export default reduxForm({
-    form: 'signup',
-    fields: ['name', 'email', 'password', 'passwordConfirm'],
-    validate,
-})(Signup);
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.error };
+}
+
+export default reduxForm(
+    {
+        form: 'signup',
+        fields: ['name', 'email', 'password', 'passwordConfirm'],
+        validate,
+    },
+    mapStateToProps,
+    actions,
+)(Signup);

@@ -21,7 +21,7 @@ export function signinUser({ email, password }) {
             .then(response => {
                 dispatch({ type: AUTH_USER });
 
-                AsyncStorage.setItem('token', response.date.token);
+                AsyncStorage.setItem('token', response.data.token);
 
                 alert('true');
 
@@ -29,9 +29,22 @@ export function signinUser({ email, password }) {
                 this.props.navigation.navigate('Home');
             })
             .catch(() => {
-                // AsyncStorage.setItem('token', 'response.date.token');
+                // AsyncStorage.setItem('token', 'response.data.token');
                 dispatch(authError('Fel e-post eller lösenord...'));
             });
+    };
+}
+
+export function signupUser({ name, email, password }) {
+    return function(dispatch) {
+        axios
+            .post(`${ROOT_URL}/signup`, { name, email, password })
+            .then(response => {
+                dispatch({ type: AUTH_USER });
+                // AsyncStorage.setItem('token', 'response.data.token');
+                this.props.navigation.navigate('Home');
+            })
+            .catch(response => dispatch(authError(response.data.error)));
     };
 }
 

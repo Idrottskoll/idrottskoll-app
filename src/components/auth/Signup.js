@@ -39,6 +39,12 @@ class Signup extends React.Component {
                         style={MainStyles.AUTH_INPUT}
                         name={'name'}
                     />
+                    {name.touched &&
+                        name.error && (
+                            <Text style={MainStyles.ERROR_TEXT}>
+                                {name.error}
+                            </Text>
+                        )}
                 </View>
                 <View>
                     <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
@@ -48,6 +54,12 @@ class Signup extends React.Component {
                         name={'email'}
                         keyboardType="email-address"
                     />
+                    {email.touched &&
+                        email.error && (
+                            <Text style={MainStyles.ERROR_TEXT}>
+                                {email.error}
+                            </Text>
+                        )}
                 </View>
 
                 <View>
@@ -58,6 +70,12 @@ class Signup extends React.Component {
                         name={'password'}
                         returnKeyLabel="send"
                     />
+                    {password.touched &&
+                        password.error && (
+                            <Text style={MainStyles.ERROR_TEXT}>
+                                {password.error}
+                            </Text>
+                        )}
                 </View>
 
                 <View>
@@ -68,6 +86,12 @@ class Signup extends React.Component {
                         name={'passwordConfirm'}
                         returnKeyLabel="send"
                     />
+                    {passwordConfirm.touched &&
+                        passwordConfirm.error && (
+                            <Text style={MainStyles.ERROR_TEXT}>
+                                {passwordConfirm.error}
+                            </Text>
+                        )}
                 </View>
 
                 <TouchableOpacity style={MainStyles.BUTTON_SUCCESS}>
@@ -80,7 +104,38 @@ class Signup extends React.Component {
     }
 }
 
+/**
+* @param obj fromProps
+* @return bool validSignUp
+*/
+function validate(formProps) {
+    const errors = {};
+
+    if (!formProps.name) {
+        errors.name = 'Vanligen ange ditt namn';
+    }
+
+    if (!formProps.email) {
+        errors.email = 'Vanligen ange din e-post adress';
+    }
+
+    if (!formProps.password) {
+        errors.password = 'Vanligen ange ditt lösenord';
+    }
+
+    if (!formProps.passwordConfirm) {
+        errors.passwordConfirm = 'Vanligen bekräfta ditt lösenord';
+    }
+
+    if (formProps.password !== formProps.passwordConfirm) {
+        errors.password = 'Lösenord stämmer inte överens...';
+    }
+
+    return errors;
+}
+
 export default reduxForm({
     form: 'signup',
     fields: ['name', 'email', 'password', 'passwordConfirm'],
+    validate,
 })(Signup);

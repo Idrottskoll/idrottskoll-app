@@ -5,6 +5,7 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
+    KeyboardAvoidingView,
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
@@ -19,7 +20,10 @@ class Signup extends React.Component {
             fields: { name, email, password, passwordConfirm },
         } = this.props;
         return (
-            <View style={[MainStyles.MAIN_CARD]}>
+            <KeyboardAvoidingView
+                style={[MainStyles.MAIN_CARD]}
+                behavior="padding"
+            >
                 <View style={[{ marginBottom: StyleRules.MARGIN }]}>
                     <Text
                         style={[
@@ -32,6 +36,7 @@ class Signup extends React.Component {
                         Registrera
                     </Text>
                 </View>
+
                 <View>
                     <Text style={MainStyles.INPUT_LABEL}>Namn</Text>
                     <TextInput
@@ -46,6 +51,7 @@ class Signup extends React.Component {
                             </Text>
                         )}
                 </View>
+
                 <View>
                     <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
                     <TextInput
@@ -99,7 +105,7 @@ class Signup extends React.Component {
                         Skapa Konto
                     </Text>
                 </TouchableOpacity>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }

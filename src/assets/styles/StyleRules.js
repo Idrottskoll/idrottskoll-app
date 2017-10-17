@@ -46,6 +46,7 @@ export default (Style = {
     // colors
     MAIN_BACKGROUND_COLOR: '#EFEFF4',
     CARD_BACKGROUND_COLOR: '#FFFFFF',
+    BUTTON_TEXT_COLOR: '#FFFFFF',
     TEXT_COLOR: '#000000',
     MAIN_SHADOW_COLOR: '#000000',
     BLUE_COLOR: '#26435A',

@@ -37,6 +37,18 @@ class Signin extends React.Component {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
             <View style={[MainStyles.MAIN_CARD]}>
+                <View style={[{ marginBottom: StyleRules.MARGIN }]}>
+                    <Text
+                        style={[
+                            {
+                                fontSize: StyleRules.FONT_SIZE_TITLE,
+                                fontWeight: 'bold',
+                            },
+                        ]}
+                    >
+                        Logga in
+                    </Text>
+                </View>
                 <View>
                     <Text
                         style={
@@ -45,7 +57,7 @@ class Signin extends React.Component {
                                 : MainStyles.ERROR_TEXT
                         }
                     >
-                        Epost
+                        E-post
                     </Text>
                     <TextInput
                         style={
@@ -83,13 +95,12 @@ class Signin extends React.Component {
 
                 {this.renderAlert()}
 
-                <View>
-                    <TouchableOpacity
-                        onPress={handleSubmit(this.handleFormSubmit.bind(this))}
-                    >
-                        <Text>Logga in</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga in</Text>
+                </TouchableOpacity>
             </View>
         );
     }

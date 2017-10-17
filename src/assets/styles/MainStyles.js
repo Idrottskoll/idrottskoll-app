@@ -24,12 +24,12 @@ export default (Style = {
 
     INPUT_LABEL: {
         color: StyleRules.TEXT_COLOR,
-        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontWeight: 'bold',
     },
 
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
-        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontWeight: 'bold',
     },
 
     AUTH_INPUT: {
@@ -47,9 +47,23 @@ export default (Style = {
         borderColor: StyleRules.RED_COLOR,
         borderRadius: 3,
         borderWidth: 1,
-        color: StyleRules.RED_COLOR,
         height: 44,
         marginVertical: StyleRules.MARGIN,
         paddingHorizontal: StyleRules.MARGIN,
+    },
+
+    BUTTON_SUCCESS: {
+        height: 44,
+        display: 'flex',
+        alignItems: 'center',
+        flex: 1,
+        marginVertical: StyleRules.MARGIN,
+        backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
+        borderRadius: 3,
+        justifyContent: 'center',
+    },
+    BUTTON_SUCCESS_TEXT: {
+        fontWeight: 'bold',
+        color: StyleRules.BUTTON_TEXT_COLOR,
     },
 });

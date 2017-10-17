@@ -11,14 +11,21 @@ import { reduxForm } from 'redux-form';
 import StyleRules from '../../assets/styles/StyleRules';
 
 class Signin extends React.Component {
+    handleFormSubmit({ email, password }) {
+        console.log(email, password);
+    }
+
     render() {
+        const { handleSubmit, fields: { email, password } } = this.props;
         return (
             <View>
                 <Text>Epost</Text>
-                <TextInput />
+                <TextInput {...email} keyboardType="email-address" />
                 <Text>Lösenord</Text>
-                <TextInput />
-                <TouchableOpacity>
+                <TextInput {...password} />
+                <TouchableOpacity
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                >
                     <Text>Logga in</Text>
                 </TouchableOpacity>
             </View>

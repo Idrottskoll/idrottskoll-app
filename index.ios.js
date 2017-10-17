@@ -14,11 +14,7 @@ const ReduxApp = () => (
     </Provider>
 );
 
-// const store = configureStore();
-// const ReduxApp = () => (
-//     <Provider store={store}>
-//         <App />
-//     </Provider>
-// );
-
 AppRegistry.registerComponent('idrottskollApp', () => ReduxApp);
+
+// https://www.udemy.com/react-redux-tutorial/learn/v4/t/lecture/4962654?start=0
+// http://95.85.49.182/api/register

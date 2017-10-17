@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Image, StyleSheet } from 'react-native';
+
 import Home from './views/Home/Home';
 import Information from './views/Information/Information';
 import Videos from './views/Videos/Videos';
@@ -63,4 +64,5 @@ const styles = StyleSheet.create({
         height: 26,
     },
 });
+
 export default Tabs;

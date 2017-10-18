@@ -1,11 +1,36 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Image, StyleSheet } from 'react-native';
 
 import HomeScreen from '../../views/Home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
+
+// Auth's
+import Signin from '../auth/Signin';
+import Signup from '../auth/Signup';
+
+const StackAuth = StackNavigator({
+    ProfileScreen: {
+        screen: ProfileScreen,
+        navigationOptions: {
+            title: 'Profil',
+        },
+    },
+    Signin: {
+        screen: Signin,
+        navigationOptions: {
+            title: 'Logga in',
+        },
+    },
+    Signup: {
+        screen: Signup,
+        navigationOptions: {
+            title: 'Skapa konto',
+        },
+    },
+});
 
 const Tabs = TabNavigator({
     HomeScreen: {
@@ -45,7 +70,7 @@ const Tabs = TabNavigator({
         },
     },
     ProfileScreen: {
-        screen: ProfileScreen,
+        screen: StackAuth,
         navigationOptions: {
             tabBarLabel: 'Profile',
             tabBarIcon: ({ focused }) => {

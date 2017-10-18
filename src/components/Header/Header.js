@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         padding: 15,
         height: 88,
+        // height: 65,
         flexDirection: 'row',
         justifyContent: 'space-between',
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,

@@ -22,8 +22,8 @@ class Profile extends React.Component {
             // if ((this.props.authenticated = true)) {
             return [<Signout key="signout" />];
         } else {
-            return [<Signup key="signup" />];
-            // return [<Signin key="signin" />];
+            // return [<Signup key="signup" />];
+            return [<Signin key="signin" />];
             // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }
@@ -38,24 +38,29 @@ class Profile extends React.Component {
                     {this.renderComponent()}
 
                     <View style={MainStyles.MAIN_CARD}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signin')}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Logga in
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signup')}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Skapa konto
-                            </Text>
-                        </TouchableOpacity>
+                        <View style={MainStyles.FORM_GROUP}>
+                            <TouchableOpacity
+                                style={MainStyles.BUTTON_SUCCESS}
+                                onPress={() =>
+                                    this.props.navigation.navigate('Signin')}
+                            >
+                                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                                    Logga in
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={MainStyles.FORM_GROUP}>
+                            <TouchableOpacity
+                                style={MainStyles.BUTTON_SUCCESS}
+                                onPress={() =>
+                                    this.props.navigation.navigate('Signup')}
+                            >
+                                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                                    Skapa konto
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </ScrollView>
             </View>

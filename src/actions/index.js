@@ -1,10 +1,10 @@
 import AsyncStorage from 'react-native';
 import axios from 'axios';
 
-import HomeScreen from '../views/Home/HomeScreen';
+import ProfileScreen from '../views/Profile/ProfileScreen';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
 
-const ROOT_URL = 'http://95.85.49.182';
+const ROOT_URL = 'http://95.85.49.182/api';
 
 /**
 * @param string email, string password
@@ -21,16 +21,18 @@ export function signinUser({ email, password }) {
             .then(response => {
                 dispatch({ type: AUTH_USER });
 
-                AsyncStorage.setItem('token', response.data.token);
+                // AsyncStorage.setItem('token', response.data.token);
 
-                alert('true');
+                alert('true ' + email, password);
 
                 // redirect the user to HomeScreen screen
-                this.props.navigation.navigate('HomeScreen');
+                this.props.navigation.navigate('ProfileScreen');
             })
             .catch(() => {
+                alert('false ' + email, password);
                 // AsyncStorage.setItem('token', 'response.data.token');
                 dispatch(authError('Fel e-post eller lösenord...'));
+                this.props.navigation.navigate('ProfileScreen');
             });
     };
 }
@@ -42,7 +44,8 @@ export function signupUser({ name, email, password }) {
             .then(response => {
                 dispatch({ type: AUTH_USER });
                 // AsyncStorage.setItem('token', 'response.data.token');
-                this.props.navigation.navigate('Home');
+                // this.props.navigation.navigate('Home');
+                alert('true ' + email, password);
             })
             .catch(response => dispatch(authError(response.data.error)));
     };

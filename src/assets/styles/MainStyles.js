@@ -49,7 +49,6 @@ export default (Style = {
         height: 44,
         display: 'flex',
         alignItems: 'center',
-        flex: 1,
         marginVertical: StyleRules.MARGIN,
         backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
         borderRadius: 3,

@@ -6,7 +6,7 @@ import reduxThunk from 'redux-thunk';
 
 import reducers from './src/reducers';
 // import configureStore from './configureStore';
-import App from './src';
+import App from './src/App';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const ReduxApp = () => (

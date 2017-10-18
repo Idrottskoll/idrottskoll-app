@@ -2,10 +2,10 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Image, StyleSheet } from 'react-native';
 
-import HomeScreen from './views/Home/HomeScreen';
-import InformationScreen from './views/Information/InformationScreen';
-import VideoScreen from './views/Videos/VideoScreen';
-import ProfileScreen from './views/Profile/ProfileScreen';
+import HomeScreen from '../../views/Home/HomeScreen';
+import InformationScreen from '../../views/Information/InformationScreen';
+import VideoScreen from '../../views/Videos/VideoScreen';
+import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 const Tabs = TabNavigator({
     HomeScreen: {
@@ -14,8 +14,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'IDK Hem',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./assets/icons/ic.png')
-                    : require('./assets/icons/ic.png');
+                    ? require('../../assets/icons/ic.png')
+                    : require('../../assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -26,8 +26,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Information',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./assets/icons/ic.png')
-                    : require('./assets/icons/ic.png');
+                    ? require('../../assets/icons/ic.png')
+                    : require('../../assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -38,8 +38,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Videos',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./assets/icons/ic.png')
-                    : require('./assets/icons/ic.png');
+                    ? require('../../assets/icons/ic.png')
+                    : require('../../assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },
@@ -50,8 +50,8 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Profile',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('./assets/icons/ic.png')
-                    : require('./assets/icons/ic.png');
+                    ? require('../../assets/icons/ic.png')
+                    : require('../../assets/icons/ic.png');
                 return <Image source={imgSource} style={styles.icon} />;
             },
         },

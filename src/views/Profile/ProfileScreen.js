@@ -17,7 +17,6 @@ import Signup from '../../components/auth/Signup';
 
 class Profile extends React.Component {
     renderComponent() {
-        return;
         if (this.props.authenticated) {
             // if ((this.props.authenticated = true)) {
             return [<Signout key="signout" />];

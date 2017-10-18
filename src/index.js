@@ -2,14 +2,14 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Image, StyleSheet } from 'react-native';
 
-import Home from './views/Home/Home';
-import Information from './views/Information/Information';
-import Videos from './views/Videos/Videos';
-import Profile from './views/Profile/Profile';
+import HomeScreen from './views/Home/HomeScreen';
+import InformationScreen from './views/Information/InformationScreen';
+import VideoScreen from './views/Videos/VideoScreen';
+import ProfileScreen from './views/Profile/ProfileScreen';
 
 const Tabs = TabNavigator({
-    Home: {
-        screen: Home,
+    HomeScreen: {
+        screen: HomeScreen,
         navigationOptions: {
             tabBarLabel: 'IDK Hem',
             tabBarIcon: ({ focused }) => {
@@ -20,8 +20,8 @@ const Tabs = TabNavigator({
             },
         },
     },
-    Information: {
-        screen: Information,
+    InformationScreen: {
+        screen: InformationScreen,
         navigationOptions: {
             tabBarLabel: 'Information',
             tabBarIcon: ({ focused }) => {
@@ -32,8 +32,8 @@ const Tabs = TabNavigator({
             },
         },
     },
-    Videos: {
-        screen: Videos,
+    VideoScreen: {
+        screen: VideoScreen,
         navigationOptions: {
             tabBarLabel: 'Videos',
             tabBarIcon: ({ focused }) => {
@@ -44,8 +44,8 @@ const Tabs = TabNavigator({
             },
         },
     },
-    Profile: {
-        screen: Profile,
+    ProfileScreen: {
+        screen: ProfileScreen,
         navigationOptions: {
             tabBarLabel: 'Profile',
             tabBarIcon: ({ focused }) => {

@@ -5,7 +5,7 @@ import {
     Text,
     TextInput,
     StyleSheet,
-    TouchableOpacity,
+    Button,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -17,18 +17,20 @@ import Signup from '../../components/auth/Signup';
 
 class Profile extends React.Component {
     renderComponent() {
+        return;
         if (this.props.authenticated) {
             // if ((this.props.authenticated = true)) {
             return [<Signout key="signout" />];
         } else {
-            // return [<Signup key="signup" />];
-            return [<Signin key="signin" />];
+            return [<Signup key="signup" />];
+            // return [<Signin key="signin" />];
             // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }
 
     render() {
         const { navigate } = this.props.navigation;
+
         return (
             <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />

@@ -39,7 +39,7 @@ class Signup extends React.Component {
     render() {
         const {
             handleSubmit,
-            fields: { name, email, password, passwordConfirm },
+            fields: { name, email, password, passwordConfirmation },
         } = this.props;
         return (
             <View style={[MainStyles.MAIN_CARD]}>
@@ -126,20 +126,20 @@ class Signup extends React.Component {
                             Upprepa lösenord
                         </Text>
                         <TextInput
-                            {...passwordConfirm}
+                            {...passwordConfirmation}
                             style={[
                                 MainStyles.AUTH_INPUT,
                                 MainStyles.AUTH_SUCCESS_INPUT,
                             ]}
-                            name={'passwordConfirm'}
+                            name={'passwordConfirmation'}
                             autoCorrect={false}
                             returnKeyType="next"
                             secureTextEntry={true}
                         />
-                        {passwordConfirm.touched &&
-                            passwordConfirm.error && (
+                        {passwordConfirmation.touched &&
+                            passwordConfirmation.error && (
                                 <Text style={MainStyles.ERROR_TEXT}>
-                                    {passwordConfirm.error}
+                                    {passwordConfirmation.error}
                                 </Text>
                             )}
                     </View>
@@ -183,11 +183,11 @@ function validate(formProps) {
         errors.password = 'Vänligen ange ditt lösenord';
     }
 
-    if (!formProps.passwordConfirm) {
-        errors.passwordConfirm = 'Vänligen bekräfta ditt lösenord';
+    if (!formProps.passwordConfirmation) {
+        errors.passwordConfirmation = 'Vänligen bekräfta ditt lösenord';
     }
 
-    if (formProps.password !== formProps.passwordConfirm) {
+    if (formProps.password !== formProps.passwordConfirmation) {
         errors.password = 'Lösenord stämmer inte överens...';
     }
 
@@ -201,7 +201,7 @@ function mapStateToProps(state) {
 export default reduxForm(
     {
         form: 'signup',
-        fields: ['name', 'email', 'password', 'passwordConfirm'],
+        fields: ['name', 'email', 'password', 'passwordConfirmation'],
         validate,
     },
     mapStateToProps,

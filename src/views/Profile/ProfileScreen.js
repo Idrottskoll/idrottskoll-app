@@ -31,11 +31,11 @@ class Profile extends React.Component {
 
     showData = async () => {
         try {
-            const token = await AsyncStorage.getItem('token');
-            const parse = JSON.parse(token);
-            alert(parse.token);
+            await AsyncStorage.getItem('token').then(value => {
+                alert('welcome' + value);
+            });
         } catch (e) {
-            alert(e);
+            alert('error ' + e);
         }
     };
 
@@ -76,7 +76,7 @@ class Profile extends React.Component {
                         <View style={MainStyles.FORM_GROUP}>
                             <TouchableOpacity
                                 style={MainStyles.BUTTON_SUCCESS}
-                                onPress={() => this.showData}
+                                onPress={() => this.showData()}
                             >
                                 <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
                                     Show data

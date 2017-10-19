@@ -4,7 +4,7 @@ import AsyncStorage from 'react-native';
 import axios from 'axios';
 import { StackNavigator } from 'react-navigation';
 
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
@@ -21,7 +21,6 @@ export function signinUser({ email, password }) {
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
                 dispatch({ type: AUTH_USER });
-                alert(response.data.token);
             })
             .catch(e => {
                 dispatch(authError('Fel e-post eller lösenord...'));
@@ -33,20 +32,27 @@ export function signinUser({ email, password }) {
 * @param string name, string email, string password
 * @return function
 */
-export function signupUser({ name, email, password }) {
+export function signupUser({ email, name, password, passwordConfirmation }) {
     /**
     * @param dispatch
     * @return bool AUTH_USER
     */
     return function(dispatch) {
         axios
-            .post(`${ROOT_URL}/register`, { name, email, password })
+            .post(`${ROOT_URL}/register`, {
+                email,
+                name,
+                password,
+                passwordConfirmation,
+            })
             .then(response => {
                 dispatch({ type: AUTH_USER });
                 alert(response);
             })
-            // response.data.error
-            .catch(response => dispatch(authError('response error')));
+            .catch(response => {
+                // response.data.error
+                dispatch(authError('Error with signup, username is taken?'));
+            });
     };
 }
 

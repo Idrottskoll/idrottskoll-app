@@ -11,8 +11,8 @@ cd idrottskollApp <My App Name>
 npm install
 npm run start
 ```
-2. Copy the file config_example.js and rename it to `config.js` file path: `src/actions/config_example.js`
-3. Add your credentials in `config.js` 
+2. Copy the file `config_example.js` and rename it to `config.js` file path: `src/actions/config_example.js`
+3. Add your credentials in `config.js`
 
 ## Dependencies
 ```BASH

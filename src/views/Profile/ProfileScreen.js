@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
+import AsyncStorage from 'react-native';
 
 import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
@@ -27,6 +28,16 @@ class Profile extends React.Component {
             // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }
+
+    showData = async () => {
+        try {
+            const token = await AsyncStorage.getItem('token');
+            const parse = JSON.parse(token);
+            alert(parse.token);
+        } catch (e) {
+            alert(e);
+        }
+    };
 
     render() {
         const { navigate } = this.props.navigation;
@@ -58,6 +69,17 @@ class Profile extends React.Component {
                             >
                                 <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
                                     Skapa konto
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={MainStyles.FORM_GROUP}>
+                            <TouchableOpacity
+                                style={MainStyles.BUTTON_SUCCESS}
+                                onPress={() => this.showData}
+                            >
+                                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                                    Show data
                                 </Text>
                             </TouchableOpacity>
                         </View>

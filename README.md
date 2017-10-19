@@ -4,12 +4,15 @@
 * [Google play store](https://github.com/Idrottskoll)
 ## Installing
 
+1.
 ```BASH
 git clone https://github.com/Idrottskoll/idrottskoll-app.git <My App Name>
 cd idrottskollApp <My App Name>
 npm install
 npm run start
 ```
+2. Copy the file config_example.js and rename it to `config.js` file path: `src/actions/config_example.js`
+3. Add your credentials in `config.js` 
 
 ## Dependencies
 ```BASH

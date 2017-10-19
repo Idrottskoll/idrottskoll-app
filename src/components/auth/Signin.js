@@ -6,6 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     KeyboardAvoidingView,
+    ScrollView,
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
@@ -37,71 +38,70 @@ class Signin extends React.Component {
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
-            <KeyboardAvoidingView
-                style={MainStyles.VIEW_CONTAINER}
-                behavior="padding"
-            >
-                <View style={[MainStyles.MAIN_CARD]}>
-                    <View style={[{ marginBottom: StyleRules.MARGIN }]}>
-                        <Text
-                            style={[
-                                {
-                                    fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold',
-                                },
-                            ]}
-                        >
-                            Logga in
-                        </Text>
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
-                        <TextInput
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
-                            ]}
-                            name={'email'}
-                            {...email}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            returnKeyType="next"
-                        />
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
-                        <TextInput
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
-                            ]}
-                            name={'password'}
-                            autoCorrect={false}
-                            returnKeyType="next"
-                            secureTextEntry={true}
-                            {...password}
-                        />
-                    </View>
-
-                    {this.renderAlert()}
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={handleSubmit(
-                                this.handleFormSubmit.bind(this),
-                            )}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+            <View style={MainStyles.VIEW_CONTAINER}>
+                <ScrollView>
+                    <View style={[MainStyles.MAIN_CARD]}>
+                        <View style={[{ marginBottom: StyleRules.MARGIN }]}>
+                            <Text
+                                style={[
+                                    {
+                                        fontSize: StyleRules.FONT_SIZE_TITLE,
+                                        fontWeight: 'bold',
+                                    },
+                                ]}
+                            >
                                 Logga in
                             </Text>
-                        </TouchableOpacity>
+                        </View>
+
+                        <View style={MainStyles.FORM_GROUP}>
+                            <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
+                            <TextInput
+                                style={[
+                                    MainStyles.AUTH_INPUT,
+                                    MainStyles.AUTH_SUCCESS_INPUT,
+                                ]}
+                                name={'email'}
+                                {...email}
+                                keyboardType="email-address"
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                returnKeyType="next"
+                            />
+                        </View>
+
+                        <View style={MainStyles.FORM_GROUP}>
+                            <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
+                            <TextInput
+                                style={[
+                                    MainStyles.AUTH_INPUT,
+                                    MainStyles.AUTH_SUCCESS_INPUT,
+                                ]}
+                                name={'password'}
+                                autoCorrect={false}
+                                returnKeyType="next"
+                                secureTextEntry={true}
+                                {...password}
+                            />
+                        </View>
+
+                        {this.renderAlert()}
+
+                        <View style={MainStyles.FORM_GROUP}>
+                            <TouchableOpacity
+                                style={MainStyles.BUTTON_SUCCESS}
+                                onPress={handleSubmit(
+                                    this.handleFormSubmit.bind(this),
+                                )}
+                            >
+                                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                                    Logga in
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
-            </KeyboardAvoidingView>
+                </ScrollView>
+            </View>
         );
     }
 }

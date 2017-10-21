@@ -5,7 +5,7 @@ import {
     Text,
     TextInput,
     StyleSheet,
-    TouchableOpacity,
+    TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
 import AsyncStorage from 'react-native';
@@ -28,16 +28,6 @@ class Profile extends React.Component {
             // return [<Signup key="signup" />, <Signin key="signin" />];
         }
     }
-
-    showData = async () => {
-        try {
-            await AsyncStorage.getItem('token').then(value => {
-                alert('welcome' + value);
-            });
-        } catch (e) {
-            alert('error ' + e);
-        }
-    };
 
     render() {
         const { navigate } = this.props.navigation;
@@ -74,14 +64,7 @@ class Profile extends React.Component {
                         </View>
 
                         <View style={MainStyles.FORM_GROUP}>
-                            <TouchableOpacity
-                                style={MainStyles.BUTTON_SUCCESS}
-                                onPress={() => this.showData()}
-                            >
-                                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                    Show data
-                                </Text>
-                            </TouchableOpacity>
+                            <Text>Type: {this.props.authenticated}</Text>
                         </View>
                     </View>
                 </ScrollView>

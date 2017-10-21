@@ -20,7 +20,9 @@ export function signinUser({ email, password }) {
         axios
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
+                // response.data.token
                 dispatch({ type: AUTH_USER });
+                alert('loggd in');
             })
             .catch(e => {
                 dispatch(authError('Fel e-post eller lösenord...'));
@@ -43,7 +45,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
                 email,
                 name,
                 password,
-                passwordConfirmation,
+                passwordConfirmation
             })
             .then(response => {
                 dispatch({ type: AUTH_USER });
@@ -63,7 +65,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
 export function authError(error) {
     return {
         type: AUTH_ERROR,
-        payload: error,
+        payload: error
     };
 }
 

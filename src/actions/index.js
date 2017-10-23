@@ -1,8 +1,8 @@
 'use strict';
 
-import AsyncStorage from 'react-native';
-import axios from 'axios';
+import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import axios from 'axios';
 
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
@@ -20,9 +20,12 @@ export function signinUser({ email, password }) {
         axios
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
-                // response.data.token
                 dispatch({ type: AUTH_USER });
-                alert('loggd in');
+                AsyncStorage.setItem(
+                    'token',
+                    SPECIAL_TOKEN + response.data.token
+                );
+                alert('Welcome ' + email);
             })
             .catch(e => {
                 dispatch(authError('Fel e-post eller lösenord...'));
@@ -49,10 +52,13 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
             })
             .then(response => {
                 dispatch({ type: AUTH_USER });
-                alert(response);
+                AsyncStorage.setItem(
+                    'token',
+                    SPECIAL_TOKEN + response.data.token
+                );
+                alert('Välkommen ' + name);
             })
             .catch(response => {
-                // response.data.error
                 dispatch(authError('Error with signup, username is taken?'));
             });
     };

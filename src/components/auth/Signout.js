@@ -16,11 +16,9 @@ class Sigout extends React.Component {
 
     render() {
         return (
-            <View style={MainStyles.MAIN_CARD}>
-                <TouchableOpacity onPress={this.handleSignout()}>
-                    <Text>Logga ut</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity onPress={this.handleSignout()}>
+                <Text>Logga ut</Text>
+            </TouchableOpacity>
         );
     }
 }

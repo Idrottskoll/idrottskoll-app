@@ -26,6 +26,7 @@ export function signinUser({ email, password }) {
                     SPECIAL_TOKEN + response.data.token
                 );
                 alert('Welcome ' + email);
+                goBack('ProfileScreen');
             })
             .catch(e => {
                 dispatch(authError('Fel e-post eller lösenord...'));
@@ -76,6 +77,6 @@ export function authError(error) {
 }
 
 export function signoutUser() {
-    removeUserToken('token');
+    AsyncStorage.removeItem('token');
     return { type: UNAUTH_USER };
 }

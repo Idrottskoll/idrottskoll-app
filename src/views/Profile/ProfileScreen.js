@@ -18,9 +18,27 @@ import Signin from '../../components/auth/Signin';
 import Signout from '../../components/auth/Signout';
 import Signup from '../../components/auth/Signup';
 
-class Profile extends React.Component {
+class ProfileScreen extends React.Component {
     renderComponent() {
         if (this.props.authenticated) {
+            return (
+                <View>
+                    <View style={MainStyles.FORM_GROUP}>
+                        <TouchableOpacity
+                            style={MainStyles.BUTTON_SUCCESS}
+                            onPress={() => this.show()}
+                        >
+                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                                Show token
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={MainStyles.FORM_GROUP}>
+                        <Signout />
+                    </View>
+                </View>
+            );
+        } else {
             return (
                 <View>
                     <View style={MainStyles.FORM_GROUP}>
@@ -44,24 +62,6 @@ class Profile extends React.Component {
                                 Skapa konto
                             </Text>
                         </TouchableOpacity>
-                    </View>
-                </View>
-            );
-        } else {
-            return (
-                <View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() => this.show()}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Show token
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        {/* <Signout /> */}
                     </View>
                 </View>
             );
@@ -93,4 +93,4 @@ function mapStateToProps(state) {
     return { authenticated: state.auth.authenticated };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(ProfileScreen);

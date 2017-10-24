@@ -25,8 +25,7 @@ export function signinUser({ email, password }) {
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
-                alert('Welcome ' + email);
-                goBack('ProfileScreen');
+                console.log(response.data.token);
             })
             .catch(e => {
                 dispatch(authError('Fel e-post eller lösenord...'));

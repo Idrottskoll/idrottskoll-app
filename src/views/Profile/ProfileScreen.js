@@ -19,7 +19,14 @@ import Signout from '../../components/auth/Signout';
 import Signup from '../../components/auth/Signup';
 
 class ProfileScreen extends React.Component {
-    renderComponent() {
+    constructor(props) {
+        super(props);
+        this.componentWillMount = this.componentWillMount.bind(this);
+    }
+
+    componentWillMount() {
+        // TODO: this.props.authenticated = undefinde
+        console.log(this.props.authenticated);
         if (this.props.authenticated) {
             return (
                 <View>
@@ -71,7 +78,6 @@ class ProfileScreen extends React.Component {
     async show() {
         const showToken = await AsyncStorage.getItem('token');
         alert(showToken);
-        return true;
     }
 
     render() {
@@ -81,7 +87,7 @@ class ProfileScreen extends React.Component {
             <View style={MainStyles.VIEW_CONTAINER}>
                 <ScrollView keyboardShouldPersistTaps={'handled'}>
                     <View style={MainStyles.MAIN_CARD}>
-                        {this.renderComponent()}
+                        {this.componentWillMount()}
                     </View>
                 </ScrollView>
             </View>

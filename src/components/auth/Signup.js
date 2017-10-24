@@ -6,7 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     KeyboardAvoidingView,
-    ScrollView,
+    ScrollView
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
@@ -39,7 +39,7 @@ class Signup extends React.Component {
     render() {
         const {
             handleSubmit,
-            fields: { name, email, password, passwordConfirmation },
+            fields: { name, email, password, passwordConfirmation }
         } = this.props;
         return (
             <View style={[MainStyles.MAIN_CARD]}>
@@ -49,8 +49,8 @@ class Signup extends React.Component {
                             style={[
                                 {
                                     fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold',
-                                },
+                                    fontWeight: 'bold'
+                                }
                             ]}
                         >
                             Registrera
@@ -63,7 +63,7 @@ class Signup extends React.Component {
                             {...name}
                             style={[
                                 MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
+                                MainStyles.AUTH_SUCCESS_INPUT
                             ]}
                             name={'name'}
                             autoCapitalize="words"
@@ -84,7 +84,7 @@ class Signup extends React.Component {
                             {...email}
                             style={[
                                 MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
+                                MainStyles.AUTH_SUCCESS_INPUT
                             ]}
                             name={'email'}
                             keyboardType="email-address"
@@ -106,7 +106,7 @@ class Signup extends React.Component {
                             {...password}
                             style={[
                                 MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
+                                MainStyles.AUTH_SUCCESS_INPUT
                             ]}
                             name={'password'}
                             autoCorrect={false}
@@ -129,11 +129,11 @@ class Signup extends React.Component {
                             {...passwordConfirmation}
                             style={[
                                 MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT,
+                                MainStyles.AUTH_SUCCESS_INPUT
                             ]}
                             name={'passwordConfirmation'}
                             autoCorrect={false}
-                            returnKeyType="next"
+                            returnKeyType="go"
                             secureTextEntry={true}
                         />
                         {passwordConfirmation.touched &&
@@ -150,7 +150,7 @@ class Signup extends React.Component {
                         <TouchableOpacity
                             style={MainStyles.BUTTON_SUCCESS}
                             onPress={handleSubmit(
-                                this.handleFormSubmit.bind(this),
+                                this.handleFormSubmit.bind(this)
                             )}
                         >
                             <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
@@ -202,8 +202,8 @@ export default reduxForm(
     {
         form: 'signup',
         fields: ['name', 'email', 'password', 'passwordConfirmation'],
-        validate,
+        validate
     },
     mapStateToProps,
-    actions,
+    actions
 )(Signup);

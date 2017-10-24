@@ -6,7 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     KeyboardAvoidingView,
-    ScrollView,
+    ScrollView
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
@@ -46,8 +46,8 @@ class Signin extends React.Component {
                                 style={[
                                     {
                                         fontSize: StyleRules.FONT_SIZE_TITLE,
-                                        fontWeight: 'bold',
-                                    },
+                                        fontWeight: 'bold'
+                                    }
                                 ]}
                             >
                                 Logga in
@@ -59,7 +59,7 @@ class Signin extends React.Component {
                             <TextInput
                                 style={[
                                     MainStyles.AUTH_INPUT,
-                                    MainStyles.AUTH_SUCCESS_INPUT,
+                                    MainStyles.AUTH_SUCCESS_INPUT
                                 ]}
                                 name={'email'}
                                 {...email}
@@ -75,11 +75,11 @@ class Signin extends React.Component {
                             <TextInput
                                 style={[
                                     MainStyles.AUTH_INPUT,
-                                    MainStyles.AUTH_SUCCESS_INPUT,
+                                    MainStyles.AUTH_SUCCESS_INPUT
                                 ]}
                                 name={'password'}
                                 autoCorrect={false}
-                                returnKeyType="next"
+                                returnKeyType="go"
                                 secureTextEntry={true}
                                 {...password}
                             />
@@ -91,7 +91,7 @@ class Signin extends React.Component {
                             <TouchableOpacity
                                 style={MainStyles.BUTTON_SUCCESS}
                                 onPress={handleSubmit(
-                                    this.handleFormSubmit.bind(this),
+                                    this.handleFormSubmit.bind(this)
                                 )}
                             >
                                 <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
@@ -117,8 +117,8 @@ function mapStateToProps(state) {
 export default reduxForm(
     {
         form: 'signin',
-        fields: ['email', 'password'],
+        fields: ['email', 'password']
     },
     mapStateToProps,
-    actions,
+    actions
 )(Signin);

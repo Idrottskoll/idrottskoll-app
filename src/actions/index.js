@@ -4,7 +4,12 @@ import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
+import {
+    AUTH_USER,
+    AUTH_ERROR,
+    UNAUTH_USER,
+    FETCH_USER_CONTENT
+} from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
@@ -78,4 +83,24 @@ export function authError(error) {
 export function signoutUser() {
     AsyncStorage.removeItem('token');
     return { type: UNAUTH_USER };
+}
+
+/**
+* @param string data (request url endpoint)
+* @return json data (the auth user data)
+*/
+export function fetchAuthUserContent(data) {
+    return async function(dispatch) {
+        axios
+            .get(`${ROOT_URL}/${data}`, {
+                headers: { Authorization: await AsyncStorage.getItem('token') }
+            })
+            .then(response => {
+                dispatch({
+                    type: FETCH_USER_CONTENT,
+                    // .name will get user name
+                    payload: response.data.name
+                });
+            });
+    };
 }

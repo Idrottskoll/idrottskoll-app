@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import { AppRegistry, AsyncStorage } from 'react-native';
 import { Provider } from 'react-redux';

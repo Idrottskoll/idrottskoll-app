@@ -1,19 +1,11 @@
 'use strict';
 
 import React from 'react';
-import {
-    ScrollView,
-    View,
-    Text,
-    TextInput,
-    StyleSheet,
-    TouchableOpacity
-} from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import MainStyles from '../../assets/styles/MainStyles';
-import Header from '../../components/Header/Header';
 import Signin from '../../components/auth/Signin';
 import Signout from '../../components/auth/Signout';
 import Signup from '../../components/auth/Signup';
@@ -26,7 +18,7 @@ class ProfileScreen extends React.Component {
 
     componentWillMount() {
         // TODO: this.props.authenticated = undefinde
-        console.log(this.props.authenticated);
+        console.log('this.props.authenticated = ' + this.props.authenticated);
         if (this.props.authenticated) {
             return (
                 <View>

@@ -98,8 +98,8 @@ export function fetchAuthUserContent(data) {
             .then(response => {
                 dispatch({
                     type: FETCH_USER_CONTENT,
-                    // .name will get user name
-                    payload: response.data.name
+                    // .name will get userName
+                    payload: response.data
                 });
             });
     };

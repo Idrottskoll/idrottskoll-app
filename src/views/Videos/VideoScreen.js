@@ -15,6 +15,11 @@ class VideoScreen extends React.Component {
 
         this.componentWillMount = this.componentWillMount.bind(this);
     }
+
+    renderVideos() {
+        console.log(this.props.message);
+    }
+
     componentWillMount() {
         console.log('VideoScreen');
         this.props.fetchAuthUserContent('user');
@@ -26,7 +31,17 @@ class VideoScreen extends React.Component {
             <View style={MainStyles.VIEW_CONTAINER}>
                 <Header />
                 <ScrollView>
-                    <Text>content: {this.props.content}</Text>
+                    <View style={MainStyles.MAIN_CARD}>
+                        {this.props.content ? (
+                            <View>
+                                <Text>NAME: {this.props.content.name}</Text>
+                                <Text>E-POST: {this.props.content.email}</Text>
+                            </View>
+                        ) : (
+                            <Text>Logga in först</Text>
+                        )}
+                        {/* <Text>Videos: {this.renderVideos()}</Text> */}
+                    </View>
                 </ScrollView>
             </View>
         );

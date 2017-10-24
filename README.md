@@ -2,17 +2,18 @@
 * [Web App](http://www.idrottskoll.se/)
 * [iOS App store](https://github.com/Idrottskoll)
 * [Google play store](https://github.com/Idrottskoll)
-## Installing
 
+## Installing
 1.
 ```BASH
 git clone https://github.com/Idrottskoll/idrottskoll-app.git <My App Name>
 cd idrottskollApp <My App Name>
 npm install
 ```
-2. Copy the file `config_example.js` and rename it to `config.js` file path: `src/actions/config_example.js`
+2. Copy the file `config_example.js` and rename it to `config.js` file path: `/src/actions/config_example.js`
 3. Add your credentials in `config.js`
-4. `npm run start`
+4. Run `npm run start`
+5. Double click on the file `idrottskollApp.xcodeproj` located in `/ios` (this will invoke `xcode` so you can compile the application)
 
 ## Dependencies
 ```BASH

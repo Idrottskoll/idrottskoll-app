@@ -13,7 +13,7 @@ npm install
 2. Copy the file `config_example.js` and rename it to `config.js` file path: `/src/actions/config_example.js`
 3. Add your credentials in `config.js`
 4. Run `npm run start`
-5. Double click on the file `idrottskollApp.xcodeproj` located in `/ios` (this will invoke `xcode` so you can compile the application)
+5. Double click on the file `idrottskollApp.xcodeproj` located in `/ios` (this will invoke [xcode](https://developer.apple.com/xcode/) so you can compile the application)
 
 ## Dependencies
 ```BASH

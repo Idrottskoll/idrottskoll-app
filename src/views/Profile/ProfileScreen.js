@@ -11,62 +11,6 @@ import Signout from '../../components/auth/Signout';
 import Signup from '../../components/auth/Signup';
 
 class ProfileScreen extends React.Component {
-    constructor(props) {
-        super(props);
-        this.componentWillMount = this.componentWillMount.bind(this);
-    }
-
-    componentWillMount() {
-        // TODO: this.props.authenticated = undefinde
-        console.log('this.props.authenticated = ' + this.props.authenticated);
-        if (this.props.authenticated) {
-            return (
-                <View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() => this.show()}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Show token
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Signout />
-                    </View>
-                </View>
-            );
-        } else {
-            return (
-                <View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signin')}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Logga in
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={MainStyles.FORM_GROUP}>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signup')}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Skapa konto
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            );
-        }
-    }
-
     async show() {
         const showToken = await AsyncStorage.getItem('token');
         alert(showToken);
@@ -74,16 +18,81 @@ class ProfileScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
-
-        return (
-            <View style={MainStyles.VIEW_CONTAINER}>
-                <ScrollView keyboardShouldPersistTaps={'handled'}>
-                    <View style={MainStyles.MAIN_CARD}>
-                        {this.componentWillMount()}
-                    </View>
-                </ScrollView>
-            </View>
-        );
+        console.log(this.props.authenticated);
+        if (this.props.authenticated) {
+            return (
+                <View style={MainStyles.VIEW_CONTAINER}>
+                    <ScrollView keyboardShouldPersistTaps={'handled'}>
+                        <View style={MainStyles.MAIN_CARD}>
+                            <View>
+                                <View style={MainStyles.FORM_GROUP}>
+                                    <TouchableOpacity
+                                        style={MainStyles.BUTTON_SUCCESS}
+                                        onPress={() => this.show()}
+                                    >
+                                        <Text
+                                            style={
+                                                MainStyles.BUTTON_SUCCESS_TEXT
+                                            }
+                                        >
+                                            Show token
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={MainStyles.FORM_GROUP}>
+                                    <Signout />
+                                </View>
+                            </View>
+                        </View>
+                    </ScrollView>
+                </View>
+            );
+        } else {
+            return (
+                <View style={MainStyles.VIEW_CONTAINER}>
+                    <ScrollView keyboardShouldPersistTaps={'handled'}>
+                        <View style={MainStyles.MAIN_CARD}>
+                            <View>
+                                <View style={MainStyles.FORM_GROUP}>
+                                    <TouchableOpacity
+                                        style={MainStyles.BUTTON_SUCCESS}
+                                        onPress={() =>
+                                            this.props.navigation.navigate(
+                                                'Signin'
+                                            )}
+                                    >
+                                        <Text
+                                            style={
+                                                MainStyles.BUTTON_SUCCESS_TEXT
+                                            }
+                                        >
+                                            Logga in
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={MainStyles.FORM_GROUP}>
+                                    <TouchableOpacity
+                                        style={MainStyles.BUTTON_SUCCESS}
+                                        onPress={() =>
+                                            this.props.navigation.navigate(
+                                                'Signup'
+                                            )}
+                                    >
+                                        <Text
+                                            style={
+                                                MainStyles.BUTTON_SUCCESS_TEXT
+                                            }
+                                        >
+                                            Skapa konto
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    </ScrollView>
+                </View>
+            );
+        }
     }
 }
 

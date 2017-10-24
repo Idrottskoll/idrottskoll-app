@@ -17,11 +17,10 @@ class VideoScreen extends React.Component {
     }
 
     renderVideos() {
-        console.log(this.props.message);
+        console.log(this.props.content);
     }
 
     componentWillMount() {
-        console.log('VideoScreen');
         this.props.fetchAuthUserContent('user');
     }
 

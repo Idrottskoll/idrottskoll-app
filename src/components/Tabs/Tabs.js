@@ -15,21 +15,21 @@ const StackAuth = StackNavigator({
     ProfileScreen: {
         screen: ProfileScreen,
         navigationOptions: {
-            title: 'Profil',
-        },
+            title: 'Profil'
+        }
     },
     Signin: {
         screen: Signin,
         navigationOptions: {
-            title: 'Logga in',
-        },
+            title: 'Logga in'
+        }
     },
     Signup: {
         screen: Signup,
         navigationOptions: {
-            title: 'Skapa konto',
-        },
-    },
+            title: 'Skapa konto'
+        }
+    }
 });
 
 const Tabs = TabNavigator({
@@ -39,11 +39,11 @@ const Tabs = TabNavigator({
             tabBarLabel: 'IDK Hem',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('../../assets/icons/ic.png')
-                    : require('../../assets/icons/ic.png');
+                    ? require('../../assets/icons/menuHomeActive.png')
+                    : require('../../assets/icons/menuHomeDefault.png');
                 return <Image source={imgSource} style={styles.icon} />;
-            },
-        },
+            }
+        }
     },
     InformationScreen: {
         screen: InformationScreen,
@@ -51,11 +51,11 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Information',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('../../assets/icons/ic.png')
-                    : require('../../assets/icons/ic.png');
+                    ? require('../../assets/icons/menuInfoActive.png')
+                    : require('../../assets/icons/menuInfoDefault.png');
                 return <Image source={imgSource} style={styles.icon} />;
-            },
-        },
+            }
+        }
     },
     VideoScreen: {
         screen: VideoScreen,
@@ -63,11 +63,11 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Videos',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('../../assets/icons/ic.png')
-                    : require('../../assets/icons/ic.png');
+                    ? require('../../assets/icons/menuMyVideosActive.png')
+                    : require('../../assets/icons/menuMyVideosDefault.png');
                 return <Image source={imgSource} style={styles.icon} />;
-            },
-        },
+            }
+        }
     },
     ProfileScreen: {
         screen: StackAuth,
@@ -75,19 +75,19 @@ const Tabs = TabNavigator({
             tabBarLabel: 'Profile',
             tabBarIcon: ({ focused }) => {
                 const imgSource = focused
-                    ? require('../../assets/icons/ic.png')
-                    : require('../../assets/icons/ic.png');
+                    ? require('../../assets/icons/menuProfileActive.png')
+                    : require('../../assets/icons/menuProfileDefault.png');
                 return <Image source={imgSource} style={styles.icon} />;
-            },
-        },
-    },
+            }
+        }
+    }
 });
 
 const styles = StyleSheet.create({
     icon: {
-        width: 26,
-        height: 26,
-    },
+        width: 18,
+        height: 18
+    }
 });
 
 export default Tabs;

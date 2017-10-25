@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import { View, Text } from 'react-native';
 
@@ -6,7 +8,7 @@ import DefaultCard from '../../components/Cards/DefaultCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 
-export default class Home extends React.Component {
+export default class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
     }

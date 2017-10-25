@@ -9,6 +9,7 @@ import {
     ScrollView
 } from 'react-native';
 import { reduxForm } from 'redux-form';
+import VideoScreen from '../../views/Videos/VideoScreen';
 
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
@@ -20,7 +21,11 @@ class Signin extends React.Component {
     * @return
     */
     handleFormSubmit({ email, password }) {
-        this.props.signinUser({ email, password });
+        this.props.signinUser({ email, password }).then(() => {
+            this.props.navigator.push({
+                component: VideoScreen
+            });
+        });
     }
 
     renderAlert() {

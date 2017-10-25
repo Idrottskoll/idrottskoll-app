@@ -22,17 +22,18 @@ export function signinUser({ email, password }) {
     * @return bool AUTH_USER
     */
     return function(dispatch) {
-        axios
+        return axios
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
+                alert(response.data.token);
                 dispatch({ type: AUTH_USER });
                 AsyncStorage.setItem(
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
-                console.log(response.data.token);
             })
             .catch(e => {
+                console.log(e);
                 dispatch(authError('Fel e-post eller lösenord...'));
             });
     };

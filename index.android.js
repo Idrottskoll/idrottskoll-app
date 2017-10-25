@@ -9,7 +9,7 @@ import reduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
 import configureStore from './configureStore';
 import App from './src/App';
-import { AUTH_USER } from './src/actions/types';
+import { AUTH_USER, UNAUTH_USER } from './src/actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -19,9 +19,10 @@ const store = createStoreWithMiddleware(reducers);
 */
 (async () => {
     const token = await AsyncStorage.getItem('token');
-
     if (token !== null) {
         store.dispatch({ type: AUTH_USER });
+    } else {
+        store.dispatch({ type: UNAUTH_USER });
     }
 })();
 

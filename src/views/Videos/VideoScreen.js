@@ -1,13 +1,15 @@
 'use strict';
 
 import React from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
-import MainStyles from '../../assets/styles/MainStyles';
 import Header from '../../components/Header/Header';
 import DefaultCard from '../../components/Cards/DefaultCard';
+import ViewContainer from '../../components/ViewContainer';
+import ScrollViewContainer from '../../components/ScrollViewContainer';
 
 class VideoScreen extends React.Component {
     constructor(props) {
@@ -26,23 +28,29 @@ class VideoScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        console.log(this.props.authenticated);
+
         return (
-            <View style={MainStyles.VIEW_CONTAINER}>
+            <ViewContainer>
                 <Header />
-                <ScrollView>
-                    <View style={MainStyles.MAIN_CARD}>
-                        {this.props.content ? (
-                            <View>
-                                <Text>NAME: {this.props.content.name}</Text>
-                                <Text>E-POST: {this.props.content.email}</Text>
-                            </View>
-                        ) : (
-                            <Text>Logga in först</Text>
-                        )}
-                        {/* <Text>Videos: {this.renderVideos()}</Text> */}
-                    </View>
-                </ScrollView>
-            </View>
+                <ScrollViewContainer>
+                    <DefaultCard>
+                        <View>
+                            {this.props.content ? (
+                                <View>
+                                    <Text>NAME: {this.props.content.name}</Text>
+                                    <Text>
+                                        E-POST: {this.props.content.email}
+                                    </Text>
+                                </View>
+                            ) : (
+                                <Text>Logga in först</Text>
+                            )}
+                            {/* <Text>Videos: {this.renderVideos()}</Text> */}
+                        </View>
+                    </DefaultCard>
+                </ScrollViewContainer>
+            </ViewContainer>
         );
     }
 }

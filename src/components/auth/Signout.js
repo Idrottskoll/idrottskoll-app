@@ -6,22 +6,24 @@ import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
 
 class Sigout extends React.Component {
-    handleSignout() {
+    handleSignout = () => {
         this.props.signoutUser();
-    }
+    };
 
     render() {
         return (
-            <View style={MainStyles.FORM_GROUP}>
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={this.handleSignout()}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga ut</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+                style={MainStyles.BUTTON_SUCCESS}
+                onPress={this.handleSignout()}
+            >
+                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga ut</Text>
+            </TouchableOpacity>
         );
     }
 }
 
-export default connect(null, actions)(Sigout);
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.error };
+}
+
+export default connect(mapStateToProps, actions)(Sigout);

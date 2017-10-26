@@ -44,21 +44,20 @@ export default (Style = {
     },
 
     FORM_GROUP: {
-        marginTop: StyleRules.MARGIN
+        marginVertical: StyleRules.MARGIN
     },
 
     INPUT_LABEL: {
-        color: StyleRules.TEXT_COLOR,
-        fontWeight: 'bold'
+        color: StyleRules.TEXT_COLOR
     },
 
     AUTH_INPUT: {
         alignItems: 'stretch',
-        borderRadius: 3,
         borderWidth: 1,
-        height: 44,
-        paddingHorizontal: StyleRules.MARGIN,
-        marginVertical: 3
+        borderRadius: 3,
+        height: 40,
+        lineHeight: 23,
+        marginTop: 3
     },
 
     AUTH_SUCCESS_INPUT: {

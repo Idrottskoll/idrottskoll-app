@@ -9,6 +9,9 @@ import {
 import { reduxForm } from 'redux-form';
 
 import ProfileScreen from '../../views/Profile/ProfileScreen';
+import ViewContainer from '../ViewContainer';
+import ScrollViewContainer from '../ScrollViewContainer';
+import DefaultCard from '../Cards/DefaultCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
@@ -42,9 +45,9 @@ class Signin extends React.Component {
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
-            <View style={MainStyles.VIEW_CONTAINER}>
-                <ScrollView>
-                    <View style={[MainStyles.MAIN_CARD]}>
+            <ViewContainer>
+                <ScrollViewContainer>
+                    <DefaultCard>
                         <View style={[{ marginBottom: StyleRules.MARGIN }]}>
                             <Text
                                 style={[
@@ -103,9 +106,9 @@ class Signin extends React.Component {
                                 </Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
-                </ScrollView>
-            </View>
+                    </DefaultCard>
+                </ScrollViewContainer>
+            </ViewContainer>
         );
     }
 }

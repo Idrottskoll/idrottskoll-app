@@ -11,7 +11,6 @@ import { reduxForm } from 'redux-form';
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
-import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 import ViewContainer from '../ViewContainer';
 import ScrollViewContainer from '../ScrollViewContainer';
@@ -26,8 +25,7 @@ class Signup extends React.Component {
         // call action creater
         this.props.signupUser(formProps).then(response => {
             if (response.data.token !== undefined) {
-                // this.props.navigation.navigate('ProfileScreen');
-                this.props.navigation.goBack('ProfileScreen');
+                this.props.navigation.goBack(null);
             }
         });
     }

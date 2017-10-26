@@ -63,7 +63,8 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
                 );
                 return response;
             })
-            .catch(response => {
+            .catch(e => {
+                // log the error to the user if API proccesses the request
                 dispatch(authError('Error with signup, username is taken?'));
             });
     };

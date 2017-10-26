@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import ProfileScreen from '../../views/Profile/ProfileScreen';
 import ViewContainer from '../ViewContainer';
 import ScrollViewContainer from '../ScrollViewContainer';
 import DefaultCard from '../Cards/DefaultCard';
@@ -24,8 +23,7 @@ class Signin extends React.Component {
     handleFormSubmit({ email, password }) {
         this.props.signinUser({ email, password }).then(response => {
             if (response.data.token !== undefined) {
-                // this.props.navigation.navigate('ProfileScreen');
-                this.props.navigation.goBack('ProfileScreen');
+                this.props.navigation.goBack(null);
             }
         });
     }

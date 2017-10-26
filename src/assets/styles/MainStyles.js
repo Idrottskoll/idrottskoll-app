@@ -5,7 +5,7 @@ export default (Style = {
     VIEW_CONTAINER: {
         alignItems: 'stretch',
         backgroundColor: StyleRules.MAIN_BACKGROUND_COLOR,
-        flex: 1,
+        flex: 1
     },
 
     MAIN_CARD: {
@@ -13,23 +13,29 @@ export default (Style = {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         margin: StyleRules.MARGIN,
-        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOffset: {
             height: 0.5,
-            width: 0.5,
+            width: 0.5
         },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.3
+    },
+
+    MAIN_CARD_TITLE: {
+        color: StyleRules.TEXT_COLOR,
+        fontWeight: 'bold',
+        marginBottom: StyleRules.MARGIN
     },
 
     FORM_GROUP: {
-        marginTop: StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN
     },
 
     INPUT_LABEL: {
         color: StyleRules.TEXT_COLOR,
-        fontWeight: 'bold',
+        fontWeight: 'bold'
     },
 
     AUTH_INPUT: {
@@ -38,11 +44,11 @@ export default (Style = {
         borderWidth: 1,
         height: 44,
         paddingHorizontal: StyleRules.MARGIN,
-        marginVertical: 3,
+        marginVertical: 3
     },
 
     AUTH_SUCCESS_INPUT: {
-        borderColor: StyleRules.BLUE_GRADIENT_COLOR,
+        borderColor: StyleRules.BLUE_GRADIENT_COLOR
     },
 
     BUTTON_SUCCESS: {
@@ -52,22 +58,22 @@ export default (Style = {
         marginVertical: StyleRules.MARGIN,
         backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
         borderRadius: 3,
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
 
     BUTTON_SUCCESS_TEXT: {
         fontWeight: 'bold',
-        color: StyleRules.BUTTON_TEXT_COLOR,
+        color: StyleRules.BUTTON_TEXT_COLOR
     },
 
     ERROR_BOX: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
 
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
-        fontSize: StyleRules.FONT_SIZE_SMALLER,
-    },
+        fontSize: StyleRules.FONT_SIZE_SMALLER
+    }
 });

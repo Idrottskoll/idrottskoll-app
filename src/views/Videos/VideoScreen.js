@@ -12,44 +12,15 @@ import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 
 class VideoScreen extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.componentWillMount = this.componentWillMount.bind(this);
-    }
-
-    renderVideos() {
-        console.log(this.props.content);
-    }
-
-    componentWillMount() {
-        if (this.props.authenticated) {
-            this.props.fetchAuthUserContent('user');
-        }
-    }
-
     render() {
         const { navigate } = this.props.navigation;
-        console.log(this.props.authenticated);
 
         return (
             <ViewContainer>
                 <Header />
                 <ScrollViewContainer>
                     <DefaultCard>
-                        <View>
-                            {this.props.content ? (
-                                <View>
-                                    <Text>NAME: {this.props.content.name}</Text>
-                                    <Text>
-                                        E-POST: {this.props.content.email}
-                                    </Text>
-                                </View>
-                            ) : (
-                                <Text>Logga in först</Text>
-                            )}
-                            {/* <Text>Videos: {this.renderVideos()}</Text> */}
-                        </View>
+                        <Text>Hello from VideoScreen</Text>
                     </DefaultCard>
                 </ScrollViewContainer>
             </ViewContainer>

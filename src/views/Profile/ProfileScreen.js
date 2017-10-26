@@ -6,6 +6,7 @@ import { AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
+import MyProfileCard from '../../components/Cards/MyProfileCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 
@@ -29,6 +30,9 @@ class ProfileScreen extends React.Component {
         return (
             <ViewContainer>
                 <ScrollViewContainer>
+                    <DefaultCard>
+                        <MyProfileCard />
+                    </DefaultCard>
                     <DefaultCard>
                         <TouchableOpacity
                             style={MainStyles.BUTTON_SUCCESS}

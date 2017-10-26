@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-    StyleSheet,
     View,
     Text,
     TextInput,
     TouchableOpacity,
-    KeyboardAvoidingView,
     ScrollView
 } from 'react-native';
 import { reduxForm } from 'redux-form';

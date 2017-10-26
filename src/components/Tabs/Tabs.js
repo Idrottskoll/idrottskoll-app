@@ -2,6 +2,8 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Image, StyleSheet, Platform } from 'react-native';
 
+import StyleRules from '../../assets/styles/StyleRules';
+
 import HomeScreen from '../../views/Home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
@@ -11,26 +13,48 @@ import ProfileScreen from '../../views/Profile/ProfileScreen';
 import Signin from '../auth/Signin';
 import Signup from '../auth/Signup';
 
-const StackAuth = StackNavigator({
-    ProfileScreen: {
-        screen: ProfileScreen,
-        navigationOptions: {
-            title: 'Idrottskoll'
+const StackAuth = StackNavigator(
+    {
+        ProfileScreen: {
+            screen: ProfileScreen,
+            navigationOptions: {
+                title: 'Idrottskoll'
+            }
+        },
+        Signin: {
+            screen: Signin,
+            navigationOptions: {
+                title: 'Logga in'
+            }
+        },
+        Signup: {
+            screen: Signup,
+            navigationOptions: {
+                title: 'Skapa konto'
+            }
         }
     },
-    Signin: {
-        screen: Signin,
+    {
         navigationOptions: {
-            title: 'Logga in'
-        }
-    },
-    Signup: {
-        screen: Signup,
-        navigationOptions: {
-            title: 'Skapa konto'
+            // header: false,
+            headerStyle: {
+                shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+                shadowOpacity: 0.3,
+                shadowOffset: {
+                    height: 0.5,
+                    width: 0.5
+                },
+                backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+                height: 88
+            },
+            headerTitleStyle: {
+                // add title styles
+                fontSize: 14,
+                fontWeight: '400'
+            }
         }
     }
-});
+);
 
 const Tabs = TabNavigator(
     {
@@ -90,7 +114,7 @@ const Tabs = TabNavigator(
             showLabel: false,
             showIcon: true,
             style: {
-                height: Platform.OS === 'ios' ? 60 : 60,
+                height: Platform.OS === 'ios' ? 55 : 55,
                 backgroundColor: '#FFFFFF'
                 // only get platform not device
                 // marginBottom: Platform.OS === 'ios' ? 30 : 0,
@@ -102,8 +126,8 @@ const Tabs = TabNavigator(
 
 const styles = StyleSheet.create({
     icon: {
-        width: 26,
-        height: 26
+        width: 23,
+        height: 23
     }
 });
 

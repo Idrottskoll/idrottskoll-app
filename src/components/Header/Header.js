@@ -19,16 +19,16 @@ const styles = StyleSheet.create({
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         alignItems: 'flex-end',
         padding: 15,
-        height: 88,
-        // height: 65,
+        paddingBottom: 25,
+        height: 87.5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOpacity: 0.3,
         shadowOffset: {
             height: 0.5,
-            width: 0.5,
+            width: 0.5
         },
-        zIndex: 1,
-    },
+        zIndex: 1
+    }
 });

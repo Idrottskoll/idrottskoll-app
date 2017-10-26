@@ -23,7 +23,9 @@ class VideoScreen extends React.Component {
     }
 
     componentWillMount() {
-        this.props.fetchAuthUserContent('user');
+        if (this.props.authenticated) {
+            this.props.fetchAuthUserContent('user');
+        }
     }
 
     render() {

@@ -26,8 +26,6 @@ class ProfileScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        console.log(this.props.authenticated);
-
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -36,7 +34,9 @@ class ProfileScreen extends React.Component {
                             <TouchableOpacity
                                 style={MainStyles.BUTTON_SUCCESS}
                                 onPress={() =>
-                                    this.props.navigation.navigate('Signin')}
+                                    this.props.navigation.navigate('Signin', {
+                                        navigation: this.props.navigation
+                                    })}
                             >
                                 <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
                                     Logga in
@@ -48,7 +48,9 @@ class ProfileScreen extends React.Component {
                             <TouchableOpacity
                                 style={MainStyles.BUTTON_SUCCESS}
                                 onPress={() =>
-                                    this.props.navigation.navigate('Signup')}
+                                    this.props.navigation.navigate('Signup', {
+                                        navigation: this.props.navigation
+                                    })}
                             >
                                 <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
                                     Skapa konto

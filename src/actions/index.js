@@ -25,15 +25,14 @@ export function signinUser({ email, password }) {
         return axios
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
-                alert(response.data.token);
                 dispatch({ type: AUTH_USER });
                 AsyncStorage.setItem(
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
+                return response;
             })
             .catch(e => {
-                console.log(e);
                 dispatch(authError('Fel e-post eller lösenord...'));
             });
     };
@@ -49,7 +48,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
     * @return bool AUTH_USER
     */
     return function(dispatch) {
-        axios
+        return axios
             .post(`${ROOT_URL}/register`, {
                 email,
                 name,
@@ -62,7 +61,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
-                alert('Välkommen ' + name);
+                return response;
             })
             .catch(response => {
                 dispatch(authError('Error with signup, username is taken?'));

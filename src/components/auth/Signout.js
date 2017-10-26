@@ -8,7 +8,6 @@ import * as actions from '../../actions';
 class Sigout extends React.Component {
     handleSignout() {
         this.props.signoutUser();
-        return;
     }
 
     render() {

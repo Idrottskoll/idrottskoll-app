@@ -13,6 +13,7 @@ import { reduxForm } from 'redux-form';
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
+import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 class Signup extends React.Component {
     /**
@@ -21,7 +22,12 @@ class Signup extends React.Component {
     */
     handleFormSubmit(formProps) {
         // call action creater
-        this.props.signupUser(formProps);
+        this.props.signupUser(formProps).then(response => {
+            if (response.data.token !== undefined) {
+                // this.props.navigation.navigate('ProfileScreen');
+                this.props.navigation.goBack('ProfileScreen');
+            }
+        });
     }
 
     renderAlert() {

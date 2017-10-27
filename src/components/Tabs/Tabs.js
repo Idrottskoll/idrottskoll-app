@@ -126,8 +126,7 @@ const Tabs = TabNavigator(
 
 const styles = StyleSheet.create({
     icon: {
-        width: 23,
-        height: 23
+        // Style the icons
     }
 });
 

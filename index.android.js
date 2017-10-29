@@ -22,9 +22,6 @@ const store = createStoreWithMiddleware(reducers);
     if (token) {
         store.dispatch({ type: AUTH_USER });
     }
-    // else {
-    //     store.dispatch({ type: UNAUTH_USER });
-    // }
 })();
 
 const ReduxApp = () => (

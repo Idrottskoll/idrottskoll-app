@@ -28,27 +28,6 @@ class ProfileScreen extends React.Component {
     renderUnAuth = () => {
         return (
             <View>
-                {/* <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={() =>
-                        this.props.navigation.navigate('Signin', {
-                            navigation: this.props.navigation
-                        })}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga in</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={() =>
-                        this.props.navigation.navigate('Signup', {
-                            navigation: this.props.navigation
-                        })}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Skapa konto
-                    </Text>
-                </TouchableOpacity> */}
                 <Signin />
                 <Signup />
             </View>

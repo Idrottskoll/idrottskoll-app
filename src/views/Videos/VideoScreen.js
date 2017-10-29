@@ -11,7 +11,6 @@ import ScrollViewContainer from '../../components/ScrollViewContainer';
 class VideoScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
-
         return (
             <ViewContainer>
                 <Header />

@@ -21,11 +21,7 @@ const store = createStoreWithMiddleware(reducers);
     const token = await AsyncStorage.getItem('token');
     if (token) {
         store.dispatch({ type: AUTH_USER });
-        this.forceUpdate();
     }
-    // else {
-    //     store.dispatch({ type: UNAUTH_USER });
-    // }
 })();
 
 const ReduxApp = () => (
@@ -35,6 +31,3 @@ const ReduxApp = () => (
 );
 
 AppRegistry.registerComponent('idrottskollApp', () => ReduxApp);
-
-// 24 minuter in
-// https://www.youtube.com/watch?v=Q20Kcbw3IR8

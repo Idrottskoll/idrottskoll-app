@@ -1,11 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { View, Text } from 'react-native';
-import { AsyncStorage } from 'react-native';
-import { connect } from 'react-redux';
+import { Text } from 'react-native';
 
-import * as actions from '../../actions';
 import Header from '../../components/Header/Header';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import ViewContainer from '../../components/ViewContainer';
@@ -28,8 +25,4 @@ class VideoScreen extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { content: state.auth.content };
-}
-
-export default connect(mapStateToProps, actions)(VideoScreen);
+export default VideoScreen;

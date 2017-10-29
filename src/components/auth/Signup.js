@@ -24,7 +24,7 @@ class Signup extends React.Component {
     handleFormSubmit(formProps) {
         // call action creater
         this.props.signupUser(formProps).then(response => {
-            if (response.data.token !== undefined) {
+            if (response.data.token) {
                 this.props.navigation.goBack(null);
             }
         });

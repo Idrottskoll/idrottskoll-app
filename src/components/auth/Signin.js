@@ -22,8 +22,12 @@ class Signin extends React.Component {
     */
     handleFormSubmit({ email, password }) {
         this.props.signinUser({ email, password }).then(response => {
-            if (response.data.token !== undefined) {
-                this.props.navigation.goBack(null);
+            if (response.data.token) {
+                //this.props.navigation.goBack(null);
+                debugger;
+                console.log(
+                    'Sign in user: ' + this.props.authenticated + response.data
+                );
             }
         });
     }

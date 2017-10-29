@@ -25,11 +25,11 @@ export function signinUser({ email, password }) {
         return axios
             .post(`${ROOT_URL}/login`, { email, password })
             .then(response => {
-                dispatch({ type: AUTH_USER });
                 AsyncStorage.setItem(
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
+                dispatch({ type: AUTH_USER });
                 return response;
             })
             .catch(e => {

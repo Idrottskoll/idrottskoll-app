@@ -25,50 +25,82 @@ class ProfileScreen extends React.Component {
         alert(showToken);
     }
 
+    renderUnAuth = () => {
+        return (
+            <View>
+                {/* <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={() =>
+                        this.props.navigation.navigate('Signin', {
+                            navigation: this.props.navigation
+                        })}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga in</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={() =>
+                        this.props.navigation.navigate('Signup', {
+                            navigation: this.props.navigation
+                        })}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                        Skapa konto
+                    </Text>
+                </TouchableOpacity> */}
+                <Signin />
+                <Signup />
+            </View>
+        );
+    };
+
+    renderAuth = () => {
+        return (
+            <View>
+                <DefaultCard>
+                    <MyProfileCard />
+                </DefaultCard>
+
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={() => this.show()}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                        Show token
+                    </Text>
+                </TouchableOpacity>
+
+                <Signout />
+            </View>
+        );
+    };
+
+    renderCompomponent = () => {
+        return (
+            <View>
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={() => this.forceUpdate()}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                        Rendera om
+                    </Text>
+                </TouchableOpacity>
+                {this.props.authenticated
+                    ? this.renderAuth()
+                    : this.renderUnAuth()}
+            </View>
+        );
+    };
+
     render() {
         const { navigate } = this.props.navigation;
+        console.log(this.props.authenticated);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    <DefaultCard>
-                        <MyProfileCard />
-                    </DefaultCard>
-                    <DefaultCard>
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signin', {
-                                    navigation: this.props.navigation
-                                })}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Logga in
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() =>
-                                this.props.navigation.navigate('Signup', {
-                                    navigation: this.props.navigation
-                                })}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Skapa konto
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
-                            onPress={() => this.show()}
-                        >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Show token
-                            </Text>
-                        </TouchableOpacity>
-
-                        <Signout />
-                    </DefaultCard>
+                    {this.renderCompomponent()}
                 </ScrollViewContainer>
             </ViewContainer>
         );

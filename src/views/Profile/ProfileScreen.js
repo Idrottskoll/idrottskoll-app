@@ -18,6 +18,9 @@ import Signup from '../../components/auth/Signup';
 class ProfileScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.renderCompomponent = this.renderCompomponent.bind(this);
+        this.renderUnAuth = this.renderUnAuth.bind(this);
+        this.renderAuth = this.renderAuth.bind(this);
     }
 
     async show() {
@@ -25,16 +28,16 @@ class ProfileScreen extends React.Component {
         alert(showToken);
     }
 
-    renderUnAuth = () => {
+    renderUnAuth() {
         return (
             <View>
                 <Signin />
                 <Signup />
             </View>
         );
-    };
+    }
 
-    renderAuth = () => {
+    renderAuth() {
         return (
             <View>
                 <DefaultCard>
@@ -53,9 +56,9 @@ class ProfileScreen extends React.Component {
                 <Signout />
             </View>
         );
-    };
+    }
 
-    renderCompomponent = () => {
+    renderCompomponent() {
         return (
             <View>
                 <TouchableOpacity
@@ -71,7 +74,7 @@ class ProfileScreen extends React.Component {
                     : this.renderUnAuth()}
             </View>
         );
-    };
+    }
 
     render() {
         const { navigate } = this.props.navigation;

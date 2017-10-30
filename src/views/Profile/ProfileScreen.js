@@ -30,13 +30,6 @@ class ProfileScreen extends React.Component {
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    <DefaultCard>
-                        <MyProfileCard />
-                    </DefaultCard>
-
-                    <Signin />
-                    <Signup />
-
                     <TouchableOpacity
                         style={MainStyles.BUTTON_SUCCESS}
                         onPress={() => this.show()}
@@ -47,6 +40,11 @@ class ProfileScreen extends React.Component {
                     </TouchableOpacity>
 
                     <Signout />
+                    <DefaultCard>
+                        <MyProfileCard />
+                    </DefaultCard>
+                    <Signin />
+                    <Signup />
                 </ScrollViewContainer>
             </ViewContainer>
         );

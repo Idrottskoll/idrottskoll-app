@@ -15,28 +15,17 @@ class MyProfileCard extends React.Component {
         console.log(this.props.content);
     }
 
-    renderProfile = () => {
-        this.props.fetchAuthUserContent('user');
-    };
-
     render() {
+        console.log(this.props.authenticated);
         return (
             <View>
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={() => this.renderProfile()}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Hämta profil
-                    </Text>
-                </TouchableOpacity>
                 {this.props.content ? (
                     <View>
                         <Text>{this.props.content.name}</Text>
                         <Text>{this.props.content.email}</Text>
                     </View>
                 ) : (
-                    <Text>Profil</Text>
+                    <Text>Logga in för att se din profil</Text>
                 )}
                 {/* <Text>Videos: {this.renderVideos()}</Text> */}
             </View>
@@ -45,7 +34,10 @@ class MyProfileCard extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { content: state.auth.content };
+    return {
+        content: state.auth.content,
+        authenticated: state.auth.authenticated
+    };
 }
 
 export default connect(mapStateToProps, actions)(MyProfileCard);

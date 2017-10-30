@@ -65,7 +65,8 @@ export default (Style = {
         borderRadius: 3,
         height: 40,
         lineHeight: 23,
-        marginTop: 3
+        marginTop: 3,
+        paddingHorizontal: StyleRules.MARGIN
     },
 
     AUTH_SUCCESS_INPUT: {

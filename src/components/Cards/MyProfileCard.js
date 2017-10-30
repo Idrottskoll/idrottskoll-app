@@ -1,9 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import MainStyles from '../../assets/styles/MainStyles';
 
 class MyProfileCard extends React.Component {
     constructor(props) {
@@ -14,15 +15,21 @@ class MyProfileCard extends React.Component {
         console.log(this.props.content);
     }
 
-    componentWillMount = () => {
-        if (this.props.authenticated) {
-            this.props.fetchAuthUserContent('user');
-        }
+    renderProfile = () => {
+        this.props.fetchAuthUserContent('user');
     };
 
     render() {
         return (
             <View>
+                <TouchableOpacity
+                    style={MainStyles.BUTTON_SUCCESS}
+                    onPress={() => this.renderProfile()}
+                >
+                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                        Hämta profil
+                    </Text>
+                </TouchableOpacity>
                 {this.props.content ? (
                     <View>
                         <Text>{this.props.content.name}</Text>

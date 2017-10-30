@@ -18,9 +18,6 @@ import Signup from '../../components/auth/Signup';
 class ProfileScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.renderCompomponent = this.renderCompomponent.bind(this);
-        this.renderUnAuth = this.renderUnAuth.bind(this);
-        this.renderAuth = this.renderAuth.bind(this);
     }
 
     async show() {
@@ -28,61 +25,28 @@ class ProfileScreen extends React.Component {
         alert(showToken);
     }
 
-    renderUnAuth() {
-        return (
-            <View>
-                <Signin />
-                <Signup />
-            </View>
-        );
-    }
-
-    renderAuth() {
-        return (
-            <View>
-                <DefaultCard>
-                    <MyProfileCard />
-                </DefaultCard>
-
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={() => this.show()}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Show token
-                    </Text>
-                </TouchableOpacity>
-
-                <Signout />
-            </View>
-        );
-    }
-
-    renderCompomponent() {
-        return (
-            <View>
-                <TouchableOpacity
-                    style={MainStyles.BUTTON_SUCCESS}
-                    onPress={() => this.forceUpdate()}
-                >
-                    <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                        Rendera om
-                    </Text>
-                </TouchableOpacity>
-                {this.props.authenticated
-                    ? this.renderAuth()
-                    : this.renderUnAuth()}
-            </View>
-        );
-    }
-
     render() {
         const { navigate } = this.props.navigation;
-        console.log(this.props.authenticated);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    {this.renderCompomponent()}
+                    <DefaultCard>
+                        <MyProfileCard />
+                    </DefaultCard>
+
+                    <Signin />
+                    <Signup />
+
+                    <TouchableOpacity
+                        style={MainStyles.BUTTON_SUCCESS}
+                        onPress={() => this.show()}
+                    >
+                        <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                            Show token
+                        </Text>
+                    </TouchableOpacity>
+
+                    <Signout />
                 </ScrollViewContainer>
             </ViewContainer>
         );

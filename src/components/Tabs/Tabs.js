@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Image, StyleSheet, Platform } from 'react-native';
+import Dimensions from 'Dimensions';
 
 import StyleRules from '../../assets/styles/StyleRules';
 
@@ -12,6 +13,8 @@ import ProfileScreen from '../../views/Profile/ProfileScreen';
 // Auth's
 import Signin from '../auth/Signin';
 import Signup from '../auth/Signup';
+
+const deviceHeight = Dimensions.get('window').height;
 
 const StackAuth = StackNavigator(
     {
@@ -45,7 +48,8 @@ const StackAuth = StackNavigator(
                     width: 0.5
                 },
                 backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
-                height: 88
+                // if platform is iOS and device height is iPhone X
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
             },
             headerTitleStyle: {
                 // add title styles
@@ -115,10 +119,10 @@ const Tabs = TabNavigator(
             showIcon: true,
             style: {
                 height: Platform.OS === 'ios' ? 55 : 55,
-                backgroundColor: '#FFFFFF'
-                // only get platform not device
-                // marginBottom: Platform.OS === 'ios' ? 30 : 0,
-                // marginBottom: Platform.OS === 'ios iPhone X' ? 30 : 0,
+                backgroundColor: '#FFFFFF',
+                // if platform is iOS and device height is iPhone X will raise the bottom menue bar
+                marginBottom:
+                    Platform.OS === 'ios' && deviceHeight === 812 ? 30 : 0
             }
         }
     }

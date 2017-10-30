@@ -11,9 +11,15 @@ class MyProfileCard extends React.Component {
         super(props);
     }
 
-    renderVideos() {
-        console.log(this.props.content);
-    }
+    renderVideos = () => {
+        if (this.props.content) {
+            const videos = this.props.content.video;
+            console.log(videos);
+            videos.forEach(element => {
+                console.log(element);
+            });
+        }
+    };
 
     render() {
         return (
@@ -22,9 +28,24 @@ class MyProfileCard extends React.Component {
                     <View>
                         <Text>{this.props.content.name}</Text>
                         <Text>{this.props.content.email}</Text>
+                        <Text>Fakturering</Text>
+                        <Text>Namn: {this.props.content.name}</Text>
+                        <Text>Adress: Oluff Nilssons väg 4</Text>
+                        <Text>Postnummer: 433 36</Text>
+                        <Text>Ort: Partille</Text>
+                        <View>
+                            <TouchableOpacity>
+                                <Text>Ändra mina uppgifter</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text>Ändra mitt lösenord</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 ) : (
-                    <Text>Logga in för att se din profil</Text>
+                    <Text>
+                        Logga in eller registrera dig för att se din profil
+                    </Text>
                 )}
                 {/* <Text>Videos: {this.renderVideos()}</Text> */}
             </View>

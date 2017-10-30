@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Platform } from 'react-native';
 import StyleRules from '../../assets/styles/StyleRules';
+import Dimensions from 'Dimensions';
 
 export default class Header extends React.Component {
     render() {
@@ -14,13 +15,16 @@ export default class Header extends React.Component {
     }
 }
 
+const deviceHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         alignItems: 'flex-end',
         padding: 15,
-        paddingBottom: 25,
-        height: 87.5,
+        // if platform is iOS and device height is iPhone X
+        paddingBottom: Platform.OS === 'ios' && deviceHeight === 812 ? 37 : 25,
+        height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 87.5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,

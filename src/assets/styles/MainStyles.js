@@ -24,17 +24,25 @@ export default (Style = {
     },
 
     VIDEO_CARD: {
-        alignItems: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         margin: StyleRules.MARGIN,
-        // marginTop: StyleRules.MARGIN,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+        flex: 1,
         shadowOffset: {
             height: 0.5,
             width: 0.5
         },
         shadowOpacity: 0.3
+    },
+
+    VIDEO_CONTAINER: {
+        top: 0,
+        flex: 1,
+        width: '100%',
+        alignSelf: 'stretch'
     },
 
     MAIN_CARD_TITLE: {
@@ -88,13 +96,5 @@ export default (Style = {
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
         fontSize: StyleRules.FONT_SIZE_SMALLER
-    },
-
-    IMG: {
-        resizeMode: 'cover',
-        top: 0,
-        flex: 1,
-        width: StyleRules.DEVICE_WIDTH,
-        height: StyleRules.DEVICE_HEIGHT * 0.4
     }
 });

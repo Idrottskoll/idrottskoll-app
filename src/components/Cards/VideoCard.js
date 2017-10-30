@@ -15,7 +15,7 @@ export default class VideoCard extends React.Component {
             <View>
                 <View style={[MainStyles.VIDEO_CARD]}>
                     <Image
-                        style={MainStyles.IMG}
+                        style={MainStyles.VIDEO_CONTAINER}
                         source={require('../../assets/icons/football.png')}
                     />
                 </View>

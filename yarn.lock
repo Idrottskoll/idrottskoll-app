@@ -3488,6 +3488,10 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+react-native-native-video-player@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-native-video-player/-/react-native-native-video-player-1.3.4.tgz#ac58c9d4ee66c2dc1f4fc884b9f3acf5448040e4"
+
 react-native-tab-view@^0.0.69:
   version "0.0.69"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.69.tgz#f52d4354a98a382f10eb5fcf61db5216c91dc7e7"

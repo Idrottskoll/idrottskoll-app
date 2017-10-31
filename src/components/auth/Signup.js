@@ -25,7 +25,7 @@ class Signup extends React.Component {
         // call action creater
         this.props.signupUser(formProps).then(response => {
             if (response.data.token) {
-                // logic for if user is signd in
+                this.props.fetchAuthUserContent('user');
             }
         });
     }

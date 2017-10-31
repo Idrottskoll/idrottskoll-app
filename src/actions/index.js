@@ -56,16 +56,20 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
                 passwordConfirmation
             })
             .then(response => {
-                dispatch({ type: AUTH_USER });
                 AsyncStorage.setItem(
                     'token',
                     SPECIAL_TOKEN + response.data.token
                 );
+                dispatch({ type: AUTH_USER });
                 return response;
             })
             .catch(e => {
                 // log the error to the user if API proccesses the request
-                dispatch(authError('Error with signup, username is taken?'));
+                dispatch(
+                    authError(
+                        'Något gick fel när du försökte skapa ditt konto... Är E-post adressen upptage?'
+                    )
+                );
             });
     };
 }

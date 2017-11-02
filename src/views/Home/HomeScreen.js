@@ -9,14 +9,22 @@ import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 
 export default class HomeScreen extends React.Component {
-    // Make method to loade screen with props
     render() {
         const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    {/* Add a live Cards at top for demmo  */}
-                    <TouchableOpacity onPress={() => navigate('VideoScreen')}>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate('VideoScreen', {
+                                videoName: 'Landala 3',
+                                videoDescription:
+                                    'I give a damn because a good',
+                                videoStatus: 'not avalable',
+                                videoType: 'avalable, live, ',
+                                vidioUrl: 'url to video'
+                            })}
+                    >
                         <VideoButton>
                             <Text>SM i rugby</Text>
                             <Text>
@@ -28,7 +36,17 @@ export default class HomeScreen extends React.Component {
                         </VideoButton>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigate('VideoScreen')}>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate('VideoScreen', {
+                                videoName: 'Lerum 7',
+                                videoDescription:
+                                    'I believe kill you simply makes you... stranger.',
+                                videoStatus: 'live',
+                                videoType: 'avalable, live, not avalable',
+                                vidioUrl: 'url to video'
+                            })}
+                    >
                         <VideoButton>
                             <Text>SM i rugby</Text>
                             <Text>

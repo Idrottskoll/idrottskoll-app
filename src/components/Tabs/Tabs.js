@@ -27,10 +27,7 @@ const HomeScreenStack = StackNavigator(
             }
         },
         VideoScreen: {
-            screen: VideoScreen,
-            navigationOptions: {
-                title: 'Idrottskoll'
-            }
+            screen: VideoScreen
         },
         VideoButton: {
             screen: VideoButton,

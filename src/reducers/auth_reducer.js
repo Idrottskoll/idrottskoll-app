@@ -16,6 +16,5 @@ export default function(state = {}, action) {
         case FETCH_USER_CONTENT:
             return { ...state, content: action.payload };
     }
-
     return state;
 }

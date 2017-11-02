@@ -8,6 +8,8 @@ import StyleRules from '../../assets/styles/StyleRules';
 import HomeScreen from '../../views/Home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
+import VideoScreen from '../../views/Videos/VideoScreen';
+import VideoButton from '../../views/Videos/VideoButton';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 // Auth's
@@ -16,24 +18,24 @@ import Signup from '../auth/Signup';
 
 const deviceHeight = Dimensions.get('window').height;
 
-const StackAuth = StackNavigator(
+const HomeScreenStack = StackNavigator(
     {
-        ProfileScreen: {
-            screen: ProfileScreen,
+        HomeScreen: {
+            screen: HomeScreen,
             navigationOptions: {
                 title: 'Idrottskoll'
             }
         },
-        Signin: {
-            screen: Signin,
+        VideoScreen: {
+            screen: VideoScreen,
             navigationOptions: {
-                title: 'Logga in'
+                title: 'Idrottskoll'
             }
         },
-        Signup: {
-            screen: Signup,
+        VideoButton: {
+            screen: VideoButton,
             navigationOptions: {
-                title: 'Skapa konto'
+                title: 'Idrottskoll'
             }
         }
     },
@@ -63,7 +65,7 @@ const StackAuth = StackNavigator(
 const Tabs = TabNavigator(
     {
         HomeScreen: {
-            screen: HomeScreen,
+            screen: HomeScreenStack,
             navigationOptions: {
                 tabBarLabel: 'IDK Hem',
                 tabBarIcon: ({ focused }) => {
@@ -99,7 +101,7 @@ const Tabs = TabNavigator(
             }
         },
         ProfileScreen: {
-            screen: StackAuth,
+            screen: ProfileScreen,
             navigationOptions: {
                 tabBarLabel: 'Profile',
                 tabBarIcon: ({ focused }) => {

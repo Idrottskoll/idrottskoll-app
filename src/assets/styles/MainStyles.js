@@ -38,6 +38,22 @@ export default (Style = {
         shadowOpacity: 0.3
     },
 
+    VIDEO_BUTTON: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+        borderRadius: 3,
+        marginHorizontal: StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
+        shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+        flex: 1,
+        shadowOffset: {
+            height: 0.5,
+            width: 0.5
+        },
+        shadowOpacity: 0.3
+    },
+
     VIDEO_CONTAINER: {
         top: 0,
         flex: 1,

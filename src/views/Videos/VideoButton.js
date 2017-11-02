@@ -9,11 +9,10 @@ export default class VideoCard extends React.Component {
     constructor(props) {
         super(props);
     }
-
     render() {
         return (
             <View>
-                <View style={[MainStyles.VIDEO_CARD]}>
+                <View style={[MainStyles.VIDEO_BUTTON]}>
                     <Image
                         style={MainStyles.VIDEO_CONTAINER}
                         source={require('../../assets/icons/football.png')}

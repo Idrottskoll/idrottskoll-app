@@ -10,6 +10,7 @@ import MyProfileCard from '../../components/Cards/MyProfileCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 
+import Header from '../../components/Header/Header';
 import MainStyles from '../../assets/styles/MainStyles';
 import Signin from '../../components/auth/Signin';
 import Signout from '../../components/auth/Signout';
@@ -29,6 +30,7 @@ class ProfileScreen extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
+                <Header />
                 <ScrollViewContainer>
                     <TouchableOpacity
                         style={MainStyles.BUTTON_SUCCESS}

@@ -7,7 +7,7 @@ import StyleRules from '../../assets/styles/StyleRules';
 
 import HomeScreen from '../../views/Home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
-import VideoScreen from '../../views/Videos/VideoScreen';
+import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 // Auth's
@@ -86,8 +86,8 @@ const Tabs = TabNavigator(
                 }
             }
         },
-        VideoScreen: {
-            screen: VideoScreen,
+        MyVideosScreen: {
+            screen: MyVideosScreen,
             navigationOptions: {
                 tabBarLabel: 'Videos',
                 tabBarIcon: ({ focused }) => {

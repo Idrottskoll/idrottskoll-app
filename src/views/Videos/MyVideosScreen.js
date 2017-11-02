@@ -5,11 +5,11 @@ import { Text } from 'react-native';
 
 import Header from '../../components/Header/Header';
 import DefaultCard from '../../components/Cards/DefaultCard';
-import VideoButton from '../Videos/VideoButton';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
+import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 
-export default class HomeScreen extends React.Component {
+class MyVideosScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -17,13 +17,18 @@ export default class HomeScreen extends React.Component {
                 <Header />
                 <ScrollViewContainer>
                     <DefaultCard>
-                        <Text>Hej from Home</Text>
+                        <Text>Mina videos</Text>
+                        <Text>
+                            I think you and your friend have found the last game
+                            in town. where it hurts, their wallets. It's bold.
+                            You gonna count me in?
+                        </Text>
                     </DefaultCard>
-                    <VideoButton>
-                        <Text>Cool</Text>
-                    </VideoButton>
+                    <OrderNewVideoCard />
                 </ScrollViewContainer>
             </ViewContainer>
         );
     }
 }
+
+export default MyVideosScreen;

@@ -36,12 +36,10 @@ export default class ViewContainer extends React.Component {
 
 const styles = StyleSheet.create({
     VIDEO_BACKDROP_CONTAINER: {
-        top: 0,
         zIndex: 5,
         position: 'absolute',
-        alignSelf: 'stretch',
         width: '100%',
-        flex: 1
+        height: '100%'
     },
 
     VIDEO_BACKDROP: {

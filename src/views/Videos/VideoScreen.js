@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
@@ -25,7 +25,7 @@ export default class VideoScreen extends React.Component {
     render() {
         const { params } = this.props.navigation.state;
         return (
-            <ViewContainer>
+            <ViewContainer backdrop={true}>
                 <ScrollViewContainer>
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image

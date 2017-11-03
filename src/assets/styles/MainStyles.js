@@ -35,7 +35,8 @@ export default (Style = {
             height: 0.5,
             width: 0.5
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.3,
+        zIndex: 1
     },
 
     VIDEO_BUTTON: {

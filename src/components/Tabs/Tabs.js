@@ -17,10 +17,47 @@ import Signup from '../auth/Signup';
 
 const deviceHeight = Dimensions.get('window').height;
 
+// StackNavigator for the homeScreen
 const HomeScreenStack = StackNavigator(
     {
         HomeScreen: {
             screen: HomeScreen,
+            navigationOptions: {
+                title: 'Idrottskoll'
+            }
+        },
+        VideoScreen: {
+            screen: VideoScreen
+        }
+    },
+    {
+        navigationOptions: {
+            // header: false,
+            headerStyle: {
+                shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+                shadowOpacity: 0.3,
+                shadowOffset: {
+                    height: 0.5,
+                    width: 0.5
+                },
+                backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+                // if platform is iOS and device height is iPhone X
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+            },
+            headerTitleStyle: {
+                // add title styles
+                fontSize: 14,
+                fontWeight: '400'
+            }
+        }
+    }
+);
+
+// StackNavigator for MyVideosScreen
+const MyVideosScreenStack = StackNavigator(
+    {
+        MyVideosScreen: {
+            screen: MyVideosScreen,
             navigationOptions: {
                 title: 'Idrottskoll'
             }
@@ -79,7 +116,7 @@ const Tabs = TabNavigator(
             }
         },
         MyVideosScreen: {
-            screen: MyVideosScreen,
+            screen: MyVideosScreenStack,
             navigationOptions: {
                 tabBarLabel: 'Videos',
                 tabBarIcon: ({ focused }) => {

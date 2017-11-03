@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.3
     },
+
     ORDER_NEW_VIDEO_BUTTON: {
         borderRadius: 50,
         height: 44,

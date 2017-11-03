@@ -11,6 +11,15 @@ class MyProfileCard extends React.Component {
         super(props);
     }
 
+    /**
+    * if user is authenticated will fetch user data on signin
+    */
+    componentWillMount() {
+        if (this.props.authenticated) {
+            this.props.fetchAuthUserContent('user');
+        }
+    }
+
     renderVideos = () => {
         if (this.props.content) {
             const videos = this.props.content.video;

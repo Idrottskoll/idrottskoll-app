@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
 import VideoSmallButton from './VideoSmallButton';
@@ -9,24 +10,18 @@ import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../assets/styles/StyleRules';
+import NotAuthCard from '../../components/Cards/NotAuthCard';
 
 class MyVideosScreen extends React.Component {
-    render() {
-        const { navigate } = this.props.navigation;
-        return (
-            <ViewContainer>
-                <ScrollViewContainer>
-                    <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Mina videos
-                        </Text>
-                        <Text>
-                            I think you and your friend have found the last game
-                            in town. where it hurts, their wallets. It's bold.
-                            You gonna count me in?
-                        </Text>
-                    </DefaultCard>
+    constructor(props) {
+        super(props);
+    }
 
+    renderComponents = () => {
+        if (this.props.authenticated) {
+            return (
+                <View>
                     <TouchableOpacity
                         onPress={() =>
                             navigate('VideoScreen', {
@@ -68,12 +63,61 @@ class MyVideosScreen extends React.Component {
                     >
                         <VideoSmallButton title="VM Finalen 1994" />
                     </TouchableOpacity>
+                </View>
+            );
+        } else {
+            return (
+                <NotAuthCard blockedContent="se dina videos.">
+                    <TouchableOpacity
+                        onPress={() =>
+                            this.props.navigation.navigate('ProfileScreen')}
+                    >
+                        <Text>Logga in här!</Text>
+                    </TouchableOpacity>
+                </NotAuthCard>
+            );
+        }
+    };
 
-                    <OrderNewVideoCard />
+    render() {
+        const { navigate } = this.props.navigation;
+        return (
+            <ViewContainer>
+                <ScrollViewContainer>
+                    <DefaultCard>
+                        <Text style={MainStyles.MAIN_CARD_TITLE}>
+                            Mina videos
+                        </Text>
+                        <Text>
+                            I think you and your friend have found the last game
+                            in town. where it hurts, their wallets. It's bold.
+                            You gonna count me in?
+                        </Text>
+                    </DefaultCard>
+
+                    {this.renderComponents()}
+
+                    <OrderNewVideoCard>
+                        <TouchableOpacity
+                            style={[
+                                MainStyles.MAIN_BUTTON,
+                                { marginLeft: StyleRules.MARGIN }
+                            ]}
+                            onPress={() => navigate('OrderNewScreen')}
+                        >
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                Beställ
+                            </Text>
+                        </TouchableOpacity>
+                    </OrderNewVideoCard>
                 </ScrollViewContainer>
             </ViewContainer>
         );
     }
 }
 
-export default MyVideosScreen;
+function mapStateToProps(state) {
+    return { authenticated: state.auth.authenticated };
+}
+
+export default connect(mapStateToProps)(MyVideosScreen);

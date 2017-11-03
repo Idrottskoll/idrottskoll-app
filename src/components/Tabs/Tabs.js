@@ -10,6 +10,7 @@ import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
+import OrderNewScreen from '../../views/Order/OrderNewScreen';
 
 // Auth's
 import Signin from '../auth/Signin';
@@ -28,6 +29,9 @@ const HomeScreenStack = StackNavigator(
         },
         VideoScreen: {
             screen: VideoScreen
+        },
+        OrderNewScreen: {
+            screen: OrderNewScreen
         }
     },
     {
@@ -64,6 +68,9 @@ const MyVideosScreenStack = StackNavigator(
         },
         VideoScreen: {
             screen: VideoScreen
+        },
+        OrderNewScreen: {
+            screen: OrderNewScreen
         }
     },
     {

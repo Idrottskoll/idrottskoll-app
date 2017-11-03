@@ -1,12 +1,13 @@
 'use strict';
 
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import DefaultCard from '../../components/Cards/DefaultCard';
+import OrderNewScreen from '../Order/OrderNewScreen';
 
 import MainStyles from '../../assets/styles/MainStyles';
 
@@ -24,6 +25,7 @@ export default class VideoScreen extends React.Component {
 
     render() {
         const { params } = this.props.navigation.state;
+        const { navigate } = this.props.navigation;
         return (
             <ViewContainer backdrop={true}>
                 <ScrollViewContainer>
@@ -47,7 +49,20 @@ export default class VideoScreen extends React.Component {
                     </DefaultCard>
                     {/* if videoStatus is not avalable will not show order button */}
                     {params.videoStatus !== 'not avalable' ? (
-                        <OrderNewVideoCard />
+                        <OrderNewVideoCard>
+                            <TouchableOpacity
+                                style={[MainStyles.ORDER_NEW_VIDEO_BUTTON]}
+                                onPress={() => navigate('OrderNewScreen')}
+                            >
+                                <Text
+                                    style={[
+                                        { color: '#FFFFFF', fontWeight: 'bold' }
+                                    ]}
+                                >
+                                    Beställ
+                                </Text>
+                            </TouchableOpacity>
+                        </OrderNewVideoCard>
                     ) : (
                         <View />
                     )}

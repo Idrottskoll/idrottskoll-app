@@ -115,5 +115,15 @@ export default (Style = {
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
         fontSize: StyleRules.FONT_SIZE_SMALLER
+    },
+
+    ORDER_NEW_VIDEO_BUTTON: {
+        borderRadius: 50,
+        height: 44,
+        backgroundColor: StyleRules.BLUE_COLOR,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 120,
+        marginLeft: StyleRules.MARGIN
     }
 });

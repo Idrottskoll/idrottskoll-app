@@ -12,11 +12,7 @@ export default class OrderNewVideoCard extends React.Component {
                 <View>
                     <Text>Intresserad av en ny video?</Text>
                 </View>
-                <TouchableOpacity style={[styles.ORDER_NEW_VIDEO_BUTTON]}>
-                    <Text style={[{ color: '#FFFFFF', fontWeight: 'bold' }]}>
-                        Beställ
-                    </Text>
-                </TouchableOpacity>
+                {this.props.children}
             </View>
         );
     }
@@ -40,15 +36,5 @@ const styles = StyleSheet.create({
             width: 0.5
         },
         shadowOpacity: 0.3
-    },
-
-    ORDER_NEW_VIDEO_BUTTON: {
-        borderRadius: 50,
-        height: 44,
-        backgroundColor: StyleRules.BLUE_COLOR,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 120,
-        marginLeft: StyleRules.MARGIN
     }
 });

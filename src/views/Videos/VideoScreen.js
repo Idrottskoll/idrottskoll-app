@@ -35,12 +35,14 @@ export default class VideoScreen extends React.Component {
                     </View>
 
                     <DefaultCard>
-                        <Text>{params.videoName}</Text>
+                        <Text style={MainStyles.MAIN_CARD_TITLE}>
+                            {params.videoName}
+                        </Text>
                         <Text>{params.videoDescription}</Text>
                     </DefaultCard>
 
                     <DefaultCard>
-                        <Text>Status</Text>
+                        <Text style={MainStyles.MAIN_CARD_TITLE}>Status</Text>
                         <Text>{params.videoStatus}</Text>
                     </DefaultCard>
                     {/* if videoStatus is not avalable will not show order button */}

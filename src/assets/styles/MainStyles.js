@@ -65,7 +65,8 @@ export default (Style = {
     MAIN_CARD_TITLE: {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
-        marginBottom: StyleRules.MARGIN
+        marginBottom: StyleRules.MARGIN,
+        fontSize: 24
     },
 
     FORM_GROUP: {
@@ -114,31 +115,5 @@ export default (Style = {
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
         fontSize: StyleRules.FONT_SIZE_SMALLER
-    },
-
-    ORDER_NEW_VIDEO_CARD: {
-        // alignItems: 'stretch',
-        justifyContent: 'space-between',
-        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: StyleRules.BLUE_COLOR,
-        margin: StyleRules.MARGIN,
-        marginTop: StyleRules.MARGIN,
-        padding: StyleRules.CARD_PADDING_X,
-        shadowColor: StyleRules.BLUE_COLOR,
-        shadowOffset: {
-            height: 0.5,
-            width: 0.5
-        },
-        shadowOpacity: 0.3
-    },
-    ORDER_NEW_VIDEO_BUTTON: {
-        borderRadius: 50,
-        height: 44,
-        backgroundColor: StyleRules.BLUE_COLOR,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 128
     }
 });

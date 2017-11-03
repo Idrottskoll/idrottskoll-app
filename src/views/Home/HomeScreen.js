@@ -7,7 +7,7 @@ import DefaultCard from '../../components/Cards/DefaultCard';
 import VideoButton from '../Videos/VideoButton';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
-
+import MainStyles from '../../assets/styles/MainStyles';
 export default class HomeScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
@@ -26,7 +26,9 @@ export default class HomeScreen extends React.Component {
                             })}
                     >
                         <VideoButton>
-                            <Text>SM i rugby</Text>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                SM i rugby
+                            </Text>
                             <Text>
                                 Behind you, stands a symbol of oppression.
                                 Blackgate Prison, where a thousand men have
@@ -48,7 +50,9 @@ export default class HomeScreen extends React.Component {
                             })}
                     >
                         <VideoButton>
-                            <Text>SM i rugby</Text>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                SM i rugby
+                            </Text>
                             <Text>
                                 Behind you, stands a symbol of oppression.
                                 Blackgate Prison, where a thousand men have

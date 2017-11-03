@@ -5,7 +5,7 @@ import { View, Image } from 'react-native';
 
 import MainStyles from '../../assets/styles/MainStyles';
 
-export default class VideoCard extends React.Component {
+export default class VideoSmallButton extends React.Component {
     constructor(props) {
         super(props);
     }

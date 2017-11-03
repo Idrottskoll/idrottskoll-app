@@ -9,7 +9,6 @@ import HomeScreen from '../../views/Home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
-import VideoButton from '../../views/Videos/VideoButton';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 // Auth's

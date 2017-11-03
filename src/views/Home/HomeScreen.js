@@ -4,7 +4,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
-import VideoButton from '../Videos/VideoButton';
+import VideoLargeButton from '../Videos/VideoLargeButton';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
@@ -25,7 +25,7 @@ export default class HomeScreen extends React.Component {
                                 vidioUrl: 'url to video'
                             })}
                     >
-                        <VideoButton>
+                        <VideoLargeButton>
                             <Text style={MainStyles.MAIN_CARD_TITLE}>
                                 SM i rugby
                             </Text>
@@ -35,7 +35,7 @@ export default class HomeScreen extends React.Component {
                                 languished under the name of this man: Harvey
                                 Dent.
                             </Text>
-                        </VideoButton>
+                        </VideoLargeButton>
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -49,7 +49,7 @@ export default class HomeScreen extends React.Component {
                                 vidioUrl: 'url to video'
                             })}
                     >
-                        <VideoButton>
+                        <VideoLargeButton>
                             <Text style={MainStyles.MAIN_CARD_TITLE}>
                                 SM i rugby
                             </Text>
@@ -59,7 +59,7 @@ export default class HomeScreen extends React.Component {
                                 languished under the name of this man: Harvey
                                 Dent.
                             </Text>
-                        </VideoButton>
+                        </VideoLargeButton>
                     </TouchableOpacity>
                 </ScrollViewContainer>
             </ViewContainer>

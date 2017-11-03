@@ -12,7 +12,6 @@ export default class ViewContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.backdrop);
         return (
             <View style={MainStyles.VIEW_CONTAINER}>
                 {this.props.backdrop ? (

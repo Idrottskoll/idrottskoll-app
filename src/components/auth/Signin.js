@@ -51,12 +51,11 @@ class Signin extends React.Component {
                     </View>
 
                     <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
+                        <Text style={MainStyles.INPUT_LABEL}>
+                            E-post adress:
+                        </Text>
                         <TextInput
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'email'}
                             {...email}
                             keyboardType="email-address"
@@ -67,12 +66,9 @@ class Signin extends React.Component {
                     </View>
 
                     <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
+                        <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                         <TextInput
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'password'}
                             autoCorrect={false}
                             returnKeyType="go"
@@ -83,14 +79,14 @@ class Signin extends React.Component {
 
                     {this.renderAlert()}
 
-                    <View style={MainStyles.FORM_GROUP}>
+                    <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
                         <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
+                            style={MainStyles.MAIN_BUTTON}
                             onPress={handleSubmit(
                                 this.handleFormSubmit.bind(this)
                             )}
                         >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
                                 Logga in
                             </Text>
                         </TouchableOpacity>

@@ -64,13 +64,12 @@ class Signup extends React.Component {
                     </View>
 
                     <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Namn</Text>
+                        <Text style={MainStyles.INPUT_LABEL}>
+                            För- och efternamn:
+                        </Text>
                         <TextInput
                             {...name}
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'name'}
                             autoCapitalize="words"
                             autoCorrect={false}
@@ -85,13 +84,12 @@ class Signup extends React.Component {
                     </View>
 
                     <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>E-post</Text>
+                        <Text style={MainStyles.INPUT_LABEL}>
+                            E-post adress:
+                        </Text>
                         <TextInput
                             {...email}
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'email'}
                             keyboardType="email-address"
                             autoCapitalize="none"
@@ -107,13 +105,10 @@ class Signup extends React.Component {
                     </View>
 
                     <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord</Text>
+                        <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                         <TextInput
                             {...password}
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'password'}
                             autoCorrect={false}
                             returnKeyType="next"
@@ -129,14 +124,11 @@ class Signup extends React.Component {
 
                     <View style={MainStyles.FORM_GROUP}>
                         <Text style={MainStyles.INPUT_LABEL}>
-                            Upprepa lösenord
+                            Upprepa lösenord:
                         </Text>
                         <TextInput
                             {...passwordConfirmation}
-                            style={[
-                                MainStyles.AUTH_INPUT,
-                                MainStyles.AUTH_SUCCESS_INPUT
-                            ]}
+                            style={[MainStyles.AUTH_INPUT]}
                             name={'passwordConfirmation'}
                             autoCorrect={false}
                             returnKeyType="go"
@@ -152,15 +144,15 @@ class Signup extends React.Component {
 
                     {this.renderAlert()}
 
-                    <View style={MainStyles.FORM_GROUP}>
+                    <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
                         <TouchableOpacity
-                            style={MainStyles.BUTTON_SUCCESS}
+                            style={MainStyles.MAIN_BUTTON}
                             onPress={handleSubmit(
                                 this.handleFormSubmit.bind(this)
                             )}
                         >
-                            <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>
-                                Skapa konto
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                Registrera
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -180,19 +172,19 @@ function validate(formProps) {
     const errors = {};
 
     if (!formProps.name) {
-        errors.name = 'Vänligen ange ditt namn';
+        errors.name = 'Vänligen ange ditt namn. För- och efternamn.';
     }
 
     if (!formProps.email) {
-        errors.email = 'Vänligen ange din e-post adress';
+        errors.email = 'Vänligen ange din e-post adress.';
     }
 
     if (!formProps.password) {
-        errors.password = 'Vänligen ange ditt lösenord';
+        errors.password = 'Vänligen ange ditt lösenord.';
     }
 
     if (!formProps.passwordConfirmation) {
-        errors.passwordConfirmation = 'Vänligen bekräfta ditt lösenord';
+        errors.passwordConfirmation = 'Vänligen bekräfta ditt lösenord.';
     }
 
     if (formProps.password !== formProps.passwordConfirmation) {

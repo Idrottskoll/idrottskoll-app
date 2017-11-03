@@ -13,7 +13,7 @@ export default (Style = {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         margin: StyleRules.MARGIN,
-        marginTop: StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOffset: {
@@ -70,7 +70,7 @@ export default (Style = {
     },
 
     FORM_GROUP: {
-        marginVertical: StyleRules.MARGIN
+        marginBottom: StyleRules.MARGIN
     },
 
     INPUT_LABEL: {
@@ -79,31 +79,33 @@ export default (Style = {
 
     AUTH_INPUT: {
         alignItems: 'stretch',
-        borderWidth: 1,
+        borderWidth: 0.3,
         borderRadius: 3,
         height: 40,
         lineHeight: 23,
         marginTop: 3,
-        paddingHorizontal: StyleRules.MARGIN
+        paddingHorizontal: StyleRules.MARGIN,
+        borderColor: StyleRules.TEXT_COLOR
     },
 
-    AUTH_SUCCESS_INPUT: {
-        borderColor: StyleRules.BLUE_GRADIENT_COLOR
-    },
-
-    BUTTON_SUCCESS: {
+    MAIN_BUTTON: {
+        borderRadius: 50,
         height: 44,
-        display: 'flex',
+        backgroundColor: StyleRules.BLUE_COLOR,
         alignItems: 'center',
-        marginVertical: StyleRules.MARGIN,
-        backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
-        borderRadius: 3,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: 120
     },
 
-    BUTTON_SUCCESS_TEXT: {
+    MAIN_BUTTON_TEXT: {
         fontWeight: 'bold',
         color: StyleRules.BUTTON_TEXT_COLOR
+    },
+
+    // Will flex buttons to the right side of the Cards
+    FLEX_BUTTON_TO_END: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
 
     ERROR_BOX: {
@@ -115,15 +117,5 @@ export default (Style = {
     ERROR_TEXT: {
         color: StyleRules.RED_COLOR,
         fontSize: StyleRules.FONT_SIZE_SMALLER
-    },
-
-    ORDER_NEW_VIDEO_BUTTON: {
-        borderRadius: 50,
-        height: 44,
-        backgroundColor: StyleRules.BLUE_COLOR,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 120,
-        marginLeft: StyleRules.MARGIN
     }
 });

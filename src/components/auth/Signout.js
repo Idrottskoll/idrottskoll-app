@@ -13,10 +13,10 @@ class Sigout extends React.Component {
     render() {
         return (
             <TouchableOpacity
-                style={MainStyles.BUTTON_SUCCESS}
+                style={MainStyles.MAIN_BUTTON}
                 onPress={this.handleSignout()}
             >
-                <Text style={MainStyles.BUTTON_SUCCESS_TEXT}>Logga ut</Text>
+                <Text style={MainStyles.MAIN_BUTTON_TEXT}>Logga ut</Text>
             </TouchableOpacity>
         );
     }

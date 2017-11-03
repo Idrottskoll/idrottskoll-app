@@ -10,6 +10,7 @@ import DefaultCard from '../../components/Cards/DefaultCard';
 import OrderNewScreen from '../Order/OrderNewScreen';
 
 import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 
 export default class VideoScreen extends React.Component {
     constructor(props) {
@@ -51,14 +52,13 @@ export default class VideoScreen extends React.Component {
                     {params.videoStatus !== 'not avalable' ? (
                         <OrderNewVideoCard>
                             <TouchableOpacity
-                                style={[MainStyles.ORDER_NEW_VIDEO_BUTTON]}
+                                style={[
+                                    MainStyles.MAIN_BUTTON,
+                                    { marginLeft: StyleRules.MARGIN }
+                                ]}
                                 onPress={() => navigate('OrderNewScreen')}
                             >
-                                <Text
-                                    style={[
-                                        { color: '#FFFFFF', fontWeight: 'bold' }
-                                    ]}
-                                >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
                                     Beställ
                                 </Text>
                             </TouchableOpacity>

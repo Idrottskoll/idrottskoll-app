@@ -25,8 +25,10 @@ class MyProfileCard extends React.Component {
         return (
             <View>
                 {this.props.content ? (
-                    <View>
-                        <Text>{this.props.content.name}</Text>
+                    <View style={[MainStyles.MAIN_CARD]}>
+                        <Text style={MainStyles.MAIN_CARD_TITLE}>
+                            {this.props.content.name}
+                        </Text>
                         <Text>{this.props.content.email}</Text>
                         <Text>Fakturering</Text>
                         <Text>Namn: {this.props.content.name}</Text>
@@ -42,11 +44,7 @@ class MyProfileCard extends React.Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                ) : (
-                    <Text>
-                        Logga in eller registrera dig för att se din profil
-                    </Text>
-                )}
+                ) : null}
                 {/* <Text>Videos: {this.renderVideos()}</Text> */}
             </View>
         );

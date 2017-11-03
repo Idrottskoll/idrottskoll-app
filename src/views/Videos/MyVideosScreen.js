@@ -97,7 +97,7 @@ class MyVideosScreen extends React.Component {
 
                     {this.renderComponents()}
 
-                    <OrderNewVideoCard>
+                    <OrderNewVideoCard title="Intresserad av en ny video?">
                         <TouchableOpacity
                             style={[
                                 MainStyles.MAIN_BUTTON,

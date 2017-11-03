@@ -28,7 +28,7 @@ export default (Style = {
     RATIO_X: ratioX,
     RATIO_Y: ratioY,
     UNIT: em(1),
-    PADDING: em(1.25),
+    PADDING: em(1),
     MARGIN: 15,
 
     // CARD
@@ -54,5 +54,5 @@ export default (Style = {
     BLUE_GRADIENT_COLOR: '#4E7893',
     GREEN_GRADIENT_COLOR: '#9BCAA5',
     ORANGE_COLOR: '#F5A623',
-    RED_COLOR: '#D0021B',
+    RED_COLOR: '#D0021B'
 });

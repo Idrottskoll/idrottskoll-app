@@ -10,7 +10,9 @@ export default class OrderNewVideoCard extends React.Component {
         return (
             <View style={[styles.ORDER_NEW_VIDEO_CARD]}>
                 <View>
-                    <Text>Intresserad av en ny video?</Text>
+                    <Text style={[styles.TITLE, { width: 160 }]}>
+                        {this.props.title}
+                    </Text>
                 </View>
                 {this.props.children}
             </View>
@@ -36,5 +38,9 @@ const styles = StyleSheet.create({
             width: 0.5
         },
         shadowOpacity: 0.3
+    },
+
+    TITLE: {
+        fontSize: 16
     }
 });

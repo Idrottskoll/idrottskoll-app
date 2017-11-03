@@ -50,7 +50,7 @@ export default class VideoScreen extends React.Component {
                     </DefaultCard>
                     {/* if videoStatus is not avalable will not show order button */}
                     {params.videoStatus !== 'not avalable' ? (
-                        <OrderNewVideoCard>
+                        <OrderNewVideoCard title="Intresserad av en ny video?">
                             <TouchableOpacity
                                 style={[
                                     MainStyles.MAIN_BUTTON,

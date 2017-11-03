@@ -20,22 +20,14 @@ export default class ViewContainer extends React.Component {
                 ) : (
                     <View />
                 )}
-                <View
-                    style={
-                        this.props.backdrop
-                            ? styles.VIDEO_BACKDROP_CONTAINER
-                            : null
-                    }
-                >
-                    {this.props.children}
-                </View>
+                <View style={styles.CONTAINER}>{this.props.children}</View>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    VIDEO_BACKDROP_CONTAINER: {
+    CONTAINER: {
         zIndex: 5,
         position: 'absolute',
         width: '100%',

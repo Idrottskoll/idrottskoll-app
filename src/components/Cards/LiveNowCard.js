@@ -14,10 +14,12 @@ export default class LiveNowCard extends React.Component {
     render() {
         return (
             <View style={[styles.CONTAINER]}>
-                <Text style={MainStyles.MAIN_CARD_TITLE}>Live just nu:</Text>
-                <Text style={MainStyles.MAIN_CARD_TITLE}>
-                    {` ${this.props.videoName}!`}
+                <Text style={[styles.TITLE, { color: StyleRules.GREEN_COLOR }]}>
+                    Live just nu:
                 </Text>
+                <Text
+                    style={[styles.TITLE, { color: StyleRules.TEXT_COLOR }]}
+                >{` ${this.props.videoName}!`}</Text>
             </View>
         );
     }
@@ -25,10 +27,11 @@ export default class LiveNowCard extends React.Component {
 
 const styles = StyleSheet.create({
     CONTAINER: {
-        alignItems: 'center',
+        alignItems: 'stretch',
         flexDirection: 'row',
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
+        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
         margin: StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.GREEN_COLOR,
@@ -37,5 +40,10 @@ const styles = StyleSheet.create({
             width: 0.5
         },
         shadowOpacity: 0.3
+    },
+
+    TITLE: {
+        fontWeight: 'bold',
+        fontSize: 18
     }
 });

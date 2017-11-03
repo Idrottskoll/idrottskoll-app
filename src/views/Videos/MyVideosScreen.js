@@ -19,7 +19,7 @@ class MyVideosScreen extends React.Component {
     }
 
     renderComponents = () => {
-        const { navigate } = this.props.navigation;
+        let { navigate } = this.props.navigation;
         if (this.props.authenticated) {
             return (
                 <View>
@@ -81,6 +81,7 @@ class MyVideosScreen extends React.Component {
     };
 
     render() {
+        let { navigate } = this.props.navigation;
         return (
             <ViewContainer>
                 <ScrollViewContainer>

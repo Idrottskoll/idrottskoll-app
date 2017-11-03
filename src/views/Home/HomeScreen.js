@@ -8,12 +8,28 @@ import VideoLargeButton from '../Videos/VideoLargeButton';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
+import LiveNowCard from '../../components/Cards/LiveNowCard';
+
 export default class HomeScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
                 <ScrollViewContainer>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate('VideoScreen', {
+                                videoName: 'SM final innebany',
+                                videoDescription:
+                                    'I give a damn because a good',
+                                videoStatus: 'live',
+                                videoType: 'live, ',
+                                vidioUrl: 'url to video'
+                            })}
+                    >
+                        <LiveNowCard videoName="SM final innebany" />
+                    </TouchableOpacity>
+
                     <TouchableOpacity
                         onPress={() =>
                             navigate('VideoScreen', {

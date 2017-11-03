@@ -20,7 +20,7 @@ export default class VideoScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title:
             navigation.state.params.videoStatus === 'live'
-                ? `Live Nu på ${navigation.state.params.videoName}`
+                ? `Live nu: ${navigation.state.params.videoName}`
                 : navigation.state.params.videoName
     });
 
@@ -28,7 +28,7 @@ export default class VideoScreen extends React.Component {
         const { params } = this.props.navigation.state;
         const { navigate } = this.props.navigation;
         return (
-            <ViewContainer backdrop={true}>
+            <ViewContainer videoStatus={params.videoStatus} backdrop={true}>
                 <ScrollViewContainer>
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image

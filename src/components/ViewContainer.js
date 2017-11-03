@@ -15,7 +15,17 @@ export default class ViewContainer extends React.Component {
         return (
             <View style={MainStyles.VIEW_CONTAINER}>
                 {this.props.backdrop ? (
-                    <View style={[styles.VIDEO_BACKDROP]} />
+                    <View
+                        style={[
+                            styles.VIDEO_BACKDROP,
+                            {
+                                backgroundColor:
+                                    this.props.videoStatus === 'live'
+                                        ? StyleRules.GREEN_COLOR
+                                        : StyleRules.BLUE_COLOR
+                            }
+                        ]}
+                    />
                 ) : (
                     <View />
                 )}
@@ -34,7 +44,6 @@ const styles = StyleSheet.create({
     },
 
     VIDEO_BACKDROP: {
-        backgroundColor: StyleRules.BLUE_COLOR,
         height: 235,
         zIndex: -5
     }

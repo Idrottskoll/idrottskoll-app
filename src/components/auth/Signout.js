@@ -8,13 +8,14 @@ import * as actions from '../../actions';
 class Sigout extends React.Component {
     handleSignout = () => {
         this.props.signoutUser();
+        this.forceUpdate();
     };
 
     render() {
         return (
             <TouchableOpacity
                 style={MainStyles.MAIN_BUTTON}
-                onPress={this.handleSignout()}
+                onPress={this.handleSignout}
             >
                 <Text style={MainStyles.MAIN_BUTTON_TEXT}>Logga ut</Text>
             </TouchableOpacity>

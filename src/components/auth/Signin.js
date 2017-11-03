@@ -16,6 +16,8 @@ class Signin extends React.Component {
         this.props.signinUser({ email, password }).then(response => {
             if (response.data.token) {
                 this.props.fetchAuthUserContent('user');
+                // Truncate the password fields
+                this.props.fields.password.value = null;
             }
         });
     }

@@ -5,6 +5,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
+import Signout from '../auth/Signout';
 
 class MyProfileCard extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class MyProfileCard extends React.Component {
     render() {
         return (
             <View>
-                {this.props.content ? (
+                {this.props.content && this.props.authenticated ? (
                     <View style={[MainStyles.MAIN_CARD]}>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
                             {this.props.content.name}
@@ -41,9 +42,6 @@ class MyProfileCard extends React.Component {
                         <Text>{this.props.content.email}</Text>
                         <Text>Fakturering</Text>
                         <Text>Namn: {this.props.content.name}</Text>
-                        <Text>Adress: Oluff Nilssons väg 4</Text>
-                        <Text>Postnummer: 433 36</Text>
-                        <Text>Ort: Partille</Text>
                         <View>
                             <TouchableOpacity>
                                 <Text>Ändra mina uppgifter</Text>
@@ -52,6 +50,7 @@ class MyProfileCard extends React.Component {
                                 <Text>Ändra mitt lösenord</Text>
                             </TouchableOpacity>
                         </View>
+                        <Signout />
                     </View>
                 ) : null}
                 {/* <Text>Videos: {this.renderVideos()}</Text> */}

@@ -32,6 +32,9 @@ class MyProfileCard extends React.Component {
     };
 
     render() {
+        if (this.props.content) {
+            console.log(this.props.content);
+        }
         return (
             <View>
                 {this.props.content && this.props.authenticated ? (

@@ -21,14 +21,12 @@ class Header extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>IDK</Text>
-                <Text>Idrottskoll</Text>
                 <TouchableOpacity
                     onPress={
-                        !this.props.authenticated ? null : this.handleSignout
+                        this.props.authenticated ? this.handleSignout : null
                     }
                 >
-                    {!this.props.authenticated ? null : <Text>Logga ut</Text>}
+                    <Text>Idrottskoll</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -46,7 +44,7 @@ const styles = StyleSheet.create({
         paddingBottom: Platform.OS === 'ios' && deviceHeight === 812 ? 37 : 25,
         height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 87.5,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOpacity: 0.3,
         shadowOffset: {

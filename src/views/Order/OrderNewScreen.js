@@ -140,7 +140,6 @@ class OrderNewScreen extends React.Component {
                             style={[
                                 styles.BUTTON_WITH_ERRORS,
                                 {
-                                    marginLeft: StyleRules.MARGIN,
                                     backgroundColor:
                                         (selectPlace.touched &&
                                             selectPlace.error) ||
@@ -167,6 +166,7 @@ class OrderNewScreen extends React.Component {
 const styles = StyleSheet.create({
     BUTTON_WITH_ERRORS: {
         borderRadius: 50,
+        marginLeft: StyleRules.MARGIN,
         height: 44,
         alignItems: 'center',
         justifyContent: 'center',

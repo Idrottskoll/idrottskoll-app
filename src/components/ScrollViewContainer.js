@@ -15,9 +15,10 @@ export default class ScrollViewContainer extends React.Component {
 
     _onRefresh() {
         this.setState({ refreshing: true });
-        // this.fetchData().then(() => {
-        this.setState({ refreshing: false });
-        // });
+        this.forceUpdate();
+        setTimeout(() => {
+            this.setState({ refreshing: false });
+        }, 1000);
     }
     render() {
         return (

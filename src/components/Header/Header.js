@@ -1,15 +1,35 @@
 import React from 'react';
-import { StyleSheet, View, Text, Platform } from 'react-native';
+import {
+    StyleSheet,
+    View,
+    Text,
+    Platform,
+    TouchableOpacity
+} from 'react-native';
 import StyleRules from '../../assets/styles/StyleRules';
 import Dimensions from 'Dimensions';
 
-export default class Header extends React.Component {
+import * as actions from '../../actions';
+import { connect } from 'react-redux';
+
+class Header extends React.Component {
+    handleSignout = () => {
+        this.props.signoutUser();
+        this.forceUpdate();
+    };
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>IDK</Text>
                 <Text>Idrottskoll</Text>
-                <Text>IDK</Text>
+                <TouchableOpacity
+                    onPress={
+                        !this.props.authenticated ? null : this.handleSignout
+                    }
+                >
+                    {!this.props.authenticated ? null : <Text>Logga ut</Text>}
+                </TouchableOpacity>
             </View>
         );
     }
@@ -36,3 +56,12 @@ const styles = StyleSheet.create({
         zIndex: 1
     }
 });
+
+function mapStateToProps(state) {
+    return {
+        errorMessage: state.auth.error,
+        authenticated: state.auth.authenticated
+    };
+}
+
+export default connect(mapStateToProps, actions)(Header);

@@ -56,5 +56,6 @@ fastlane/screenshots
 # config/.env
 src/actions/config.js
 
-# Design 
+# Design
 wireframes
+src/views/VideoPlayer/broadchurch.mp4

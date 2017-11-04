@@ -57,7 +57,7 @@ class Signin extends React.Component {
                             E-post adress:
                         </Text>
                         <TextInput
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'email'}
                             {...email}
                             keyboardType="email-address"
@@ -70,7 +70,7 @@ class Signin extends React.Component {
                     <View style={MainStyles.FORM_GROUP}>
                         <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                         <TextInput
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'password'}
                             autoCorrect={false}
                             returnKeyType="go"

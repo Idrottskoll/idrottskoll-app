@@ -77,7 +77,7 @@ export default (Style = {
         color: StyleRules.TEXT_COLOR
     },
 
-    AUTH_INPUT: {
+    FORM_INPUT: {
         alignItems: 'stretch',
         borderWidth: 0.3,
         borderRadius: 3,

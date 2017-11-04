@@ -28,6 +28,13 @@ class OrderNewScreen extends React.Component {
     * @return
     */
     handelOrder(formProps) {
+        if (
+            !formProps.selectPlace ||
+            !formProps.selectTime ||
+            !formProps.selectDate
+        ) {
+            return;
+        }
         alert('push button');
         // call action creater
         // this.props.signupUser(formProps).then(response => {
@@ -80,7 +87,7 @@ class OrderNewScreen extends React.Component {
                             </Text>
                             <TextInput
                                 {...selectPlace}
-                                style={[MainStyles.AUTH_INPUT]}
+                                style={[MainStyles.FORM_INPUT]}
                                 name={'selectPlace'}
                             />
                             {selectPlace.touched &&
@@ -97,7 +104,7 @@ class OrderNewScreen extends React.Component {
                             </Text>
                             <TextInput
                                 {...selectDate}
-                                style={[MainStyles.AUTH_INPUT]}
+                                style={[MainStyles.FORM_INPUT]}
                                 name={'selectDate'}
                             />
                             {selectDate.touched &&
@@ -114,7 +121,7 @@ class OrderNewScreen extends React.Component {
                             </Text>
                             <TextInput
                                 {...selectTime}
-                                style={[MainStyles.AUTH_INPUT]}
+                                style={[MainStyles.FORM_INPUT]}
                                 name={'selectTime'}
                             />
                             {selectTime.touched &&
@@ -131,8 +138,18 @@ class OrderNewScreen extends React.Component {
                     <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
                         <TouchableOpacity
                             style={[
-                                MainStyles.MAIN_BUTTON,
-                                { marginLeft: StyleRules.MARGIN }
+                                styles.BUTTON_WITH_ERRORS,
+                                {
+                                    marginLeft: StyleRules.MARGIN,
+                                    backgroundColor:
+                                        (selectPlace.touched &&
+                                            selectPlace.error) ||
+                                        (selectTime.touched &&
+                                            selectTime.error) ||
+                                        (selectDate.touched && selectDate.error)
+                                            ? StyleRules.RED_COLOR
+                                            : StyleRules.BLUE_COLOR
+                                }
                             ]}
                             onPress={handleSubmit(this.handelOrder.bind(this))}
                         >
@@ -147,7 +164,15 @@ class OrderNewScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    BUTTON_WITH_ERRORS: {
+        borderRadius: 50,
+        height: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 120
+    }
+});
 
 /**
 * @param obj fromProps

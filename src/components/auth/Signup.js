@@ -74,7 +74,7 @@ class Signup extends React.Component {
                         </Text>
                         <TextInput
                             {...name}
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'name'}
                             autoCapitalize="words"
                             autoCorrect={false}
@@ -94,7 +94,7 @@ class Signup extends React.Component {
                         </Text>
                         <TextInput
                             {...email}
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'email'}
                             keyboardType="email-address"
                             autoCapitalize="none"
@@ -113,7 +113,7 @@ class Signup extends React.Component {
                         <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                         <TextInput
                             {...password}
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'password'}
                             autoCorrect={false}
                             returnKeyType="next"
@@ -133,7 +133,7 @@ class Signup extends React.Component {
                         </Text>
                         <TextInput
                             {...passwordConfirmation}
-                            style={[MainStyles.AUTH_INPUT]}
+                            style={[MainStyles.FORM_INPUT]}
                             name={'passwordConfirmation'}
                             autoCorrect={false}
                             returnKeyType="go"

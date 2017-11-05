@@ -19,6 +19,7 @@ import LiveNowCard from '../../components/Cards/LiveNowCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import { connect } from 'react-redux';
 
+// TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
@@ -63,15 +64,38 @@ class HomeScreen extends React.Component {
                                         style={MainStyles.VIDEO_CONTAINER}
                                         source={require('../../assets/icons/football.png')}
                                     />
+                                    {/* Button for LOCKED videos */}
+                                    {/* <TouchableHighlight
+                                        key={video._id}
+                                        underlayColor={
+                                            StyleRules.BLUE_GRADIENT_COLOR
+                                        }
+                                        activeOpacity={0.8}
+                                        style={[
+                                            styles.LOCKED_VIDEO_BUTTON_CONTAINER,
+                                            styles.VIDEO_BUTTON_CONTAINER
+                                        ]}
+                                        onPress={() =>
+                                            navigate('VideoScreen', {
+                                                videoTitle: video.sport,
+                                                videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
+                                                videoDescription: `Inspelat: ${video.startTime}.`,
+                                                isRecorded: video.isRecorded,
+                                                uploaded: video.uploaded,
+                                                vidioUrl: video.name
+                                            })}
+                                    > */}
+                                    {/* Button for UN LOCKED videos */}
                                     <TouchableHighlight
                                         key={video._id}
                                         underlayColor={
                                             StyleRules.BLUE_GRADIENT_COLOR
                                         }
                                         activeOpacity={0.8}
-                                        style={
-                                            styles.LOCKED_VIDEO_BUTTON_CONTAINER
-                                        }
+                                        style={[
+                                            styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
+                                            styles.VIDEO_BUTTON_CONTAINER
+                                        ]}
                                         onPress={() =>
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
@@ -82,11 +106,23 @@ class HomeScreen extends React.Component {
                                                 vidioUrl: video.name
                                             })}
                                     >
-                                        <Text
+                                        {/* Button for LOCKED videos */}
+                                        {/* <Text
                                             style={styles.LOCKED_VIDEO_BUTTON}
                                         >
                                             Lås upp video
-                                        </Text>
+                                        </Text> */}
+
+                                        {/* Button for UN LOCKED videos */}
+                                        <View
+                                            style={
+                                                styles.UN_LOCKED_VIDEO_BUTTON
+                                            }
+                                        >
+                                            <Image
+                                                source={require('../../assets/icons/playButton.png')}
+                                            />
+                                        </View>
                                     </TouchableHighlight>
                                 </View>
 
@@ -111,9 +147,6 @@ class HomeScreen extends React.Component {
     };
 
     render() {
-        if (this.props.data && this.props.data.video.length !== 0) {
-            console.log(this.props.data);
-        }
         const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
@@ -127,26 +160,33 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    VIDEO_BUTTON_CONTAINER: {},
-    VIDEO_BUTTON: {},
-    LOCKED_VIDEO_BUTTON_CONTAINER: {
-        position: 'absolute',
-        width: 175,
-        height: 45,
-        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
-        borderRadius: 30,
-        borderWidth: 1,
-        borderColor: StyleRules.CARD_BACKGROUND_COLOR,
+    VIDEO_BUTTON_CONTAINER: {
         alignItems: 'center',
+        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+        borderColor: StyleRules.CARD_BACKGROUND_COLOR,
+        borderWidth: 1,
         justifyContent: 'center',
-        opacity: 0.95
+        opacity: 0.95,
+        position: 'absolute',
+        zIndex: 5
     },
+
+    LOCKED_VIDEO_BUTTON_CONTAINER: {
+        borderRadius: 30,
+        height: 45,
+        width: 175
+    },
+
     LOCKED_VIDEO_BUTTON: {
         color: StyleRules.TEXT_COLOR,
         fontSize: 18
     },
-    UN_LOCKED_VIDEO_BUTTON_CONTAINER: {},
-    UN_LOCKED_VIDEO_BUTTON: {}
+
+    UN_LOCKED_VIDEO_BUTTON_CONTAINER: {
+        borderRadius: 50,
+        height: 60,
+        width: 60
+    }
 });
 
 function mapStateToProps(state) {

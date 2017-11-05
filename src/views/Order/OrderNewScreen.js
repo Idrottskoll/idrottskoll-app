@@ -89,6 +89,7 @@ class OrderNewScreen extends React.Component {
                                 {...selectPlace}
                                 style={[MainStyles.FORM_INPUT]}
                                 name={'selectPlace'}
+                                value={null}
                             />
                             {selectPlace.touched &&
                                 selectPlace.error && (
@@ -106,6 +107,7 @@ class OrderNewScreen extends React.Component {
                                 {...selectDate}
                                 style={[MainStyles.FORM_INPUT]}
                                 name={'selectDate'}
+                                value={null}
                             />
                             {selectDate.touched &&
                                 selectDate.error && (
@@ -123,6 +125,7 @@ class OrderNewScreen extends React.Component {
                                 {...selectTime}
                                 style={[MainStyles.FORM_INPUT]}
                                 name={'selectTime'}
+                                value={null}
                             />
                             {selectTime.touched &&
                                 selectTime.error && (

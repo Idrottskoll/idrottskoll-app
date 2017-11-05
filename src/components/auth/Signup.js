@@ -79,6 +79,7 @@ class Signup extends React.Component {
                             autoCapitalize="words"
                             autoCorrect={false}
                             returnKeyType="next"
+                            value={null}
                         />
                         {name.touched &&
                             name.error && (
@@ -100,6 +101,7 @@ class Signup extends React.Component {
                             autoCapitalize="none"
                             autoCorrect={false}
                             returnKeyType="next"
+                            value={null}
                         />
                         {email.touched &&
                             email.error && (
@@ -118,6 +120,7 @@ class Signup extends React.Component {
                             autoCorrect={false}
                             returnKeyType="next"
                             secureTextEntry={true}
+                            value={null}
                         />
                         {password.touched &&
                             password.error && (
@@ -138,6 +141,7 @@ class Signup extends React.Component {
                             autoCorrect={false}
                             returnKeyType="go"
                             secureTextEntry={true}
+                            value={null}
                         />
                         {passwordConfirmation.touched &&
                             passwordConfirmation.error && (

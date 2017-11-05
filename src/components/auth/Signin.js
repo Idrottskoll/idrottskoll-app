@@ -73,6 +73,7 @@ class Signin extends React.Component {
                             style={[MainStyles.FORM_INPUT]}
                             name={'password'}
                             autoCorrect={false}
+                            value={null}
                             returnKeyType="go"
                             secureTextEntry={true}
                             {...password}

@@ -21,51 +21,7 @@ class MyVideosScreen extends React.Component {
     renderComponents = () => {
         let { navigate } = this.props.navigation;
         if (this.props.authenticated) {
-            return (
-                <View>
-                    <TouchableOpacity
-                        onPress={() =>
-                            navigate('VideoScreen', {
-                                videoName: 'Landala 3',
-                                videoDescription:
-                                    'I give a damn because a good',
-                                videoStatus: 'not avalable',
-                                videoType: 'avalable, live, ',
-                                vidioUrl: 'url to video'
-                            })}
-                    >
-                        <VideoSmallButton title="SM i Rugby" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() =>
-                            navigate('VideoScreen', {
-                                videoName: 'Landala 3',
-                                videoDescription:
-                                    'I give a damn because a good',
-                                videoStatus: 'not avalable',
-                                videoType: 'avalable, live, ',
-                                vidioUrl: 'url to video'
-                            })}
-                    >
-                        <VideoSmallButton title="JSM i Tennis" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() =>
-                            navigate('VideoScreen', {
-                                videoName: 'VM Finalen 1994',
-                                videoDescription:
-                                    'I give a damn because a good',
-                                videoStatus: 'not avalable',
-                                videoType: 'avalable, live, ',
-                                vidioUrl: 'url to video'
-                            })}
-                    >
-                        <VideoSmallButton title="VM Finalen 1994" />
-                    </TouchableOpacity>
-                </View>
-            );
+            return <View />;
         } else {
             return (
                 <NotAuthCard blockedContent="se dina videos.">
@@ -82,6 +38,7 @@ class MyVideosScreen extends React.Component {
 
     render() {
         let { navigate } = this.props.navigation;
+        console.log(this.props.data);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -96,7 +53,26 @@ class MyVideosScreen extends React.Component {
                         </Text>
                     </DefaultCard>
 
-                    {this.renderComponents()}
+                    {/* {this.renderComponents()} */}
+
+                    {this.props.data && this.props.authenticated
+                        ? this.props.data.video.map(video => (
+                              <TouchableOpacity
+                                  key={video._id}
+                                  onPress={() =>
+                                      navigate('VideoScreen', {
+                                          videoTitle: video.sport,
+                                          videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
+                                          videoDescription: `Inspelat: ${video.startTime}.`,
+                                          isRecorded: video.isRecorded,
+                                          uploaded: video.uploaded,
+                                          vidioUrl: video.name
+                                      })}
+                              >
+                                  <VideoSmallButton title={video.sport} />
+                              </TouchableOpacity>
+                          ))
+                        : null}
 
                     <OrderNewVideoCard title="Intresserad av en ny video?">
                         <TouchableOpacity
@@ -118,7 +94,7 @@ class MyVideosScreen extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { authenticated: state.auth.authenticated };
+    return { data: state.auth.data, authenticated: state.auth.authenticated };
 }
 
 export default connect(mapStateToProps)(MyVideosScreen);

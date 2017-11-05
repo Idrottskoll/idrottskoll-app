@@ -21,20 +21,7 @@ class MyProfileCard extends React.Component {
         }
     }
 
-    renderVideos = () => {
-        if (this.props.data) {
-            const videos = this.props.data.video;
-            console.log(videos);
-            videos.forEach(element => {
-                console.log(element);
-            });
-        }
-    };
-
     render() {
-        if (this.props.data) {
-            console.log(this.props.data);
-        }
         return (
             <View>
                 {this.props.data && this.props.authenticated ? (
@@ -56,7 +43,6 @@ class MyProfileCard extends React.Component {
                         <Signout />
                     </View>
                 ) : null}
-                {/* <Text>Videos: {this.renderVideos()}</Text> */}
             </View>
         );
     }

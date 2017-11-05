@@ -18,11 +18,14 @@ export default class VideoScreen extends React.Component {
     }
 
     static navigationOptions = ({ navigation }) => ({
-        title:
-            navigation.state.params.videoStatus === 'live'
-                ? `Live nu: ${navigation.state.params.videoName}`
-                : navigation.state.params.videoName
+        title: navigation.state.params.videoTitle
     });
+
+    titleToUppercase(string) {
+        return string.replace(/\w\S*/g, text => {
+            return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
+        });
+    }
 
     render() {
         const { params } = this.props.navigation.state;
@@ -39,14 +42,18 @@ export default class VideoScreen extends React.Component {
 
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            {params.videoName}
+                            {this.titleToUppercase(params.videoName)}
                         </Text>
                         <Text>{params.videoDescription}</Text>
                     </DefaultCard>
 
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>Status</Text>
-                        <Text>{params.videoStatus}</Text>
+                        {params.isRecorded ? (
+                            <Text>Videon är inspelad.</Text>
+                        ) : (
+                            <Text>Videon är inte inspelad.</Text>
+                        )}
                     </DefaultCard>
                     {/* if videoStatus is not avalable will not show order button */}
                     {params.videoStatus !== 'not avalable' ? (

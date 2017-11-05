@@ -1,10 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 import Signout from '../auth/Signout';
 
 class MyProfileCard extends React.Component {
@@ -26,19 +27,46 @@ class MyProfileCard extends React.Component {
             <View>
                 {this.props.data && this.props.authenticated ? (
                     <View style={[MainStyles.MAIN_CARD]}>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            {this.props.data.name}
-                        </Text>
-                        <Text>{this.props.data.email}</Text>
-                        <Text>Fakturering</Text>
-                        <Text>Namn: {this.props.data.name}</Text>
                         <View>
-                            {this.props.children}
-                            <TouchableOpacity>
-                                <Text>Ändra mitt lösenord</Text>
-                            </TouchableOpacity>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                {this.props.data.name}
+                            </Text>
+                            <Text style={{ fontSize: 16 }}>
+                                {this.props.data.email}
+                            </Text>
                         </View>
-                        <Signout />
+                        <View style={styles.USER_DATA}>
+                            <Text
+                                style={[
+                                    styles.TEXT_STYLE,
+                                    { fontWeight: 'bold' }
+                                ]}
+                            >
+                                Fakturering
+                            </Text>
+                            <Text style={styles.TEXT_STYLE}>
+                                Namn: {this.props.data.name}
+                            </Text>
+                        </View>
+                        <View style={styles.FOOTER}>
+                            <View>
+                                <Signout />
+                            </View>
+                            <View>
+                                <View>{this.props.children}</View>
+                                <View>
+                                    <TouchableOpacity>
+                                        <Text
+                                            style={{
+                                                marginTop: StyleRules.MARGIN / 2
+                                            }}
+                                        >
+                                            Ändra mitt lösenord
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
                     </View>
                 ) : null}
             </View>
@@ -54,3 +82,19 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, actions)(MyProfileCard);
+
+const styles = StyleSheet.create({
+    USER_DATA: {
+        marginVertical: StyleRules.MARGIN
+    },
+
+    TEXT_STYLE: {
+        marginTop: StyleRules.MARGIN / 2,
+        fontSize: 16
+    },
+    FOOTER: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: StyleRules.MARGIN
+    }
+});

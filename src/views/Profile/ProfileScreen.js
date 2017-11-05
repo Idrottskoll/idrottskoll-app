@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 import MyProfileCard from '../../components/Cards/MyProfileCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
+import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 
+import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import Signin from '../../components/auth/Signin';
 import Signout from '../../components/auth/Signout';
 import Signup from '../../components/auth/Signup';
@@ -32,8 +35,26 @@ class ProfileScreen extends React.Component {
                             <Text>Ändra mina uppgifter</Text>
                         </TouchableOpacity>
                     </MyProfileCard>
+
                     <Signin />
+
                     <Signup />
+
+                    {this.props.authenticated ? (
+                        <OrderNewVideoCard title="Intresserad av en ny video?">
+                            <TouchableOpacity
+                                style={[
+                                    MainStyles.MAIN_BUTTON,
+                                    { marginLeft: StyleRules.MARGIN }
+                                ]}
+                                onPress={() => navigate('OrderNewScreen')}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    Beställ
+                                </Text>
+                            </TouchableOpacity>
+                        </OrderNewVideoCard>
+                    ) : null}
                 </ScrollViewContainer>
             </ViewContainer>
         );

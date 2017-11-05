@@ -102,6 +102,9 @@ const ProfileScreenStack = StackNavigator(
         },
         UserSettings: {
             screen: UserSettings
+        },
+        OrderNewScreen: {
+            screen: OrderNewScreen
         }
     },
     {

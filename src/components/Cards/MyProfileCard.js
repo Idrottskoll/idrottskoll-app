@@ -28,7 +28,7 @@ class MyProfileCard extends React.Component {
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel'
                     },
-                    { text: 'Ja', onPress: () => console.log('OK Pressed') }
+                    { text: 'Ja', onPress: () => Alert.alert('Ett mail har skickats till', userEmail) }
                 ],
                 { cancelable: false }
             );

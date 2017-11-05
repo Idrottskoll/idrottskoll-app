@@ -12,6 +12,7 @@ import OrderNewScreen from '../Order/OrderNewScreen';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 
+// TODO: Write logic to change images depending on what sport it is
 export default class VideoScreen extends React.Component {
     constructor(props) {
         super(props);
@@ -21,6 +22,10 @@ export default class VideoScreen extends React.Component {
         title: navigation.state.params.videoTitle
     });
 
+    /**
+    * @param string string
+    * @return string text
+    */
     titleToUppercase(string) {
         return string.replace(/\w\S*/g, text => {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
@@ -55,24 +60,20 @@ export default class VideoScreen extends React.Component {
                             <Text>Videon är inte inspelad.</Text>
                         )}
                     </DefaultCard>
-                    {/* if videoStatus is not avalable will not show order button */}
-                    {params.videoStatus !== 'not avalable' ? (
-                        <OrderNewVideoCard title="Intresserad av en ny video?">
-                            <TouchableOpacity
-                                style={[
-                                    MainStyles.MAIN_BUTTON,
-                                    { marginLeft: StyleRules.MARGIN }
-                                ]}
-                                onPress={() => navigate('OrderNewScreen')}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    Beställ
-                                </Text>
-                            </TouchableOpacity>
-                        </OrderNewVideoCard>
-                    ) : (
-                        <View />
-                    )}
+
+                    <OrderNewVideoCard title="Intresserad av en ny video?">
+                        <TouchableOpacity
+                            style={[
+                                MainStyles.MAIN_BUTTON,
+                                { marginLeft: StyleRules.MARGIN }
+                            ]}
+                            onPress={() => navigate('OrderNewScreen')}
+                        >
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                Beställ
+                            </Text>
+                        </TouchableOpacity>
+                    </OrderNewVideoCard>
                 </ScrollViewContainer>
             </ViewContainer>
         );

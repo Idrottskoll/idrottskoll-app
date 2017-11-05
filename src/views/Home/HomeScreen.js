@@ -25,6 +25,16 @@ class HomeScreen extends React.Component {
         super(props);
     }
 
+    /**
+    * @param string string
+    * @return string text
+    */
+    titleToUppercase(string) {
+        return string.replace(/\w\S*/g, text => {
+            return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
+        });
+    }
+
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
         const live = true;
@@ -128,7 +138,9 @@ class HomeScreen extends React.Component {
 
                                 <View style={[MainStyles.MAIN_CARD]}>
                                     <Text style={MainStyles.MAIN_CARD_TITLE}>
-                                        {`${video.sport}, ${video.club} bana ${video.court}.`}
+                                        {this.titleToUppercase(
+                                            `${video.sport}, ${video.club} bana ${video.court}.`
+                                        )}
                                     </Text>
                                     <Text>
                                         {`Inspelat: ${video.startTime}.`}

@@ -84,7 +84,7 @@ export default (Style = {
         height: 40,
         lineHeight: 23,
         marginTop: 3,
-        paddingHorizontal: StyleRules.MARGIN,
+        paddingHorizontal: StyleRules.MARGIN / 2,
         borderColor: StyleRules.TEXT_COLOR
     },
 

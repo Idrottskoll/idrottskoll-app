@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
@@ -11,6 +11,30 @@ import Signout from '../auth/Signout';
 class MyProfileCard extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    /**
+    * @param string userEmail
+    * @return null
+    */
+    userRequestedNewPassword(userEmail) {
+        if (userEmail) {
+            Alert.alert(
+                'Ändra lösenord',
+                `Är du säker på att du vill ändra lösenord för ${userEmail}?`,
+                [
+                    {
+                        text: 'Avsluta',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel'
+                    },
+                    { text: 'Ja', onPress: () => console.log('OK Pressed') }
+                ],
+                { cancelable: false }
+            );
+            return;
+        }
+        return;
     }
 
     /**
@@ -55,7 +79,12 @@ class MyProfileCard extends React.Component {
                             <View>
                                 <View>{this.props.children}</View>
                                 <View>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() =>
+                                            this.userRequestedNewPassword(
+                                                this.props.data.email
+                                            )}
+                                    >
                                         <Text
                                             style={{
                                                 marginTop: StyleRules.MARGIN / 2

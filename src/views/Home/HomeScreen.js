@@ -69,7 +69,9 @@ class HomeScreen extends React.Component {
                                             StyleRules.BLUE_GRADIENT_COLOR
                                         }
                                         activeOpacity={0.8}
-                                        style={styles.OPEN_VIDEO_BUTTON}
+                                        style={
+                                            styles.LOCKED_VIDEO_BUTTON_CONTAINER
+                                        }
                                         onPress={() =>
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
@@ -80,7 +82,9 @@ class HomeScreen extends React.Component {
                                                 vidioUrl: video.name
                                             })}
                                     >
-                                        <Text style={styles.BUTTON_TITLE}>
+                                        <Text
+                                            style={styles.LOCKED_VIDEO_BUTTON}
+                                        >
                                             Lås upp video
                                         </Text>
                                     </TouchableHighlight>
@@ -123,7 +127,9 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    OPEN_VIDEO_BUTTON: {
+    VIDEO_BUTTON_CONTAINER: {},
+    VIDEO_BUTTON: {},
+    LOCKED_VIDEO_BUTTON_CONTAINER: {
         position: 'absolute',
         width: 175,
         height: 45,
@@ -135,10 +141,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         opacity: 0.95
     },
-    BUTTON_TITLE: {
+    LOCKED_VIDEO_BUTTON: {
         color: StyleRules.TEXT_COLOR,
         fontSize: 18
-    }
+    },
+    UN_LOCKED_VIDEO_BUTTON_CONTAINER: {},
+    UN_LOCKED_VIDEO_BUTTON: {}
 });
 
 function mapStateToProps(state) {

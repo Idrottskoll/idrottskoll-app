@@ -2,7 +2,6 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Image, StyleSheet, Platform } from 'react-native';
 import Dimensions from 'Dimensions';
-
 import StyleRules from '../../assets/styles/StyleRules';
 
 import HomeScreen from '../../views/Home/HomeScreen';
@@ -10,11 +9,8 @@ import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
+import UserSettings from '../../views/Profile/UserSettings';
 import OrderNewScreen from '../../views/Order/OrderNewScreen';
-
-// Auth's
-import Signin from '../auth/Signin';
-import Signup from '../auth/Signup';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -96,6 +92,41 @@ const MyVideosScreenStack = StackNavigator(
     }
 );
 
+const ProfileScreenStack = StackNavigator(
+    {
+        ProfileScreen: {
+            screen: ProfileScreen,
+            navigationOptions: {
+                title: 'Idrottskoll'
+            }
+        },
+        UserSettings: {
+            screen: UserSettings
+        }
+    },
+    {
+        navigationOptions: {
+            // header: false,
+            headerStyle: {
+                shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+                shadowOpacity: 0.3,
+                shadowOffset: {
+                    height: 0.5,
+                    width: 0.5
+                },
+                backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+                // if platform is iOS and device height is iPhone X
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+            },
+            headerTitleStyle: {
+                // add title styles
+                fontSize: 14,
+                fontWeight: '400'
+            }
+        }
+    }
+);
+
 const Tabs = TabNavigator(
     {
         HomeScreen: {
@@ -135,7 +166,7 @@ const Tabs = TabNavigator(
             }
         },
         ProfileScreen: {
-            screen: ProfileScreen,
+            screen: ProfileScreenStack,
             navigationOptions: {
                 tabBarLabel: 'Profile',
                 tabBarIcon: ({ focused }) => {

@@ -33,9 +33,7 @@ class MyProfileCard extends React.Component {
                         <Text>Fakturering</Text>
                         <Text>Namn: {this.props.data.name}</Text>
                         <View>
-                            <TouchableOpacity>
-                                <Text>Ändra mina uppgifter</Text>
-                            </TouchableOpacity>
+                            {this.props.children}
                             <TouchableOpacity>
                                 <Text>Ändra mitt lösenord</Text>
                             </TouchableOpacity>

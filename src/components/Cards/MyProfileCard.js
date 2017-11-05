@@ -17,13 +17,13 @@ class MyProfileCard extends React.Component {
     */
     componentWillMount() {
         if (this.props.authenticated) {
-            this.props.fetchAuthUserContent('user');
+            this.props.fetchAuthUserData('user');
         }
     }
 
     renderVideos = () => {
-        if (this.props.content) {
-            const videos = this.props.content.video;
+        if (this.props.data) {
+            const videos = this.props.data.video;
             console.log(videos);
             videos.forEach(element => {
                 console.log(element);
@@ -32,19 +32,19 @@ class MyProfileCard extends React.Component {
     };
 
     render() {
-        if (this.props.content) {
-            console.log(this.props.content);
+        if (this.props.data) {
+            console.log(this.props.data);
         }
         return (
             <View>
-                {this.props.content && this.props.authenticated ? (
+                {this.props.data && this.props.authenticated ? (
                     <View style={[MainStyles.MAIN_CARD]}>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            {this.props.content.name}
+                            {this.props.data.name}
                         </Text>
-                        <Text>{this.props.content.email}</Text>
+                        <Text>{this.props.data.email}</Text>
                         <Text>Fakturering</Text>
-                        <Text>Namn: {this.props.content.name}</Text>
+                        <Text>Namn: {this.props.data.name}</Text>
                         <View>
                             <TouchableOpacity>
                                 <Text>Ändra mina uppgifter</Text>
@@ -64,7 +64,7 @@ class MyProfileCard extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        content: state.auth.content,
+        data: state.auth.data,
         authenticated: state.auth.authenticated
     };
 }

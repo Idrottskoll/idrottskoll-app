@@ -39,7 +39,7 @@ class OrderNewScreen extends React.Component {
         // call action creater
         // this.props.signupUser(formProps).then(response => {
         //     if (response.data.token) {
-        //         this.props.fetchAuthUserContent('user');
+        //         this.props.fetchAuthUserData('user');
         //         // Truncate the fields
         //         this.props.fields.selectPlace.value = null;
         //         this.props.fields.selectDate.value = null;

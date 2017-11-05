@@ -2,7 +2,7 @@ import {
     AUTH_USER,
     UNAUTH_USER,
     AUTH_ERROR,
-    FETCH_USER_CONTENT
+    FETCH_USER_DATA
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -13,8 +13,8 @@ export default function(state = {}, action) {
             return { ...state, authenticated: false };
         case AUTH_ERROR:
             return { ...state, error: action.payload };
-        case FETCH_USER_CONTENT:
-            return { ...state, content: action.payload };
+        case FETCH_USER_DATA:
+            return { ...state, data: action.payload };
     }
     return state;
 }

@@ -4,12 +4,7 @@ import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 
-import {
-    AUTH_USER,
-    AUTH_ERROR,
-    UNAUTH_USER,
-    FETCH_USER_CONTENT
-} from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_USER_DATA } from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
@@ -94,7 +89,7 @@ export function signoutUser() {
 * @param string data (request url endpoint)
 * @return json data (the auth user data)
 */
-export function fetchAuthUserContent(data) {
+export function fetchAuthUserData(data) {
     return async function(dispatch) {
         axios
             .get(`${ROOT_URL}/${data}`, {
@@ -102,7 +97,7 @@ export function fetchAuthUserContent(data) {
             })
             .then(response => {
                 dispatch({
-                    type: FETCH_USER_CONTENT,
+                    type: FETCH_USER_DATA,
                     // .name will get userName
                     payload: response.data
                 });

@@ -18,10 +18,45 @@ class MyVideosScreen extends React.Component {
         super(props);
     }
 
+    /**
+    * Method dose logic for sorting i a user has videos to display
+    */
     renderComponents = () => {
-        let { navigate } = this.props.navigation;
+        const { navigate } = this.props.navigation;
         if (this.props.authenticated) {
-            return <View />;
+            return (
+                <View>
+                    {this.props.data && this.props.data.video.length !== 0 ? (
+                        this.props.data.video.map(video => (
+                            <TouchableOpacity
+                                key={video._id}
+                                onPress={() =>
+                                    navigate('VideoScreen', {
+                                        videoTitle: video.sport,
+                                        videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
+                                        videoDescription: `Inspelat: ${video.startTime}.`,
+                                        isRecorded: video.isRecorded,
+                                        uploaded: video.uploaded,
+                                        vidioUrl: video.name
+                                    })}
+                            >
+                                <VideoSmallButton title={video.sport} />
+                            </TouchableOpacity>
+                        ))
+                    ) : (
+                        <DefaultCard>
+                            <TouchableOpacity
+                                onPress={() => navigate('OrderNewScreen')}
+                            >
+                                <Text>
+                                    Du har inga videos än men du kan beställa en
+                                    här!
+                                </Text>
+                            </TouchableOpacity>
+                        </DefaultCard>
+                    )}
+                </View>
+            );
         } else {
             return (
                 <NotAuthCard blockedContent="se dina videos.">
@@ -37,8 +72,7 @@ class MyVideosScreen extends React.Component {
     };
 
     render() {
-        let { navigate } = this.props.navigation;
-        console.log(this.props.data);
+        const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -53,26 +87,7 @@ class MyVideosScreen extends React.Component {
                         </Text>
                     </DefaultCard>
 
-                    {/* {this.renderComponents()} */}
-
-                    {this.props.data && this.props.authenticated
-                        ? this.props.data.video.map(video => (
-                              <TouchableOpacity
-                                  key={video._id}
-                                  onPress={() =>
-                                      navigate('VideoScreen', {
-                                          videoTitle: video.sport,
-                                          videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                          videoDescription: `Inspelat: ${video.startTime}.`,
-                                          isRecorded: video.isRecorded,
-                                          uploaded: video.uploaded,
-                                          vidioUrl: video.name
-                                      })}
-                              >
-                                  <VideoSmallButton title={video.sport} />
-                              </TouchableOpacity>
-                          ))
-                        : null}
+                    {this.renderComponents()}
 
                     <OrderNewVideoCard title="Intresserad av en ny video?">
                         <TouchableOpacity

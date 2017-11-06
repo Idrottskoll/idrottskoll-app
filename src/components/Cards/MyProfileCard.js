@@ -3,6 +3,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
@@ -14,27 +15,33 @@ class MyProfileCard extends React.Component {
     }
 
     /**
-    * @param string userEmail
+    * @param string email
     * @return null
     */
-    userRequestedNewPassword(userEmail) {
-        if (userEmail) {
+    userRequestedNewPassword = ({ email }) => {
+        if (email) {
             Alert.alert(
                 'Är du säker på att du vill ändra lösenord för:',
-                `${userEmail}?`,
+                `${email}?`,
                 [
                     {
                         text: 'Avsluta',
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel'
                     },
-                    { text: 'Ja', onPress: () => Alert.alert('Ett mail har skickats till:', userEmail) }
+                    {
+                        text: 'Ja', onPress: () => this.props.changeUserPassword({ email })
+                        .then(response => {
+                            if (response) {
+                                console.log(response);
+                                // Alert.alert('Ett mail har skickats till:', email)
+                            }
+                        })
+                    }
                 ],
                 { cancelable: false }
             );
-            return;
         }
-        return;
     }
 
     /**
@@ -47,6 +54,7 @@ class MyProfileCard extends React.Component {
     }
 
     render() {
+        const { handleSubmit, fields: { email } } = this.props;
         return (
             <View>
                 {this.props.data && this.props.authenticated ? (
@@ -80,10 +88,9 @@ class MyProfileCard extends React.Component {
                                 <View>{this.props.children}</View>
                                 <View>
                                     <TouchableOpacity
-                                        onPress={() =>
-                                            this.userRequestedNewPassword(
-                                                this.props.data.email
-                                            )}
+                                        onPress={handleSubmit(
+                                            this.userRequestedNewPassword(this.props.data.email)
+                                        )}
                                     >
                                         <Text
                                             style={{
@@ -103,15 +110,6 @@ class MyProfileCard extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        data: state.auth.data,
-        authenticated: state.auth.authenticated
-    };
-}
-
-export default connect(mapStateToProps, actions)(MyProfileCard);
-
 const styles = StyleSheet.create({
     USER_DATA: {
         marginVertical: StyleRules.MARGIN
@@ -127,3 +125,21 @@ const styles = StyleSheet.create({
         marginTop: StyleRules.MARGIN
     }
 });
+
+function mapStateToProps(state) {
+    return {
+        data: state.auth.data,
+        authenticated: state.auth.authenticated
+    };
+}
+
+// export default connect(mapStateToProps, actions)(MyProfileCard);
+
+export default reduxForm(
+    {
+        form: 'requestedNewPassword',
+        fields: ['email']
+    },
+    mapStateToProps,
+    actions
+)(MyProfileCard);

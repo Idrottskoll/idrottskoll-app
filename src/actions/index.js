@@ -1,10 +1,15 @@
 'use strict';
 
 import { AsyncStorage } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_USER_DATA } from './types';
+import {
+    AUTH_USER,
+    AUTH_ERROR,
+    UNAUTH_USER,
+    FETCH_USER_DATA,
+    USER_REQUESTED_NEW_PASSWPRD
+} from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
@@ -101,6 +106,23 @@ export function fetchAuthUserData(data) {
                     // .name will get userName
                     payload: response.data
                 });
+            });
+    };
+}
+
+export function changeUserPassword(email) {
+    return function(dispatch) {
+        return axios
+            .post(`${ROOT_URL}/account/forgot`, { email })
+            .then(response => {
+                dispatch({
+                    type: USER_REQUESTED_NEW_PASSWPRD,
+                    payload: response
+                });
+                return response;
+            })
+            .catch(e => {
+                console.log(e);
             });
     };
 }

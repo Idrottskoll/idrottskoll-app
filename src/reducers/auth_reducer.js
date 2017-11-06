@@ -2,7 +2,8 @@ import {
     AUTH_USER,
     UNAUTH_USER,
     AUTH_ERROR,
-    FETCH_USER_DATA
+    FETCH_USER_DATA,
+    USER_REQUESTED_NEW_PASSWPRD
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -14,6 +15,8 @@ export default function(state = {}, action) {
         case AUTH_ERROR:
             return { ...state, error: action.payload };
         case FETCH_USER_DATA:
+            return { ...state, data: action.payload };
+        case USER_REQUESTED_NEW_PASSWPRD:
             return { ...state, data: action.payload };
     }
     return state;

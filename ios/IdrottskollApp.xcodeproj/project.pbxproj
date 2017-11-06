@@ -1197,7 +1197,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.idrottskoll.IdrottskollApp;
 				PRODUCT_NAME = IdrottskollApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1224,7 +1224,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.idrottskoll.IdrottskollApp;
 				PRODUCT_NAME = IdrottskollApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

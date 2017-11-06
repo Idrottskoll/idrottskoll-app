@@ -3,7 +3,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
@@ -18,7 +17,7 @@ class MyProfileCard extends React.Component {
     * @param string email
     * @return null
     */
-    userRequestedNewPassword = ({ email }) => {
+    userRequestedNewPassword = (email) => {
         if (email) {
             Alert.alert(
                 'Är du säker på att du vill ändra lösenord för:',
@@ -30,17 +29,17 @@ class MyProfileCard extends React.Component {
                         style: 'cancel'
                     },
                     {
-                        text: 'Ja', onPress: () => this.props.changeUserPassword({ email })
+                        text: 'Ja', onPress: () => this.props.changeUserPassword(email)
                         .then(response => {
                             if (response) {
-                                console.log(response);
-                                // Alert.alert('Ett mail har skickats till:', email)
+                                Alert.alert(`${response.data.message}:`, email)
                             }
                         })
                     }
                 ],
                 { cancelable: false }
             );
+            return;
         }
     }
 
@@ -54,7 +53,6 @@ class MyProfileCard extends React.Component {
     }
 
     render() {
-        const { handleSubmit, fields: { email } } = this.props;
         return (
             <View>
                 {this.props.data && this.props.authenticated ? (
@@ -88,9 +86,10 @@ class MyProfileCard extends React.Component {
                                 <View>{this.props.children}</View>
                                 <View>
                                     <TouchableOpacity
-                                        onPress={handleSubmit(
-                                            this.userRequestedNewPassword(this.props.data.email)
-                                        )}
+                                        onPress={() =>
+                                            this.userRequestedNewPassword(
+                                                this.props.data.email
+                                            )}
                                     >
                                         <Text
                                             style={{
@@ -133,13 +132,4 @@ function mapStateToProps(state) {
     };
 }
 
-// export default connect(mapStateToProps, actions)(MyProfileCard);
-
-export default reduxForm(
-    {
-        form: 'requestedNewPassword',
-        fields: ['email']
-    },
-    mapStateToProps,
-    actions
-)(MyProfileCard);
+export default connect(mapStateToProps, actions)(MyProfileCard);

@@ -113,12 +113,8 @@ export function fetchAuthUserData(data) {
 export function changeUserPassword(email) {
     return function(dispatch) {
         return axios
-            .post(`${ROOT_URL}/account/forgot`, { email })
+            .post(`${ROOT_URL}/account/forgot`, { email: email })
             .then(response => {
-                dispatch({
-                    type: USER_REQUESTED_NEW_PASSWPRD,
-                    payload: response
-                });
                 return response;
             })
             .catch(e => {

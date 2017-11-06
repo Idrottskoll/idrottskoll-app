@@ -25,7 +25,6 @@ class MyProfileCard extends React.Component {
                 [
                     {
                         text: 'Avsluta',
-                        onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel'
                     },
                     {

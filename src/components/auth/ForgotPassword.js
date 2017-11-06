@@ -6,6 +6,7 @@ import DefaultCard from '../Cards/DefaultCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
+import ProfileScreen from '../../views/Profile/ProfileScreen';
 
 class ForgotPasswor extends React.Component {
     /**
@@ -15,11 +16,21 @@ class ForgotPasswor extends React.Component {
     handleFormSubmit({ email }) {
         this.props.changeUserPassword(email).then(response => {
             if (response) {
+                this.props.values.email = null;
                 Alert.alert(`${response.data.message}:`, email);
-                this.props.fields.email.value = null;
+
+                // TODO: Navigat user back to profile screen
+                //this.navigatBack(true);
+                // this.props.navigation.goBack('ProfileScreen');
             }
         });
     }
+
+    // navigatBack(changeUserPassword) {
+    //     if (changeUserPassword === true) {
+    //         this.props.navigation.goBack(null);
+    //     }
+    // }
 
     render() {
         const { handleSubmit, fields: { email } } = this.props;

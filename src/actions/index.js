@@ -13,14 +13,12 @@ import {
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
-* @param string email, string password
-* @return function
+* @param obj email: email
+* @param ovj password: password
+*
+* @return obj response
 */
 export function signinUser({ email, password }) {
-    /**
-    * @param dispatch
-    * @return bool AUTH_USER
-    */
     return function(dispatch) {
         return axios
             .post(`${ROOT_URL}/login`, { email, password })
@@ -39,14 +37,14 @@ export function signinUser({ email, password }) {
 }
 
 /**
-* @param string name, string email, string password
-* @return function
+* @param obj name: name
+* @param obj email: email
+* @param obj password: password
+* @param obj passwordConfirmation: passwordConfirmation
+*
+* @return obj response
 */
 export function signupUser({ email, name, password, passwordConfirmation }) {
-    /**
-    * @param dispatch
-    * @return bool AUTH_USER
-    */
     return function(dispatch) {
         return axios
             .post(`${ROOT_URL}/register`, {
@@ -76,6 +74,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
 
 /**
 * @param request, error
+*
 * @return OBJ, error
 */
 export function authError(error) {
@@ -92,7 +91,8 @@ export function signoutUser() {
 
 /**
 * @param string data (request url endpoint)
-* @return json data (the auth user data)
+*
+* @return obj response
 */
 export function fetchAuthUserData(data) {
     return async function(dispatch) {
@@ -110,6 +110,11 @@ export function fetchAuthUserData(data) {
     };
 }
 
+/**
+* @param string email
+*
+* @return obj response
+*/
 export function changeUserPassword(email) {
     return function(dispatch) {
         return axios
@@ -120,5 +125,33 @@ export function changeUserPassword(email) {
             .catch(e => {
                 console.log(e);
             });
+    };
+}
+
+/**
+* @return obj response
+*/
+export function getActiveClubs() {
+    return function(dispatch) {
+        return axios
+            .get(`${ROOT_URL}/club/active`)
+            .then(response => {
+                return response;
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+}
+
+/**
+* @param obj club: club
+* @param obj dateTime: dateTime
+*
+* @return obj response
+*/
+export function orderNewVideo(club, dateTime) {
+    return function(dispatch) {
+        return axios.post();
     };
 }

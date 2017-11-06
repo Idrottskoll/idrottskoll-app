@@ -29,7 +29,7 @@ class MyVideosScreen extends React.Component {
                     {this.props.data && this.props.data.video.length !== 0 ? (
                         this.props.data.video.map(video => (
                             <TouchableOpacity
-                                key={video._id}
+                                key={video.name}
                                 onPress={() =>
                                     navigate('VideoScreen', {
                                         videoTitle: video.sport,

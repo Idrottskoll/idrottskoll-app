@@ -97,7 +97,7 @@ class HomeScreen extends React.Component {
                                     > */}
                                     {/* Button for UN LOCKED videos */}
                                     <TouchableHighlight
-                                        key={video._id}
+                                        key={video.name}
                                         underlayColor={
                                             StyleRules.BLUE_GRADIENT_COLOR
                                         }

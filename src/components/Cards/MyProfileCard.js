@@ -20,15 +20,15 @@ class MyProfileCard extends React.Component {
     userRequestedNewPassword(userEmail) {
         if (userEmail) {
             Alert.alert(
-                'Ändra lösenord',
-                `Är du säker på att du vill ändra lösenord för ${userEmail}?`,
+                'Är du säker på att du vill ändra lösenord för:',
+                `${userEmail}?`,
                 [
                     {
                         text: 'Avsluta',
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel'
                     },
-                    { text: 'Ja', onPress: () => Alert.alert('Ett mail har skickats till', userEmail) }
+                    { text: 'Ja', onPress: () => Alert.alert('Ett mail har skickats till:', userEmail) }
                 ],
                 { cancelable: false }
             );

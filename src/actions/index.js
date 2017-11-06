@@ -8,7 +8,8 @@ import {
     AUTH_ERROR,
     UNAUTH_USER,
     FETCH_USER_DATA,
-    USER_REQUESTED_NEW_PASSWPRD
+    USER_REQUESTED_NEW_PASSWPRD,
+    ACTIVE_CLUBS
 } from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
@@ -129,14 +130,15 @@ export function changeUserPassword(email) {
 }
 
 /**
-* @return obj response
+* @return arr response.data
 */
 export function getActiveClubs() {
     return function(dispatch) {
         return axios
             .get(`${ROOT_URL}/club/active`)
             .then(response => {
-                return response;
+                dispatch({ type: ACTIVE_CLUBS, payload: response.data });
+                return response.data;
             })
             .catch(e => {
                 console.log(e);
@@ -157,6 +159,7 @@ export function orderNewVideo(club, dateTime) {
                 headers: { club, dateTime }
             })
             .then(response => {
+                console.log(response);
                 return response;
             })
             .catch(e => {

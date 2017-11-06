@@ -6,7 +6,8 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    Picker
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
@@ -36,16 +37,29 @@ class OrderNewScreen extends React.Component {
             return;
         }
         alert('push button');
-        // call action creater
-        // this.props.signupUser(formProps).then(response => {
-        //     if (response.data.token) {
-        //         this.props.fetchAuthUserData('user');
-        //         // Truncate the fields
-        //         this.props.fields.selectPlace.value = null;
-        //         this.props.fields.selectDate.value = null;
-        //         this.props.fields.selectTime.value = null;
-        //     }
-        // });
+    }
+
+    componentWillMount() {
+        this.props.getActiveClubs().then(response => {
+            console.log(this.props.activeClubs);
+        });
+    }
+
+    renderSelectBox() {
+        return (
+            <Picker
+                selectedValue={this.props.activeClubs.name}
+                onValueChange={club => this.setState({ club })}
+            >
+                {this.props.activeClubs.map(club => (
+                    <Picker.Item
+                        key={club._id}
+                        label={club.name}
+                        value={club.name}
+                    />
+                ))}
+            </Picker>
+        );
     }
 
     renderAlert() {
@@ -85,12 +99,15 @@ class OrderNewScreen extends React.Component {
                             <Text style={MainStyles.INPUT_LABEL}>
                                 Välj plats:
                             </Text>
-                            <TextInput
+                            {this.props.activeClubs
+                                ? this.renderSelectBox()
+                                : null}
+                            {/* <TextInput
                                 {...selectPlace}
                                 style={[MainStyles.FORM_INPUT]}
                                 name={'selectPlace'}
                                 value={null}
-                            />
+                            /> */}
                             {selectPlace.touched &&
                                 selectPlace.error && (
                                     <Text style={MainStyles.ERROR_TEXT}>
@@ -202,7 +219,8 @@ function validate(formProps) {
 function mapStateToProps(state) {
     return {
         errorMessage: state.auth.error,
-        authenticated: state.auth.authenticated
+        authenticated: state.auth.authenticated,
+        activeClubs: state.auth.activeClubs
     };
 }
 

@@ -3,7 +3,8 @@ import {
     UNAUTH_USER,
     AUTH_ERROR,
     FETCH_USER_DATA,
-    USER_REQUESTED_NEW_PASSWPRD
+    USER_REQUESTED_NEW_PASSWPRD,
+    ACTIVE_CLUBS
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -18,6 +19,8 @@ export default function(state = {}, action) {
             return { ...state, data: action.payload };
         case USER_REQUESTED_NEW_PASSWPRD:
             return { ...state, data: action.payload };
+        case ACTIVE_CLUBS:
+            return { ...state, activeClubs: action.payload };
     }
     return state;
 }

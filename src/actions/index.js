@@ -152,6 +152,17 @@ export function getActiveClubs() {
 */
 export function orderNewVideo(club, dateTime) {
     return function(dispatch) {
-        return axios.post();
+        return axios
+            .post(`${ROOT_URL}/video/recorded`, {
+                headers: { club, dateTime }
+            })
+            .then(response => {
+                return response;
+            })
+            .catch(e => {
+                console.log(e);
+            });
     };
 }
+
+// TODO: dispatch => response so we can use it with are state

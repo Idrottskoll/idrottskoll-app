@@ -19,9 +19,13 @@ import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 
+// TODO: if state false/true hide show the picker?
+// TODO: add button to toggle state?
+
 class OrderNewScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { club: 'Välj plats:' };
     }
 
     /**
@@ -48,7 +52,7 @@ class OrderNewScreen extends React.Component {
     renderSelectBox() {
         return (
             <Picker
-                selectedValue={this.props.activeClubs.name}
+                selectedValue={this.state.club}
                 onValueChange={club => this.setState({ club })}
             >
                 {this.props.activeClubs.map(club => (
@@ -80,6 +84,7 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
+        console.log(this.state.selectorVisible);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -96,18 +101,18 @@ class OrderNewScreen extends React.Component {
 
                     <DefaultCard>
                         <View style={MainStyles.FORM_GROUP}>
-                            <Text style={MainStyles.INPUT_LABEL}>
-                                Välj plats:
-                            </Text>
-                            {this.props.activeClubs
-                                ? this.renderSelectBox()
-                                : null}
-                            {/* <TextInput
+                            {/* <Text style={MainStyles.INPUT_LABEL}>
+
+                            </Text> */}
+                            <TextInput
                                 {...selectPlace}
                                 style={[MainStyles.FORM_INPUT]}
                                 name={'selectPlace'}
-                                value={null}
-                            /> */}
+                                value={this.state.club}
+                            />
+                            {this.props.activeClubs
+                                ? this.renderSelectBox()
+                                : null}
                             {selectPlace.touched &&
                                 selectPlace.error && (
                                     <Text style={MainStyles.ERROR_TEXT}>

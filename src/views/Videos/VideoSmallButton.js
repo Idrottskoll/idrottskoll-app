@@ -10,6 +10,7 @@ export default class VideoSmallButton extends React.Component {
     constructor(props) {
         super(props);
     }
+    
     render() {
         return (
             <View style={[styles.BUTTON_CONTAINER]}>

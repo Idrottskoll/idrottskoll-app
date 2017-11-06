@@ -35,6 +35,16 @@ class HomeScreen extends React.Component {
         });
     }
 
+    /**
+    * @param string time (dirty time string)
+    * @return string cleanTimeString
+    */
+    convertTime(time) {
+        const dirtyTimeString = time.replace(/[^0-9-:]+/g, ' ');
+        const cleanTimeString = dirtyTimeString.slice(0, 16);
+        return cleanTimeString;
+    }
+
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
         const live = true;
@@ -89,7 +99,7 @@ class HomeScreen extends React.Component {
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
                                                 videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                                videoDescription: `Inspelat: ${video.startTime}.`,
+                                                videoDescription: `Inspelat:  ${this.convertTime(video.startTime)}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
                                                 vidioUrl: video.name
@@ -110,7 +120,7 @@ class HomeScreen extends React.Component {
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
                                                 videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                                videoDescription: `Inspelat: ${video.startTime}.`,
+                                                videoDescription: `Inspelat: ${this.convertTime(video.startTime)}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
                                                 vidioUrl: video.name
@@ -143,7 +153,7 @@ class HomeScreen extends React.Component {
                                         )}
                                     </Text>
                                     <Text>
-                                        {`Inspelat: ${video.startTime}.`}
+                                        {`Inspelat: ${this.convertTime(video.startTime)}.`}
                                     </Text>
                                 </View>
                             </View>

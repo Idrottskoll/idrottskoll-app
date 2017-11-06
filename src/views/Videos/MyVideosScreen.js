@@ -19,6 +19,16 @@ class MyVideosScreen extends React.Component {
     }
 
     /**
+    * @param string time (dirty time string)
+    * @return string cleanTimeString
+    */
+    convertTime(time) {
+        const dirtyTimeString = time.replace(/[^0-9-:]+/g, ' ');
+        const cleanTimeString = dirtyTimeString.slice(0, 16);
+        return cleanTimeString;
+    }
+
+    /**
     * Method dose logic for sorting i a user has videos to display
     */
     renderComponents = () => {
@@ -34,7 +44,7 @@ class MyVideosScreen extends React.Component {
                                     navigate('VideoScreen', {
                                         videoTitle: video.sport,
                                         videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                        videoDescription: `Inspelat: ${video.startTime}.`,
+                                        videoDescription: `Inspelat: ${this.convertTime(video.startTime)}.`,
                                         isRecorded: video.isRecorded,
                                         uploaded: video.uploaded,
                                         vidioUrl: video.name

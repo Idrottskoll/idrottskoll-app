@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ForgotPassword from '../../components/auth/ForgotPassword';
 
 class UserSettings extends React.Component {
     constructor(props) {
@@ -20,7 +21,11 @@ class UserSettings extends React.Component {
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    <Text>Settings</Text>
+                    {this.props.authenticated ? (
+                        <Text>Settings</Text>
+                    ) : (
+                        <ForgotPassword />
+                    )}
                 </ScrollViewContainer>
             </ViewContainer>
         );

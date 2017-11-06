@@ -3,6 +3,8 @@
 * [iOS App store](https://github.com/Idrottskoll)
 * [Google play store](https://github.com/Idrottskoll)
 
+[Add a font](https://medium.com/react-native-training/react-native-custom-fonts-ccc9aacf9e5e)
+
 ## Installing
 1.
 ```BASH
@@ -12,7 +14,7 @@ npm install
 ```
 2. Copy the file `config_example.js` and rename it to `config.js` file path: `/src/actions/config_example.js`
 3. Add your credentials in `config.js`
-4. Run `npm run start`
+4. Run `react-native link && npm run start`
 5. Double click on the file `idrottskollApp.xcodeproj` located in `/ios` (this will invoke [xcode](https://developer.apple.com/xcode/) so you can compile the application)
 
 ## Dependencies

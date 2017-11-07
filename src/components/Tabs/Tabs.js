@@ -11,6 +11,7 @@ import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
 import UserSettings from '../../views/Profile/UserSettings';
 import OrderNewScreen from '../../views/Order/OrderNewScreen';
+import VideoPlayer from '../../views/VideoPlayer/VideoPlayer';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -28,6 +29,9 @@ const HomeScreenStack = StackNavigator(
         },
         OrderNewScreen: {
             screen: OrderNewScreen
+        },
+        VideoPlayer: {
+            screen: VideoPlayer
         }
     },
     {
@@ -67,6 +71,9 @@ const MyVideosScreenStack = StackNavigator(
         },
         OrderNewScreen: {
             screen: OrderNewScreen
+        },
+        VideoPlayer: {
+            screen: VideoPlayer
         }
     },
     {

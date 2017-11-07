@@ -5,6 +5,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import Video from 'react-native-video';
+import { VIDEO_URL } from '../../actions/config';
 
 // NOTE: using version 1.2.0 works with react native 48
 // NOTE: use as aseperate component in a stacknavigator
@@ -130,7 +131,7 @@ export default class VideoPlayer extends React.Component {
     renderCustomSkin() {
         const flexCompleted = this.getCurrentTimePercentage() * 100;
         const flexRemaining = (1 - this.getCurrentTimePercentage()) * 100;
-
+        const { params } = this.props.navigation.state;
         return (
             <View style={styles.container}>
                 <TouchableOpacity
@@ -140,10 +141,8 @@ export default class VideoPlayer extends React.Component {
                     }}
                 >
                     <Video
-                        // source={{
-                        //     uri: 'broadchurch.mp4'
-                        // }}
-                        source={require('./broadchurch.mp4')}
+                        source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
+                        // source={require('./broadchurch.mp4')}
                         style={styles.fullScreen}
                         rate={this.state.rate}
                         paused={this.state.paused}
@@ -201,11 +200,12 @@ export default class VideoPlayer extends React.Component {
             this.state.skin == 'embed'
                 ? styles.nativeVideoControls
                 : styles.fullScreen;
+        const { params } = this.props.navigation.state;
         return (
             <View style={styles.container}>
                 <View style={styles.fullScreen}>
                     <Video
-                        source={require('./broadchurch.mp4')}
+                        source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
                         style={videoStyle}
                         rate={this.state.rate}
                         paused={this.state.paused}
@@ -241,6 +241,8 @@ export default class VideoPlayer extends React.Component {
     }
 
     render() {
+        const { params } = this.props.navigation.state;
+        console.log(`${VIDEO_URL}/${params.videoUrl}`);
         return this.state.controls
             ? this.renderNativeSkin()
             : this.renderCustomSkin();

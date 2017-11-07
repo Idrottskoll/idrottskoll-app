@@ -47,7 +47,7 @@ class MyVideosScreen extends React.Component {
                                         videoDescription: `Inspelat: ${this.convertTime(video.startTime)}.`,
                                         isRecorded: video.isRecorded,
                                         uploaded: video.uploaded,
-                                        vidioUrl: video.name
+                                        videoUrl: video.name
                                     })}
                             >
                                 <VideoSmallButton title={video.sport} />

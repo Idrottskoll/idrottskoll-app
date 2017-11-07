@@ -60,7 +60,7 @@ class HomeScreen extends React.Component {
                             videoDescription: 'Live',
                             isRecorded: false,
                             uploaded: false,
-                            vidioUrl:
+                            videoUrl:
                                 'idrottskoll_vallhalla_bana7_datum20171031_start2008_slut2008.mp4'
                         })}
                 >
@@ -108,7 +108,7 @@ class HomeScreen extends React.Component {
                                                 videoDescription: `Inspelat:  ${this.convertTime(video.startTime)}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
-                                                vidioUrl: video.name
+                                                videoUrl: video.name
                                             })}
                                     > */}
                                     {/* Button for UN LOCKED videos */}
@@ -131,7 +131,7 @@ class HomeScreen extends React.Component {
                                                 )}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
-                                                vidioUrl: video.name
+                                                videoUrl: video.name
                                             })}
                                     >
                                         {/* Button for LOCKED videos */}

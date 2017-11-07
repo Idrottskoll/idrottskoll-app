@@ -38,6 +38,21 @@ export default class VideoScreen extends React.Component {
         return (
             <ViewContainer videoStatus={params.videoStatus} backdrop={true}>
                 <ScrollViewContainer>
+                    <TouchableOpacity
+                        style={[
+                            MainStyles.MAIN_BUTTON,
+                            { marginLeft: StyleRules.MARGIN }
+                        ]}
+                        onPress={() =>
+                            navigate('VideoPlayer', {
+                                videoUrl: params.videoUrl
+                            })}
+                    >
+                        <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                            fil: {params.videoUrl}
+                        </Text>
+                    </TouchableOpacity>
+
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}

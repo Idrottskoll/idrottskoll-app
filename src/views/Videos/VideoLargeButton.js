@@ -20,7 +20,7 @@ export default class VideoLargeButton extends React.Component {
                             videoDescription: 'I give a damn because a good',
                             videoStatus: 'not avalable',
                             videoType: 'avalable, live, ',
-                            vidioUrl: 'url to video'
+                            videoUrl: 'url to video'
                         })}
                 >
                     <View style={[MainStyles.VIDEO_BUTTON]}>

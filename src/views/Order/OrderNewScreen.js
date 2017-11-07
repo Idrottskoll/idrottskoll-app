@@ -28,10 +28,12 @@ class OrderNewScreen extends React.Component {
         super(props);
         this.state = {
             club: null,
+            court: null,
             showPicker: false,
             showDateTimePicker: false,
             date: null,
-            dateChanged: false
+            dateChanged: false,
+            ShowCourtPicker: false
         };
     }
 
@@ -78,11 +80,12 @@ class OrderNewScreen extends React.Component {
         );
     }
 
-    renderPicker() {
+    renderClubPicker() {
         const {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
+
         return (
             <View>
                 <Text style={MainStyles.INPUT_LABEL}>Välj klubb/plats</Text>
@@ -114,6 +117,49 @@ class OrderNewScreen extends React.Component {
         );
     }
 
+    // The method get stuck om the second map() the values ar not set at this point
+    // and component will not rerender...
+    // async await?
+    // https://gist.github.com/lukehoban/0f366c5fd1af307b87da
+    renderCourtPicker() {
+        const {
+            handleSubmit,
+            fields: { selectPlace, selectDate, selectTime }
+        } = this.props;
+
+        return this.props.activeClubs.map(
+            club =>
+                club.name === this.state.club ? (
+                    <View>
+                        <Text style={MainStyles.INPUT_LABEL}>
+                            Välj Bana för {club.name}
+                        </Text>
+                        {/* <TextInput
+                            {...selectPlace}
+                            style={[MainStyles.FORM_INPUT]}
+                            name={'selectPlace'}
+                            value={this.state.court}
+                        /> */}
+                        {console.log('jeremy ' + club.name)}
+                        <Picker
+                            selectedValue={club.name}
+                            onValueChange={court => this.setState({ court })}
+                        >
+                            {club.court.map(court => {
+                                //   if (court.active) {
+                                console.log('danner ' + court._id);
+                                <Picker.Item
+                                    key={court._id}
+                                    label={court._id}
+                                    value={court._id}
+                                />;
+                            })}
+                        </Picker>
+                    </View>
+                ) : null
+        );
+    }
+
     renderAlert() {
         if (this.props.errorMessage) {
             return (
@@ -132,6 +178,7 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
+
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -176,8 +223,38 @@ class OrderNewScreen extends React.Component {
                                 </Text>
                             </TouchableOpacity>
 
-                            {this.state.showPicker ? this.renderPicker() : null}
+                            {this.state.showPicker
+                                ? this.renderClubPicker()
+                                : null}
                         </View>
+
+                        {this.state.club === null ? null : (
+                            <TouchableOpacity
+                                style={[
+                                    styles.OPEN_BUTTON,
+                                    {
+                                        backgroundColor: this.state
+                                            .ShowCourtPicker
+                                            ? StyleRules.GREEN_COLOR
+                                            : StyleRules.BLUE_COLOR
+                                    }
+                                ]}
+                                onPress={() => {
+                                    this.setState(previousState => {
+                                        return {
+                                            ShowCourtPicker: !previousState.ShowCourtPicker
+                                        };
+                                    });
+                                }}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    Välj bana
+                                </Text>
+                            </TouchableOpacity>
+                        )}
+                        {this.state.ShowCourtPicker
+                            ? this.renderCourtPicker()
+                            : null}
 
                         <View style={MainStyles.FORM_GROUP}>
                             <TouchableOpacity

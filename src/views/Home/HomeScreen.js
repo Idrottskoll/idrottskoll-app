@@ -19,6 +19,7 @@ import MainStyles from '../../assets/styles/MainStyles';
 import LiveNowCard from '../../components/Cards/LiveNowCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import { connect } from 'react-redux';
+import NotAuthCard from '../../components/Cards/NotAuthCard';
 
 // TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
@@ -173,7 +174,16 @@ class HomeScreen extends React.Component {
                 </View>
             );
         } else {
-            return <Text>Du är inte inloggad</Text>;
+            return (
+                <NotAuthCard blockedContent="se dina videos.">
+                    <TouchableOpacity
+                        onPress={() =>
+                            this.props.navigation.navigate('ProfileScreen')}
+                    >
+                        <Text>Logga in här!</Text>
+                    </TouchableOpacity>
+                </NotAuthCard>
+            );
         }
     };
 

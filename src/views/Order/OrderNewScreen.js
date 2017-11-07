@@ -30,8 +30,16 @@ class OrderNewScreen extends React.Component {
             club: null,
             showPicker: false,
             showDateTimePicker: false,
-            date: null
+            date: null,
+            dateChanged: false
         };
+    }
+
+    componentWillMount() {
+        this.props.getActiveClubs().then(response => {
+            console.log(this.props.activeClubs);
+        });
+        this.setState({ date: new Date(Date.now()) });
     }
 
     /**
@@ -49,15 +57,14 @@ class OrderNewScreen extends React.Component {
         alert('push button');
     }
 
-    componentWillMount() {
-        this.props.getActiveClubs().then(response => {
-            console.log(this.props.activeClubs);
-        });
-        this.setState({ date: new Date(Date.now()) });
-    }
-
+    /**
+    * @param string date
+    *
+    * @return obj date
+    * @return bool dateChanged
+    */
     onDateChange = date => {
-        return this.setState({ date: date });
+        return this.setState({ date: date, dateChanged: true });
     };
 
     renderTimePicker() {
@@ -65,15 +72,12 @@ class OrderNewScreen extends React.Component {
             <DatePickerIOS
                 date={this.state.date}
                 mode="datetime"
-                timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
                 onDateChange={this.onDateChange}
+                minuteInterval={5}
             />
         );
     }
 
-    /**
-    * rendr the picker
-    */
     renderPicker() {
         const {
             handleSubmit,
@@ -195,13 +199,11 @@ class OrderNewScreen extends React.Component {
                                 }}
                             >
                                 <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    {this.state.showDateTimePicker
-                                        ? this.state.date === null
-                                          ? 'Välj Tid och datum'
-                                          : `Välj ${this.state.date}`
-                                        : this.state.date === null
-                                          ? 'Välj tid och datum'
-                                          : `Vald tid: ${this.state.date}`}
+                                    {!this.state.showDateTimePicker
+                                        ? this.state.dateChanged
+                                          ? 'Du har valt tid och datum, vill du ändra?'
+                                          : 'Välj tid och datum'
+                                        : 'Välj'}
                                 </Text>
                             </TouchableOpacity>
 

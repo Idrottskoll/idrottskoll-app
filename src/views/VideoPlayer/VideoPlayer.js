@@ -142,7 +142,6 @@ export default class VideoPlayer extends React.Component {
                 >
                     <Video
                         source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
-                        // source={require('./broadchurch.mp4')}
                         style={styles.fullScreen}
                         rate={this.state.rate}
                         paused={this.state.paused}

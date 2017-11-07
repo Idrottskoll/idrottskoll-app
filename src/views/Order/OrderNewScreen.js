@@ -34,7 +34,7 @@ class OrderNewScreen extends React.Component {
     */
     handelOrder(formProps) {
         if (
-            !formProps.selectPlace ||
+            this.state.club !== null ||
             !formProps.selectTime ||
             !formProps.selectDate
         ) {

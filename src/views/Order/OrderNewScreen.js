@@ -7,7 +7,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
-    Picker
+    Picker,
+    DatePickerIOS
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
@@ -25,7 +26,12 @@ import StyleRules from '../../assets/styles/StyleRules';
 class OrderNewScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { club: null, showPicker: false };
+        this.state = {
+            club: null,
+            showPicker: false,
+            showDateTimePicker: false,
+            date: null
+        };
     }
 
     /**
@@ -47,6 +53,22 @@ class OrderNewScreen extends React.Component {
         this.props.getActiveClubs().then(response => {
             console.log(this.props.activeClubs);
         });
+        this.setState({ date: new Date(Date.now()) });
+    }
+
+    onDateChange = date => {
+        return this.setState({ date: date });
+    };
+
+    renderTimePicker() {
+        return (
+            <DatePickerIOS
+                date={this.state.date}
+                mode="datetime"
+                timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+                onDateChange={this.onDateChange}
+            />
+        );
     }
 
     /**
@@ -106,7 +128,6 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
-        console.log('picker ' + this.state.showPicker);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -155,39 +176,38 @@ class OrderNewScreen extends React.Component {
                         </View>
 
                         <View style={MainStyles.FORM_GROUP}>
-                            <Text style={MainStyles.INPUT_LABEL}>
-                                Välj datum:
-                            </Text>
-                            <TextInput
-                                {...selectDate}
-                                style={[MainStyles.FORM_INPUT]}
-                                name={'selectDate'}
-                                value={null}
-                            />
-                            {selectDate.touched &&
-                                selectDate.error && (
-                                    <Text style={MainStyles.ERROR_TEXT}>
-                                        {selectDate.error}
-                                    </Text>
-                                )}
-                        </View>
+                            <TouchableOpacity
+                                style={[
+                                    styles.OPEN_BUTTON,
+                                    {
+                                        backgroundColor: this.state
+                                            .showDateTimePicker
+                                            ? StyleRules.GREEN_COLOR
+                                            : StyleRules.BLUE_COLOR
+                                    }
+                                ]}
+                                onPress={() => {
+                                    this.setState(previousState => {
+                                        return {
+                                            showDateTimePicker: !previousState.showDateTimePicker
+                                        };
+                                    });
+                                }}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    {this.state.showDateTimePicker
+                                        ? this.state.date === null
+                                          ? 'Välj Tid och datum'
+                                          : `Välj ${this.state.date}`
+                                        : this.state.date === null
+                                          ? 'Välj tid och datum'
+                                          : `Vald tid: ${this.state.date}`}
+                                </Text>
+                            </TouchableOpacity>
 
-                        <View style={MainStyles.FORM_GROUP}>
-                            <Text style={MainStyles.INPUT_LABEL}>
-                                Välj tid:
-                            </Text>
-                            <TextInput
-                                {...selectTime}
-                                style={[MainStyles.FORM_INPUT]}
-                                name={'selectTime'}
-                                value={null}
-                            />
-                            {selectTime.touched &&
-                                selectTime.error && (
-                                    <Text style={MainStyles.ERROR_TEXT}>
-                                        {selectTime.error}
-                                    </Text>
-                                )}
+                            {this.state.showDateTimePicker
+                                ? this.renderTimePicker()
+                                : null}
                         </View>
 
                         {this.renderAlert()}

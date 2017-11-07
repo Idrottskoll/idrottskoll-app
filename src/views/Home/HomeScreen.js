@@ -10,6 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import { VIDEO_URL } from '../../actions/config';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import VideoLargeButton from '../Videos/VideoLargeButton';
 import ViewContainer from '../../components/ViewContainer';
@@ -83,6 +84,10 @@ class HomeScreen extends React.Component {
                                     <Image
                                         style={MainStyles.VIDEO_CONTAINER}
                                         source={require('../../assets/icons/football.png')}
+                                        // url to image path is not https (not working with http)
+                                        // source={{
+                                        //     uri: `${VIDEO_URL}/${video.name}`
+                                        // }}
                                     />
                                     {/* Button for LOCKED videos */}
                                     {/* <TouchableHighlight
@@ -120,7 +125,9 @@ class HomeScreen extends React.Component {
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
                                                 videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                                videoDescription: `Inspelat: ${this.convertTime(video.startTime)}.`,
+                                                videoDescription: `Inspelat: ${this.convertTime(
+                                                    video.startTime
+                                                )}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
                                                 vidioUrl: video.name
@@ -153,7 +160,9 @@ class HomeScreen extends React.Component {
                                         )}
                                     </Text>
                                     <Text>
-                                        {`Inspelat: ${this.convertTime(video.startTime)}.`}
+                                        {`Inspelat: ${this.convertTime(
+                                            video.startTime
+                                        )}.`}
                                     </Text>
                                 </View>
                             </View>

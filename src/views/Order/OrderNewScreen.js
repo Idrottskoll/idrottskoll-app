@@ -19,9 +19,13 @@ import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 
+// TODO: if state false/true hide show the picker?
+// TODO: add button to toggle state?
+
 class OrderNewScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { club: null, showPicker: false };
     }
 
     /**
@@ -30,7 +34,7 @@ class OrderNewScreen extends React.Component {
     */
     handelOrder(formProps) {
         if (
-            !formProps.selectPlace ||
+            this.state.club !== null ||
             !formProps.selectTime ||
             !formProps.selectDate
         ) {
@@ -45,20 +49,42 @@ class OrderNewScreen extends React.Component {
         });
     }
 
-    renderSelectBox() {
+    /**
+    * rendr the picker
+    */
+    renderPicker() {
+        const {
+            handleSubmit,
+            fields: { selectPlace, selectDate, selectTime }
+        } = this.props;
         return (
-            <Picker
-                selectedValue={this.props.activeClubs.name}
-                onValueChange={club => this.setState({ club })}
-            >
-                {this.props.activeClubs.map(club => (
-                    <Picker.Item
-                        key={club._id}
-                        label={club.name}
-                        value={club.name}
-                    />
-                ))}
-            </Picker>
+            <View>
+                <Text style={MainStyles.INPUT_LABEL}>Välj klubb/plats</Text>
+                <TextInput
+                    {...selectPlace}
+                    style={[MainStyles.FORM_INPUT]}
+                    name={'selectPlace'}
+                    value={this.state.club}
+                />
+                <Picker
+                    selectedValue={this.state.club}
+                    onValueChange={club => this.setState({ club })}
+                >
+                    {this.props.activeClubs.map(club => (
+                        <Picker.Item
+                            key={club._id}
+                            label={club.name}
+                            value={club.name}
+                        />
+                    ))}
+                </Picker>
+                {selectPlace.touched &&
+                    selectPlace.error && (
+                        <Text style={MainStyles.ERROR_TEXT}>
+                            {selectPlace.error}
+                        </Text>
+                    )}
+            </View>
         );
     }
 
@@ -80,6 +106,7 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
+        console.log('picker ' + this.state.showPicker);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -96,24 +123,35 @@ class OrderNewScreen extends React.Component {
 
                     <DefaultCard>
                         <View style={MainStyles.FORM_GROUP}>
-                            <Text style={MainStyles.INPUT_LABEL}>
-                                Välj plats:
-                            </Text>
-                            {this.props.activeClubs
-                                ? this.renderSelectBox()
-                                : null}
-                            {/* <TextInput
-                                {...selectPlace}
-                                style={[MainStyles.FORM_INPUT]}
-                                name={'selectPlace'}
-                                value={null}
-                            /> */}
-                            {selectPlace.touched &&
-                                selectPlace.error && (
-                                    <Text style={MainStyles.ERROR_TEXT}>
-                                        {selectPlace.error}
-                                    </Text>
-                                )}
+                            <TouchableOpacity
+                                style={[
+                                    styles.OPEN_BUTTON,
+                                    {
+                                        backgroundColor: this.state.showPicker
+                                            ? StyleRules.GREEN_COLOR
+                                            : StyleRules.BLUE_COLOR
+                                    }
+                                ]}
+                                onPress={() => {
+                                    this.setState(previousState => {
+                                        return {
+                                            showPicker: !previousState.showPicker
+                                        };
+                                    });
+                                }}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    {this.state.showPicker
+                                        ? this.state.club === null
+                                          ? 'Välj Klubb'
+                                          : `Välj ${this.state.club}`
+                                        : this.state.club === null
+                                          ? 'Välj klubb/plats'
+                                          : `Vald klubb: ${this.state.club}`}
+                                </Text>
+                            </TouchableOpacity>
+
+                            {this.state.showPicker ? this.renderPicker() : null}
                         </View>
 
                         <View style={MainStyles.FORM_GROUP}>
@@ -191,6 +229,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: 120
+    },
+    OPEN_BUTTON: {
+        borderRadius: 50,
+        height: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        marginBottom: StyleRules.MARGIN
     }
 });
 

@@ -1,2 +1,3 @@
-export const ROOT_URL = '';
-export const SPECIAL_TOKEN = '';
+export const ROOT_URL = 'api url';
+export const SPECIAL_TOKEN = 'app key';
+export const VIDEO_URL = 'base video url';

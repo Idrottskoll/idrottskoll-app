@@ -184,6 +184,12 @@ class OrderNewScreen extends React.Component {
                 <ScrollViewContainer>
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
+                            Det går inte att beställa videos....
+                        </Text>
+                        <Text>Men klicka gärna runt!</Text>
+                    </DefaultCard>
+                    <DefaultCard>
+                        <Text style={MainStyles.MAIN_CARD_TITLE}>
                             Lägg ny beställning
                         </Text>
                         <Text>

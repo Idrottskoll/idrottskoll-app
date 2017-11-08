@@ -46,12 +46,12 @@ const HomeScreenStack = StackNavigator(
                 },
                 backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
                 // if platform is iOS and device height is iPhone X
-                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 80
             },
             headerTitleStyle: {
                 // add title styles
-                fontSize: 14,
-                fontWeight: '400'
+                fontSize: StyleRules.FONT_SIZE_MEDIUM,
+                fontWeight: '600'
             }
         }
     }
@@ -78,12 +78,12 @@ const InformationScreenStack = StackNavigator(
                 },
                 backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
                 // if platform is iOS and device height is iPhone X
-                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 80
             },
             headerTitleStyle: {
                 // add title styles
-                fontSize: 14,
-                fontWeight: '400'
+                fontSize: StyleRules.FONT_SIZE_MEDIUM,
+                fontWeight: '600'
             }
         }
     }
@@ -120,12 +120,12 @@ const MyVideosScreenStack = StackNavigator(
                 },
                 backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
                 // if platform is iOS and device height is iPhone X
-                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 80
             },
             headerTitleStyle: {
                 // add title styles
-                fontSize: 14,
-                fontWeight: '400'
+                fontSize: StyleRules.FONT_SIZE_MEDIUM,
+                fontWeight: '600'
             }
         }
     }
@@ -158,12 +158,12 @@ const ProfileScreenStack = StackNavigator(
                 },
                 backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
                 // if platform is iOS and device height is iPhone X
-                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 80
             },
             headerTitleStyle: {
                 // add title styles
-                fontSize: 14,
-                fontWeight: '400'
+                fontSize: StyleRules.FONT_SIZE_MEDIUM,
+                fontWeight: '600'
             }
         }
     }

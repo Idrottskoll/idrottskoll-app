@@ -16,7 +16,7 @@ export default function(state = {}, action) {
         case AUTH_ERROR:
             return { ...state, error: action.payload };
         case FETCH_USER_DATA:
-            return { ...state, data: action.payload };
+            return { ...state, data: action.payload, authenticated: true };
         case USER_REQUESTED_NEW_PASSWPRD:
             return { ...state, data: action.payload };
         case ACTIVE_CLUBS:

@@ -12,6 +12,8 @@ class App extends React.Component {
         this.props.checkUserStatus().then(token => {
             if (token) {
                 this.props.fetchAuthUserData('user');
+            } else {
+                this.props.signoutUser();
             }
         });
         return;

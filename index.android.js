@@ -14,16 +14,6 @@ import { AUTH_USER } from './src/actions/types';
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
-/**
-* if true will invoke a user as AUTH_USER on page loade
-*/
-(async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-        store.dispatch({ type: AUTH_USER });
-    }
-})();
-
 const ReduxApp = () => (
     <Provider store={store}>
         <App />

@@ -13,6 +13,11 @@ export default class VideoPlayer extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    static navigationOptions = ({ navigation }) => ({
+        header: false
+    });
+
     state = {
         rate: 1,
         volume: 1,

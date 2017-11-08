@@ -8,7 +8,7 @@ import ScrollViewContainer from '../../components/ScrollViewContainer';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import OrderNewScreen from '../Order/OrderNewScreen';
-
+import { VIDEO_URL } from '../../actions/config';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 
@@ -38,26 +38,30 @@ export default class VideoScreen extends React.Component {
         return (
             <ViewContainer videoStatus={params.videoStatus} backdrop={true}>
                 <ScrollViewContainer>
-                    <TouchableOpacity
-                        style={[
-                            MainStyles.MAIN_BUTTON,
-                            { marginLeft: StyleRules.MARGIN }
-                        ]}
-                        onPress={() =>
-                            navigate('VideoPlayer', {
-                                videoUrl: params.videoUrl
-                            })}
-                    >
-                        <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                            fil: {params.videoUrl}
-                        </Text>
-                    </TouchableOpacity>
-
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
                             source={require('../../assets/icons/football.png')}
+                            // source={{
+                            //     uri: `${VIDEO_URL}/${params.videoUrl}`
+                            // }}
                         />
+                        <TouchableOpacity
+                            style={[
+                                styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
+                                styles.VIDEO_BUTTON_CONTAINER
+                            ]}
+                            onPress={() =>
+                                navigate('VideoPlayer', {
+                                    videoUrl: params.videoUrl
+                                })}
+                        >
+                            <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
+                                <Image
+                                    source={require('../../assets/icons/playButton.png')}
+                                />
+                            </View>
+                        </TouchableOpacity>
                     </View>
 
                     <DefaultCard>
@@ -94,3 +98,33 @@ export default class VideoScreen extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    VIDEO_BUTTON_CONTAINER: {
+        alignItems: 'center',
+        backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+        borderColor: StyleRules.CARD_BACKGROUND_COLOR,
+        borderWidth: 1,
+        justifyContent: 'center',
+        opacity: 0.95,
+        position: 'absolute',
+        zIndex: 5
+    },
+
+    LOCKED_VIDEO_BUTTON_CONTAINER: {
+        borderRadius: 30,
+        height: 45,
+        width: 175
+    },
+
+    LOCKED_VIDEO_BUTTON: {
+        color: StyleRules.TEXT_COLOR,
+        fontSize: StyleRules.FONT_SIZE_MEDIUM
+    },
+
+    UN_LOCKED_VIDEO_BUTTON_CONTAINER: {
+        borderRadius: 50,
+        height: 60,
+        width: 60
+    }
+});

@@ -241,7 +241,6 @@ export default class VideoPlayer extends React.Component {
 
     render() {
         const { params } = this.props.navigation.state;
-        console.log(`${VIDEO_URL}/${params.videoUrl}`);
         return this.state.controls
             ? this.renderNativeSkin()
             : this.renderCustomSkin();

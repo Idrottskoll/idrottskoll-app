@@ -86,9 +86,9 @@ export default class VideoScreen extends React.Component {
                                 {params.videoDescription}
                             </Text>
                         ) : (
-                            <Tex style={{ fontSize: StyleRules.FONT }}>
+                            <Text style={{ fontSize: StyleRules.FONT }}>
                                 Videon är inte inspelad än.
-                            </Tex>
+                            </Text>
                         )}
                     </DefaultCard>
 

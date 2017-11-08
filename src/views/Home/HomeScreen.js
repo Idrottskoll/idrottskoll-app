@@ -61,7 +61,9 @@ class HomeScreen extends React.Component {
                             isRecorded: false,
                             uploaded: false,
                             videoUrl:
-                                'idrottskoll_vallhalla_bana7_datum20171031_start2008_slut2008.mp4'
+                                'idrottskoll_vallhalla_bana7_datum20171031_start2008_slut2008.mp4',
+                            club: 'vallhalla',
+                            court: 7
                         })}
                 >
                     <LiveNowCard videoName="SM final Innebandy" />

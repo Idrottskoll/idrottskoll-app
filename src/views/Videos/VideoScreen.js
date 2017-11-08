@@ -68,7 +68,28 @@ export default class VideoScreen extends React.Component {
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
                             {this.titleToUppercase(params.videoName)}
                         </Text>
-                        <Text>{params.videoDescription}</Text>
+                        <Text
+                            style={styles.DESCRIPTION_TEXT}
+                        >{`Sport: ${this.titleToUppercase(
+                            params.videoTitle
+                        )}.`}</Text>
+                        <Text
+                            style={styles.DESCRIPTION_TEXT}
+                        >{`Klubb: ${this.titleToUppercase(
+                            params.club
+                        )}.`}</Text>
+                        <Text
+                            style={styles.DESCRIPTION_TEXT}
+                        >{`Bana: ${params.court}.`}</Text>
+                        {params.isRecorded ? (
+                            <Text style={{ fontSize: StyleRules.FONT }}>
+                                {params.videoDescription}
+                            </Text>
+                        ) : (
+                            <Tex style={{ fontSize: StyleRules.FONT }}>
+                                Videon är inte inspelad än.
+                            </Tex>
+                        )}
                     </DefaultCard>
 
                     <DefaultCard>
@@ -126,5 +147,10 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         height: 60,
         width: 60
+    },
+
+    DESCRIPTION_TEXT: {
+        marginBottom: StyleRules.MARGIN / 2,
+        fontSize: StyleRules.FONT
     }
 });

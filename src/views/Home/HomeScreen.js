@@ -131,7 +131,9 @@ class HomeScreen extends React.Component {
                                                 )}.`,
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
-                                                videoUrl: video.name
+                                                videoUrl: video.name,
+                                                club: video.club,
+                                                court: video.court
                                             })}
                                     >
                                         {/* Button for LOCKED videos */}

@@ -44,10 +44,14 @@ class MyVideosScreen extends React.Component {
                                     navigate('VideoScreen', {
                                         videoTitle: video.sport,
                                         videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
-                                        videoDescription: `Inspelat: ${this.convertTime(video.startTime)}.`,
+                                        videoDescription: `Inspelat: ${this.convertTime(
+                                            video.startTime
+                                        )}.`,
                                         isRecorded: video.isRecorded,
                                         uploaded: video.uploaded,
-                                        videoUrl: video.name
+                                        videoUrl: video.name,
+                                        club: video.club,
+                                        court: video.court
                                     })}
                             >
                                 <VideoSmallButton title={video.sport} />

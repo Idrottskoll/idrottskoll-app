@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
 
     LOCKED_VIDEO_BUTTON: {
         color: StyleRules.TEXT_COLOR,
-        fontSize: 18
+        fontSize: StyleRules.FONT_SIZE_MEDIUM
     },
 
     UN_LOCKED_VIDEO_BUTTON_CONTAINER: {

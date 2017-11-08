@@ -17,7 +17,7 @@ class MyProfileCard extends React.Component {
     * @param string email
     * @return null
     */
-    userRequestedNewPassword = (email) => {
+    userRequestedNewPassword = email => {
         if (email) {
             Alert.alert(
                 'Är du säker på att du vill ändra lösenord för:',
@@ -28,19 +28,25 @@ class MyProfileCard extends React.Component {
                         style: 'cancel'
                     },
                     {
-                        text: 'Ja', onPress: () => this.props.changeUserPassword(email)
-                        .then(response => {
-                            if (response) {
-                                Alert.alert(`${response.data.message}:`, email)
-                            }
-                        })
+                        text: 'Ja',
+                        onPress: () =>
+                            this.props
+                                .changeUserPassword(email)
+                                .then(response => {
+                                    if (response) {
+                                        Alert.alert(
+                                            `${response.data.message}:`,
+                                            email
+                                        );
+                                    }
+                                })
                     }
                 ],
                 { cancelable: false }
             );
             return;
         }
-    }
+    };
 
     /**
     * if user is authenticated will fetch user data on signin
@@ -60,7 +66,11 @@ class MyProfileCard extends React.Component {
                             <Text style={MainStyles.MAIN_CARD_TITLE}>
                                 {this.props.data.name}
                             </Text>
-                            <Text style={{ fontSize: 16 }}>
+                            <Text
+                                style={{
+                                    fontSize: StyleRules.FONT_SIZE_MEDIUM
+                                }}
+                            >
                                 {this.props.data.email}
                             </Text>
                         </View>
@@ -115,7 +125,7 @@ const styles = StyleSheet.create({
 
     TEXT_STYLE: {
         marginTop: StyleRules.MARGIN / 2,
-        fontSize: 16
+        fontSize: StyleRules.FONT_SIZE_MEDIUM
     },
     FOOTER: {
         flexDirection: 'row',

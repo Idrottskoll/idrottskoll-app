@@ -66,7 +66,7 @@ export default (Style = {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
         marginBottom: StyleRules.MARGIN,
-        fontSize: 24
+        fontSize: StyleRules.FONT_SIZE_TITLE
     },
 
     FORM_GROUP: {
@@ -74,7 +74,8 @@ export default (Style = {
     },
 
     INPUT_LABEL: {
-        color: StyleRules.TEXT_COLOR
+        color: StyleRules.TEXT_COLOR,
+        fontSize: StyleRules.FONT_SIZE_SMALL
     },
 
     FORM_INPUT: {
@@ -85,7 +86,8 @@ export default (Style = {
         lineHeight: 23,
         marginTop: 3,
         paddingHorizontal: StyleRules.MARGIN / 2,
-        borderColor: StyleRules.TEXT_COLOR
+        borderColor: StyleRules.TEXT_COLOR,
+        fontSize: StyleRules.FONT_SIZE
     },
 
     MAIN_BUTTON: {
@@ -99,7 +101,8 @@ export default (Style = {
 
     MAIN_BUTTON_TEXT: {
         fontWeight: 'bold',
-        color: StyleRules.BUTTON_TEXT_COLOR
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        fontSize: StyleRules.FONT_SIZE
     },
 
     // Will flex buttons to the right side of the Cards

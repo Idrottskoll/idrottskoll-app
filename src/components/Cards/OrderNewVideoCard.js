@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     },
 
     TITLE: {
-        fontSize: 16
+        fontSize: StyleRules.FONT_SIZE_MEDIUM
     }
 });

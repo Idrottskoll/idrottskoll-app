@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
 
     TITLE: {
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: StyleRules.FONT_SIZE_MEDIUM
     }
 });

@@ -10,7 +10,7 @@ export default class VideoSmallButton extends React.Component {
     constructor(props) {
         super(props);
     }
-    
+
     render() {
         return (
             <View style={[styles.BUTTON_CONTAINER]}>
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     BUTTON_TITLE: {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: StyleRules.FONT_SIZE_TITLE
     }
 });

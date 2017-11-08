@@ -38,10 +38,11 @@ export default (Style = {
     CARD_PADDING_Y: em(3),
 
     // FONT
-    FONT_SIZE: em(1),
     FONT_SIZE_SMALLER: em(0.75),
     FONT_SIZE_SMALL: em(0.875),
-    FONT_SIZE_TITLE: em(1.25),
+    FONT_SIZE: em(1),
+    FONT_SIZE_MEDIUM: em(1.25),
+    FONT_SIZE_TITLE: em(1.5),
 
     // colors
     MAIN_BACKGROUND_COLOR: '#EFEFF4',

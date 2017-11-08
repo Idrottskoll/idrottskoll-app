@@ -14,7 +14,7 @@ class UserSettings extends React.Component {
     }
 
     static navigationOptions = ({ navigation }) => ({
-        title: 'InstäInställningar',
+        title: 'Inställningar',
         headerLeft: (
             <TouchableOpacity
                 style={{ marginLeft: StyleRules.MARGIN }}

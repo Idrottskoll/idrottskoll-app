@@ -29,7 +29,7 @@ export default (Style = {
     RATIO_Y: ratioY,
     UNIT: em(1),
     PADDING: em(1),
-    MARGIN: 15,
+    MARGIN: em(0.65),
 
     // CARD
     CARD_WIDTH: x - em(1.25) * 2,
@@ -41,8 +41,8 @@ export default (Style = {
     FONT_SIZE_SMALLER: em(0.75),
     FONT_SIZE_SMALL: em(0.875),
     FONT_SIZE: em(1),
-    FONT_SIZE_MEDIUM: em(1.25),
-    FONT_SIZE_TITLE: em(1.5),
+    FONT_SIZE_MEDIUM: em(1.2),
+    FONT_SIZE_TITLE: em(1.4),
 
     // colors
     MAIN_BACKGROUND_COLOR: '#EFEFF4',

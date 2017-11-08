@@ -55,8 +55,8 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity
                     onPress={() =>
                         navigate('VideoScreen', {
-                            videoTitle: 'innebany',
-                            videoName: 'innebany, vallhalla bana 7.',
+                            videoTitle: 'Innebandy',
+                            videoName: 'Innebandy, vallhalla bana 7.',
                             videoDescription: 'Live',
                             isRecorded: false,
                             uploaded: false,
@@ -64,7 +64,7 @@ class HomeScreen extends React.Component {
                                 'idrottskoll_vallhalla_bana7_datum20171031_start2008_slut2008.mp4'
                         })}
                 >
-                    <LiveNowCard videoName="SM final innebany" />
+                    <LiveNowCard videoName="SM final Innebandy" />
                 </TouchableOpacity>
             );
         }

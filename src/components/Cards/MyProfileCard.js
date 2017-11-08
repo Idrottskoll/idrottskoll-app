@@ -48,15 +48,6 @@ class MyProfileCard extends React.Component {
         }
     };
 
-    /**
-    * if user is authenticated will fetch user data on signin
-    */
-    componentWillMount() {
-        if (this.props.authenticated) {
-            this.props.fetchAuthUserData('user');
-        }
-    }
-
     render() {
         return (
             <View>

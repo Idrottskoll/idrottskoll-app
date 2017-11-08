@@ -107,6 +107,11 @@ export function fetchAuthUserData(data) {
                     // .name will get userName
                     payload: response.data
                 });
+            })
+            .catch(e => {
+                signoutUser();
+                // toggle puch notifactation telling user thay are signed out
+                return;
             });
     };
 }
@@ -168,4 +173,15 @@ export function orderNewVideo(club, dateTime) {
     };
 }
 
+export function checkUserStatus() {
+    return async function() {
+        const token = await AsyncStorage.getItem('token');
+
+        if (token) {
+            return token;
+        } else {
+            console.log('no Token');
+        }
+    };
+}
 // TODO: dispatch => response so we can use it with are state

@@ -1,29 +1,17 @@
 'use strict';
 
 import React from 'react';
-
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
 import Video from 'react-native-video';
 import { VIDEO_URL } from '../../actions/config';
 
-// NOTE: using version 1.2.0 works with react native 48
-// NOTE: use as aseperate component in a stacknavigator
-// TODO: Use props to select the movie to play
-// TODO: Make it work with urls
-// TODO: Make it work with idk vedios
 // TODO: all binde methods in constructor make a callback function (looks better)
 // TODO: Fix styles and buttons
 // TODO: Add app colors to the styles
 
-// NOTE: Waith with merging to master
-
 export default class VideoPlayer extends React.Component {
     constructor(props) {
         super(props);
-        this.onLoad = this.onLoad.bind(this);
-        this.onProgress = this.onProgress.bind(this);
-        this.onBuffer = this.onBuffer.bind(this);
     }
     state = {
         rate: 1,
@@ -39,17 +27,17 @@ export default class VideoPlayer extends React.Component {
         isBuffering: false
     };
 
-    onLoad(data) {
+    onLoad = data => {
         this.setState({ duration: data.duration });
-    }
+    };
 
-    onProgress(data) {
+    onProgress = data => {
         this.setState({ currentTime: data.currentTime });
-    }
+    };
 
-    onBuffer({ isBuffering }: { isBuffering: boolean }) {
+    onBuffer = ({ isBuffering }: { isBuffering: boolean }) => {
         this.setState({ isBuffering });
-    }
+    };
 
     getCurrentTimePercentage() {
         if (this.state.currentTime > 0) {

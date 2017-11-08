@@ -57,6 +57,38 @@ const HomeScreenStack = StackNavigator(
     }
 );
 
+const InformationScreenStack = StackNavigator(
+    {
+        InformationScreen: {
+            screen: InformationScreen,
+            navigationOptions: {
+                title: 'Idrottskoll'
+            }
+        }
+    },
+    {
+        navigationOptions: {
+            // header: false,
+            headerStyle: {
+                shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+                shadowOpacity: 0.3,
+                shadowOffset: {
+                    height: 0.5,
+                    width: 0.5
+                },
+                backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
+                // if platform is iOS and device height is iPhone X
+                height: Platform.OS === 'ios' && deviceHeight === 812 ? 110 : 88
+            },
+            headerTitleStyle: {
+                // add title styles
+                fontSize: 14,
+                fontWeight: '400'
+            }
+        }
+    }
+);
+
 // StackNavigator for MyVideosScreen
 const MyVideosScreenStack = StackNavigator(
     {
@@ -152,7 +184,7 @@ const Tabs = TabNavigator(
             }
         },
         InformationScreen: {
-            screen: InformationScreen,
+            screen: InformationScreenStack,
             navigationOptions: {
                 tabBarLabel: 'Information',
                 tabBarIcon: ({ focused }) => {

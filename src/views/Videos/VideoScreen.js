@@ -1,7 +1,14 @@
 'use strict';
 
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Image,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Button
+} from 'react-native';
 
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
@@ -19,7 +26,15 @@ export default class VideoScreen extends React.Component {
     }
 
     static navigationOptions = ({ navigation }) => ({
-        title: navigation.state.params.videoTitle
+        title: navigation.state.params.videoTitle,
+        headerLeft: (
+            <TouchableOpacity
+                style={{ marginLeft: StyleRules.MARGIN }}
+                onPress={() => navigation.goBack()}
+            >
+                <Image source={require('../../assets/icons/backArrow.png')} />
+            </TouchableOpacity>
+        )
     });
 
     /**

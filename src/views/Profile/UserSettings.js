@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import { Text, Button } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-
+import StyleRules from '../../assets/styles/StyleRules';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import ForgotPassword from '../../components/auth/ForgotPassword';
@@ -12,10 +12,17 @@ class UserSettings extends React.Component {
     constructor(props) {
         super(props);
     }
+
     static navigationOptions = ({ navigation }) => ({
-        title: `${navigation.state.params.user}`,
-        headerRight: <Button title="Info" />
-        // headerLeft: <Button title="Tillbaka" />
+        title: 'InstäInställningar',
+        headerLeft: (
+            <TouchableOpacity
+                style={{ marginLeft: StyleRules.MARGIN }}
+                onPress={() => navigation.goBack()}
+            >
+                <Image source={require('../../assets/icons/backArrow.png')} />
+            </TouchableOpacity>
+        )
     });
 
     render() {

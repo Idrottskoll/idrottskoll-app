@@ -8,7 +8,8 @@ import {
     TouchableOpacity,
     TextInput,
     Picker,
-    DatePickerIOS
+    DatePickerIOS,
+    Image
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
@@ -36,6 +37,18 @@ class OrderNewScreen extends React.Component {
             ShowCourtPicker: false
         };
     }
+
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Beställ nytt video',
+        headerLeft: (
+            <TouchableOpacity
+                style={{ marginLeft: StyleRules.MARGIN }}
+                onPress={() => navigation.goBack()}
+            >
+                <Image source={require('../../assets/icons/backArrow.png')} />
+            </TouchableOpacity>
+        )
+    });
 
     componentWillMount() {
         this.props.getActiveClubs().then(response => {

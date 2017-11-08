@@ -173,15 +173,18 @@ export function orderNewVideo(club, dateTime) {
     };
 }
 
+// NOTE: Function is invoced in App.js foreach page load
+/**
+* @return string token
+*/
 export function checkUserStatus() {
     return async function() {
         const token = await AsyncStorage.getItem('token');
 
         if (token) {
             return token;
-        } else {
-            console.log('no Token');
         }
+        return;
     };
 }
 // TODO: dispatch => response so we can use it with are state

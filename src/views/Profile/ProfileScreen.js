@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 import MyProfileCard from '../../components/Cards/MyProfileCard';
@@ -20,6 +20,17 @@ class ProfileScreen extends React.Component {
         super(props);
     }
 
+    static navigationOptions = ({ navigation }) => ({
+        headerRight: (
+            <TouchableOpacity
+                style={{ marginRight: StyleRules.MARGIN }}
+                onPress={() => navigation.navigate('UserSettings')}
+            >
+                <Image source={require('../../assets/icons/settings.png')} />
+            </TouchableOpacity>
+        )
+    });
+
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -27,10 +38,7 @@ class ProfileScreen extends React.Component {
                 <ScrollViewContainer>
                     <MyProfileCard>
                         <TouchableOpacity
-                            onPress={() =>
-                                navigate('UserSettings', {
-                                    user: this.props.data.name
-                                })}
+                            onPress={() => navigate('UserSettings')}
                         >
                             <Text>Ändra mina uppgifter</Text>
                         </TouchableOpacity>

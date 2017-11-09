@@ -57,21 +57,12 @@ class MyProfileCard extends React.Component {
                             <Text style={MainStyles.MAIN_CARD_TITLE}>
                                 {this.props.data.name}
                             </Text>
-                            <Text
-                                style={{
-                                    fontSize: StyleRules.FONT_SIZE_MEDIUM
-                                }}
-                            >
+                            <Text style={styles.TEXT_STYLE}>
                                 {this.props.data.email}
                             </Text>
                         </View>
                         <View style={styles.USER_DATA}>
-                            <Text
-                                style={[
-                                    styles.TEXT_STYLE,
-                                    { fontWeight: 'bold' }
-                                ]}
-                            >
+                            <Text style={styles.TEXT_STYLE_BIG}>
                                 Fakturering
                             </Text>
                             <Text style={styles.TEXT_STYLE}>
@@ -92,9 +83,13 @@ class MyProfileCard extends React.Component {
                                             )}
                                     >
                                         <Text
-                                            style={{
-                                                marginTop: StyleRules.MARGIN / 2
-                                            }}
+                                            style={[
+                                                {
+                                                    marginTop:
+                                                        StyleRules.MARGIN / 2
+                                                },
+                                                styles.TEXT_STYLE
+                                            ]}
                                         >
                                             Ändra mitt lösenord
                                         </Text>
@@ -114,14 +109,21 @@ const styles = StyleSheet.create({
         marginVertical: StyleRules.MARGIN
     },
 
+    TEXT_STYLE_BIG: {
+        marginTop: StyleRules.MARGIN / 2,
+        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontWeight: 'bold'
+    },
+
     TEXT_STYLE: {
         marginTop: StyleRules.MARGIN / 2,
-        fontSize: StyleRules.FONT_SIZE_MEDIUM
+        fontSize: StyleRules.FONT_SIZE
     },
+
     FOOTER: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: StyleRules.MARGIN
+        marginTop: StyleRules.MARGIN + StyleRules.MARGIN + StyleRules.MARGIN
     }
 });
 

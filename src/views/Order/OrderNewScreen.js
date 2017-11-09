@@ -34,7 +34,8 @@ class OrderNewScreen extends React.Component {
             showDateTimePicker: false,
             date: null,
             dateChanged: false,
-            ShowCourtPicker: false
+            ShowCourtPicker: false,
+            courts: null
         };
     }
 
@@ -51,9 +52,7 @@ class OrderNewScreen extends React.Component {
     });
 
     componentWillMount() {
-        this.props.getActiveClubs().then(response => {
-            console.log(this.props.activeClubs);
-        });
+        this.props.getActiveClubs();
         this.setState({ date: new Date(Date.now()) });
     }
 
@@ -110,7 +109,8 @@ class OrderNewScreen extends React.Component {
                 />
                 <Picker
                     selectedValue={this.state.club}
-                    onValueChange={club => this.setState({ club })}
+                    // onValueChange={club => this.setState({ club })}
+                    onValueChange={club => this.saveSelectedClubCourts(club)}
                 >
                     {this.props.activeClubs.map(club => (
                         <Picker.Item
@@ -130,6 +130,35 @@ class OrderNewScreen extends React.Component {
         );
     }
 
+    /**
+    * @param obj club
+    * @return obj club
+    */
+    saveClub = club => {
+        return this.setState({ club });
+    };
+
+    /**
+    * @param obj club
+    */
+    saveSelectedClubCourts = async club => {
+        const state = await this.saveClub(club);
+
+        let courts = [];
+
+        this.props.activeClubs.map(selectedClub => {
+            if (selectedClub.name === this.state.club) {
+                selectedClub.court.map(court => {
+                    if (court.active) {
+                        courts.push(court);
+                        this.setState({ courts });
+                    }
+                });
+            }
+        });
+    };
+    // https://medium.com/front-end-hacking/es7-async-await-with-react-native-35ca167cc326
+
     // The method get stuck om the second map() the values ar not set at this point
     // and component will not rerender...
     // async await?
@@ -139,51 +168,46 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
-
-        return this.props.activeClubs.map(
-            club =>
-                club.name === this.state.club ? (
-                    <View>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            Välj Bana för {club.name}
-                        </Text>
-                        {/* <TextInput
-                            {...selectPlace}
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'selectPlace'}
-                            value={this.state.court}
-                        /> */}
-                        {console.log('jeremy ' + club.name)}
-                        <Picker
-                            selectedValue={club.name}
-                            onValueChange={court => this.setState({ court })}
-                        >
-                            {club.court.map(court => {
-                                //   if (court.active) {
-                                console.log('danner ' + court._id);
-                                <Picker.Item
-                                    key={court._id}
-                                    label={court._id}
-                                    value={court._id}
-                                />;
-                            })}
-                        </Picker>
-                    </View>
-                ) : null
+        console.log(this.state.court);
+        return (
+            <View>
+                {/* <Text style={MainStyles.INPUT_LABEL}>
+                    Välj Bana för {club.name}
+                </Text> */}
+                {/* <TextInput
+                    {...selectPlace}
+                    style={[MainStyles.FORM_INPUT]}
+                    name={'selectPlace'}
+                    value={this.state.court}
+                /> */}
+                <Picker
+                    selectedValue={this.state.court}
+                    onValueChange={court => this.setState({ court })}
+                >
+                    {this.state.courts.map(court => {
+                        console.log(this.state.court);
+                        <Picker.Item
+                            key={court._id}
+                            label={court._id}
+                            value={court._id}
+                        />;
+                    })}
+                </Picker>
+            </View>
         );
     }
 
-    renderAlert() {
-        if (this.props.errorMessage) {
-            return (
-                <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
-                    <Text style={MainStyles.ERROR_TEXT}>
-                        {this.props.errorMessage}
-                    </Text>
-                </View>
-            );
-        }
-    }
+    // renderAlert() {
+    //     if (this.props.errorMessage) {
+    //         return (
+    //             <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
+    //                 <Text style={MainStyles.ERROR_TEXT}>
+    //                     {this.props.errorMessage}
+    //                 </Text>
+    //             </View>
+    //         );
+    //     }
+    // }
 
     render() {
         const { navigate } = this.props.navigation;
@@ -191,7 +215,6 @@ class OrderNewScreen extends React.Component {
             handleSubmit,
             fields: { selectPlace, selectDate, selectTime }
         } = this.props;
-
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -308,7 +331,7 @@ class OrderNewScreen extends React.Component {
                                 : null}
                         </View>
 
-                        {this.renderAlert()}
+                        {/* {this.renderAlert()} */}
                     </DefaultCard>
 
                     <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">

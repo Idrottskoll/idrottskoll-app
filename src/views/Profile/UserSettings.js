@@ -41,8 +41,8 @@ class UserSettings extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return { authenticated: state.auth.authenticated };
-}
+};
 
 export default connect(mapStateToProps)(UserSettings);

@@ -49,7 +49,7 @@ class HomeScreen extends React.Component {
 
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
-        const live = true;
+        const live = false;
         if (live) {
             return (
                 <TouchableOpacity
@@ -191,6 +191,11 @@ class HomeScreen extends React.Component {
         }
     };
 
+    componentWillMount() {
+        // fetch live stream
+        // this.props.fetchLiveVideo();
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -234,8 +239,8 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return { data: state.auth.data, authenticated: state.auth.authenticated };
-}
+};
 
 export default connect(mapStateToProps)(HomeScreen);

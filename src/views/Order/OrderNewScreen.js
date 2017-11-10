@@ -21,15 +21,12 @@ import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 
-// TODO: if state false/true hide show the picker?
-// TODO: add button to toggle state?
-
 class OrderNewScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             club: null,
-            court: null,
+            court: 'Välj bana',
             showPicker: false,
             showDateTimePicker: false,
             date: null,
@@ -138,6 +135,10 @@ class OrderNewScreen extends React.Component {
         return this.setState({ club });
     };
 
+    saveCourt = court => {
+        return this.setState({ court });
+    };
+
     /**
     * @param obj club
     */
@@ -151,18 +152,16 @@ class OrderNewScreen extends React.Component {
                 selectedClub.court.map(court => {
                     if (court.active) {
                         courts.push(court);
-                        this.setState({ courts });
+                        this.props.saveCourtToProps(courts);
                     }
                 });
             }
+            // console.log(this.state.courts);
         });
+        // const saveCourts = await this.setState({ courts });
+        // console.log(this.props.activeCourts);
     };
-    // https://medium.com/front-end-hacking/es7-async-await-with-react-native-35ca167cc326
 
-    // The method get stuck om the second map() the values ar not set at this point
-    // and component will not rerender...
-    // async await?
-    // https://gist.github.com/lukehoban/0f366c5fd1af307b87da
     renderCourtPicker() {
         const {
             handleSubmit,
@@ -186,10 +185,11 @@ class OrderNewScreen extends React.Component {
                 >
                     {this.state.courts.map(court => {
                         console.log(this.state.court);
+                        console.log(`Bana: ${String(court.courtNumber)}`);
                         <Picker.Item
-                            key={court._id}
-                            label={court._id}
-                            value={court._id}
+                            key={court.courtNumber}
+                            label={`Bana: ${String(court.courtNumber)}`}
+                            value={court.courtNumber}
                         />;
                     })}
                 </Picker>
@@ -294,9 +294,37 @@ class OrderNewScreen extends React.Component {
                                 </Text>
                             </TouchableOpacity>
                         )}
-                        {this.state.ShowCourtPicker
-                            ? this.renderCourtPicker()
-                            : null}
+                        {this.state.ShowCourtPicker ? (
+                            <View>
+                                {/* <Text style={MainStyles.INPUT_LABEL}>
+                                        Välj Bana för {club.name}
+                                    </Text> */}
+                                {/* <TextInput
+                                        {...selectPlace}
+                                        style={[MainStyles.FORM_INPUT]}
+                                        name={'selectPlace'}
+                                        value={this.state.court}
+                                    /> */}
+                                <Picker
+                                    selectedValue={this.state.court}
+                                    onValueChange={court =>
+                                        this.saveCourt(court)}
+                                >
+                                    {this.state.courts.map(court => {
+                                        console.log(
+                                            `Bana: ${String(court.courtNumber)}`
+                                        );
+
+                                        <Picker.Item
+                                            label={`Bana: ${String(
+                                                court.courtNumber
+                                            )}`}
+                                            value={court.courtNumber}
+                                        />;
+                                    })}
+                                </Picker>
+                            </View>
+                        ) : null}
 
                         <View style={MainStyles.FORM_GROUP}>
                             <TouchableOpacity
@@ -403,13 +431,14 @@ function validate(formProps) {
     return errors;
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         errorMessage: state.auth.error,
         authenticated: state.auth.authenticated,
-        activeClubs: state.auth.activeClubs
+        activeClubs: state.auth.activeClubs,
+        activeCourts: state.auth.activeCourts
     };
-}
+};
 
 export default reduxForm(
     {

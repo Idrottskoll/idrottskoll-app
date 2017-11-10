@@ -78,8 +78,8 @@ class ProfileScreen extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return { authenticated: state.auth.authenticated, data: state.auth.data };
-}
+};
 
 export default connect(mapStateToProps)(ProfileScreen);

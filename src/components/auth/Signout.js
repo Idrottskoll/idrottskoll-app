@@ -23,8 +23,8 @@ class Sigout extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return { errorMessage: state.auth.error };
-}
+};
 
 export default connect(mapStateToProps, actions)(Sigout);

@@ -11,7 +11,7 @@ import {
     DatePickerIOS,
     Image
 } from 'react-native';
-import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
@@ -24,16 +24,6 @@ import StyleRules from '../../assets/styles/StyleRules';
 class OrderNewScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            club: null,
-            court: 'Välj bana',
-            showPicker: false,
-            showDateTimePicker: false,
-            date: null,
-            dateChanged: false,
-            ShowCourtPicker: false,
-            courts: null
-        };
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -50,338 +40,26 @@ class OrderNewScreen extends React.Component {
 
     componentWillMount() {
         this.props.getActiveClubs();
-        this.setState({ date: new Date(Date.now()) });
     }
-
-    /**
-    * @param obj formProps
-    * @return
-    */
-    handelOrder(formProps) {
-        if (
-            this.state.club !== null ||
-            !formProps.selectTime ||
-            !formProps.selectDate
-        ) {
-            return;
-        }
-        alert('push button');
-    }
-
-    /**
-    * @param string date
-    *
-    * @return obj date
-    * @return bool dateChanged
-    */
-    onDateChange = date => {
-        return this.setState({ date: date, dateChanged: true });
-    };
-
-    renderTimePicker() {
-        return (
-            <DatePickerIOS
-                date={this.state.date}
-                mode="datetime"
-                onDateChange={this.onDateChange}
-                minuteInterval={5}
-            />
-        );
-    }
-
-    renderClubPicker() {
-        const {
-            handleSubmit,
-            fields: { selectPlace, selectDate, selectTime }
-        } = this.props;
-
-        return (
-            <View>
-                <Text style={MainStyles.INPUT_LABEL}>Välj klubb/plats</Text>
-                <TextInput
-                    {...selectPlace}
-                    style={[MainStyles.FORM_INPUT]}
-                    name={'selectPlace'}
-                    value={this.state.club}
-                />
-                <Picker
-                    selectedValue={this.state.club}
-                    // onValueChange={club => this.setState({ club })}
-                    onValueChange={club => this.saveSelectedClubCourts(club)}
-                >
-                    {this.props.activeClubs.map(club => (
-                        <Picker.Item
-                            key={club._id}
-                            label={club.name}
-                            value={club.name}
-                        />
-                    ))}
-                </Picker>
-                {selectPlace.touched &&
-                    selectPlace.error && (
-                        <Text style={MainStyles.ERROR_TEXT}>
-                            {selectPlace.error}
-                        </Text>
-                    )}
-            </View>
-        );
-    }
-
-    /**
-    * @param obj club
-    * @return obj club
-    */
-    saveClub = club => {
-        return this.setState({ club });
-    };
-
-    saveCourt = court => {
-        return this.setState({ court });
-    };
-
-    /**
-    * @param obj club
-    */
-    saveSelectedClubCourts = async club => {
-        const state = await this.saveClub(club);
-
-        let courts = [];
-
-        this.props.activeClubs.map(selectedClub => {
-            if (selectedClub.name === this.state.club) {
-                selectedClub.court.map(court => {
-                    if (court.active) {
-                        courts.push(court);
-                        this.props.saveCourtToProps(courts);
-                    }
-                });
-            }
-            // console.log(this.state.courts);
-        });
-        // const saveCourts = await this.setState({ courts });
-        // console.log(this.props.activeCourts);
-    };
-
-    renderCourtPicker() {
-        const {
-            handleSubmit,
-            fields: { selectPlace, selectDate, selectTime }
-        } = this.props;
-        console.log(this.state.court);
-        return (
-            <View>
-                {/* <Text style={MainStyles.INPUT_LABEL}>
-                    Välj Bana för {club.name}
-                </Text> */}
-                {/* <TextInput
-                    {...selectPlace}
-                    style={[MainStyles.FORM_INPUT]}
-                    name={'selectPlace'}
-                    value={this.state.court}
-                /> */}
-                <Picker
-                    selectedValue={this.state.court}
-                    onValueChange={court => this.setState({ court })}
-                >
-                    {this.state.courts.map(court => {
-                        console.log(this.state.court);
-                        console.log(`Bana: ${String(court.courtNumber)}`);
-                        <Picker.Item
-                            key={court.courtNumber}
-                            label={`Bana: ${String(court.courtNumber)}`}
-                            value={court.courtNumber}
-                        />;
-                    })}
-                </Picker>
-            </View>
-        );
-    }
-
-    // renderAlert() {
-    //     if (this.props.errorMessage) {
-    //         return (
-    //             <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
-    //                 <Text style={MainStyles.ERROR_TEXT}>
-    //                     {this.props.errorMessage}
-    //                 </Text>
-    //             </View>
-    //         );
-    //     }
-    // }
 
     render() {
         const { navigate } = this.props.navigation;
-        const {
-            handleSubmit,
-            fields: { selectPlace, selectDate, selectTime }
-        } = this.props;
         return (
             <ViewContainer>
                 <ScrollViewContainer>
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Det går inte att beställa videos....
-                        </Text>
-                        <Text>Men klicka gärna runt!</Text>
-                    </DefaultCard>
-                    <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
                             Lägg ny beställning
                         </Text>
-                        <Text>
-                            Take a look, his speed, his ferocity, his training.
-                            I see the power of belief. I see the League of
-                            Shadows resurgent.
-                        </Text>
-                    </DefaultCard>
-
-                    <DefaultCard>
-                        <View style={MainStyles.FORM_GROUP}>
-                            <TouchableOpacity
-                                style={[
-                                    styles.OPEN_BUTTON,
-                                    {
-                                        backgroundColor: this.state.showPicker
-                                            ? StyleRules.GREEN_COLOR
-                                            : StyleRules.BLUE_COLOR
-                                    }
-                                ]}
-                                onPress={() => {
-                                    this.setState(previousState => {
-                                        return {
-                                            showPicker: !previousState.showPicker
-                                        };
-                                    });
-                                }}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    {this.state.showPicker
-                                        ? this.state.club === null
-                                          ? 'Välj Klubb'
-                                          : `Välj ${this.state.club}`
-                                        : this.state.club === null
-                                          ? 'Välj klubb/plats'
-                                          : `Vald klubb: ${this.state.club}`}
-                                </Text>
-                            </TouchableOpacity>
-
-                            {this.state.showPicker
-                                ? this.renderClubPicker()
-                                : null}
-                        </View>
-
-                        {this.state.club === null ? null : (
-                            <TouchableOpacity
-                                style={[
-                                    styles.OPEN_BUTTON,
-                                    {
-                                        backgroundColor: this.state
-                                            .ShowCourtPicker
-                                            ? StyleRules.GREEN_COLOR
-                                            : StyleRules.BLUE_COLOR
-                                    }
-                                ]}
-                                onPress={() => {
-                                    this.setState(previousState => {
-                                        return {
-                                            ShowCourtPicker: !previousState.ShowCourtPicker
-                                        };
-                                    });
-                                }}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    Välj bana
-                                </Text>
-                            </TouchableOpacity>
-                        )}
-                        {this.state.ShowCourtPicker ? (
-                            <View>
-                                {/* <Text style={MainStyles.INPUT_LABEL}>
-                                        Välj Bana för {club.name}
-                                    </Text> */}
-                                {/* <TextInput
-                                        {...selectPlace}
-                                        style={[MainStyles.FORM_INPUT]}
-                                        name={'selectPlace'}
-                                        value={this.state.court}
-                                    /> */}
-                                <Picker
-                                    selectedValue={this.state.court}
-                                    onValueChange={court =>
-                                        this.saveCourt(court)}
-                                >
-                                    {this.state.courts.map(court => {
-                                        console.log(
-                                            `Bana: ${String(court.courtNumber)}`
-                                        );
-
-                                        <Picker.Item
-                                            label={`Bana: ${String(
-                                                court.courtNumber
-                                            )}`}
-                                            value={court.courtNumber}
-                                        />;
-                                    })}
-                                </Picker>
-                            </View>
-                        ) : null}
-
-                        <View style={MainStyles.FORM_GROUP}>
-                            <TouchableOpacity
-                                style={[
-                                    styles.OPEN_BUTTON,
-                                    {
-                                        backgroundColor: this.state
-                                            .showDateTimePicker
-                                            ? StyleRules.GREEN_COLOR
-                                            : StyleRules.BLUE_COLOR
-                                    }
-                                ]}
-                                onPress={() => {
-                                    this.setState(previousState => {
-                                        return {
-                                            showDateTimePicker: !previousState.showDateTimePicker
-                                        };
-                                    });
-                                }}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    {!this.state.showDateTimePicker
-                                        ? this.state.dateChanged
-                                          ? 'Du har valt tid och datum, vill du ändra?'
-                                          : 'Välj tid och datum'
-                                        : 'Välj'}
-                                </Text>
-                            </TouchableOpacity>
-
-                            {this.state.showDateTimePicker
-                                ? this.renderTimePicker()
-                                : null}
-                        </View>
-
-                        {/* {this.renderAlert()} */}
                     </DefaultCard>
 
                     <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
                         <TouchableOpacity
-                            style={[
-                                styles.BUTTON_WITH_ERRORS,
-                                {
-                                    backgroundColor:
-                                        (selectPlace.touched &&
-                                            selectPlace.error) ||
-                                        (selectTime.touched &&
-                                            selectTime.error) ||
-                                        (selectDate.touched && selectDate.error)
-                                            ? StyleRules.RED_COLOR
-                                            : StyleRules.BLUE_COLOR
-                                }
-                            ]}
-                            onPress={handleSubmit(this.handelOrder.bind(this))}
+                            onPress={() => {
+                                alert('order');
+                            }}
                         >
-                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                Beställ
-                            </Text>
+                            <Text>Beställ</Text>
                         </TouchableOpacity>
                     </OrderNewVideoCard>
                 </ScrollViewContainer>
@@ -390,46 +68,7 @@ class OrderNewScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    BUTTON_WITH_ERRORS: {
-        borderRadius: 50,
-        marginLeft: StyleRules.MARGIN,
-        height: 44,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 120
-    },
-    OPEN_BUTTON: {
-        borderRadius: 50,
-        height: 44,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        marginBottom: StyleRules.MARGIN
-    }
-});
-
-/**
-* @param obj fromProps
-* @return bool validSignUp
-*/
-function validate(formProps) {
-    const errors = {};
-
-    if (!formProps.selectPlace) {
-        errors.selectPlace = 'Vänligen välj en plats.';
-    }
-
-    if (!formProps.selectDate) {
-        errors.selectDate = 'Vänligen välj ett datum.';
-    }
-
-    if (!formProps.selectTime) {
-        errors.selectTime = 'Vänligen välj en tid.';
-    }
-
-    return errors;
-}
+const styles = StyleSheet.create({});
 
 const mapStateToProps = state => {
     return {
@@ -440,12 +79,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default reduxForm(
-    {
-        form: 'orderNew',
-        fields: ['selectPlace', 'selectDate', 'selectTime'],
-        validate
-    },
-    mapStateToProps,
-    actions
-)(OrderNewScreen);
+export default connect(mapStateToProps, actions)(OrderNewScreen);

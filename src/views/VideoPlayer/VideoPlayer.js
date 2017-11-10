@@ -198,6 +198,9 @@ export default class VideoPlayer extends React.Component {
                 <View style={styles.fullScreen}>
                     <Video
                         source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
+                        // source={{
+                        //     uri: `${VIDEO_URL}/stream/live/lerumstkC3.m3u8`
+                        // }}
                         style={videoStyle}
                         rate={this.state.rate}
                         paused={this.state.paused}

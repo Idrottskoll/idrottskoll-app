@@ -187,4 +187,22 @@ export function checkUserStatus() {
         return;
     };
 }
-// TODO: dispatch => response so we can use it with are state
+
+// fetch live video, check if video is live on componentWillMount()
+export function fetchLiveVideo() {
+    return async function(dispatch) {
+        axios
+            .get(`${ROOT_URL}/orders`)
+            .then(response => {
+                console.log(response);
+                // dispatch({
+                //     // type: FETCH_LIVE_VIDEO,
+                //     payload: response.data
+                // });
+                return;
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+}

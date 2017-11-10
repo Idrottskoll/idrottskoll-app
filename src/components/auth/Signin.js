@@ -115,12 +115,12 @@ class Signin extends React.Component {
 * @param state
 * @return string error
 */
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         errorMessage: state.auth.error,
         authenticated: state.auth.authenticated
     };
-}
+};
 
 export default reduxForm(
     {

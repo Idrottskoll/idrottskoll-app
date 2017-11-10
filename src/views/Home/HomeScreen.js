@@ -20,6 +20,7 @@ import LiveNowCard from '../../components/Cards/LiveNowCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import { connect } from 'react-redux';
 import NotAuthCard from '../../components/Cards/NotAuthCard';
+import * as actions from '../../actions';
 
 // TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
@@ -49,7 +50,7 @@ class HomeScreen extends React.Component {
 
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
-        const live = false;
+        const live = true;
         if (live) {
             return (
                 <TouchableOpacity
@@ -60,8 +61,7 @@ class HomeScreen extends React.Component {
                             videoDescription: 'Live',
                             isRecorded: false,
                             uploaded: false,
-                            videoUrl:
-                                'idrottskoll_vallhalla_bana7_datum20171031_start2008_slut2008.mp4',
+                            videoUrl: '/stream/live/lerumstkC3.m3u8',
                             club: 'vallhalla',
                             court: 7
                         })}
@@ -191,10 +191,10 @@ class HomeScreen extends React.Component {
         }
     };
 
-    componentWillMount() {
-        // fetch live stream
-        // this.props.fetchLiveVideo();
-    }
+    // componentWillMount() {
+    //     // fetch live stream
+    //     this.props.fetchLiveVideo();
+    // }
 
     render() {
         const { navigate } = this.props.navigation;
@@ -240,7 +240,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-    return { data: state.auth.data, authenticated: state.auth.authenticated };
+    return {
+        data: state.auth.data,
+        authenticated: state.auth.authenticated
+    };
 };
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps, actions)(HomeScreen);

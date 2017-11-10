@@ -4,7 +4,8 @@ import {
     AUTH_ERROR,
     FETCH_USER_DATA,
     USER_REQUESTED_NEW_PASSWPRD,
-    ACTIVE_CLUBS
+    ACTIVE_CLUBS,
+    COURTS
 } from '../actions/types';
 
 export default function(state = {}, action) {

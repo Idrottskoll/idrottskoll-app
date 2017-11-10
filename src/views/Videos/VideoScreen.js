@@ -50,6 +50,7 @@ export default class VideoScreen extends React.Component {
     render() {
         const { params } = this.props.navigation.state;
         const { navigate } = this.props.navigation;
+        console.log('Video screen: ' + params.videoUrl);
         return (
             <ViewContainer videoStatus={params.videoStatus} backdrop={true}>
                 <ScrollViewContainer>

@@ -44,11 +44,11 @@ class ScrollViewContainer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         data: state.auth.data,
         authenticated: state.auth.authenticated
     };
-}
+};
 
 export default connect(mapStateToProps, actions)(ScrollViewContainer);

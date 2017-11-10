@@ -29,38 +29,38 @@ class InformationScreen extends React.Component {
                 <ScrollViewContainer>
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>Om oss</Text>
-                        <Text>
-                            Every year, I took a holiday. I went to Florence,
-                            this cafe on the banks of the Arno. Every fine
-                            evening, I would sit there and order a Fernet
-                            Branca. I had this fantasy, that I would look across
-                            the tables and I would see you there with a wife
-                            maybe a couple of kids. You wouldn't say anything to
-                            me, nor me to you. But we would both know that
-                            you've made it, that you were happy. I never wanted
-                            you to come back to Gotham. I always knew there was
-                            nothing here for you except pain and tragedy and I
-                            wanted something more for you than that. I still do.
+                        <Text style={{ fontSize: StyleRules.FONT_SIZE }}>
+                            Idrottskoll grundades 2014, med idén om att alla
+                            skall kunna utveckla sin idrott med hjälp av video.
+                            Idag använder elitspelare och top klubbar dagligen
+                            video anslysering för att förbättra deras
+                            prestationer. Både genom att hitta vad man kan
+                            börbättra is sitt spel, men även plocka ut de
+                            possitiva sekvenserna ur en match eller träning.
                         </Text>
                     </DefaultCard>
 
                     <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Några tureringar som IdrottsKoll har filmat:
-                        </Text>
-                        <Text>
-                            Every year, I took a holiday. I went to Florence,
-                            this cafe on the banks of the Arno. Every fine
-                            evening, I would sit there and order a Fernet
-                            Branca.
+                        <Text style={{ fontSize: StyleRules.FONT_SIZE }}>
+                            Idrottskoll skapades för alla, med grund idén om att
+                            även kalle 5 år skall våde ha råd och möjlighet att
+                            analysera sin match och träning. Tänk om alla som
+                            satsa på sin idrott kan ha tillgång till material
+                            som annars bara elitspelare har tillgång till. Tänk
+                            hur mycket fortare man kan utvecklas.
                         </Text>
                     </DefaultCard>
 
                     <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>Kontakt</Text>
-                        <Text>
-                            Joakim Remler Tele: 303i290221, epost:
-                            Joakim@idrottskoll.se
+                        <Text style={{ fontSize: StyleRules.FONT_SIZE }}>
+                            I systemet kan man på ett snabbt och enkelt sätt
+                            spela in sina matcher och träningar för att efteråt
+                            analysera dem. Man kan antingen streama matchen från
+                            hemsidan eller här i appen.
+                        </Text>
+                        <Text style={{ fontSize: StyleRules.FONT_SIZE }}>
+                            Idrottskoll erbjuder även live streamning från
+                            utvalda event och turneringar.
                         </Text>
                     </DefaultCard>
                 </ScrollViewContainer>

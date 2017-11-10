@@ -95,9 +95,7 @@ class MyVideosScreen extends React.Component {
                             Mina videos
                         </Text>
                         <Text>
-                            I think you and your friend have found the last game
-                            in town. where it hurts, their wallets. It's bold.
-                            You gonna count me in?
+                            Här kan du se dina videos som du redan har köpt.
                         </Text>
                     </DefaultCard>
 

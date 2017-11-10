@@ -50,7 +50,7 @@ class HomeScreen extends React.Component {
 
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
-        const live = true;
+        const live = false;
         if (live) {
             return (
                 <TouchableOpacity

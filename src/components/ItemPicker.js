@@ -15,7 +15,7 @@ import * as actions from '../actions';
 import StyleRules from '../assets/styles/StyleRules';
 import MainStyles from '../assets/styles/MainStyles';
 
-class Picker extends React.Component {
+class ItemPicker extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, actions)(Picker);
+export default connect(mapStateToProps, actions)(ItemPicker);

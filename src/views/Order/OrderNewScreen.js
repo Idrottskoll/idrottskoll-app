@@ -20,6 +20,7 @@ import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
+import SelectClubAndCourt from './SelectClubAndCourt';
 
 class OrderNewScreen extends React.Component {
     constructor(props) {
@@ -44,6 +45,7 @@ class OrderNewScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        console.log(this.props.activeClubs);
         return (
             <ViewContainer>
                 <ScrollViewContainer>
@@ -52,6 +54,8 @@ class OrderNewScreen extends React.Component {
                             Lägg ny beställning
                         </Text>
                     </DefaultCard>
+
+                    <SelectClubAndCourt />
 
                     <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
                         <TouchableOpacity

@@ -26,7 +26,7 @@ export default class VideoLargeButton extends React.Component {
                     <View style={[MainStyles.VIDEO_BUTTON]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
-                            source={require('../../assets/icons/football.png')}
+                            source={require('../../assets/icons/tennis.png')}
                         />
                     </View>
                 </TouchableOpacity>

@@ -22,6 +22,7 @@ import { connect } from 'react-redux';
 import NotAuthCard from '../../components/Cards/NotAuthCard';
 import * as actions from '../../actions';
 
+const imageURI = 'https://www.idrottskoll.se/Videos/img/default_tennis.png';
 // TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -86,11 +87,7 @@ class HomeScreen extends React.Component {
                                 <View style={[MainStyles.VIDEO_BUTTON]}>
                                     <Image
                                         style={MainStyles.VIDEO_CONTAINER}
-                                        source={require('../../assets/icons/football.png')}
-                                        // url to image path is not https (not working with http)
-                                        // source={{
-                                        //     uri: `${VIDEO_URL}/${video.name}`
-                                        // }}
+                                        source={require('../../assets/icons/tennis.png')}
                                     />
                                     {/* Button for LOCKED videos */}
                                     {/* <TouchableHighlight

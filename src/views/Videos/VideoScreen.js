@@ -57,10 +57,7 @@ export default class VideoScreen extends React.Component {
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
-                            source={require('../../assets/icons/football.png')}
-                            // source={{
-                            //     uri: `${VIDEO_URL}/${params.videoUrl}`
-                            // }}
+                            source={require('../../assets/icons/tennis.png')}
                         />
                         <TouchableOpacity
                             style={[

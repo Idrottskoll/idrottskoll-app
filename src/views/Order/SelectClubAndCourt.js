@@ -12,18 +12,39 @@ class SelectClubAndCourt extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clubSelected: false
+            clubSelected: false,
+            courtSelected: false
         };
+    }
+
+    /**
+    * @param string string
+    * @return string text
+    */
+    titleToUppercase(string) {
+        return string.replace(/\w\S*/g, text => {
+            return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
+        });
     }
 
     selectClub = async clubSelected => {
         if (clubSelected === this.state.clubSelected) {
-            const state = await this.setState({ clubSelected: false });
-            return;
+            const stateClub = await this.setState({ clubSelected: false });
+            const stateCourt = await this.setState({ courtSelected: false });
         } else {
-            const state = await this.setState({ clubSelected });
-            return;
+            const stateClub = await this.setState({ clubSelected });
+            const stateCourt = await this.setState({ courtSelected: false });
         }
+        return;
+    };
+
+    selectCourt = async courtSelected => {
+        if (courtSelected === this.state.courtSelected) {
+            const state = await this.setState({ courtSelected: false });
+        } else {
+            const state = await this.setState({ courtSelected });
+        }
+        return;
     };
 
     render() {
@@ -54,7 +75,7 @@ class SelectClubAndCourt extends React.Component {
                                         <Text
                                             style={MainStyles.MAIN_BUTTON_TEXT}
                                         >
-                                            {club.name}
+                                            {this.titleToUppercase(club.name)}
                                         </Text>
                                     </TouchableOpacity>
                                 );
@@ -73,15 +94,21 @@ class SelectClubAndCourt extends React.Component {
                                 ) {
                                     return club.court.map(court => {
                                         if (court.active) {
-                                            console.log(court._id);
                                             return (
                                                 <TouchableOpacity
+                                                    onPress={() =>
+                                                        this.selectCourt(court)}
                                                     key={court._id}
                                                     style={[
                                                         styles.CONTAINER,
                                                         {
                                                             backgroundColor:
-                                                                StyleRules.BLUE_COLOR
+                                                                court.courtNumber ===
+                                                                this.state
+                                                                    .courtSelected
+                                                                    .courtNumber
+                                                                    ? StyleRules.GREEN_COLOR
+                                                                    : StyleRules.BLUE_COLOR
                                                         }
                                                     ]}
                                                 >

@@ -17,7 +17,13 @@ class SelectClubAndCourt extends React.Component {
     }
 
     selectClub = async clubSelected => {
-        const state = await this.setState({ clubSelected });
+        if (clubSelected === this.state.clubSelected) {
+            const state = await this.setState({ clubSelected: false });
+            return;
+        } else {
+            const state = await this.setState({ clubSelected });
+            return;
+        }
     };
 
     render() {

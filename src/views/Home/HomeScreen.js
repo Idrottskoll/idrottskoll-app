@@ -22,7 +22,6 @@ import { connect } from 'react-redux';
 import NotAuthCard from '../../components/Cards/NotAuthCard';
 import * as actions from '../../actions';
 
-const imageURI = 'https://www.idrottskoll.se/Videos/img/default_tennis.png';
 // TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
     constructor(props) {

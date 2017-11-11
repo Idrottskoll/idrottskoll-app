@@ -1,19 +1,28 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    DatePickerIOS
+} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
+import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 
 class SelectClubAndCourt extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             clubSelected: false,
-            courtSelected: false
+            courtSelected: false,
+            timeSelected: false,
+            dateTimePickerVisible: false
         };
     }
 
@@ -40,11 +49,19 @@ class SelectClubAndCourt extends React.Component {
 
     selectCourt = async courtSelected => {
         if (courtSelected === this.state.courtSelected) {
-            const state = await this.setState({ courtSelected: false });
+            const stateCourt = await this.setState({ courtSelected: false });
         } else {
-            const state = await this.setState({ courtSelected });
+            const stateCourt = await this.setState({ courtSelected });
         }
         return;
+    };
+
+    selectDateTime = async timeSelected => {
+        const stateDateTime = await this.setState({ timeSelected });
+    };
+
+    componentWillMount = async () => {
+        const stateTime = await this.setState({ timeSelected: new Date() });
     };
 
     render() {
@@ -129,6 +146,49 @@ class SelectClubAndCourt extends React.Component {
                     ) : (
                         <View />
                     )}
+
+                    {this.state.courtSelected ? (
+                        <DefaultCard>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    this.setState({
+                                        dateTimePickerVisible: !this.state
+                                            .dateTimePickerVisible
+                                    })}
+                                style={[
+                                    styles.CONTAINER,
+                                    {
+                                        backgroundColor: StyleRules.BLUE_COLOR
+                                    }
+                                ]}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    {this.state.dateTimePickerVisible
+                                        ? 'Välj eller ändra tid du vill spela in'
+                                        : 'Visa vald tid'}
+                                </Text>
+                            </TouchableOpacity>
+                            {this.state.dateTimePickerVisible ? (
+                                <DatePickerIOS
+                                    date={this.state.timeSelected}
+                                    mode="datetime"
+                                    onDateChange={this.selectDateTime}
+                                />
+                            ) : null}
+                        </DefaultCard>
+                    ) : (
+                        <View />
+                    )}
+
+                    <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
+                        <TouchableOpacity
+                            onPress={() => {
+                                alert('order');
+                            }}
+                        >
+                            <Text>Beställ</Text>
+                        </TouchableOpacity>
+                    </OrderNewVideoCard>
                 </View>
             );
         } else {

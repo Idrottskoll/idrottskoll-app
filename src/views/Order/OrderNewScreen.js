@@ -14,7 +14,6 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
@@ -53,18 +52,7 @@ class OrderNewScreen extends React.Component {
                             Lägg ny beställning
                         </Text>
                     </DefaultCard>
-
                     <SelectClubAndCourt />
-
-                    <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
-                        <TouchableOpacity
-                            onPress={() => {
-                                alert('order');
-                            }}
-                        >
-                            <Text>Beställ</Text>
-                        </TouchableOpacity>
-                    </OrderNewVideoCard>
                 </ScrollViewContainer>
             </ViewContainer>
         );

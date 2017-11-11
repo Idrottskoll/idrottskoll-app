@@ -170,6 +170,7 @@ class SelectClubAndCourt extends React.Component {
                             </TouchableOpacity>
                             {this.state.dateTimePickerVisible ? (
                                 <DatePickerIOS
+                                    minuteInterval={5}
                                     date={this.state.timeSelected}
                                     mode="datetime"
                                     onDateChange={this.selectDateTime}
@@ -185,8 +186,14 @@ class SelectClubAndCourt extends React.Component {
                             onPress={() => {
                                 alert('order');
                             }}
+                            style={[
+                                MainStyles.MAIN_BUTTON,
+                                { marginLeft: StyleRules.MARGIN }
+                            ]}
                         >
-                            <Text>Beställ</Text>
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                Beställ
+                            </Text>
                         </TouchableOpacity>
                     </OrderNewVideoCard>
                 </View>

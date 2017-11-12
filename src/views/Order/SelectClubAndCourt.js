@@ -15,6 +15,8 @@ import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 
+// TODO: Add checks alert dialog to confirm order is right
+// TODO: fier off post
 class SelectClubAndCourt extends React.Component {
     constructor(props) {
         super(props);

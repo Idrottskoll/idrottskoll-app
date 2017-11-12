@@ -6,7 +6,8 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    DatePickerIOS
+    DatePickerIOS,
+    Alert
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -24,7 +25,8 @@ class SelectClubAndCourt extends React.Component {
             clubSelected: false,
             courtSelected: false,
             timeSelected: false,
-            dateTimePickerVisible: false
+            dateTimePickerVisible: false,
+            order: false
         };
     }
 
@@ -62,8 +64,43 @@ class SelectClubAndCourt extends React.Component {
         const stateDateTime = await this.setState({ timeSelected });
     };
 
-    submitNewOrder = async (sport, club, court, startTime, endTime) => {
-        alert('New Order');
+    formatTime(dateTime) {
+        // TODO: Return date like: YYYY:MM:dd HH:mm:ss
+        return dateTime;
+    }
+
+    submitNewOrder = async () => {
+        const formatedTime = this.formatTime(this.state.timeSelected);
+        if (this.props.authenticated) {
+            const setOrder = await this.setState({
+                order: {
+                    email: this.props.data.email,
+                    sport: this.state.clubSelected.sport,
+                    club: this.state.clubSelected.name,
+                    court: this.state.courtSelected.courtNumber,
+                    startTime: formatedTime
+                }
+            });
+
+            Alert.alert(
+                'Här är din beställning, vill du lägga din order?',
+                `Sport: ${this.state.order.sport}, klubb: ${this.state.order
+                    .club}, Bana: ${this.state.order.court}, Start tid: ${this
+                    .state.order.startTime}.`,
+                [
+                    {
+                        text: 'Avsluta',
+                        style: 'cancel'
+                    },
+                    {
+                        text: 'Beställ',
+                        onPress: () =>
+                            this.props.orderNewVideo(this.state.order)
+                    }
+                ],
+                { cancelable: false }
+            );
+        }
     };
 
     renderClubPicker() {
@@ -209,7 +246,11 @@ class SelectClubAndCourt extends React.Component {
                     <View />
                 )}
 
-                {this.renderOrderButton()}
+                {this.state.clubSelected && this.state.courtSelected ? (
+                    this.renderOrderButton()
+                ) : (
+                    <View />
+                )}
             </View>
         );
     }
@@ -229,7 +270,9 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
     return {
         activeClubs: state.auth.activeClubs,
-        activeCourts: state.auth.activeCourts
+        activeCourts: state.auth.activeCourts,
+        data: state.auth.data,
+        authenticated: state.auth.authenticated
     };
 };
 

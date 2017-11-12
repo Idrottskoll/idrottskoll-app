@@ -308,7 +308,8 @@ const styles = StyleSheet.create({
         color: 'white',
         paddingLeft: 2,
         paddingRight: 2,
-        lineHeight: 12
+        lineHeight: 12,
+        fontFamily: 'Fjalla One'
     },
     nativeVideoControls: {
         top: 184,

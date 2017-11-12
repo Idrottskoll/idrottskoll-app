@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     TEXT_STYLE_BIG: {
         marginTop: StyleRules.MARGIN / 2,
         fontSize: StyleRules.FONT_SIZE_TITLE,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily: 'Fjalla One'
     },
 
     TEXT_STYLE: {

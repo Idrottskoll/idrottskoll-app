@@ -51,7 +51,8 @@ const HomeScreenStack = StackNavigator(
             headerTitleStyle: {
                 // add title styles
                 fontSize: StyleRules.FONT_SIZE_MEDIUM,
-                fontWeight: '600'
+                fontWeight: '600',
+                fontFamily: 'Fjalla One'
             }
         }
     }
@@ -83,7 +84,8 @@ const InformationScreenStack = StackNavigator(
             headerTitleStyle: {
                 // add title styles
                 fontSize: StyleRules.FONT_SIZE_MEDIUM,
-                fontWeight: '600'
+                fontWeight: '600',
+                fontFamily: 'Fjalla One'
             }
         }
     }
@@ -125,7 +127,8 @@ const MyVideosScreenStack = StackNavigator(
             headerTitleStyle: {
                 // add title styles
                 fontSize: StyleRules.FONT_SIZE_MEDIUM,
-                fontWeight: '600'
+                fontWeight: '600',
+                fontFamily: 'Fjalla One'
             }
         }
     }
@@ -163,7 +166,8 @@ const ProfileScreenStack = StackNavigator(
             headerTitleStyle: {
                 // add title styles
                 fontSize: StyleRules.FONT_SIZE_MEDIUM,
-                fontWeight: '600'
+                fontWeight: '600',
+                fontFamily: 'Fjalla One'
             }
         }
     }

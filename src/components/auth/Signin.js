@@ -44,7 +44,8 @@ class Signin extends React.Component {
                             style={[
                                 {
                                     fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    fontFamily: 'Fjalla One'
                                 }
                             ]}
                         >

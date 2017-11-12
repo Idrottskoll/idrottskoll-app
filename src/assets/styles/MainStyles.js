@@ -66,7 +66,8 @@ export default (Style = {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
         marginBottom: StyleRules.MARGIN,
-        fontSize: StyleRules.FONT_SIZE_TITLE
+        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontFamily: 'Fjalla One'
     },
 
     FORM_GROUP: {

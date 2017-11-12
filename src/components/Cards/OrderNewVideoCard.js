@@ -10,7 +10,12 @@ export default class OrderNewVideoCard extends React.Component {
         return (
             <View style={[styles.ORDER_NEW_VIDEO_CARD]}>
                 <View>
-                    <Text style={[styles.TITLE, { width: 160 }]}>
+                    <Text
+                        style={{
+                            width: 160,
+                            fontSize: StyleRules.FONT_SIZE_MEDIUM
+                        }}
+                    >
                         {this.props.title}
                     </Text>
                 </View>
@@ -41,6 +46,7 @@ const styles = StyleSheet.create({
     },
 
     TITLE: {
-        fontSize: StyleRules.FONT_SIZE_MEDIUM
+        fontSize: StyleRules.FONT_SIZE_MEDIUM,
+        fontFamily: 'Fjalla One'
     }
 });

@@ -225,7 +225,8 @@ const styles = StyleSheet.create({
 
     LOCKED_VIDEO_BUTTON: {
         color: StyleRules.TEXT_COLOR,
-        fontSize: StyleRules.FONT_SIZE_MEDIUM
+        fontSize: StyleRules.FONT_SIZE_MEDIUM,
+        fontFamily: 'Fjalla One'
     },
 
     UN_LOCKED_VIDEO_BUTTON_CONTAINER: {

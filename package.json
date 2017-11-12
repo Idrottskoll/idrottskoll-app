@@ -17,6 +17,10 @@
         "redux-form": "^5.2.4",
         "redux-thunk": "^2.2.0"
     },
+    "rnpm": {
+        "assets": ["./src/assets/fonts/"]
+    },
+
     "devDependencies": {
         "babel-jest": "21.2.0",
         "babel-preset-react-native": "4.0.0",

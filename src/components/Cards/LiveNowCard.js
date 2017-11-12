@@ -20,7 +20,8 @@ export default class LiveNowCard extends React.Component {
                 <Text
                     style={{
                         color: StyleRules.TEXT_COLOR,
-                        fontSize: StyleRules.FONT_SIZE
+                        fontSize: StyleRules.FONT_SIZE,
+                        fontFamily: 'Fjalla One'
                     }}
                 >{`${this.props.videoName}!`}</Text>
             </View>
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
 
     TITLE: {
         fontWeight: 'bold',
-        fontSize: StyleRules.FONT_SIZE_TITLE
+        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontFamily: 'Fjalla One'
     }
 });

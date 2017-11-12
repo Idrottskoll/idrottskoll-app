@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     BUTTON_TITLE: {
         color: StyleRules.TEXT_COLOR,
         fontWeight: 'bold',
-        fontSize: StyleRules.FONT_SIZE_TITLE
+        fontSize: StyleRules.FONT_SIZE_TITLE,
+        fontFamily: 'Fjalla One'
     }
 });

@@ -77,8 +77,9 @@ class SelectClubAndCourt extends React.Component {
                     email: this.props.data.email,
                     sport: this.state.clubSelected.sport,
                     club: this.state.clubSelected.name,
-                    court: this.state.courtSelected.courtNumber,
-                    startTime: formatedTime
+                    court: this.state.courtSelected.courtNumber
+                    // startTime: '2017-11-12 22:17:00',
+                    // endTime: '2017-11-12 22:20:00'
                 }
             });
 
@@ -101,6 +102,7 @@ class SelectClubAndCourt extends React.Component {
                 { cancelable: false }
             );
         }
+        const live = await this.props.fetchLiveVideo();
     };
 
     renderClubPicker() {

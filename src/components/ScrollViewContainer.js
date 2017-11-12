@@ -14,17 +14,19 @@ class ScrollViewContainer extends React.Component {
         };
     }
 
-    _onRefresh() {
-        this.setState({ refreshing: true });
-        this.props.checkUserStatus().then(token => {
+    _onRefresh = async () => {
+        const refreshingTrue = await this.setState({ refreshing: true });
+        const checkToken = await this.props.checkUserStatus().then(token => {
             if (token) {
                 this.props.fetchAuthUserData('user');
             }
-            return;
         });
-        this.setState({ refreshing: false });
-        this.forceUpdate();
-    }
+        const clubs = await this.props.getActiveClubs();
+        const live = await this.props.fetchLiveVideo();
+
+        const refreshingFalse = await this.setState({ refreshing: false });
+        return;
+    };
     render() {
         return (
             <ScrollView

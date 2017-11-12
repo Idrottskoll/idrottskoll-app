@@ -47,12 +47,24 @@ class OrderNewScreen extends React.Component {
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Lägg ny beställning
-                        </Text>
-                    </DefaultCard>
-                    <SelectClubAndCourt />
+                    {this.props.activeClubs ? (
+                        <View>
+                            <DefaultCard>
+                                <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                    Lägg ny beställning
+                                </Text>
+                            </DefaultCard>
+                            <SelectClubAndCourt />
+                        </View>
+                    ) : (
+                        <DefaultCard>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                Oj då...
+                            </Text>
+                            <Text>Det finns inga aktiva kubbar just nu...</Text>
+                            <Text>Försök igen senare.</Text>
+                        </DefaultCard>
+                    )}
                 </ScrollViewContainer>
             </ViewContainer>
         );

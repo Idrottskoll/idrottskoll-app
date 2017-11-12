@@ -60,30 +60,61 @@ class SelectClubAndCourt extends React.Component {
         const stateDateTime = await this.setState({ timeSelected });
     };
 
-    componentWillMount = async () => {
-        const stateTime = await this.setState({ timeSelected: new Date() });
+    submitNewOrder = async (sport, club, court, startTime, endTime) => {
+        alert('New Order');
     };
 
-    render() {
-        if (this.props.activeClubs) {
-            return (
-                <View>
-                    <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Välj klubb
-                        </Text>
-                        {this.props.activeClubs.map(club => {
-                            if (club.active) {
+    renderClubPicker() {
+        return (
+            <DefaultCard>
+                <Text style={MainStyles.MAIN_CARD_TITLE}>Välj klubb</Text>
+                {this.props.activeClubs.map(club => {
+                    if (club.active) {
+                        return (
+                            <TouchableOpacity
+                                onPress={() => this.selectClub(club)}
+                                key={club._id}
+                                style={[
+                                    styles.CONTAINER,
+                                    {
+                                        backgroundColor:
+                                            club.name ===
+                                            this.state.clubSelected.name
+                                                ? StyleRules.GREEN_COLOR
+                                                : StyleRules.BLUE_COLOR
+                                    }
+                                ]}
+                            >
+                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                    {this.titleToUppercase(club.name)}
+                                </Text>
+                            </TouchableOpacity>
+                        );
+                    }
+                })}
+            </DefaultCard>
+        );
+    }
+
+    renderCourtPicker() {
+        return (
+            <DefaultCard>
+                <Text style={MainStyles.MAIN_CARD_TITLE}>Välj bana</Text>
+                {this.props.activeClubs.map(club => {
+                    if (club.name === this.state.clubSelected.name) {
+                        return club.court.map(court => {
+                            if (court.active) {
                                 return (
                                     <TouchableOpacity
-                                        onPress={() => this.selectClub(club)}
-                                        key={club._id}
+                                        onPress={() => this.selectCourt(court)}
+                                        key={court._id}
                                         style={[
                                             styles.CONTAINER,
                                             {
                                                 backgroundColor:
-                                                    club.name ===
-                                                    this.state.clubSelected.name
+                                                    court.courtNumber ===
+                                                    this.state.courtSelected
+                                                        .courtNumber
                                                         ? StyleRules.GREEN_COLOR
                                                         : StyleRules.BLUE_COLOR
                                             }
@@ -92,114 +123,94 @@ class SelectClubAndCourt extends React.Component {
                                         <Text
                                             style={MainStyles.MAIN_BUTTON_TEXT}
                                         >
-                                            {this.titleToUppercase(club.name)}
+                                            {`Bana: ${court.courtNumber}`}
                                         </Text>
                                     </TouchableOpacity>
                                 );
                             }
-                        })}
-                    </DefaultCard>
+                        });
+                    }
+                })}
+            </DefaultCard>
+        );
+    }
 
+    renderDateTimePicker() {
+        return (
+            <DefaultCard>
+                <TouchableOpacity
+                    onPress={() =>
+                        this.setState({
+                            dateTimePickerVisible: !this.state
+                                .dateTimePickerVisible
+                        })}
+                    style={[
+                        styles.CONTAINER,
+                        {
+                            backgroundColor: StyleRules.BLUE_COLOR
+                        }
+                    ]}
+                >
+                    <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                        {this.state.dateTimePickerVisible
+                            ? 'Välj eller ändra tid du vill spela in'
+                            : 'Visa vald tid'}
+                    </Text>
+                </TouchableOpacity>
+                {this.state.dateTimePickerVisible ? (
+                    <DatePickerIOS
+                        minuteInterval={5}
+                        date={this.state.timeSelected}
+                        mode="datetime"
+                        onDateChange={this.selectDateTime}
+                    />
+                ) : null}
+            </DefaultCard>
+        );
+    }
+
+    renderOrderButton() {
+        return (
+            <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
+                <TouchableOpacity
+                    onPress={() => {
+                        this.submitNewOrder();
+                    }}
+                    style={[
+                        MainStyles.MAIN_BUTTON,
+                        { marginLeft: StyleRules.MARGIN }
+                    ]}
+                >
+                    <Text style={MainStyles.MAIN_BUTTON_TEXT}>Beställ</Text>
+                </TouchableOpacity>
+            </OrderNewVideoCard>
+        );
+    }
+
+    componentWillMount = async () => {
+        const stateTime = await this.setState({ timeSelected: new Date() });
+    };
+
+    render() {
+        if (this.props.activeClubs) {
+            return (
+                <View>
+                    {this.renderClubPicker()}
                     {this.state.clubSelected !== false ? (
-                        <DefaultCard>
-                            <Text style={MainStyles.MAIN_CARD_TITLE}>
-                                Välj bana
-                            </Text>
-                            {this.props.activeClubs.map(club => {
-                                if (
-                                    club.name === this.state.clubSelected.name
-                                ) {
-                                    return club.court.map(court => {
-                                        if (court.active) {
-                                            return (
-                                                <TouchableOpacity
-                                                    onPress={() =>
-                                                        this.selectCourt(court)}
-                                                    key={court._id}
-                                                    style={[
-                                                        styles.CONTAINER,
-                                                        {
-                                                            backgroundColor:
-                                                                court.courtNumber ===
-                                                                this.state
-                                                                    .courtSelected
-                                                                    .courtNumber
-                                                                    ? StyleRules.GREEN_COLOR
-                                                                    : StyleRules.BLUE_COLOR
-                                                        }
-                                                    ]}
-                                                >
-                                                    <Text
-                                                        style={
-                                                            MainStyles.MAIN_BUTTON_TEXT
-                                                        }
-                                                    >
-                                                        {`Bana: ${court.courtNumber}`}
-                                                    </Text>
-                                                </TouchableOpacity>
-                                            );
-                                        }
-                                    });
-                                }
-                            })}
-                        </DefaultCard>
+                        this.renderCourtPicker()
                     ) : (
                         <View />
                     )}
 
                     {this.state.courtSelected ? (
-                        <DefaultCard>
-                            <TouchableOpacity
-                                onPress={() =>
-                                    this.setState({
-                                        dateTimePickerVisible: !this.state
-                                            .dateTimePickerVisible
-                                    })}
-                                style={[
-                                    styles.CONTAINER,
-                                    {
-                                        backgroundColor: StyleRules.BLUE_COLOR
-                                    }
-                                ]}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    {this.state.dateTimePickerVisible
-                                        ? 'Välj eller ändra tid du vill spela in'
-                                        : 'Visa vald tid'}
-                                </Text>
-                            </TouchableOpacity>
-                            {this.state.dateTimePickerVisible ? (
-                                <DatePickerIOS
-                                    minuteInterval={5}
-                                    date={this.state.timeSelected}
-                                    mode="datetime"
-                                    onDateChange={this.selectDateTime}
-                                />
-                            ) : null}
-                        </DefaultCard>
+                        this.renderDateTimePicker()
                     ) : (
                         <View />
                     )}
 
-                    <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
-                        <TouchableOpacity
-                            onPress={() => {
-                                alert('order');
-                            }}
-                            style={[
-                                MainStyles.MAIN_BUTTON,
-                                { marginLeft: StyleRules.MARGIN }
-                            ]}
-                        >
-                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                Beställ
-                            </Text>
-                        </TouchableOpacity>
-                    </OrderNewVideoCard>
+                    {this.renderOrderButton()}
                 </View>
             );
-        } else {
-            return <View />;
         }
     }
 }

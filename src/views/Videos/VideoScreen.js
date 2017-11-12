@@ -50,17 +50,13 @@ export default class VideoScreen extends React.Component {
     render() {
         const { params } = this.props.navigation.state;
         const { navigate } = this.props.navigation;
-        console.log('Video screen: ' + params.videoUrl);
         return (
             <ViewContainer videoStatus={params.videoStatus} backdrop={true}>
                 <ScrollViewContainer>
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
-                            source={require('../../assets/icons/football.png')}
-                            // source={{
-                            //     uri: `${VIDEO_URL}/${params.videoUrl}`
-                            // }}
+                            source={require('../../assets/icons/tennis.png')}
                         />
                         <TouchableOpacity
                             style={[

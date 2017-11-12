@@ -157,11 +157,11 @@ export function getActiveClubs() {
 *
 * @return obj response
 */
-export function orderNewVideo(club, dateTime) {
-    return function(dispatch) {
+export function orderNewVideo(sport, club, court, startTime, email) {
+    return async function(dispatch) {
         return axios
             .post(`${ROOT_URL}/video/recorded`, {
-                headers: { club, dateTime }
+                headers: { sport, club, court, startTime, email }
             })
             .then(response => {
                 console.log(response);

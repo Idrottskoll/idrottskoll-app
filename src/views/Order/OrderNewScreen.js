@@ -14,12 +14,12 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
+import SelectClubAndCourt from './SelectClubAndCourt';
 
 class OrderNewScreen extends React.Component {
     constructor(props) {
@@ -47,21 +47,24 @@ class OrderNewScreen extends React.Component {
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    <DefaultCard>
-                        <Text style={MainStyles.MAIN_CARD_TITLE}>
-                            Lägg ny beställning
-                        </Text>
-                    </DefaultCard>
-
-                    <OrderNewVideoCard title="Fyll i formuläret för att lägga till en beställning">
-                        <TouchableOpacity
-                            onPress={() => {
-                                alert('order');
-                            }}
-                        >
-                            <Text>Beställ</Text>
-                        </TouchableOpacity>
-                    </OrderNewVideoCard>
+                    {this.props.activeClubs ? (
+                        <View>
+                            <DefaultCard>
+                                <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                    Lägg ny beställning
+                                </Text>
+                            </DefaultCard>
+                            <SelectClubAndCourt />
+                        </View>
+                    ) : (
+                        <DefaultCard>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                Oj då...
+                            </Text>
+                            <Text>Det finns inga aktiva kubbar just nu...</Text>
+                            <Text>Försök igen senare.</Text>
+                        </DefaultCard>
+                    )}
                 </ScrollViewContainer>
             </ViewContainer>
         );

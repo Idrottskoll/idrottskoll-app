@@ -192,26 +192,24 @@ class SelectClubAndCourt extends React.Component {
     };
 
     render() {
-        if (this.props.activeClubs) {
-            return (
-                <View>
-                    {this.renderClubPicker()}
-                    {this.state.clubSelected !== false ? (
-                        this.renderCourtPicker()
-                    ) : (
-                        <View />
-                    )}
+        return (
+            <View>
+                {this.renderClubPicker()}
+                {this.state.clubSelected !== false ? (
+                    this.renderCourtPicker()
+                ) : (
+                    <View />
+                )}
 
-                    {this.state.courtSelected ? (
-                        this.renderDateTimePicker()
-                    ) : (
-                        <View />
-                    )}
+                {this.state.courtSelected ? (
+                    this.renderDateTimePicker()
+                ) : (
+                    <View />
+                )}
 
-                    {this.renderOrderButton()}
-                </View>
-            );
-        }
+                {this.renderOrderButton()}
+            </View>
+        );
     }
 }
 

@@ -133,20 +133,37 @@ export default class VideoPlayer extends React.Component {
                         this.setState({ paused: !this.state.paused });
                     }}
                 >
-                    <Video
-                        source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
-                        style={styles.fullScreen}
-                        rate={this.state.rate}
-                        paused={this.state.paused}
-                        volume={this.state.volume}
-                        muted={this.state.muted}
-                        ignoreSilentSwitch={this.state.ignoreSilentSwitch}
-                        resizeMode={this.state.resizeMode}
-                        onLoad={this.onLoad}
-                        onBuffer={this.onBuffer}
-                        onProgress={this.onProgress}
-                        repeat={false}
-                    />
+                    {params.liveURL ? (
+                        <Video
+                            source={{ uri: params.liveURL }}
+                            style={styles.fullScreen}
+                            rate={this.state.rate}
+                            paused={this.state.paused}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
+                            ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+                            resizeMode={this.state.resizeMode}
+                            onLoad={this.onLoad}
+                            onBuffer={this.onBuffer}
+                            onProgress={this.onProgress}
+                            repeat={false}
+                        />
+                    ) : (
+                        <Video
+                            source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
+                            style={styles.fullScreen}
+                            rate={this.state.rate}
+                            paused={this.state.paused}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
+                            ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+                            resizeMode={this.state.resizeMode}
+                            onLoad={this.onLoad}
+                            onBuffer={this.onBuffer}
+                            onProgress={this.onProgress}
+                            repeat={false}
+                        />
+                    )}
                 </TouchableOpacity>
 
                 <View style={styles.controls}>
@@ -196,24 +213,39 @@ export default class VideoPlayer extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.fullScreen}>
-                    <Video
-                        source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
-                        // source={{
-                        //     uri: `${VIDEO_URL}/stream/live/lerumstkC3.m3u8`
-                        // }}
-                        style={videoStyle}
-                        rate={this.state.rate}
-                        paused={this.state.paused}
-                        volume={this.state.volume}
-                        muted={this.state.muted}
-                        ignoreSilentSwitch={this.state.ignoreSilentSwitch}
-                        resizeMode={this.state.resizeMode}
-                        onLoad={this.onLoad}
-                        onBuffer={this.onBuffer}
-                        onProgress={this.onProgress}
-                        repeat={false}
-                        controls={this.state.controls}
-                    />
+                    {params.liveURL ? (
+                        <Video
+                            source={{ uri: params.liveURL }}
+                            style={videoStyle}
+                            rate={this.state.rate}
+                            paused={this.state.paused}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
+                            ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+                            resizeMode={this.state.resizeMode}
+                            onLoad={this.onLoad}
+                            onBuffer={this.onBuffer}
+                            onProgress={this.onProgress}
+                            repeat={false}
+                            controls={this.state.controls}
+                        />
+                    ) : (
+                        <Video
+                            source={{ uri: `${VIDEO_URL}/${params.videoUrl}` }}
+                            style={videoStyle}
+                            rate={this.state.rate}
+                            paused={this.state.paused}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
+                            ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+                            resizeMode={this.state.resizeMode}
+                            onLoad={this.onLoad}
+                            onBuffer={this.onBuffer}
+                            onProgress={this.onProgress}
+                            repeat={false}
+                            controls={this.state.controls}
+                        />
+                    )}
                 </View>
                 <View style={styles.controls}>
                     <View style={styles.generalControls}>

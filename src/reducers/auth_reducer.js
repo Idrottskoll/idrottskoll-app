@@ -5,7 +5,7 @@ import {
     FETCH_USER_DATA,
     USER_REQUESTED_NEW_PASSWPRD,
     ACTIVE_CLUBS,
-    COURTS
+    LIVE_VIDEO
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -22,6 +22,8 @@ export default function(state = {}, action) {
             return { ...state, data: action.payload };
         case ACTIVE_CLUBS:
             return { ...state, activeClubs: action.payload };
+        case LIVE_VIDEO:
+            return { ...state, liveVideo: action.payload };
     }
     return state;
 }

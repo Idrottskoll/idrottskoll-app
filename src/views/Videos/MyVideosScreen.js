@@ -50,6 +50,7 @@ class MyVideosScreen extends React.Component {
                                         isRecorded: video.isRecorded,
                                         uploaded: video.uploaded,
                                         videoUrl: video.name,
+                                        liveURL: false,
                                         club: video.club,
                                         court: video.court
                                     })}

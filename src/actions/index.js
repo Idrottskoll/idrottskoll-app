@@ -9,7 +9,8 @@ import {
     UNAUTH_USER,
     FETCH_USER_DATA,
     USER_REQUESTED_NEW_PASSWPRD,
-    ACTIVE_CLUBS
+    ACTIVE_CLUBS,
+    LIVE_VIDEO
 } from './types';
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
@@ -191,15 +192,14 @@ export function checkUserStatus() {
 // fetch live video, check if video is live on componentWillMount()
 export function fetchLiveVideo() {
     return async function(dispatch) {
-        axios
+        return axios
             .get(`${ROOT_URL}/orders`)
             .then(response => {
-                console.log(response);
-                // dispatch({
-                //     // type: FETCH_LIVE_VIDEO,
-                //     payload: response.data
-                // });
-                return;
+                dispatch({
+                    type: LIVE_VIDEO,
+                    payload: response
+                });
+                return response;
             })
             .catch(e => {
                 console.log(e);

@@ -50,25 +50,33 @@ class HomeScreen extends React.Component {
 
     renderLiveSports = () => {
         const { navigate } = this.props.navigation;
-        const live = false;
-        if (live) {
-            return (
-                <TouchableOpacity
-                    onPress={() =>
-                        navigate('VideoScreen', {
-                            videoTitle: 'Innebandy',
-                            videoName: 'Innebandy, vallhalla bana 7.',
-                            videoDescription: 'Live',
-                            isRecorded: false,
-                            uploaded: false,
-                            videoUrl: '/stream/live/lerumstkC3.m3u8',
-                            club: 'vallhalla',
-                            court: 7
-                        })}
-                >
-                    <LiveNowCard videoName="SM final Innebandy" />
-                </TouchableOpacity>
-            );
+        if (this.props.liveVideo.data) {
+            return this.props.liveVideo.data.map(live => {
+                if (live.stream) {
+                    return (
+                        <TouchableOpacity
+                            key={live._id}
+                            onPress={() =>
+                                navigate('VideoScreen', {
+                                    videoTitle: live.stream.sport,
+                                    videoName: `${live.stream.sport}, ${live
+                                        .stream.club} bana ${live.stream
+                                        .court}.`,
+                                    videoDescription:
+                                        'live.record.statusMessage',
+                                    isRecorded: false,
+                                    uploaded: false,
+                                    videoUrl: false,
+                                    liveURL: live.stream.path,
+                                    club: live.stream.club,
+                                    court: live.stream.court
+                                })}
+                        >
+                            <LiveNowCard videoName={live.stream.sport} />
+                        </TouchableOpacity>
+                    );
+                }
+            });
         }
     };
 
@@ -130,6 +138,7 @@ class HomeScreen extends React.Component {
                                                 isRecorded: video.isRecorded,
                                                 uploaded: video.uploaded,
                                                 videoUrl: video.name,
+                                                liveURL: false,
                                                 club: video.club,
                                                 court: video.court
                                             })}
@@ -187,17 +196,16 @@ class HomeScreen extends React.Component {
         }
     };
 
-    // componentWillMount() {
-    //     // fetch live stream
-    //     this.props.fetchLiveVideo();
-    // }
+    componentWillMount() {
+        this.props.fetchLiveVideo();
+    }
 
     render() {
         const { navigate } = this.props.navigation;
         return (
             <ViewContainer>
                 <ScrollViewContainer>
-                    {this.renderLiveSports()}
+                    {this.props.liveVideo ? this.renderLiveSports() : <View />}
                     {this.renderComponents()}
                 </ScrollViewContainer>
             </ViewContainer>
@@ -239,7 +247,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
     return {
         data: state.auth.data,
-        authenticated: state.auth.authenticated
+        authenticated: state.auth.authenticated,
+        liveVideo: state.auth.liveVideo
     };
 };
 

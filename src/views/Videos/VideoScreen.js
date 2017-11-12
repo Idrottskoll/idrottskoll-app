@@ -58,22 +58,41 @@ export default class VideoScreen extends React.Component {
                             style={MainStyles.VIDEO_CONTAINER}
                             source={require('../../assets/icons/tennis.png')}
                         />
-                        <TouchableOpacity
-                            style={[
-                                styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
-                                styles.VIDEO_BUTTON_CONTAINER
-                            ]}
-                            onPress={() =>
-                                navigate('VideoPlayer', {
-                                    videoUrl: params.videoUrl
-                                })}
-                        >
-                            <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
-                                <Image
-                                    source={require('../../assets/icons/playButton.png')}
-                                />
-                            </View>
-                        </TouchableOpacity>
+                        {params.liveURL ? (
+                            <TouchableOpacity
+                                style={[
+                                    styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
+                                    styles.VIDEO_BUTTON_CONTAINER
+                                ]}
+                                onPress={() =>
+                                    navigate('VideoPlayer', {
+                                        liveURL: params.liveURL
+                                    })}
+                            >
+                                <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
+                                    <Image
+                                        source={require('../../assets/icons/playButton.png')}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                        ) : (
+                            <TouchableOpacity
+                                style={[
+                                    styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
+                                    styles.VIDEO_BUTTON_CONTAINER
+                                ]}
+                                onPress={() =>
+                                    navigate('VideoPlayer', {
+                                        videoUrl: params.videoUrl
+                                    })}
+                            >
+                                <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
+                                    <Image
+                                        source={require('../../assets/icons/playButton.png')}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                        )}
                     </View>
 
                     <DefaultCard>

@@ -34,9 +34,9 @@ class ScrollViewContainer extends React.Component {
                     <RefreshControl
                         refreshing={this.state.refreshing}
                         onRefresh={this._onRefresh.bind(this)}
-                        tintColor={StyleRules.ORANGE_COLOR}
+                        tintColor={StyleRules.GREEN_COLOR}
                         title="Uppdatera"
-                        titleColor={StyleRules.ORANGE_COLOR}
+                        titleColor={StyleRules.GREEN_COLOR}
                     />
                 }
             >

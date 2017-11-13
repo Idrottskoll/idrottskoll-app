@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
 
     VIDEO_BACKDROP: {
-        height: 235,
+        height: 285,
         zIndex: -5
     }
 });

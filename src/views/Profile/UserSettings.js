@@ -7,6 +7,8 @@ import StyleRules from '../../assets/styles/StyleRules';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import ForgotPassword from '../../components/auth/ForgotPassword';
+import DefaultCard from '../../components/Cards/DefaultCard';
+import MainStyles from '../../assets/styles/MainStyles';
 
 class UserSettings extends React.Component {
     constructor(props) {
@@ -31,7 +33,16 @@ class UserSettings extends React.Component {
             <ViewContainer>
                 <ScrollViewContainer>
                     {this.props.authenticated ? (
-                        <Text>Settings</Text>
+                        <DefaultCard>
+                            <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                Här kommer du kunna ställa in dina inställningar
+                                för appen.
+                            </Text>
+                            <Text>
+                                Men i dagsläget får du besöka våran hemsida
+                                istället.
+                            </Text>
+                        </DefaultCard>
                     ) : (
                         <ForgotPassword />
                     )}

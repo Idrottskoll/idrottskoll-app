@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
@@ -15,7 +15,12 @@ export default class VideoSmallButton extends React.Component {
         return (
             <View style={[styles.BUTTON_CONTAINER]}>
                 <Text style={styles.BUTTON_TITLE}>{this.props.title}</Text>
-                <Text>></Text>
+                <View>
+                    <Image
+                        style={styles.IMAGE}
+                        source={require('../../assets/icons/rightArrow.png')}
+                    />
+                </View>
             </View>
         );
     }
@@ -46,5 +51,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: StyleRules.FONT_SIZE_TITLE,
         fontFamily: 'Fjalla One'
+    },
+    IMAGE: {
+        width: 26,
+        height: 26
     }
 });

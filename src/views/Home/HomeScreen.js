@@ -174,7 +174,16 @@ class HomeScreen extends React.Component {
                             </View>
                         ))
                     ) : (
-                        <Text>Du har inga videos</Text>
+                        <DefaultCard>
+                            <TouchableOpacity
+                                onPress={() => navigate('OrderNewScreen')}
+                            >
+                                <Text>
+                                    Du har inga videos än men du kan beställa en
+                                    här!
+                                </Text>
+                            </TouchableOpacity>
+                        </DefaultCard>
                     )}
                 </View>
             );

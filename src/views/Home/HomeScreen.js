@@ -151,11 +151,7 @@ class HomeScreen extends React.Component {
                                         </Text> */}
 
                                         {/* Button for UN LOCKED videos */}
-                                        <View
-                                            style={
-                                                styles.UN_LOCKED_VIDEO_BUTTON
-                                            }
-                                        >
+                                        <View>
                                             <Image
                                                 source={require('../../assets/icons/playButton.png')}
                                             />

@@ -202,7 +202,7 @@ const Tabs = TabNavigator(
         MyVideosScreen: {
             screen: MyVideosScreenStack,
             navigationOptions: {
-                tabBarLabel: 'Videos',
+                tabBarLabel: 'Mina videos',
                 tabBarIcon: ({ focused }) => {
                     const imgSource = focused
                         ? require('../../assets/icons/menuMyVideosActive.png')
@@ -231,7 +231,7 @@ const Tabs = TabNavigator(
             showLabel: false,
             showIcon: true,
             style: {
-                height: Platform.OS === 'ios' ? 55 : 55,
+                height: Platform.OS === 'ios' ? 65 : 65,
                 backgroundColor: '#FFFFFF',
                 // if platform is iOS and device height is iPhone X will raise the bottom menue bar
                 marginBottom:
@@ -243,7 +243,8 @@ const Tabs = TabNavigator(
 
 const styles = StyleSheet.create({
     icon: {
-        // Style the icons
+        // width: 32,
+        // height: 32
     }
 });
 

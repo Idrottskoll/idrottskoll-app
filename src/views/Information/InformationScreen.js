@@ -35,7 +35,7 @@ class InformationScreen extends React.Component {
                             Idag använder elitspelare och top klubbar dagligen
                             video anslysering för att förbättra deras
                             prestationer. Både genom att hitta vad man kan
-                            börbättra is sitt spel, men även plocka ut de
+                            förbättra i sitt spel, men även plocka ut de
                             possitiva sekvenserna ur en match eller träning.
                         </Text>
                     </DefaultCard>
@@ -43,7 +43,7 @@ class InformationScreen extends React.Component {
                     <DefaultCard>
                         <Text style={{ fontSize: StyleRules.FONT_SIZE }}>
                             Idrottskoll skapades för alla, med grund idén om att
-                            även kalle 5 år skall våde ha råd och möjlighet att
+                            även kalle 5 år skall både ha råd och möjlighet att
                             analysera sin match och träning. Tänk om alla som
                             satsa på sin idrott kan ha tillgång till material
                             som annars bara elitspelare har tillgång till. Tänk

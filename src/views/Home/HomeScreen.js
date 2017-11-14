@@ -29,9 +29,9 @@ class HomeScreen extends React.Component {
     }
 
     /**
-    * @param string string
-    * @return string text
-    */
+     * @param string string
+     * @return string text
+     */
     titleToUppercase(string) {
         return string.replace(/\w\S*/g, text => {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
@@ -39,9 +39,9 @@ class HomeScreen extends React.Component {
     }
 
     /**
-    * @param string time (dirty time string)
-    * @return string cleanTimeString
-    */
+     * @param string time (dirty time string)
+     * @return string cleanTimeString
+     */
     convertTime(time) {
         const dirtyTimeString = time.replace(/[^0-9-:]+/g, ' ');
         const cleanTimeString = dirtyTimeString.slice(0, 16);
@@ -53,24 +53,24 @@ class HomeScreen extends React.Component {
         if (this.props.liveVideo.data) {
             return this.props.liveVideo.data.map(live => {
                 if (live.stream) {
+                    if (!live.stream.isStreaming) {
+                        return;
+                    }
                     return (
                         <TouchableOpacity
                             key={live._id}
                             onPress={() =>
                                 navigate('VideoScreen', {
                                     videoTitle: live.stream.sport,
-                                    videoName: `${live.stream.sport}, ${live
-                                        .stream.club} bana ${live.stream
-                                        .court}.`,
-                                    videoDescription:
-                                        'live.record.statusMessage',
-                                    isRecorded: false,
-                                    uploaded: false,
+                                    videoName: `${live.stream.sport}, ${
+                                        live.stream.club
+                                    } bana ${live.stream.court}.`,
                                     videoUrl: false,
                                     liveURL: live.stream.path,
                                     club: live.stream.club,
                                     court: live.stream.court
-                                })}
+                                })
+                            }
                         >
                             <LiveNowCard videoName={live.stream.sport} />
                         </TouchableOpacity>
@@ -81,8 +81,8 @@ class HomeScreen extends React.Component {
     };
 
     /**
-    * Method dose logic for sorting if a user has videos to display
-    */
+     * Method dose logic for sorting if a user has videos to display
+     */
     renderComponents = () => {
         const { navigate } = this.props.navigation;
         if (this.props.authenticated) {
@@ -90,7 +90,7 @@ class HomeScreen extends React.Component {
                 <View>
                     {this.props.data && this.props.data.video.length !== 0 ? (
                         this.props.data.video.map(video => (
-                            <View>
+                            <View key={video._id}>
                                 <View style={[MainStyles.VIDEO_BUTTON]}>
                                     <Image
                                         style={MainStyles.VIDEO_CONTAINER}
@@ -131,7 +131,9 @@ class HomeScreen extends React.Component {
                                         onPress={() =>
                                             navigate('VideoScreen', {
                                                 videoTitle: video.sport,
-                                                videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
+                                                videoName: `${video.sport}, ${
+                                                    video.club
+                                                } bana ${video.court}.`,
                                                 videoDescription: `Inspelat: ${this.convertTime(
                                                     video.startTime
                                                 )}.`,
@@ -141,7 +143,8 @@ class HomeScreen extends React.Component {
                                                 liveURL: false,
                                                 club: video.club,
                                                 court: video.court
-                                            })}
+                                            })
+                                        }
                                     >
                                         {/* Button for LOCKED videos */}
                                         {/* <Text
@@ -162,7 +165,9 @@ class HomeScreen extends React.Component {
                                 <View style={[MainStyles.MAIN_CARD]}>
                                     <Text style={MainStyles.MAIN_CARD_TITLE}>
                                         {this.titleToUppercase(
-                                            `${video.sport}, ${video.club} bana ${video.court}.`
+                                            `${video.sport}, ${
+                                                video.club
+                                            } bana ${video.court}.`
                                         )}
                                     </Text>
                                     <Text>
@@ -192,7 +197,8 @@ class HomeScreen extends React.Component {
                 <NotAuthCard blockedContent="se dina videos.">
                     <TouchableOpacity
                         onPress={() =>
-                            this.props.navigation.navigate('ProfileScreen')}
+                            this.props.navigation.navigate('ProfileScreen')
+                        }
                     >
                         <Text>Logga in här!</Text>
                     </TouchableOpacity>

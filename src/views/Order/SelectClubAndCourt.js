@@ -31,9 +31,9 @@ class SelectClubAndCourt extends React.Component {
     }
 
     /**
-    * @param string string
-    * @return string text
-    */
+     * @param string string
+     * @return string text
+     */
     titleToUppercase(string) {
         return string.replace(/\w\S*/g, text => {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
@@ -65,29 +65,51 @@ class SelectClubAndCourt extends React.Component {
     };
 
     formatTime(dateTime) {
-        // TODO: Return date like: YYYY:MM:dd HH:mm:ss
-        return dateTime;
+        const newDate = `${dateTime.getFullYear()}-${dateTime.getUTCMonth() +
+            1}-${dateTime.getDate()} ${dateTime.getHours()}:${dateTime.getMinutes()}:00`;
+        return newDate;
+    }
+
+    // adds 1h to the start time
+    endTime(dateTime) {
+        const newDate = `${dateTime.getFullYear()}-${dateTime.getUTCMonth() +
+            1}-${dateTime.getDate()} ${dateTime.getHours() +
+            1}:${dateTime.getMinutes()}:00`;
+        return newDate;
+    }
+
+    // faking a order process
+    processOrder() {
+        // takes 10 seconds to process order?
+        setTimeout(() => console.log('processing order'), 10000);
     }
 
     submitNewOrder = async () => {
         const formatedTime = this.formatTime(this.state.timeSelected);
+        // adds 1h to the start time
+        const endTime = this.endTime(this.state.timeSelected);
+
         if (this.props.authenticated) {
             const setOrder = await this.setState({
                 order: {
                     email: this.props.data.email,
                     sport: this.state.clubSelected.sport,
                     club: this.state.clubSelected.name,
-                    court: this.state.courtSelected.courtNumber
-                    // startTime: '2017-11-12 22:17:00',
-                    // endTime: '2017-11-12 22:20:00'
+                    court: this.state.courtSelected.courtNumber,
+                    startTime: formatedTime,
+                    endTime: endTime
                 }
             });
 
+            const sendOrder = await this.state.order;
+
             Alert.alert(
                 'Här är din beställning, vill du lägga din order?',
-                `Sport: ${this.state.order.sport}, klubb: ${this.state.order
-                    .club}, Bana: ${this.state.order.court}, Start tid: ${this
-                    .state.order.startTime}.`,
+                `Sport: ${this.state.order.sport}, klubb: ${
+                    this.state.order.club
+                }, Bana: ${this.state.order.court}, Start tid: ${
+                    this.state.order.startTime
+                }.`,
                 [
                     {
                         text: 'Avsluta',
@@ -96,13 +118,20 @@ class SelectClubAndCourt extends React.Component {
                     {
                         text: 'Beställ',
                         onPress: () =>
-                            this.props.orderNewVideo(this.state.order)
+                            this.props
+                                .orderNewVideo(sendOrder)
+                                .then(response => {
+                                    if (response) {
+                                        Alert.alert(response.data.message);
+                                    }
+                                })
                     }
                 ],
                 { cancelable: false }
             );
         }
-        const live = await this.props.fetchLiveVideo();
+        const processOrder = await this.processOrder();
+        this.props.fetchLiveVideo();
     };
 
     renderClubPicker() {
@@ -184,7 +213,8 @@ class SelectClubAndCourt extends React.Component {
                         this.setState({
                             dateTimePickerVisible: !this.state
                                 .dateTimePickerVisible
-                        })}
+                        })
+                    }
                     style={[
                         styles.CONTAINER,
                         {
@@ -200,7 +230,7 @@ class SelectClubAndCourt extends React.Component {
                 </TouchableOpacity>
                 {this.state.dateTimePickerVisible ? (
                     <DatePickerIOS
-                        minuteInterval={5}
+                        // minuteInterval={5}
                         date={this.state.timeSelected}
                         mode="datetime"
                         onDateChange={this.selectDateTime}

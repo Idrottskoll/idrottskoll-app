@@ -15,11 +15,11 @@ import {
 import { ROOT_URL, SPECIAL_TOKEN } from './config';
 
 /**
-* @param obj email: email
-* @param ovj password: password
-*
-* @return obj response
-*/
+ * @param obj email: email
+ * @param ovj password: password
+ *
+ * @return obj response
+ */
 export function signinUser({ email, password }) {
     return function(dispatch) {
         return axios
@@ -39,13 +39,13 @@ export function signinUser({ email, password }) {
 }
 
 /**
-* @param obj name: name
-* @param obj email: email
-* @param obj password: password
-* @param obj passwordConfirmation: passwordConfirmation
-*
-* @return obj response
-*/
+ * @param obj name: name
+ * @param obj email: email
+ * @param obj password: password
+ * @param obj passwordConfirmation: passwordConfirmation
+ *
+ * @return obj response
+ */
 export function signupUser({ email, name, password, passwordConfirmation }) {
     return function(dispatch) {
         return axios
@@ -75,10 +75,10 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
 }
 
 /**
-* @param request, error
-*
-* @return OBJ, error
-*/
+ * @param request, error
+ *
+ * @return OBJ, error
+ */
 export function authError(error) {
     return {
         type: AUTH_ERROR,
@@ -92,10 +92,10 @@ export function signoutUser() {
 }
 
 /**
-* @param string data (request url endpoint)
-*
-* @return obj response
-*/
+ * @param string data (request url endpoint)
+ *
+ * @return obj response
+ */
 export function fetchAuthUserData(data) {
     return async function(dispatch) {
         axios
@@ -118,10 +118,10 @@ export function fetchAuthUserData(data) {
 }
 
 /**
-* @param string email
-*
-* @return obj response
-*/
+ * @param string email
+ *
+ * @return obj response
+ */
 export function changeUserPassword(email) {
     return function(dispatch) {
         return axios
@@ -136,8 +136,8 @@ export function changeUserPassword(email) {
 }
 
 /**
-* @return arr response.data
-*/
+ * @return arr response.data
+ */
 export function getActiveClubs() {
     return function(dispatch) {
         return axios
@@ -153,19 +153,18 @@ export function getActiveClubs() {
 }
 
 /**
-* @param obj club: club
-* @param obj dateTime: dateTime
-*
-* @return obj response
-*/
-export function orderNewVideo({ order }) {
-    return async function(dispatch) {
+ * @param obj club: club
+ * @param obj dateTime: dateTime
+ *
+ * @return obj response
+ */
+export function orderNewVideo(order) {
+    return async function() {
         return axios
-            .post(`${ROOT_URL}/video/recorded`, {
-                stream: { order }
+            .post(`${ROOT_URL}/order/add`, {
+                stream: order
             })
             .then(response => {
-                console.log(response);
                 return response;
             })
             .catch(e => {
@@ -176,8 +175,8 @@ export function orderNewVideo({ order }) {
 
 // NOTE: Function is invoced in App.js foreach page load
 /**
-* @return string token
-*/
+ * @return string token
+ */
 export function checkUserStatus() {
     return async function() {
         const token = await AsyncStorage.getItem('token');

@@ -230,7 +230,7 @@ class SelectClubAndCourt extends React.Component {
                 </TouchableOpacity>
                 {this.state.dateTimePickerVisible ? (
                     <DatePickerIOS
-                        minuteInterval={5}
+                        // minuteInterval={5}
                         date={this.state.timeSelected}
                         mode="datetime"
                         onDateChange={this.selectDateTime}

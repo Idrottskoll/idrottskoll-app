@@ -38,9 +38,9 @@ export default class VideoScreen extends React.Component {
     });
 
     /**
-    * @param string string
-    * @return string text
-    */
+     * @param string string
+     * @return string text
+     */
     titleToUppercase(string) {
         return string.replace(/\w\S*/g, text => {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
@@ -58,6 +58,7 @@ export default class VideoScreen extends React.Component {
                             style={MainStyles.VIDEO_CONTAINER}
                             source={require('../../assets/icons/tennis.png')}
                         />
+
                         {params.liveURL ? (
                             <TouchableOpacity
                                 style={[
@@ -67,7 +68,8 @@ export default class VideoScreen extends React.Component {
                                 onPress={() =>
                                     navigate('VideoPlayer', {
                                         liveURL: params.liveURL
-                                    })}
+                                    })
+                                }
                             >
                                 <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
                                     <Image
@@ -84,7 +86,8 @@ export default class VideoScreen extends React.Component {
                                 onPress={() =>
                                     navigate('VideoPlayer', {
                                         videoUrl: params.videoUrl
-                                    })}
+                                    })
+                                }
                             >
                                 <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
                                     <Image
@@ -99,37 +102,30 @@ export default class VideoScreen extends React.Component {
                         <Text style={MainStyles.MAIN_CARD_TITLE}>
                             {this.titleToUppercase(params.videoName)}
                         </Text>
-                        <Text
-                            style={styles.DESCRIPTION_TEXT}
-                        >{`Sport: ${this.titleToUppercase(
-                            params.videoTitle
-                        )}.`}</Text>
-                        <Text
-                            style={styles.DESCRIPTION_TEXT}
-                        >{`Klubb: ${this.titleToUppercase(
-                            params.club
-                        )}.`}</Text>
-                        <Text
-                            style={styles.DESCRIPTION_TEXT}
-                        >{`Bana: ${params.court}.`}</Text>
-                        {params.isRecorded ? (
-                            <Text style={{ fontSize: StyleRules.FONT }}>
-                                {params.videoDescription}
-                            </Text>
-                        ) : (
-                            <Text style={{ fontSize: StyleRules.FONT }}>
-                                Videon är inte inspelad än.
-                            </Text>
-                        )}
+                        <Text style={styles.DESCRIPTION_TEXT}>
+                            {`Sport: ${this.titleToUppercase(
+                                params.videoTitle
+                            )}.`}
+                        </Text>
+
+                        <Text style={styles.DESCRIPTION_TEXT}>
+                            {`Klubb: ${this.titleToUppercase(params.club)}.`}
+                        </Text>
+
+                        <Text style={styles.DESCRIPTION_TEXT}>
+                            {`Bana: ${params.court}.`}
+                        </Text>
                     </DefaultCard>
 
                     <DefaultCard>
                         <Text style={MainStyles.MAIN_CARD_TITLE}>Status</Text>
-                        {params.isRecorded ? (
-                            <Text>Videon är inspelad.</Text>
-                        ) : (
-                            <Text>Videon är inte inspelad.</Text>
-                        )}
+                        <Text>
+                            {params.liveURL === false
+                                ? 'Videon är uppladdad'
+                                : params.videoUrl === false
+                                  ? 'Videon är live just nu'
+                                  : null}
+                        </Text>
                     </DefaultCard>
 
                     <OrderNewVideoCard title="Intresserad av en ny video?">

@@ -80,7 +80,8 @@ class SelectClubAndCourt extends React.Component {
 
     // faking a order process
     processOrder() {
-        setTimeout(() => console.log('processing order'), 5000);
+        // takes 10 seconds to process order?
+        setTimeout(() => console.log('processing order'), 10000);
     }
 
     submitNewOrder = async () => {

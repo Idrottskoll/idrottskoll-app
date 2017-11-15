@@ -16,8 +16,9 @@ export default class NotAuthCard extends React.Component {
             <View style={[styles.CONTAINER]}>
                 <Text style={MainStyles.MAIN_CARD_TITLE}>Ops!</Text>
                 <Text>
-                    {`Du måste vara inloggad för att kunna ${this.props
-                        .blockedContent}`}
+                    {`Du måste vara inloggad för att kunna ${
+                        this.props.blockedContent
+                    }`}
                 </Text>
                 <View style={[{ marginVertical: StyleRules.MARGIN }]}>
                     {this.props.children}
@@ -36,9 +37,9 @@ const styles = StyleSheet.create({
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.ORANGE_COLOR,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.1
     }
 });

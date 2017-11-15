@@ -32,17 +32,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
-        borderWidth: 1,
-        borderColor: StyleRules.BLUE_COLOR,
         margin: StyleRules.MARGIN,
         marginTop: StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
-        shadowColor: StyleRules.BLUE_COLOR,
+        shadowColor: StyleRules.BLUE_GRADIENT_COLOR,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.1
     },
 
     TITLE: {

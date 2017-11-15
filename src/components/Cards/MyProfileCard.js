@@ -1,7 +1,14 @@
 'use strict';
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    Alert,
+    Image
+} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import MainStyles from '../../assets/styles/MainStyles';
@@ -14,9 +21,9 @@ class MyProfileCard extends React.Component {
     }
 
     /**
-    * @param string email
-    * @return null
-    */
+     * @param string email
+     * @return null
+     */
     userRequestedNewPassword = email => {
         if (email) {
             Alert.alert(
@@ -52,48 +59,78 @@ class MyProfileCard extends React.Component {
         return (
             <View>
                 {this.props.data && this.props.authenticated ? (
-                    <View style={[MainStyles.MAIN_CARD]}>
-                        <View>
-                            <Text style={MainStyles.MAIN_CARD_TITLE}>
-                                {this.props.data.name}
-                            </Text>
-                            <Text style={styles.TEXT_STYLE}>
-                                {this.props.data.email}
-                            </Text>
+                    <View>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                marginVertical: StyleRules.MARGIN * 2
+                            }}
+                        >
+                            <Image
+                                style={{
+                                    width: 192,
+                                    height: 192,
+                                    borderRadius: 192 / 2,
+                                    shadowColor: StyleRules.MAIN_SHADOW_COLOR,
+                                    shadowOffset: {
+                                        height: 3,
+                                        width: 3
+                                    },
+                                    shadowOpacity: 0.1
+                                }}
+                                source={{
+                                    uri:
+                                        'https://www.idrottskoll.se/avatar/default.png'
+                                }}
+                            />
                         </View>
-                        <View style={styles.USER_DATA}>
-                            <Text style={styles.TEXT_STYLE_BIG}>
-                                Fakturering
-                            </Text>
-                            <Text style={styles.TEXT_STYLE}>
-                                Namn: {this.props.data.name}
-                            </Text>
-                        </View>
-                        <View style={styles.FOOTER}>
+
+                        <View style={[MainStyles.MAIN_CARD]}>
                             <View>
-                                <Signout />
+                                <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                    {this.props.data.name}
+                                </Text>
+                                <Text style={styles.TEXT_STYLE}>
+                                    {this.props.data.email}
+                                </Text>
                             </View>
-                            <View>
-                                <View>{this.props.children}</View>
+                            <View style={styles.USER_DATA}>
+                                <Text style={styles.TEXT_STYLE_BIG}>
+                                    Fakturering
+                                </Text>
+                                <Text style={styles.TEXT_STYLE}>
+                                    Namn: {this.props.data.name}
+                                </Text>
+                            </View>
+                            <View style={styles.FOOTER}>
                                 <View>
-                                    <TouchableOpacity
-                                        onPress={() =>
-                                            this.userRequestedNewPassword(
-                                                this.props.data.email
-                                            )}
-                                    >
-                                        <Text
-                                            style={[
-                                                {
-                                                    marginTop:
-                                                        StyleRules.MARGIN / 2
-                                                },
-                                                styles.TEXT_STYLE
-                                            ]}
+                                    <Signout />
+                                </View>
+                                <View>
+                                    <View>{this.props.children}</View>
+                                    <View>
+                                        <TouchableOpacity
+                                            onPress={() =>
+                                                this.userRequestedNewPassword(
+                                                    this.props.data.email
+                                                )
+                                            }
                                         >
-                                            Ändra mitt lösenord
-                                        </Text>
-                                    </TouchableOpacity>
+                                            <Text
+                                                style={[
+                                                    {
+                                                        marginTop:
+                                                            StyleRules.MARGIN /
+                                                            2
+                                                    },
+                                                    styles.TEXT_STYLE
+                                                ]}
+                                            >
+                                                Ändra mitt lösenord
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
                         </View>
@@ -124,7 +161,7 @@ const styles = StyleSheet.create({
     FOOTER: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: StyleRules.MARGIN + StyleRules.MARGIN + StyleRules.MARGIN
+        marginTop: StyleRules.MARGIN * 3
     }
 });
 

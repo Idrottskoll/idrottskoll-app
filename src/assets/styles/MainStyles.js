@@ -13,7 +13,7 @@ export default (Style = {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         margin: StyleRules.MARGIN,
-        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN * 2,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOffset: {
@@ -45,7 +45,7 @@ export default (Style = {
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         borderRadius: 3,
         marginHorizontal: StyleRules.MARGIN,
-        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN * 2,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         flex: 1,
         shadowOffset: {

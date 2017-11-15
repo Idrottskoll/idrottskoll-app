@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,
         justifyContent: 'space-between',
         borderRadius: 3,
-        marginTop: StyleRules.MARGIN + StyleRules.MARGIN,
+        marginTop: StyleRules.MARGIN * 2,
         margin: StyleRules.MARGIN,
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.GREEN_COLOR,

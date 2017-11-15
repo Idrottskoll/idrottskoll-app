@@ -53,28 +53,29 @@ class HomeScreen extends React.Component {
         if (this.props.liveVideo.data) {
             return this.props.liveVideo.data.map(live => {
                 if (live.stream) {
-                    if (!live.stream.isStreaming) {
+                    if (live.stream.isStreaming) {
+                        return (
+                            <TouchableOpacity
+                                key={live._id}
+                                onPress={() =>
+                                    navigate('VideoScreen', {
+                                        videoTitle: live.stream.sport,
+                                        videoName: `${live.stream.sport}, ${
+                                            live.stream.club
+                                        } bana ${live.stream.court}.`,
+                                        videoUrl: false,
+                                        liveURL: live.stream.path,
+                                        club: live.stream.club,
+                                        court: live.stream.court
+                                    })
+                                }
+                            >
+                                <LiveNowCard videoName={live.stream.sport} />
+                            </TouchableOpacity>
+                        );
+                    } else {
                         return;
                     }
-                    return (
-                        <TouchableOpacity
-                            key={live._id}
-                            onPress={() =>
-                                navigate('VideoScreen', {
-                                    videoTitle: live.stream.sport,
-                                    videoName: `${live.stream.sport}, ${
-                                        live.stream.club
-                                    } bana ${live.stream.court}.`,
-                                    videoUrl: false,
-                                    liveURL: live.stream.path,
-                                    club: live.stream.club,
-                                    court: live.stream.court
-                                })
-                            }
-                        >
-                            <LiveNowCard videoName={live.stream.sport} />
-                        </TouchableOpacity>
-                    );
                 }
             });
         }

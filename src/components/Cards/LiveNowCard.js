@@ -56,10 +56,10 @@ const styles = StyleSheet.create({
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.GREEN_COLOR,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.1
     },
 
     TITLE: {

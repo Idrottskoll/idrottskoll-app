@@ -17,10 +17,10 @@ export default (Style = {
         padding: StyleRules.CARD_PADDING_X,
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.1
     },
 
     VIDEO_CARD: {
@@ -32,10 +32,10 @@ export default (Style = {
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         flex: 1,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.1,
         zIndex: 1
     },
 
@@ -49,10 +49,10 @@ export default (Style = {
         shadowColor: StyleRules.MAIN_SHADOW_COLOR,
         flex: 1,
         shadowOffset: {
-            height: 0.5,
-            width: 0.5
+            height: 3,
+            width: 3
         },
-        shadowOpacity: 0.3
+        shadowOpacity: 0.1
     },
 
     VIDEO_CONTAINER: {

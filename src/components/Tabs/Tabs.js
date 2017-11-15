@@ -39,7 +39,7 @@ const HomeScreenStack = StackNavigator(
             // header: false,
             headerStyle: {
                 shadowColor: StyleRules.MAIN_SHADOW_COLOR,
-                shadowOpacity: 0.3,
+                shadowOpacity: 0.1,
                 shadowOffset: {
                     height: 0.5,
                     width: 0.5
@@ -72,7 +72,7 @@ const InformationScreenStack = StackNavigator(
             // header: false,
             headerStyle: {
                 shadowColor: StyleRules.MAIN_SHADOW_COLOR,
-                shadowOpacity: 0.3,
+                shadowOpacity: 0.1,
                 shadowOffset: {
                     height: 0.5,
                     width: 0.5
@@ -115,7 +115,7 @@ const MyVideosScreenStack = StackNavigator(
             // header: false,
             headerStyle: {
                 shadowColor: StyleRules.MAIN_SHADOW_COLOR,
-                shadowOpacity: 0.3,
+                shadowOpacity: 0.1,
                 shadowOffset: {
                     height: 0.5,
                     width: 0.5
@@ -154,7 +154,7 @@ const ProfileScreenStack = StackNavigator(
             // header: false,
             headerStyle: {
                 shadowColor: StyleRules.MAIN_SHADOW_COLOR,
-                shadowOpacity: 0.3,
+                shadowOpacity: 0.1,
                 shadowOffset: {
                     height: 0.5,
                     width: 0.5

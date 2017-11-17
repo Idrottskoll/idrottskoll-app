@@ -3,8 +3,6 @@
 * [iOS App store](https://itunes.apple.com/se/app/idrottskoll/id1308457065?l=en&mt=8)
 * [Google play store](https://github.com/Idrottskoll)
 
-[Add a font](https://medium.com/react-native-training/react-native-custom-fonts-ccc9aacf9e5e)
-
 ## Installing
 1.
 ```BASH

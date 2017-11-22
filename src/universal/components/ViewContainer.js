@@ -3,8 +3,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainStyles from '../assets/styles/MainStyles';
-import StyleRules from '../assets/styles/StyleRules';
+import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../assets/styles/StyleRules';
 
 export default class ViewContainer extends React.Component {
     constructor(props) {

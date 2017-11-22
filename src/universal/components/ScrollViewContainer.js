@@ -3,8 +3,8 @@
 import React from 'react';
 import { ScrollView, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import StyleRules from '../assets/styles/StyleRules';
+import * as actions from '../../actions';
+import StyleRules from '../../assets/styles/StyleRules';
 
 class ScrollViewContainer extends React.Component {
     constructor(props) {

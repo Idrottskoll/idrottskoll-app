@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
 import VideoSmallButton from './VideoSmallButton';
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';

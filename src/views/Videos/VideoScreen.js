@@ -10,8 +10,8 @@ import {
     Button
 } from 'react-native';
 
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
 import DefaultCard from '../../components/Cards/DefaultCard';
 import OrderNewScreen from '../Order/OrderNewScreen';

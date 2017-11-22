@@ -12,8 +12,8 @@ import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
 
-import ViewContainer from '../ViewContainer';
-import ScrollViewContainer from '../ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import DefaultCard from '../Cards/DefaultCard';
 
 class Signup extends React.Component {

@@ -5,8 +5,8 @@ import { Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 import MyProfileCard from '../../components/Cards/MyProfileCard';
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 

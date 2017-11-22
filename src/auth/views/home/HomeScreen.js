@@ -10,17 +10,17 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { VIDEO_URL } from '../../actions/config';
-import DefaultCard from '../../components/Cards/DefaultCard';
-import VideoLargeButton from '../Videos/VideoLargeButton';
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
-import MainStyles from '../../assets/styles/MainStyles';
-import LiveNowCard from '../../components/Cards/LiveNowCard';
-import StyleRules from '../../assets/styles/StyleRules';
+import { VIDEO_URL } from '../../../actions/config';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import VideoLargeButton from '../../../views/Videos/VideoLargeButton';
+import ViewContainer from '../../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
+import MainStyles from '../../../assets/styles/MainStyles';
+import LiveNowCard from '../../../components/Cards/LiveNowCard';
+import StyleRules from '../../../assets/styles/StyleRules';
 import { connect } from 'react-redux';
-import NotAuthCard from '../../components/Cards/NotAuthCard';
-import * as actions from '../../actions';
+import NotAuthCard from '../../../components/Cards/NotAuthCard';
+import * as actions from '../../../actions';
 
 // TODO: Add bool in api to determin if a video is locked or not locked.
 class HomeScreen extends React.Component {
@@ -95,7 +95,7 @@ class HomeScreen extends React.Component {
                                 <View style={[MainStyles.VIDEO_BUTTON]}>
                                     <Image
                                         style={MainStyles.VIDEO_CONTAINER}
-                                        source={require('../../assets/icons/tennis.png')}
+                                        source={require('../../../assets/icons/tennis.png')}
                                     />
                                     {/* Button for LOCKED videos */}
                                     {/* <TouchableHighlight
@@ -157,7 +157,7 @@ class HomeScreen extends React.Component {
                                         {/* Button for UN LOCKED videos */}
                                         <View>
                                             <Image
-                                                source={require('../../assets/icons/playButton.png')}
+                                                source={require('../../../assets/icons/playButton.png')}
                                             />
                                         </View>
                                     </TouchableHighlight>

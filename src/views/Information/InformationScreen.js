@@ -4,8 +4,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 import * as actions from '../../actions';

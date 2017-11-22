@@ -4,7 +4,7 @@ import { Image, StyleSheet, Platform } from 'react-native';
 import Dimensions from 'Dimensions';
 import StyleRules from '../../assets/styles/StyleRules';
 
-import HomeScreen from '../../views/Home/HomeScreen';
+import HomeScreen from '../../auth/views/home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';

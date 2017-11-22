@@ -15,8 +15,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 import DefaultCard from '../../components/Cards/DefaultCard';
-import ViewContainer from '../../components/ViewContainer';
-import ScrollViewContainer from '../../components/ScrollViewContainer';
+import ViewContainer from '../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
 import MainStyles from '../../assets/styles/MainStyles';
 import StyleRules from '../../assets/styles/StyleRules';
 import SelectClubAndCourt from './SelectClubAndCourt';

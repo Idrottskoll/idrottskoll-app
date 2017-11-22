@@ -3,12 +3,12 @@
 import React from 'react';
 import { Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import StyleRules from '../../assets/styles/StyleRules';
-import ViewContainer from '../../universal/components/ViewContainer';
-import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
-import ForgotPassword from '../../components/auth/ForgotPassword';
-import DefaultCard from '../../components/Cards/DefaultCard';
-import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
+import ViewContainer from '../../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
+import ForgotPassword from '../../../components/auth/ForgotPassword';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import MainStyles from '../../../assets/styles/MainStyles';
 
 class UserSettings extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class UserSettings extends React.Component {
                 style={{ marginLeft: StyleRules.MARGIN }}
                 onPress={() => navigation.goBack()}
             >
-                <Image source={require('../../assets/icons/backArrow.png')} />
+                <Image source={require('../../../assets/icons/backArrow.png')} />
             </TouchableOpacity>
         )
     });

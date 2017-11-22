@@ -6,7 +6,7 @@ import DefaultCard from '../Cards/DefaultCard';
 import StyleRules from '../../assets/styles/StyleRules';
 import MainStyles from '../../assets/styles/MainStyles';
 import * as actions from '../../actions';
-import ProfileScreen from '../../views/Profile/ProfileScreen';
+import ProfileScreen from '../../auth/views/profile/ProfileScreen';
 
 class ForgotPasswor extends React.Component {
     /**

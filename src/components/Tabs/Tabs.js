@@ -8,8 +8,8 @@ import HomeScreen from '../../auth/views/home/HomeScreen';
 import InformationScreen from '../../views/Information/InformationScreen';
 import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
-import ProfileScreen from '../../views/Profile/ProfileScreen';
-import UserSettings from '../../views/Profile/UserSettings';
+import ProfileScreen from '../../auth/views/profile/ProfileScreen';
+import UserSettings from '../../auth/views/profile/UserSettings';
 import OrderNewScreen from '../../views/Order/OrderNewScreen';
 import VideoPlayer from '../../views/VideoPlayer/VideoPlayer';
 

@@ -10,10 +10,10 @@ import {
     Image
 } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
-import MainStyles from '../../assets/styles/MainStyles';
-import StyleRules from '../../assets/styles/StyleRules';
-import Signout from '../auth/Signout';
+import * as actions from '../../../actions';
+import MainStyles from '../../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
+import Signout from '../../../components/auth/Signout';
 
 class MyProfileCard extends React.Component {
     constructor(props) {

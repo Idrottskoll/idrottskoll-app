@@ -12,13 +12,13 @@ import {
     Image
 } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../../../actions';
 
-import DefaultCard from '../../components/Cards/DefaultCard';
-import ViewContainer from '../../universal/components/ViewContainer';
-import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
-import MainStyles from '../../assets/styles/MainStyles';
-import StyleRules from '../../assets/styles/StyleRules';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import ViewContainer from '../../components/ViewContainer';
+import ScrollViewContainer from '../../components/ScrollViewContainer';
+import MainStyles from '../../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
 import SelectClubAndCourt from './SelectClubAndCourt';
 
 class OrderNewScreen extends React.Component {
@@ -33,7 +33,7 @@ class OrderNewScreen extends React.Component {
                 style={{ marginLeft: StyleRules.MARGIN }}
                 onPress={() => navigation.goBack()}
             >
-                <Image source={require('../../assets/icons/backArrow.png')} />
+                <Image source={require('../../../assets/icons/backArrow.png')} />
             </TouchableOpacity>
         )
     });

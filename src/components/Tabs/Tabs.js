@@ -10,7 +10,7 @@ import MyVideosScreen from '../../views/Videos/MyVideosScreen';
 import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../auth/views/profile/ProfileScreen';
 import UserSettings from '../../auth/views/profile/UserSettings';
-import OrderNewScreen from '../../views/Order/OrderNewScreen';
+import OrderNewScreen from '../../universal/views/order/OrderNewScreen';
 import VideoPlayer from '../../universal/views/videoPlayer/VideoPlayer';
 
 const deviceHeight = Dimensions.get('window').height;

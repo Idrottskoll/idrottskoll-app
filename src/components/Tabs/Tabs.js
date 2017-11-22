@@ -11,7 +11,7 @@ import VideoScreen from '../../views/Videos/VideoScreen';
 import ProfileScreen from '../../auth/views/profile/ProfileScreen';
 import UserSettings from '../../auth/views/profile/UserSettings';
 import OrderNewScreen from '../../views/Order/OrderNewScreen';
-import VideoPlayer from '../../views/VideoPlayer/VideoPlayer';
+import VideoPlayer from '../../universal/views/videoPlayer/VideoPlayer';
 
 const deviceHeight = Dimensions.get('window').height;
 

@@ -1,27 +1,28 @@
 import React from 'react';
 import { AsyncStorage } from 'react-native';
-import Tabs from './components/Tabs/Tabs';
+import UserTabs from './auth/components/tabs/UserTabs';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 
+// TODO: Add animation in and stop it in componentDiddMount()
 class App extends React.Component {
     /**
-    * if user is authenticated will fetch user data on signin
-    */
+     * if user is authenticated will fetch user data on signin
+     */
     checkUserStatus = () => {
         this.props.checkUserStatus().then(token => {
             if (token) {
-                this.props.fetchAuthUserData('user');
+                return this.props.fetchAuthUserData('user');
             } else {
-                this.props.signoutUser();
+                return this.props.signoutUser();
             }
         });
-        return;
     };
 
     render() {
+        // Moving checkUserStatus() to componentWillMoutn will not work...
         this.checkUserStatus();
-        return <Tabs />;
+        return <UserTabs />;
     }
 }
 

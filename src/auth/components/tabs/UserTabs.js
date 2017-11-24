@@ -2,16 +2,16 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Image, StyleSheet, Platform } from 'react-native';
 import Dimensions from 'Dimensions';
-import StyleRules from '../../assets/styles/StyleRules';
+import StyleRules from '../../../assets/styles/StyleRules';
 
-import HomeScreen from '../../auth/views/home/HomeScreen';
-import InformationScreen from '../../auth/views/information/InformationScreen';
-import MyVideosScreen from '../../auth/views/videos/MyVideosScreen';
-import VideoScreen from '../../auth/views/videos/VideoScreen';
-import ProfileScreen from '../../auth/views/profile/ProfileScreen';
-import UserSettings from '../../auth/views/profile/UserSettings';
-import OrderNewScreen from '../../universal/views/order/OrderNewScreen';
-import VideoPlayer from '../../universal/views/videoPlayer/VideoPlayer';
+import HomeScreen from '../../views/home/HomeScreen';
+import InformationScreen from '../../views/information/InformationScreen';
+import MyVideosScreen from '../../views/videos/MyVideosScreen';
+import VideoScreen from '../../views/videos/VideoScreen';
+import ProfileScreen from '../../views/profile/ProfileScreen';
+import UserSettings from '../../views/profile/UserSettings';
+import OrderNewScreen from '../../../universal/views/order/OrderNewScreen';
+import VideoPlayer from '../../../universal/views/videoPlayer/VideoPlayer';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -181,8 +181,8 @@ const Tabs = TabNavigator(
                 tabBarLabel: 'IDK Hem',
                 tabBarIcon: ({ focused }) => {
                     const imgSource = focused
-                        ? require('../../assets/icons/menuHomeActive.png')
-                        : require('../../assets/icons/menuHomeDefault.png');
+                        ? require('../../../assets/icons/menuHomeActive.png')
+                        : require('../../../assets/icons/menuHomeDefault.png');
                     return <Image source={imgSource} style={styles.icon} />;
                 }
             }
@@ -193,8 +193,8 @@ const Tabs = TabNavigator(
                 tabBarLabel: 'Information',
                 tabBarIcon: ({ focused }) => {
                     const imgSource = focused
-                        ? require('../../assets/icons/menuInfoActive.png')
-                        : require('../../assets/icons/menuInfoDefault.png');
+                        ? require('../../../assets/icons/menuInfoActive.png')
+                        : require('../../../assets/icons/menuInfoDefault.png');
                     return <Image source={imgSource} style={styles.icon} />;
                 }
             }
@@ -205,8 +205,8 @@ const Tabs = TabNavigator(
                 tabBarLabel: 'Mina videos',
                 tabBarIcon: ({ focused }) => {
                     const imgSource = focused
-                        ? require('../../assets/icons/menuMyVideosActive.png')
-                        : require('../../assets/icons/menuMyVideosDefault.png');
+                        ? require('../../../assets/icons/menuMyVideosActive.png')
+                        : require('../../../assets/icons/menuMyVideosDefault.png');
                     return <Image source={imgSource} style={styles.icon} />;
                 }
             }
@@ -217,8 +217,8 @@ const Tabs = TabNavigator(
                 tabBarLabel: 'Profile',
                 tabBarIcon: ({ focused }) => {
                     const imgSource = focused
-                        ? require('../../assets/icons/menuProfileActive.png')
-                        : require('../../assets/icons/menuProfileDefault.png');
+                        ? require('../../../assets/icons/menuProfileActive.png')
+                        : require('../../../assets/icons/menuProfileDefault.png');
                     return <Image source={imgSource} style={styles.icon} />;
                 }
             }

@@ -1,41 +1,39 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import DefaultCard from '../Cards/DefaultCard';
-import StyleRules from '../../assets/styles/StyleRules';
-import MainStyles from '../../assets/styles/MainStyles';
-import * as actions from '../../actions';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import StyleRules from '../../../assets/styles/StyleRules';
+import MainStyles from '../../../assets/styles/MainStyles';
+import * as actions from '../../../actions';
+import ProfileScreen from '../../../auth/views/profile/ProfileScreen';
 
-class Signin extends React.Component {
+class ForgotPasswor extends React.Component {
     /**
-    * @param string email, string password
-    * @return
-    */
-    handleFormSubmit({ email, password }) {
-        this.props.signinUser({ email, password }).then(response => {
-            if (response.data.token) {
-                this.props.fetchAuthUserData('user');
-                // Truncate the password fields
-                this.props.fields.password.value = null;
+     * @param string email, string password
+     * @return
+     */
+    handleFormSubmit({ email }) {
+        this.props.changeUserPassword(email).then(response => {
+            if (response) {
+                this.props.values.email = null;
+                Alert.alert(`${response.data.message}:`, email);
+
+                // TODO: Navigat user back to profile screen
+                //this.navigatBack(true);
+                // this.props.navigation.goBack('ProfileScreen');
             }
         });
     }
 
-    renderAlert() {
-        if (this.props.errorMessage) {
-            return (
-                <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
-                    <Text style={MainStyles.ERROR_TEXT}>
-                        {this.props.errorMessage}
-                    </Text>
-                </View>
-            );
-        }
-    }
+    // navigatBack(changeUserPassword) {
+    //     if (changeUserPassword === true) {
+    //         this.props.navigation.goBack(null);
+    //     }
+    // }
 
     render() {
-        const { handleSubmit, fields: { email, password } } = this.props;
+        const { handleSubmit, fields: { email } } = this.props;
         if (!this.props.authenticated) {
             return (
                 <DefaultCard>
@@ -49,7 +47,7 @@ class Signin extends React.Component {
                                 }
                             ]}
                         >
-                            Logga in
+                            Glömt Lösenord
                         </Text>
                     </View>
 
@@ -64,33 +62,12 @@ class Signin extends React.Component {
                             keyboardType="email-address"
                             autoCapitalize="none"
                             autoCorrect={false}
+                            value={null}
                             returnKeyType="next"
                         />
                     </View>
 
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
-                        <TextInput
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'password'}
-                            autoCorrect={false}
-                            value={null}
-                            returnKeyType="go"
-                            secureTextEntry={true}
-                            {...password}
-                        />
-                    </View>
-
-                    {this.renderAlert()}
-
-                    <View
-                        style={[
-                            MainStyles.FLEX_BUTTON_TO_END,
-                            { marginVertical: StyleRules.MARGIN }
-                        ]}
-                    >
-                        {this.props.children}
-                    </View>
+                    {/* {this.renderAlert()} */}
 
                     <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
                         <TouchableOpacity
@@ -100,7 +77,7 @@ class Signin extends React.Component {
                             )}
                         >
                             <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                Logga in
+                                Skicka
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -113,9 +90,9 @@ class Signin extends React.Component {
 }
 
 /**
-* @param state
-* @return string error
-*/
+ * @param state
+ * @return string error
+ */
 const mapStateToProps = state => {
     return {
         errorMessage: state.auth.error,
@@ -126,8 +103,8 @@ const mapStateToProps = state => {
 export default reduxForm(
     {
         form: 'signin',
-        fields: ['email', 'password']
+        fields: ['email']
     },
     mapStateToProps,
     actions
-)(Signin);
+)(ForgotPasswor);

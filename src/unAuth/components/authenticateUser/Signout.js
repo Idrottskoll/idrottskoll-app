@@ -2,8 +2,8 @@ import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import MainStyles from '../../assets/styles/MainStyles';
-import * as actions from '../../actions';
+import MainStyles from '../../../assets/styles/MainStyles';
+import * as actions from '../../../actions';
 
 class Sigout extends React.Component {
     handleSignout = () => {

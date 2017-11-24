@@ -11,9 +11,9 @@ import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
 
 import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
-import Signin from '../../../components/auth/Signin';
-import Signout from '../../../components/auth/Signout';
-import Signup from '../../../components/auth/Signup';
+import Signin from '../../../unAuth/components/authenticateUser/Signin';
+import Signout from '../../../unAuth/components/authenticateUser/Signout';
+import Signup from '../../../unAuth/components/authenticateUser/Signup';
 
 class ProfileScreen extends React.Component {
     constructor(props) {
@@ -49,7 +49,8 @@ class ProfileScreen extends React.Component {
                             onPress={() =>
                                 navigate('UserSettings', {
                                     user: 'Glömt lösenord'
-                                })}
+                                })
+                            }
                         >
                             <Text>Glömt lösenord?</Text>
                         </TouchableOpacity>

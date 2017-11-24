@@ -8,19 +8,19 @@ import {
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import StyleRules from '../../assets/styles/StyleRules';
-import MainStyles from '../../assets/styles/MainStyles';
-import * as actions from '../../actions';
+import StyleRules from '../../../assets/styles/StyleRules';
+import MainStyles from '../../../assets/styles/MainStyles';
+import * as actions from '../../../actions';
 
-import ViewContainer from '../../universal/components/ViewContainer';
-import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
-import DefaultCard from '../Cards/DefaultCard';
+import ViewContainer from '../../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
+import DefaultCard from '../../../components/Cards/DefaultCard';
 
 class Signup extends React.Component {
     /**
-    * @param obj formProps
-    * @return
-    */
+     * @param obj formProps
+     * @return
+     */
     handleFormSubmit(formProps) {
         // call action creater
         this.props.signupUser(formProps).then(response => {
@@ -175,9 +175,9 @@ class Signup extends React.Component {
 }
 
 /**
-* @param obj fromProps
-* @return bool validSignUp
-*/
+ * @param obj fromProps
+ * @return bool validSignUp
+ */
 function validate(formProps) {
     const errors = {};
 

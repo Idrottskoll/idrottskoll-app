@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
-import MainStyles from '../../assets/styles/MainStyles';
+import MainStyles from '../../../assets/styles/MainStyles';
 
 export default class VideoLargeButton extends React.Component {
     constructor(props) {
@@ -21,12 +21,13 @@ export default class VideoLargeButton extends React.Component {
                             videoStatus: 'not avalable',
                             videoType: 'avalable, live, ',
                             videoUrl: 'url to video'
-                        })}
+                        })
+                    }
                 >
                     <View style={[MainStyles.VIDEO_BUTTON]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
-                            source={require('../../assets/icons/tennis.png')}
+                            source={require('../../../assets/icons/tennis.png')}
                         />
                     </View>
                 </TouchableOpacity>

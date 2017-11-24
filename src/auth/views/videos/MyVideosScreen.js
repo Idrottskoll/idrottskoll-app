@@ -4,14 +4,14 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import DefaultCard from '../../components/Cards/DefaultCard';
 import VideoSmallButton from './VideoSmallButton';
-import ViewContainer from '../../universal/components/ViewContainer';
-import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
-import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
-import MainStyles from '../../assets/styles/MainStyles';
-import StyleRules from '../../assets/styles/StyleRules';
-import NotAuthCard from '../../components/Cards/NotAuthCard';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import ViewContainer from '../../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
+import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import MainStyles from '../../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
+import NotAuthCard from '../../../components/Cards/NotAuthCard';
 
 class MyVideosScreen extends React.Component {
     constructor(props) {
@@ -19,9 +19,9 @@ class MyVideosScreen extends React.Component {
     }
 
     /**
-    * @param string time (dirty time string)
-    * @return string cleanTimeString
-    */
+     * @param string time (dirty time string)
+     * @return string cleanTimeString
+     */
     convertTime(time) {
         const dirtyTimeString = time.replace(/[^0-9-:]+/g, ' ');
         const cleanTimeString = dirtyTimeString.slice(0, 16);
@@ -29,8 +29,8 @@ class MyVideosScreen extends React.Component {
     }
 
     /**
-    * Method dose logic for sorting i a user has videos to display
-    */
+     * Method dose logic for sorting i a user has videos to display
+     */
     renderComponents = () => {
         const { navigate } = this.props.navigation;
         if (this.props.authenticated) {
@@ -43,7 +43,9 @@ class MyVideosScreen extends React.Component {
                                 onPress={() =>
                                     navigate('VideoScreen', {
                                         videoTitle: video.sport,
-                                        videoName: `${video.sport}, ${video.club} bana ${video.court}.`,
+                                        videoName: `${video.sport}, ${
+                                            video.club
+                                        } bana ${video.court}.`,
                                         videoDescription: `Inspelat: ${this.convertTime(
                                             video.startTime
                                         )}.`,
@@ -53,7 +55,8 @@ class MyVideosScreen extends React.Component {
                                         liveURL: false,
                                         club: video.club,
                                         court: video.court
-                                    })}
+                                    })
+                                }
                             >
                                 <VideoSmallButton title={video.sport} />
                             </TouchableOpacity>
@@ -77,7 +80,8 @@ class MyVideosScreen extends React.Component {
                 <NotAuthCard blockedContent="se dina videos.">
                     <TouchableOpacity
                         onPress={() =>
-                            this.props.navigation.navigate('ProfileScreen')}
+                            this.props.navigation.navigate('ProfileScreen')
+                        }
                     >
                         <Text>Logga in här!</Text>
                     </TouchableOpacity>

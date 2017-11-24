@@ -10,14 +10,14 @@ import {
     Button
 } from 'react-native';
 
-import ViewContainer from '../../universal/components/ViewContainer';
-import ScrollViewContainer from '../../universal/components/ScrollViewContainer';
-import OrderNewVideoCard from '../../components/Cards/OrderNewVideoCard';
-import DefaultCard from '../../components/Cards/DefaultCard';
-import OrderNewScreen from '../../universal/views/order/OrderNewScreen';
-import { VIDEO_URL } from '../../actions/config';
-import MainStyles from '../../assets/styles/MainStyles';
-import StyleRules from '../../assets/styles/StyleRules';
+import DefaultCard from '../../../components/Cards/DefaultCard';
+import ViewContainer from '../../../universal/components/ViewContainer';
+import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
+import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import OrderNewScreen from '../../../universal/views/order/OrderNewScreen';
+import { VIDEO_URL } from '../../../actions/config';
+import MainStyles from '../../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
 
 // TODO: Write logic to change images depending on what sport it is
 export default class VideoScreen extends React.Component {
@@ -32,7 +32,9 @@ export default class VideoScreen extends React.Component {
                 style={{ marginLeft: StyleRules.MARGIN }}
                 onPress={() => navigation.goBack()}
             >
-                <Image source={require('../../assets/icons/backArrow.png')} />
+                <Image
+                    source={require('../../../assets/icons/backArrow.png')}
+                />
             </TouchableOpacity>
         )
     });
@@ -56,7 +58,7 @@ export default class VideoScreen extends React.Component {
                     <View style={[MainStyles.VIDEO_CARD]}>
                         <Image
                             style={MainStyles.VIDEO_CONTAINER}
-                            source={require('../../assets/icons/tennis.png')}
+                            source={require('../../../assets/icons/tennis.png')}
                         />
 
                         {params.liveURL ? (
@@ -73,7 +75,7 @@ export default class VideoScreen extends React.Component {
                             >
                                 <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
                                     <Image
-                                        source={require('../../assets/icons/playButton.png')}
+                                        source={require('../../../assets/icons/playButton.png')}
                                     />
                                 </View>
                             </TouchableOpacity>
@@ -91,7 +93,7 @@ export default class VideoScreen extends React.Component {
                             >
                                 <View style={styles.UN_LOCKED_VIDEO_BUTTON}>
                                     <Image
-                                        source={require('../../assets/icons/playButton.png')}
+                                        source={require('../../../assets/icons/playButton.png')}
                                     />
                                 </View>
                             </TouchableOpacity>

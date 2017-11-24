@@ -12,7 +12,7 @@ import {
 
 import { VIDEO_URL } from '../../../actions/config';
 import DefaultCard from '../../../components/Cards/DefaultCard';
-import VideoLargeButton from '../../../views/Videos/VideoLargeButton';
+import VideoLargeButton from '../videos/VideoLargeButton';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
 import MainStyles from '../../../assets/styles/MainStyles';

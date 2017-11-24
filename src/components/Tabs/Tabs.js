@@ -5,7 +5,7 @@ import Dimensions from 'Dimensions';
 import StyleRules from '../../assets/styles/StyleRules';
 
 import HomeScreen from '../../auth/views/home/HomeScreen';
-import InformationScreen from '../../views/Information/InformationScreen';
+import InformationScreen from '../../auth/views/information/InformationScreen';
 import MyVideosScreen from '../../auth/views/videos/MyVideosScreen';
 import VideoScreen from '../../auth/views/videos/VideoScreen';
 import ProfileScreen from '../../auth/views/profile/ProfileScreen';

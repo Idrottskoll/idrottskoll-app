@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import StyleRules from '../../../assets/styles/StyleRules';
 import MainStyles from '../../../assets/styles/MainStyles';
 import * as actions from '../../../actions';

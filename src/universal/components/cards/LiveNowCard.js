@@ -3,8 +3,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-import StyleRules from '../../assets/styles/StyleRules';
-import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
+import MainStyles from '../../../assets/styles/MainStyles';
 
 export default class LiveNowCard extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ export default class LiveNowCard extends React.Component {
                 </View>
                 <Image
                     style={styles.IMAGE}
-                    source={require('../../assets/icons/rightArrow.png')}
+                    source={require('../../../assets/icons/rightArrow.png')}
                 />
             </View>
         );

@@ -11,15 +11,15 @@ import {
 } from 'react-native';
 
 import { VIDEO_URL } from '../../../actions/config';
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import VideoLargeButton from '../videos/VideoLargeButton';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
 import MainStyles from '../../../assets/styles/MainStyles';
-import LiveNowCard from '../../../components/Cards/LiveNowCard';
+import LiveNowCard from '../../../universal/components/cards/LiveNowCard';
 import StyleRules from '../../../assets/styles/StyleRules';
 import { connect } from 'react-redux';
-import NotAuthCard from '../../../components/Cards/NotAuthCard';
+import NotAuthCard from '../../../universal/components/cards/NotAuthCard';
 import * as actions from '../../../actions';
 
 // TODO: Add bool in api to determin if a video is locked or not locked.

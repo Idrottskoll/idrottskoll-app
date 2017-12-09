@@ -3,7 +3,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import MainStyles from '../../assets/styles/MainStyles';
+import MainStyles from '../../../assets/styles/MainStyles';
 
 export default class DefaultCard extends React.Component {
     constructor(props) {

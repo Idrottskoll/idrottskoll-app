@@ -3,8 +3,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import StyleRules from '../../assets/styles/StyleRules';
-import MainStyles from '../../assets/styles/MainStyles';
+import StyleRules from '../../../assets/styles/StyleRules';
+import MainStyles from '../../../assets/styles/MainStyles';
 
 export default class NotAuthCard extends React.Component {
     constructor(props) {

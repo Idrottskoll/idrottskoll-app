@@ -5,13 +5,13 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import VideoSmallButton from './VideoSmallButton';
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
-import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import OrderNewVideoCard from '../../../universal/components/cards/OrderNewVideoCard';
 import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
-import NotAuthCard from '../../../components/Cards/NotAuthCard';
+import NotAuthCard from '../../../universal/components/cards/NotAuthCard';
 
 class MyVideosScreen extends React.Component {
     constructor(props) {

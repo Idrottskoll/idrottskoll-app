@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../components/cards/DefaultCard';
 import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
-import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import OrderNewVideoCard from '../../components/cards/OrderNewVideoCard';
 
 // TODO: Add checks alert dialog to confirm order is right
 // TODO: fier off post

@@ -10,7 +10,7 @@ import ScrollViewContainer from '../../../universal/components/ScrollViewContain
 import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
 
-import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import OrderNewVideoCard from '../../../universal/components/cards/OrderNewVideoCard';
 import Signin from '../../../unAuth/components/authenticateUser/Signin';
 import Signout from '../../../unAuth/components/authenticateUser/Signout';
 import Signup from '../../../unAuth/components/authenticateUser/Signup';

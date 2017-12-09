@@ -10,10 +10,10 @@ import {
     Button
 } from 'react-native';
 
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
-import OrderNewVideoCard from '../../../components/Cards/OrderNewVideoCard';
+import OrderNewVideoCard from '../../../universal/components/cards/OrderNewVideoCard';
 import OrderNewScreen from '../../../universal/views/order/OrderNewScreen';
 import { VIDEO_URL } from '../../../actions/config';
 import MainStyles from '../../../assets/styles/MainStyles';

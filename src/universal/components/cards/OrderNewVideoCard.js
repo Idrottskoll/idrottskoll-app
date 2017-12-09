@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-import StyleRules from '../../assets/styles/StyleRules';
+import StyleRules from '../../../assets/styles/StyleRules';
 
 export default class OrderNewVideoCard extends React.Component {
     render() {

@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
 import MainStyles from '../../../assets/styles/MainStyles';

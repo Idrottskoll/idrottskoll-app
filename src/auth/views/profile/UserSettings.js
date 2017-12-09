@@ -7,7 +7,7 @@ import StyleRules from '../../../assets/styles/StyleRules';
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
 import ForgotPassword from '../../../unAuth/components/authenticateUser/ForgotPassword';
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import MainStyles from '../../../assets/styles/MainStyles';
 
 class UserSettings extends React.Component {

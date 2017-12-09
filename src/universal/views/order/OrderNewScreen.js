@@ -14,7 +14,7 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../components/cards/DefaultCard';
 import ViewContainer from '../../components/ViewContainer';
 import ScrollViewContainer from '../../components/ScrollViewContainer';
 import MainStyles from '../../../assets/styles/MainStyles';
@@ -33,7 +33,9 @@ class OrderNewScreen extends React.Component {
                 style={{ marginLeft: StyleRules.MARGIN }}
                 onPress={() => navigation.goBack()}
             >
-                <Image source={require('../../../assets/icons/backArrow.png')} />
+                <Image
+                    source={require('../../../assets/icons/backArrow.png')}
+                />
             </TouchableOpacity>
         )
     });

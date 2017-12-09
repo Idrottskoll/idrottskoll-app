@@ -14,7 +14,7 @@ import * as actions from '../../../actions';
 
 import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
-import DefaultCard from '../../../components/Cards/DefaultCard';
+import DefaultCard from '../../../universal/components/cards/DefaultCard';
 
 class Signup extends React.Component {
     /**

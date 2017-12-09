@@ -25,7 +25,7 @@ class Signup extends React.Component {
         // call action creater
         this.props.signupUser(formProps).then(response => {
             if (response.data.token) {
-                this.props.fetchAuthUserData('user');
+                this.props.fetchAuthUserData();
                 // Truncate the fields
                 this.props.fields.name.value = null;
                 this.props.fields.email.value = null;

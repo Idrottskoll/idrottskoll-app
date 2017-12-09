@@ -92,14 +92,12 @@ export function signoutUser() {
 }
 
 /**
- * @param string data (request url endpoint)
- *
  * @return obj response
  */
-export function fetchAuthUserData(data) {
+export function fetchAuthUserData() {
     return async function(dispatch) {
         axios
-            .get(`${ROOT_URL}/${data}`, {
+            .get(`${ROOT_URL}/user`, {
                 headers: { Authorization: await AsyncStorage.getItem('token') }
             })
             .then(response => {

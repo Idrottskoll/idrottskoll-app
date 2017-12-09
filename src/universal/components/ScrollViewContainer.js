@@ -18,7 +18,7 @@ class ScrollViewContainer extends React.Component {
         const refreshingTrue = await this.setState({ refreshing: true });
         const checkToken = await this.props.checkUserStatus().then(token => {
             if (token) {
-                this.props.fetchAuthUserData('user');
+                this.props.fetchAuthUserData();
             }
         });
         const clubs = await this.props.getActiveClubs();

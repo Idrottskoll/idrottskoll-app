@@ -10,7 +10,7 @@ import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
 import * as actions from '../../../actions';
 import { connect } from 'react-redux';
-import Header from '../../../components/Header/Header';
+import Header from '../../components/Header/Header';
 
 class InformationScreen extends React.Component {
     constructor(props) {

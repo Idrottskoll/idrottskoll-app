@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
-import StyleRules from '../../assets/styles/StyleRules';
+import StyleRules from '../../../assets/styles/StyleRules';
 
-import * as actions from '../../actions';
+import * as actions from '../../../actions';
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
@@ -17,7 +17,7 @@ class Header extends React.Component {
                 style={{ marginRight: StyleRules.MARGIN }}
                 onPress={this.props.authenticated ? this.handleSignout : null}
             >
-                <Image source={require('../../assets/icons/info.png')} />
+                <Image source={require('../../../assets/icons/info.png')} />
             </TouchableOpacity>
         );
     }

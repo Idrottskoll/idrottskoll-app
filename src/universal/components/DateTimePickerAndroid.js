@@ -15,7 +15,7 @@ import * as actions from '../actions';
 import StyleRules from '../assets/styles/StyleRules';
 import MainStyles from '../assets/styles/MainStyles';
 
-class DatePickerIOS extends React.Component {
+class DateTimePickerAndroid extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, actions)(DatePickerIOS);
+export default connect(mapStateToProps, actions)(DatePickerAndroid);

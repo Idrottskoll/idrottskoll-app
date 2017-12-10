@@ -7,13 +7,11 @@ import {
     KeyboardAvoidingView,
     Button
 } from 'react-native';
-import { connect } from 'react-redux';
-import * as actions from '../../../actions';
 import StyleRules from '../../../assets/styles/StyleRules/';
 import Signin from '../../components/authenticateUser/Signin';
 import Signup from '../../components/authenticateUser/Signup';
 
-class AuthenticateUserScreen extends React.Component {
+export default class AuthenticateUserScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -102,5 +100,3 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     }
 });
-
-export default connect(mapStateToProps, actions)(AuthenticateUserScreen);

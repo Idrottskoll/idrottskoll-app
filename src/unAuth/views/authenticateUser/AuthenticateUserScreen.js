@@ -4,14 +4,52 @@ import {
     StyleSheet,
     Text,
     Image,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Button
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import StyleRules from '../../../assets/styles/StyleRules/';
 import Signin from '../../components/authenticateUser/Signin';
+import Signup from '../../components/authenticateUser/Signup';
 
 class AuthenticateUserScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loding: true,
+            signin: true
+        };
+    }
+
+    renderForm = () => {
+        if (!this.state.loding) {
+            return (
+                <View style={styles.formContainer}>
+                    {this.state.signin ? <Signin /> : <Signup />}
+                    <View style={styles.actionsContainer}>
+                        <Button
+                            title={
+                                this.state.signin ? 'Registrera' : 'Logga in'
+                            }
+                            onPress={() => alert('hej')}
+                        />
+
+                        <Button
+                            style={{ marginTop: StyleRules.MARGIN }}
+                            title="Glömt lösenord?"
+                            onPress={() => alert('hej')}
+                        />
+                    </View>
+                </View>
+            );
+        }
+    };
+
+    componentDidMount() {
+        this.setState({ loding: false });
+    }
+
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -22,9 +60,7 @@ class AuthenticateUserScreen extends React.Component {
                     />
                     <Text style={styles.title}>Idrottskoll</Text>
                 </View>
-                <View style={styles.formContainer}>
-                    <Signin />
-                </View>
+                {this.renderForm()}
             </KeyboardAvoidingView>
         );
     }
@@ -48,8 +84,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        width: 100,
-        height: 100
+        width: 80,
+        height: 80
     },
     title: {
         color: StyleRules.BUTTON_TEXT_COLOR,
@@ -58,7 +94,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         opacity: 0.8
     },
-    formContainer: {}
+    formContainer: {
+        marginBottom: StyleRules.MARGIN * 3.5
+    },
+    actionsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    }
 });
 
 export default connect(mapStateToProps, actions)(AuthenticateUserScreen);

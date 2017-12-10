@@ -5,7 +5,8 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet,
-    StatusBar
+    StatusBar,
+    Button
 } from 'react-native';
 import { reduxForm } from 'redux-form';
 
@@ -15,19 +16,29 @@ import MainStyles from '../../../assets/styles/MainStyles';
 import * as actions from '../../../actions';
 
 class Signin extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authenticatingUser: false
+        };
+    }
     /**
      * @param string email, string password
      * @return
      */
-    handleFormSubmit({ email, password }) {
-        this.props.signinUser({ email, password }).then(response => {
-            if (response.data.token) {
-                this.props.fetchAuthUserData();
-                // Truncate the password fields
-                this.props.fields.password.value = null;
-            }
+    handleFormSubmit = async ({ email, password }) => {
+        const startAuthentication = await this.setState({
+            authenticatingUser: true
         });
-    }
+
+        const authenticateUser = await this.props
+            .signinUser({ email, password })
+            .then(response => {
+                if (response.data.token) {
+                    this.props.fetchAuthUserData();
+                }
+            });
+    };
 
     renderAlert() {
         if (this.props.errorMessage) {
@@ -42,6 +53,7 @@ class Signin extends React.Component {
     }
 
     render() {
+        console.log(this.state.authenticatingUser);
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
             //         <Text
@@ -65,12 +77,11 @@ class Signin extends React.Component {
             //     >
             //         {this.props.children}
             //     </View>
+
             <View style={styles.container}>
                 <StatusBar barStyle="light-content" />
                 <Text style={MainStyles.INPUT_LABEL}>E-post adress:</Text>
                 <TextInput
-                    placeholder="exempel@idrottskoll.se"
-                    placeholderTextColor="rgba(255, 255, 255, 0.7)"
                     style={styles.input}
                     name={'email'}
                     {...email}
@@ -82,8 +93,6 @@ class Signin extends React.Component {
                 />
                 <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                 <TextInput
-                    placeholderTextColor="rgba(255, 255, 255, 0.7)"
-                    placeholder="Lösenord"
                     style={styles.input}
                     name={'password'}
                     autoCorrect={false}
@@ -107,8 +116,7 @@ class Signin extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: StyleRules.MARGIN,
-        marginBottom: StyleRules.MARGIN * 5
+        padding: StyleRules.MARGIN
     },
     input: {
         height: 40,
@@ -121,7 +129,8 @@ const styles = StyleSheet.create({
         backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
         height: 40,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: StyleRules.MARGIN * 2
     },
     buttonText: {
         textAlign: 'center',

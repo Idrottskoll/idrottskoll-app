@@ -3,10 +3,16 @@ import { AsyncStorage, View } from 'react-native';
 import UserTabs from './auth/components/tabs/UserTabs';
 import { connect } from 'react-redux';
 import * as actions from './actions';
+import AuthenticateUserScreen from './unAuth/views/authenticateUser/AuthenticateUserScreen';
+
+// TODO: import login screen
+// TODO: add animation to trigger when signing in
+// TODO: sepearate signing and sign up
+// TODO: add livestream to signnin
 
 class App extends React.Component {
-    checkUserStatus = () => {
-        this.props.checkUserStatus().then(token => {
+    checkUserStatus = async () => {
+        const fetchToken = await this.props.checkUserStatus().then(token => {
             if (token) {
                 return this.props.fetchAuthUserData();
             } else {
@@ -21,7 +27,11 @@ class App extends React.Component {
 
     render() {
         this.checkUserStatus();
-        return this.props.authenticated ? <UserTabs /> : <UserTabs />;
+        return !this.props.authenticated ? (
+            <AuthenticateUserScreen />
+        ) : (
+            <UserTabs />
+        );
     }
 }
 

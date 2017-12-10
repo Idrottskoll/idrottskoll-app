@@ -64,13 +64,6 @@ export default class AuthenticateUserScreen extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data: state.auth.data,
-        authenticated: state.auth.authenticated
-    };
-};
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

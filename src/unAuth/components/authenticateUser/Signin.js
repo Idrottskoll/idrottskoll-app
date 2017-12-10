@@ -53,31 +53,8 @@ class Signin extends React.Component {
     }
 
     render() {
-        console.log(this.state.authenticatingUser);
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
-            //         <Text
-            //             style={[
-            //                 {
-            //                     fontSize: StyleRules.FONT_SIZE_TITLE,
-            //                     fontWeight: 'bold',
-            //                     fontFamily: 'Fjalla One'
-            //                 }
-            //             ]}
-            //         >
-            //             Logga in
-            //         </Text>
-            //     {this.renderAlert()}
-            //
-            //     <View
-            //         style={[
-            //             MainStyles.FLEX_BUTTON_TO_END,
-            //             { marginVertical: StyleRules.MARGIN }
-            //         ]}
-            //     >
-            //         {this.props.children}
-            //     </View>
-
             <View style={styles.container}>
                 <StatusBar barStyle="light-content" />
                 <Text style={MainStyles.INPUT_LABEL}>E-post adress:</Text>

@@ -75,8 +75,8 @@ export default (Style = {
     },
 
     INPUT_LABEL: {
-        color: StyleRules.TEXT_COLOR,
-        fontSize: StyleRules.FONT_SIZE_SMALL
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        fontSize: StyleRules.FONT_SIZE
     },
 
     FORM_INPUT: {

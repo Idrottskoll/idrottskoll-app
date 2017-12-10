@@ -1,27 +1,32 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
-import Tabs from './components/Tabs/Tabs';
+import { AsyncStorage, View } from 'react-native';
+import UserTabs from './auth/components/tabs/UserTabs';
 import { connect } from 'react-redux';
 import * as actions from './actions';
+import AuthenticateUserScreen from './unAuth/views/authenticateUser/AuthenticateUserScreen';
 
 class App extends React.Component {
-    /**
-    * if user is authenticated will fetch user data on signin
-    */
-    checkUserStatus = () => {
-        this.props.checkUserStatus().then(token => {
+    checkUserStatus = async () => {
+        const fetchToken = await this.props.checkUserStatus().then(token => {
             if (token) {
-                this.props.fetchAuthUserData('user');
+                return this.props.fetchAuthUserData();
             } else {
-                this.props.signoutUser();
+                return this.props.signoutUser();
             }
         });
-        return;
     };
+
+    componentWillMount() {
+        this.checkUserStatus();
+    }
 
     render() {
         this.checkUserStatus();
-        return <Tabs />;
+        return !this.props.authenticated ? (
+            <AuthenticateUserScreen />
+        ) : (
+            <UserTabs />
+        );
     }
 }
 

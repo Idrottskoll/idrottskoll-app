@@ -1,15 +1,13 @@
 'use strict';
 
 import React from 'react';
-import { AppRegistry, AsyncStorage } from 'react-native';
+import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 import reducers from './src/reducers';
-import configureStore from './configureStore';
 import App from './src/App';
-import { AUTH_USER } from './src/actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

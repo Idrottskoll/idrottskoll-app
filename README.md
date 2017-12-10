@@ -3,6 +3,8 @@
 * [iOS App store](https://itunes.apple.com/se/app/idrottskoll/id1308457065?l=en&mt=8)
 * [Google play store](https://github.com/Idrottskoll)
 
+use -> https://momentjs.com/
+
 ## Installing
 1.
 ```BASH

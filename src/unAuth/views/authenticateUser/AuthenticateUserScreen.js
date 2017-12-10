@@ -1,13 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Text,
+    Image,
+    KeyboardAvoidingView
+} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import StyleRules from '../../../assets/styles/StyleRules/';
+import Signin from '../../components/authenticateUser/Signin';
 
 class AuthenticateUserScreen extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
@@ -15,8 +22,10 @@ class AuthenticateUserScreen extends React.Component {
                     />
                     <Text style={styles.title}>Idrottskoll</Text>
                 </View>
-                <View style={styles.formContainer} />
-            </View>
+                <View style={styles.formContainer}>
+                    <Signin />
+                </View>
+            </KeyboardAvoidingView>
         );
     }
 }
@@ -43,7 +52,7 @@ const styles = StyleSheet.create({
         height: 100
     },
     title: {
-        color: '#ffffff',
+        color: StyleRules.BUTTON_TEXT_COLOR,
         fontSize: StyleRules.FONT_SIZE_TITLE,
         marginVertical: StyleRules.MARGIN,
         textAlign: 'center',

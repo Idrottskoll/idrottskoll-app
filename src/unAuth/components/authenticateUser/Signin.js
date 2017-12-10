@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    StyleSheet,
+    StatusBar
+} from 'react-native';
 import { reduxForm } from 'redux-form';
 
 import DefaultCard from '../../../universal/components/cards/DefaultCard';
@@ -36,81 +43,93 @@ class Signin extends React.Component {
 
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
-        if (!this.props.authenticated) {
-            return (
-                <DefaultCard>
-                    <View style={[{ marginBottom: StyleRules.MARGIN }]}>
-                        <Text
-                            style={[
-                                {
-                                    fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold',
-                                    fontFamily: 'Fjalla One'
-                                }
-                            ]}
-                        >
-                            Logga in
-                        </Text>
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            E-post adress:
-                        </Text>
-                        <TextInput
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'email'}
-                            {...email}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            returnKeyType="next"
-                        />
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
-                        <TextInput
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'password'}
-                            autoCorrect={false}
-                            value={null}
-                            returnKeyType="go"
-                            secureTextEntry={true}
-                            {...password}
-                        />
-                    </View>
-
-                    {this.renderAlert()}
-
-                    <View
-                        style={[
-                            MainStyles.FLEX_BUTTON_TO_END,
-                            { marginVertical: StyleRules.MARGIN }
-                        ]}
-                    >
-                        {this.props.children}
-                    </View>
-
-                    <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
-                        <TouchableOpacity
-                            style={MainStyles.MAIN_BUTTON}
-                            onPress={handleSubmit(
-                                this.handleFormSubmit.bind(this)
-                            )}
-                        >
-                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                Logga in
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </DefaultCard>
-            );
-        } else {
-            return <View />;
-        }
+        return (
+            //         <Text
+            //             style={[
+            //                 {
+            //                     fontSize: StyleRules.FONT_SIZE_TITLE,
+            //                     fontWeight: 'bold',
+            //                     fontFamily: 'Fjalla One'
+            //                 }
+            //             ]}
+            //         >
+            //             Logga in
+            //         </Text>
+            //     {this.renderAlert()}
+            //
+            //     <View
+            //         style={[
+            //             MainStyles.FLEX_BUTTON_TO_END,
+            //             { marginVertical: StyleRules.MARGIN }
+            //         ]}
+            //     >
+            //         {this.props.children}
+            //     </View>
+            <View style={styles.container}>
+                <StatusBar barStyle="light-content" />
+                <Text style={MainStyles.INPUT_LABEL}>E-post adress:</Text>
+                <TextInput
+                    placeholder="exempel@idrottskoll.se"
+                    placeholderTextColor="rgba(255, 255, 255, 0.7)"
+                    style={styles.input}
+                    name={'email'}
+                    {...email}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.passwordInput.focus()}
+                />
+                <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
+                <TextInput
+                    placeholderTextColor="rgba(255, 255, 255, 0.7)"
+                    placeholder="Lösenord"
+                    style={styles.input}
+                    name={'password'}
+                    autoCorrect={false}
+                    value={null}
+                    returnKeyType="go"
+                    secureTextEntry={true}
+                    {...password}
+                    ref={input => (this.passwordInput = input)}
+                />
+                {this.renderAlert()}
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                >
+                    <Text style={styles.buttonText}>Logga in</Text>
+                </TouchableOpacity>
+            </View>
+        );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: StyleRules.MARGIN,
+        marginBottom: StyleRules.MARGIN * 5
+    },
+    input: {
+        height: 40,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        marginVertical: StyleRules.MARGIN,
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        paddingHorizontal: StyleRules.MARGIN
+    },
+    buttonContainer: {
+        backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        fontWeight: '700',
+        fontSize: StyleRules.FONT_SIZE
+    }
+});
 
 /**
  * @param state
@@ -118,8 +137,7 @@ class Signin extends React.Component {
  */
 const mapStateToProps = state => {
     return {
-        errorMessage: state.auth.error,
-        authenticated: state.auth.authenticated
+        errorMessage: state.auth.error
     };
 };
 

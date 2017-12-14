@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import AuthenticateUserScreen from './unAuth/views/authenticateUser/AuthenticateUserScreen';
 
+// TODO: add animation to trigger when signing in
+// TODO: add livestream to signnin
+// TODO: Fix UX when keybord is active
+// TODO: Remov auth checks in app
+
 class App extends React.Component {
     checkUserStatus = async () => {
         const fetchToken = await this.props.checkUserStatus().then(token => {

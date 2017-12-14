@@ -5,7 +5,8 @@ import {
     Text,
     Image,
     KeyboardAvoidingView,
-    Button
+    Button,
+    StatusBar
 } from 'react-native';
 import StyleRules from '../../../assets/styles/StyleRules/';
 import Signin from '../../components/authenticateUser/Signin';
@@ -16,7 +17,7 @@ export default class AuthenticateUserScreen extends React.Component {
         super(props);
         this.state = {
             loding: true,
-            signin: true
+            hasAccount: true
         };
     }
 
@@ -24,13 +25,19 @@ export default class AuthenticateUserScreen extends React.Component {
         if (!this.state.loding) {
             return (
                 <View style={styles.formContainer}>
-                    {this.state.signin ? <Signin /> : <Signup />}
+                    {this.state.hasAccount ? <Signin /> : <Signup />}
                     <View style={styles.actionsContainer}>
                         <Button
                             title={
-                                this.state.signin ? 'Registrera' : 'Logga in'
+                                this.state.hasAccount
+                                    ? 'Registrera'
+                                    : 'Logga in'
                             }
-                            onPress={() => alert('hej')}
+                            onPress={() =>
+                                this.setState({
+                                    hasAccount: !this.state.hasAccount
+                                })
+                            }
                         />
 
                         <Button
@@ -51,6 +58,7 @@ export default class AuthenticateUserScreen extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
+                <StatusBar barStyle="light-content" />
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}

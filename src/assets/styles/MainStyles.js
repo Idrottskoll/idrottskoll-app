@@ -8,6 +8,33 @@ export default (Style = {
         flex: 1
     },
 
+    AUTH_CONTAINER: {
+        padding: StyleRules.MARGIN
+    },
+
+    AUTH_INPUT: {
+        height: 40,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        marginVertical: StyleRules.MARGIN,
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        paddingHorizontal: StyleRules.MARGIN
+    },
+
+    AUTH_BUTTON_CONTAINER: {
+        backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: StyleRules.MARGIN * 2
+    },
+
+    AUTH_BUTTON_TEXT: {
+        textAlign: 'center',
+        color: StyleRules.BUTTON_TEXT_COLOR,
+        fontWeight: '700',
+        fontSize: StyleRules.FONT_SIZE
+    },
+
     MAIN_CARD: {
         alignItems: 'stretch',
         backgroundColor: StyleRules.CARD_BACKGROUND_COLOR,

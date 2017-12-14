@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    StyleSheet,
-    StatusBar,
-    Button
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native';
 import { reduxForm } from 'redux-form';
 
 import DefaultCard from '../../../universal/components/cards/DefaultCard';
@@ -55,11 +47,10 @@ class Signin extends React.Component {
     render() {
         const { handleSubmit, fields: { email, password } } = this.props;
         return (
-            <View style={styles.container}>
-                <StatusBar barStyle="light-content" />
+            <View style={MainStyles.AUTH_CONTAINER}>
                 <Text style={MainStyles.INPUT_LABEL}>E-post adress:</Text>
                 <TextInput
-                    style={styles.input}
+                    style={MainStyles.AUTH_INPUT}
                     name={'email'}
                     {...email}
                     keyboardType="email-address"
@@ -70,7 +61,7 @@ class Signin extends React.Component {
                 />
                 <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
                 <TextInput
-                    style={styles.input}
+                    style={MainStyles.AUTH_INPUT}
                     name={'password'}
                     autoCorrect={false}
                     value={null}
@@ -81,41 +72,15 @@ class Signin extends React.Component {
                 />
                 {this.renderAlert()}
                 <TouchableOpacity
-                    style={styles.buttonContainer}
+                    style={MainStyles.AUTH_BUTTON_CONTAINER}
                     onPress={handleSubmit(this.handleFormSubmit.bind(this))}
                 >
-                    <Text style={styles.buttonText}>Logga in</Text>
+                    <Text style={MainStyles.AUTH_BUTTON_TEXT}>Logga in</Text>
                 </TouchableOpacity>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: StyleRules.MARGIN
-    },
-    input: {
-        height: 40,
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        marginVertical: StyleRules.MARGIN,
-        color: StyleRules.BUTTON_TEXT_COLOR,
-        paddingHorizontal: StyleRules.MARGIN
-    },
-    buttonContainer: {
-        backgroundColor: StyleRules.BLUE_GRADIENT_COLOR,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: StyleRules.MARGIN * 2
-    },
-    buttonText: {
-        textAlign: 'center',
-        color: StyleRules.BUTTON_TEXT_COLOR,
-        fontWeight: '700',
-        fontSize: StyleRules.FONT_SIZE
-    }
-});
 
 /**
  * @param state

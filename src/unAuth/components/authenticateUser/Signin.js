@@ -11,17 +11,16 @@ class Signin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            authenticatingUser: false
+            loding: false
         };
     }
+
     /**
      * @param string email, string password
      * @return
      */
     handleFormSubmit = async ({ email, password }) => {
-        const startAuthentication = await this.setState({
-            authenticatingUser: true
-        });
+        const loding = await this.setState({ loding: !this.state.loding });
 
         const authenticateUser = await this.props
             .signinUser({ email, password })
@@ -75,7 +74,9 @@ class Signin extends React.Component {
                     style={MainStyles.AUTH_BUTTON_CONTAINER}
                     onPress={handleSubmit(this.handleFormSubmit.bind(this))}
                 >
-                    <Text style={MainStyles.AUTH_BUTTON_TEXT}>Logga in</Text>
+                    <Text style={MainStyles.AUTH_BUTTON_TEXT}>
+                        {this.state.loding ? 'Laddar..' : 'Logga in'}
+                    </Text>
                 </TouchableOpacity>
             </View>
         );

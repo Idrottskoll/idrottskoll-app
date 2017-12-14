@@ -52,125 +52,83 @@ class Signup extends React.Component {
             handleSubmit,
             fields: { name, email, password, passwordConfirmation }
         } = this.props;
-        if (!this.props.authenticated) {
-            return (
-                <DefaultCard>
-                    <View style={[{ marginBottom: StyleRules.MARGIN }]}>
-                        <Text
-                            style={[
-                                {
-                                    fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold',
-                                    fontFamily: 'Fjalla One'
-                                }
-                            ]}
-                        >
-                            Registrera
+        return (
+            <View style={MainStyles.AUTH_CONTAINER}>
+                <Text style={MainStyles.INPUT_LABEL}>För- och efternamn:</Text>
+                <TextInput
+                    {...name}
+                    style={MainStyles.AUTH_INPUT}
+                    name={'name'}
+                    autoCapitalize="words"
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    value={null}
+                />
+                {name.touched &&
+                    name.error && (
+                        <Text style={MainStyles.ERROR_TEXT}>{name.error}</Text>
+                    )}
+
+                <Text style={MainStyles.INPUT_LABEL}>E-post adress:</Text>
+                <TextInput
+                    {...email}
+                    style={MainStyles.AUTH_INPUT}
+                    name={'email'}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    value={null}
+                />
+                {email.touched &&
+                    email.error && (
+                        <Text style={MainStyles.ERROR_TEXT}>{email.error}</Text>
+                    )}
+
+                <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
+                <TextInput
+                    {...password}
+                    style={MainStyles.AUTH_INPUT}
+                    name={'password'}
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    secureTextEntry={true}
+                    value={null}
+                />
+                {password.touched &&
+                    password.error && (
+                        <Text style={MainStyles.ERROR_TEXT}>
+                            {password.error}
                         </Text>
-                    </View>
+                    )}
 
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            För- och efternamn:
+                <Text style={MainStyles.INPUT_LABEL}>Upprepa lösenord:</Text>
+                <TextInput
+                    {...passwordConfirmation}
+                    style={MainStyles.AUTH_INPUT}
+                    name={'passwordConfirmation'}
+                    autoCorrect={false}
+                    returnKeyType="go"
+                    secureTextEntry={true}
+                    value={null}
+                />
+                {passwordConfirmation.touched &&
+                    passwordConfirmation.error && (
+                        <Text style={MainStyles.ERROR_TEXT}>
+                            {passwordConfirmation.error}
                         </Text>
-                        <TextInput
-                            {...name}
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'name'}
-                            autoCapitalize="words"
-                            autoCorrect={false}
-                            returnKeyType="next"
-                            value={null}
-                        />
-                        {name.touched &&
-                            name.error && (
-                                <Text style={MainStyles.ERROR_TEXT}>
-                                    {name.error}
-                                </Text>
-                            )}
-                    </View>
+                    )}
 
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            E-post adress:
-                        </Text>
-                        <TextInput
-                            {...email}
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'email'}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            returnKeyType="next"
-                            value={null}
-                        />
-                        {email.touched &&
-                            email.error && (
-                                <Text style={MainStyles.ERROR_TEXT}>
-                                    {email.error}
-                                </Text>
-                            )}
-                    </View>
+                {this.renderAlert()}
 
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>Lösenord:</Text>
-                        <TextInput
-                            {...password}
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'password'}
-                            autoCorrect={false}
-                            returnKeyType="next"
-                            secureTextEntry={true}
-                            value={null}
-                        />
-                        {password.touched &&
-                            password.error && (
-                                <Text style={MainStyles.ERROR_TEXT}>
-                                    {password.error}
-                                </Text>
-                            )}
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            Upprepa lösenord:
-                        </Text>
-                        <TextInput
-                            {...passwordConfirmation}
-                            style={[MainStyles.FORM_INPUT]}
-                            name={'passwordConfirmation'}
-                            autoCorrect={false}
-                            returnKeyType="go"
-                            secureTextEntry={true}
-                            value={null}
-                        />
-                        {passwordConfirmation.touched &&
-                            passwordConfirmation.error && (
-                                <Text style={MainStyles.ERROR_TEXT}>
-                                    {passwordConfirmation.error}
-                                </Text>
-                            )}
-                    </View>
-
-                    {this.renderAlert()}
-
-                    <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
-                        <TouchableOpacity
-                            style={MainStyles.MAIN_BUTTON}
-                            onPress={handleSubmit(
-                                this.handleFormSubmit.bind(this)
-                            )}
-                        >
-                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                Registrera
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </DefaultCard>
-            );
-        } else {
-            return <View />;
-        }
+                <TouchableOpacity
+                    style={MainStyles.AUTH_BUTTON_CONTAINER}
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
+                >
+                    <Text style={MainStyles.MAIN_BUTTON_TEXT}>Registrera</Text>
+                </TouchableOpacity>
+            </View>
+        );
     }
 }
 

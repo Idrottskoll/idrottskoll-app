@@ -39,12 +39,13 @@ export default class AuthenticateUserScreen extends React.Component {
                                 })
                             }
                         />
-
-                        <Button
-                            style={{ marginTop: StyleRules.MARGIN }}
-                            title="Glömt lösenord?"
-                            onPress={() => alert('hej')}
-                        />
+                        {this.state.hasAccount ? (
+                            <Button
+                                style={{ marginTop: StyleRules.MARGIN }}
+                                title="Glömt lösenord?"
+                                onPress={() => alert('hej')}
+                            />
+                        ) : null}
                     </View>
                 </View>
             );

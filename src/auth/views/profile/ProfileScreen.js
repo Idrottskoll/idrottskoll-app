@@ -44,20 +44,6 @@ class ProfileScreen extends React.Component {
                         </TouchableOpacity>
                     </MyProfileCard>
 
-                    <Signin>
-                        <TouchableOpacity
-                            onPress={() =>
-                                navigate('UserSettings', {
-                                    user: 'Glömt lösenord'
-                                })
-                            }
-                        >
-                            <Text>Glömt lösenord?</Text>
-                        </TouchableOpacity>
-                    </Signin>
-
-                    <Signup />
-
                     <OrderNewVideoCard title="Intresserad av en ny video?">
                         <TouchableOpacity
                             style={[

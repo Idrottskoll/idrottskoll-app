@@ -15,7 +15,7 @@ class Header extends React.Component {
         return (
             <TouchableOpacity
                 style={{ marginRight: StyleRules.MARGIN }}
-                onPress={this.props.authenticated ? this.handleSignout : null}
+                onPress={this.handleSignout}
             >
                 <Image source={require('../../../assets/icons/info.png')} />
             </TouchableOpacity>

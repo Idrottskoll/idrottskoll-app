@@ -58,21 +58,19 @@ class ProfileScreen extends React.Component {
 
                     <Signup />
 
-                    {this.props.authenticated ? (
-                        <OrderNewVideoCard title="Intresserad av en ny video?">
-                            <TouchableOpacity
-                                style={[
-                                    MainStyles.MAIN_BUTTON,
-                                    { marginLeft: StyleRules.MARGIN }
-                                ]}
-                                onPress={() => navigate('OrderNewScreen')}
-                            >
-                                <Text style={MainStyles.MAIN_BUTTON_TEXT}>
-                                    Beställ
-                                </Text>
-                            </TouchableOpacity>
-                        </OrderNewVideoCard>
-                    ) : null}
+                    <OrderNewVideoCard title="Intresserad av en ny video?">
+                        <TouchableOpacity
+                            style={[
+                                MainStyles.MAIN_BUTTON,
+                                { marginLeft: StyleRules.MARGIN }
+                            ]}
+                            onPress={() => navigate('OrderNewScreen')}
+                        >
+                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                                Beställ
+                            </Text>
+                        </TouchableOpacity>
+                    </OrderNewVideoCard>
                 </ScrollViewContainer>
             </ViewContainer>
         );

@@ -33,61 +33,47 @@ class MyVideosScreen extends React.Component {
      */
     renderComponents = () => {
         const { navigate } = this.props.navigation;
-        if (this.props.authenticated) {
-            return (
-                <View>
-                    {this.props.data && this.props.data.video.length !== 0 ? (
-                        this.props.data.video.map(video => (
-                            <TouchableOpacity
-                                key={video.name}
-                                onPress={() =>
-                                    navigate('VideoScreen', {
-                                        videoTitle: video.sport,
-                                        videoName: `${video.sport}, ${
-                                            video.club
-                                        } bana ${video.court}.`,
-                                        videoDescription: `Inspelat: ${this.convertTime(
-                                            video.startTime
-                                        )}.`,
-                                        isRecorded: video.isRecorded,
-                                        uploaded: video.uploaded,
-                                        videoUrl: video.name,
-                                        liveURL: false,
-                                        club: video.club,
-                                        court: video.court
-                                    })
-                                }
-                            >
-                                <VideoSmallButton title={video.sport} />
-                            </TouchableOpacity>
-                        ))
-                    ) : (
-                        <DefaultCard>
-                            <TouchableOpacity
-                                onPress={() => navigate('OrderNewScreen')}
-                            >
-                                <Text>
-                                    Du har inga videos än men du kan beställa en
-                                    här!
-                                </Text>
-                            </TouchableOpacity>
-                        </DefaultCard>
-                    )}
-                </View>
-            );
-        } else {
-            return (
-                <NotAuthCard blockedContent="se dina videos.">
-                    <TouchableOpacity
-                        onPress={() =>
-                            this.props.navigation.navigate('ProfileScreen')
-                        }
-                    >
-                        <Text>Logga in här!</Text>
-                    </TouchableOpacity>
-                </NotAuthCard>
-            );
-        }
+        return (
+            <View>
+                {this.props.data && this.props.data.video.length !== 0 ? (
+                    this.props.data.video.map(video => (
+                        <TouchableOpacity
+                            key={video.name}
+                            onPress={() =>
+                                navigate('VideoScreen', {
+                                    videoTitle: video.sport,
+                                    videoName: `${video.sport}, ${
+                                        video.club
+                                    } bana ${video.court}.`,
+                                    videoDescription: `Inspelat: ${this.convertTime(
+                                        video.startTime
+                                    )}.`,
+                                    isRecorded: video.isRecorded,
+                                    uploaded: video.uploaded,
+                                    videoUrl: video.name,
+                                    liveURL: false,
+                                    club: video.club,
+                                    court: video.court
+                                })
+                            }
+                        >
+                            <VideoSmallButton title={video.sport} />
+                        </TouchableOpacity>
+                    ))
+                ) : (
+                    <DefaultCard>
+                        <TouchableOpacity
+                            onPress={() => navigate('OrderNewScreen')}
+                        >
+                            <Text>
+                                Du har inga videos än men du kan beställa en
+                                här!
+                            </Text>
+                        </TouchableOpacity>
+                    </DefaultCard>
+                )}
+            </View>
+        );
     };
 
     render() {

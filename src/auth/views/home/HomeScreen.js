@@ -86,19 +86,18 @@ class HomeScreen extends React.Component {
      */
     renderComponents = () => {
         const { navigate } = this.props.navigation;
-        if (this.props.authenticated) {
-            return (
-                <View>
-                    {this.props.data && this.props.data.video.length !== 0 ? (
-                        this.props.data.video.map(video => (
-                            <View key={video._id}>
-                                <View style={[MainStyles.VIDEO_BUTTON]}>
-                                    <Image
-                                        style={MainStyles.VIDEO_CONTAINER}
-                                        source={require('../../../assets/icons/tennis.png')}
-                                    />
-                                    {/* Button for LOCKED videos */}
-                                    {/* <TouchableHighlight
+        return (
+            <View>
+                {this.props.data && this.props.data.video.length !== 0 ? (
+                    this.props.data.video.map(video => (
+                        <View key={video._id}>
+                            <View style={[MainStyles.VIDEO_BUTTON]}>
+                                <Image
+                                    style={MainStyles.VIDEO_CONTAINER}
+                                    source={require('../../../assets/icons/tennis.png')}
+                                />
+                                {/* Button for LOCKED videos */}
+                                {/* <TouchableHighlight
                                         key={video._id}
                                         underlayColor={
                                             StyleRules.BLUE_GRADIENT_COLOR
@@ -118,94 +117,81 @@ class HomeScreen extends React.Component {
                                                 videoUrl: video.name
                                             })}
                                     > */}
-                                    {/* Button for UN LOCKED videos */}
-                                    <TouchableHighlight
-                                        key={video.name}
-                                        underlayColor={
-                                            StyleRules.BLUE_GRADIENT_COLOR
-                                        }
-                                        activeOpacity={0.8}
-                                        style={[
-                                            styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
-                                            styles.VIDEO_BUTTON_CONTAINER
-                                        ]}
-                                        onPress={() =>
-                                            navigate('VideoScreen', {
-                                                videoTitle: video.sport,
-                                                videoName: `${video.sport}, ${
-                                                    video.club
-                                                } bana ${video.court}.`,
-                                                videoDescription: `Inspelat: ${this.convertTime(
-                                                    video.startTime
-                                                )}.`,
-                                                isRecorded: video.isRecorded,
-                                                uploaded: video.uploaded,
-                                                videoUrl: video.name,
-                                                liveURL: false,
-                                                club: video.club,
-                                                court: video.court
-                                            })
-                                        }
-                                    >
-                                        {/* Button for LOCKED videos */}
-                                        {/* <Text
+                                {/* Button for UN LOCKED videos */}
+                                <TouchableHighlight
+                                    key={video.name}
+                                    underlayColor={
+                                        StyleRules.BLUE_GRADIENT_COLOR
+                                    }
+                                    activeOpacity={0.8}
+                                    style={[
+                                        styles.UN_LOCKED_VIDEO_BUTTON_CONTAINER,
+                                        styles.VIDEO_BUTTON_CONTAINER
+                                    ]}
+                                    onPress={() =>
+                                        navigate('VideoScreen', {
+                                            videoTitle: video.sport,
+                                            videoName: `${video.sport}, ${
+                                                video.club
+                                            } bana ${video.court}.`,
+                                            videoDescription: `Inspelat: ${this.convertTime(
+                                                video.startTime
+                                            )}.`,
+                                            isRecorded: video.isRecorded,
+                                            uploaded: video.uploaded,
+                                            videoUrl: video.name,
+                                            liveURL: false,
+                                            club: video.club,
+                                            court: video.court
+                                        })
+                                    }
+                                >
+                                    {/* Button for LOCKED videos */}
+                                    {/* <Text
                                             style={styles.LOCKED_VIDEO_BUTTON}
                                         >
                                             Lås upp video
                                         </Text> */}
 
-                                        {/* Button for UN LOCKED videos */}
-                                        <View>
-                                            <Image
-                                                source={require('../../../assets/icons/playButton.png')}
-                                            />
-                                        </View>
-                                    </TouchableHighlight>
-                                </View>
-
-                                <View style={[MainStyles.MAIN_CARD]}>
-                                    <Text style={MainStyles.MAIN_CARD_TITLE}>
-                                        {this.titleToUppercase(
-                                            `${video.sport}, ${
-                                                video.club
-                                            } bana ${video.court}.`
-                                        )}
-                                    </Text>
-                                    <Text>
-                                        {`Inspelat: ${this.convertTime(
-                                            video.startTime
-                                        )}.`}
-                                    </Text>
-                                </View>
+                                    {/* Button for UN LOCKED videos */}
+                                    <View>
+                                        <Image
+                                            source={require('../../../assets/icons/playButton.png')}
+                                        />
+                                    </View>
+                                </TouchableHighlight>
                             </View>
-                        ))
-                    ) : (
-                        <DefaultCard>
-                            <TouchableOpacity
-                                onPress={() => navigate('OrderNewScreen')}
-                            >
-                                <Text>
-                                    Du har inga videos än men du kan beställa en
-                                    här!
+
+                            <View style={[MainStyles.MAIN_CARD]}>
+                                <Text style={MainStyles.MAIN_CARD_TITLE}>
+                                    {this.titleToUppercase(
+                                        `${video.sport}, ${video.club} bana ${
+                                            video.court
+                                        }.`
+                                    )}
                                 </Text>
-                            </TouchableOpacity>
-                        </DefaultCard>
-                    )}
-                </View>
-            );
-        } else {
-            return (
-                <NotAuthCard blockedContent="se dina videos.">
-                    <TouchableOpacity
-                        onPress={() =>
-                            this.props.navigation.navigate('ProfileScreen')
-                        }
-                    >
-                        <Text>Logga in här!</Text>
-                    </TouchableOpacity>
-                </NotAuthCard>
-            );
-        }
+                                <Text>
+                                    {`Inspelat: ${this.convertTime(
+                                        video.startTime
+                                    )}.`}
+                                </Text>
+                            </View>
+                        </View>
+                    ))
+                ) : (
+                    <DefaultCard>
+                        <TouchableOpacity
+                            onPress={() => navigate('OrderNewScreen')}
+                        >
+                            <Text>
+                                Du har inga videos än men du kan beställa en
+                                här!
+                            </Text>
+                        </TouchableOpacity>
+                    </DefaultCard>
+                )}
+            </View>
+        );
     };
 
     componentWillMount() {

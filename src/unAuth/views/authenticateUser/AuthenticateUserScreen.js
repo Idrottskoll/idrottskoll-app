@@ -11,13 +11,15 @@ import {
 import StyleRules from '../../../assets/styles/StyleRules/';
 import Signin from '../../components/authenticateUser/Signin';
 import Signup from '../../components/authenticateUser/Signup';
+import ForgotPassword from '../../components/authenticateUser/ForgotPassword';
 
 export default class AuthenticateUserScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             loding: true,
-            hasAccount: true
+            hasAccount: true,
+            forgotPassword: false
         };
     }
 
@@ -39,13 +41,7 @@ export default class AuthenticateUserScreen extends React.Component {
                                 })
                             }
                         />
-                        {this.state.hasAccount ? (
-                            <Button
-                                style={{ marginTop: StyleRules.MARGIN }}
-                                title="Glömt lösenord?"
-                                onPress={() => alert('hej')}
-                            />
-                        ) : null}
+                        {this.state.hasAccount ? <ForgotPassword /> : null}
                     </View>
                 </View>
             );

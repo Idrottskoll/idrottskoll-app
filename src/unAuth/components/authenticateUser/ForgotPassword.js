@@ -1,14 +1,31 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    Alert,
+    Modal,
+    Button
+} from 'react-native';
 import { reduxForm } from 'redux-form';
 
-import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import StyleRules from '../../../assets/styles/StyleRules';
 import MainStyles from '../../../assets/styles/MainStyles';
 import * as actions from '../../../actions';
-import ProfileScreen from '../../../auth/views/profile/ProfileScreen';
 
 class ForgotPasswor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalVisible: false
+        };
+    }
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
     /**
      * @param string email, string password
      * @return
@@ -18,45 +35,35 @@ class ForgotPasswor extends React.Component {
             if (response) {
                 this.props.values.email = null;
                 Alert.alert(`${response.data.message}:`, email);
-
-                // TODO: Navigat user back to profile screen
-                //this.navigatBack(true);
-                // this.props.navigation.goBack('ProfileScreen');
+                this.setModalVisible(!this.state.modalVisible);
             }
         });
     }
 
-    // navigatBack(changeUserPassword) {
-    //     if (changeUserPassword === true) {
-    //         this.props.navigation.goBack(null);
-    //     }
-    // }
-
     render() {
         const { handleSubmit, fields: { email } } = this.props;
-        if (!this.props.authenticated) {
-            return (
-                <DefaultCard>
-                    <View style={[{ marginBottom: StyleRules.MARGIN }]}>
-                        <Text
-                            style={[
-                                {
-                                    fontSize: StyleRules.FONT_SIZE_TITLE,
-                                    fontWeight: 'bold',
-                                    fontFamily: 'Fjalla One'
-                                }
-                            ]}
-                        >
-                            Glömt Lösenord
-                        </Text>
-                    </View>
-
-                    <View style={MainStyles.FORM_GROUP}>
+        return (
+            <View>
+                <Modal
+                    style={{ flex: 1, backgroundColor: StyleRules.BLUE_COLOR }}
+                    animationType="slide"
+                    presentationStyle="formSheet"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    //onRequestClose={() => {}}
+                >
+                    <Button
+                        title="Stäng"
+                        onPress={() =>
+                            this.setModalVisible(!this.state.modalVisible)
+                        }
+                    />
+                    <View style={MainStyles.AUTH_CONTAINER}>
                         <Text style={MainStyles.INPUT_LABEL}>
                             E-post adress:
                         </Text>
                         <TextInput
-                            style={[MainStyles.FORM_INPUT]}
+                            style={MainStyles.AUTH_INPUT}
                             name={'email'}
                             {...email}
                             keyboardType="email-address"
@@ -65,27 +72,28 @@ class ForgotPasswor extends React.Component {
                             value={null}
                             returnKeyType="next"
                         />
-                    </View>
 
-                    {/* {this.renderAlert()} */}
-
-                    <View style={[MainStyles.FLEX_BUTTON_TO_END]}>
                         <TouchableOpacity
-                            style={MainStyles.MAIN_BUTTON}
+                            style={MainStyles.AUTH_BUTTON_CONTAINER}
                             onPress={handleSubmit(
                                 this.handleFormSubmit.bind(this)
                             )}
                         >
-                            <Text style={MainStyles.MAIN_BUTTON_TEXT}>
+                            <Text style={MainStyles.AUTH_BUTTON_TEXT}>
                                 Skicka
                             </Text>
                         </TouchableOpacity>
                     </View>
-                </DefaultCard>
-            );
-        } else {
-            return <View />;
-        }
+                </Modal>
+
+                <Button
+                    title="Glömt lösenord"
+                    onPress={() =>
+                        this.setModalVisible(!this.state.modalVisible)
+                    }
+                />
+            </View>
+        );
     }
 }
 

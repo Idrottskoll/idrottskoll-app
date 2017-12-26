@@ -8,7 +8,6 @@ import AuthenticateUserScreen from './unAuth/views/authenticateUser/Authenticate
 // TODO: add animation to trigger when signing in
 // TODO: add livestream to signnin
 // TODO: Fix UX when keybord is active
-// TODO: Remov auth checks in app
 
 class App extends React.Component {
     checkUserStatus = async () => {

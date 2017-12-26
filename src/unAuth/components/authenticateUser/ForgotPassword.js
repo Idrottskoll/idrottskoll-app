@@ -36,6 +36,8 @@ class ForgotPasswor extends React.Component {
                 this.props.values.email = null;
                 Alert.alert(`${response.data.message}:`, email);
                 this.setModalVisible(!this.state.modalVisible);
+            } else {
+                Alert.alert('Oj då...', 'Något gick fel, försök igen!');
             }
         });
     }
@@ -45,44 +47,58 @@ class ForgotPasswor extends React.Component {
         return (
             <View>
                 <Modal
-                    style={{ flex: 1, backgroundColor: StyleRules.BLUE_COLOR }}
                     animationType="slide"
                     presentationStyle="formSheet"
                     transparent={false}
                     visible={this.state.modalVisible}
-                    //onRequestClose={() => {}}
                 >
-                    <Button
-                        title="Stäng"
-                        onPress={() =>
-                            this.setModalVisible(!this.state.modalVisible)
-                        }
-                    />
-                    <View style={MainStyles.AUTH_CONTAINER}>
-                        <Text style={MainStyles.INPUT_LABEL}>
-                            E-post adress:
-                        </Text>
-                        <TextInput
-                            style={MainStyles.AUTH_INPUT}
-                            name={'email'}
-                            {...email}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            value={null}
-                            returnKeyType="next"
-                        />
+                    <View
+                        style={{
+                            flex: 1,
+                            backgroundColor: StyleRules.BLUE_COLOR
+                        }}
+                    >
+                        <View style={MainStyles.AUTH_CONTAINER}>
+                            <View
+                                style={{
+                                    marginVertical: StyleRules.MARGIN * 3
+                                }}
+                            >
+                                <Button
+                                    title="Stäng"
+                                    onPress={() =>
+                                        this.setModalVisible(
+                                            !this.state.modalVisible
+                                        )
+                                    }
+                                />
+                            </View>
 
-                        <TouchableOpacity
-                            style={MainStyles.AUTH_BUTTON_CONTAINER}
-                            onPress={handleSubmit(
-                                this.handleFormSubmit.bind(this)
-                            )}
-                        >
-                            <Text style={MainStyles.AUTH_BUTTON_TEXT}>
-                                Skicka
+                            <Text style={MainStyles.INPUT_LABEL}>
+                                E-post adress:
                             </Text>
-                        </TouchableOpacity>
+                            <TextInput
+                                style={MainStyles.AUTH_INPUT}
+                                name={'email'}
+                                {...email}
+                                keyboardType="email-address"
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                value={null}
+                                returnKeyType="next"
+                            />
+
+                            <TouchableOpacity
+                                style={MainStyles.AUTH_BUTTON_CONTAINER}
+                                onPress={handleSubmit(
+                                    this.handleFormSubmit.bind(this)
+                                )}
+                            >
+                                <Text style={MainStyles.AUTH_BUTTON_TEXT}>
+                                    Skicka
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </Modal>
 

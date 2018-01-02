@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "IdrottskollApp.app"
-               BlueprintName = "IdrottskollApp"
-               ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+               BuildableName = "idrottskollApp.app"
+               BlueprintName = "idrottskollApp"
+               ReferencedContainer = "container:idrottskollApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "IdrottskollAppTests.xctest"
-               BlueprintName = "IdrottskollAppTests"
-               ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+               BuildableName = "idrottskollAppTests.xctest"
+               BlueprintName = "idrottskollAppTests"
+               ReferencedContainer = "container:idrottskollApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,7 +54,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -62,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "IdrottskollAppTests.xctest"
-               BlueprintName = "IdrottskollAppTests"
-               ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+               BuildableName = "idrottskollAppTests.xctest"
+               BlueprintName = "idrottskollAppTests"
+               ReferencedContainer = "container:idrottskollApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "IdrottskollApp.app"
-            BlueprintName = "IdrottskollApp"
-            ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+            BuildableName = "idrottskollApp.app"
+            BlueprintName = "idrottskollApp"
+            ReferencedContainer = "container:idrottskollApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -84,7 +83,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -96,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "IdrottskollApp.app"
-            BlueprintName = "IdrottskollApp"
-            ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+            BuildableName = "idrottskollApp.app"
+            BlueprintName = "idrottskollApp"
+            ReferencedContainer = "container:idrottskollApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -115,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "IdrottskollApp.app"
-            BlueprintName = "IdrottskollApp"
-            ReferencedContainer = "container:IdrottskollApp.xcodeproj">
+            BuildableName = "idrottskollApp.app"
+            BlueprintName = "idrottskollApp"
+            ReferencedContainer = "container:idrottskollApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

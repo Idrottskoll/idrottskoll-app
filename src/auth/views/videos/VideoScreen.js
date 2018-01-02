@@ -15,7 +15,7 @@ import ViewContainer from '../../../universal/components/ViewContainer';
 import ScrollViewContainer from '../../../universal/components/ScrollViewContainer';
 import OrderNewVideoCard from '../../../universal/components/cards/OrderNewVideoCard';
 import OrderNewScreen from '../../../universal/views/order/OrderNewScreen';
-import { VIDEO_URL } from '../../../actions/config';
+import { VIDEO_STREAM_URL } from '../../../actions/config';
 import MainStyles from '../../../assets/styles/MainStyles';
 import StyleRules from '../../../assets/styles/StyleRules';
 

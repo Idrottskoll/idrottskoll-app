@@ -1,3 +1,14 @@
-export const ROOT_URL = 'api url';
-export const SPECIAL_TOKEN = 'app key';
-export const VIDEO_URL = 'base video url';
+/**
+* past: ROOT_URL
+*/
+export const API_URL = 'https://developers.google.com/api';
+
+/**
+* past: SPECIAL_TOKEN
+*/
+export const API_KEY = 'KEY ';
+
+/**
+* past: VIDEO_URL
+*/
+export const VIDEO_STREAM_URL = 'https://developers.google.com/youtube/Videos';

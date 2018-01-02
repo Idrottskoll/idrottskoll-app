@@ -10,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { VIDEO_URL } from '../../../actions/config';
+import { VIDEO_STREAM_URL } from '../../../actions/config';
 import DefaultCard from '../../../universal/components/cards/DefaultCard';
 import VideoLargeButton from '../videos/VideoLargeButton';
 import ViewContainer from '../../../universal/components/ViewContainer';

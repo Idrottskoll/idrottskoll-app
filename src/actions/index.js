@@ -12,7 +12,7 @@ import {
     ACTIVE_CLUBS,
     LIVE_VIDEO
 } from './types';
-import { ROOT_URL, SPECIAL_TOKEN } from './config';
+import { API_URL, API_KEY } from './config';
 
 /**
  * @param obj email: email
@@ -23,11 +23,11 @@ import { ROOT_URL, SPECIAL_TOKEN } from './config';
 export function signinUser({ email, password }) {
     return function(dispatch) {
         return axios
-            .post(`${ROOT_URL}/login`, { email, password })
+            .post(`${API_URL}/login`, { email, password })
             .then(response => {
                 AsyncStorage.setItem(
                     'token',
-                    SPECIAL_TOKEN + response.data.token
+                    API_KEY + response.data.token
                 );
                 dispatch({ type: AUTH_USER });
                 return response;
@@ -49,7 +49,7 @@ export function signinUser({ email, password }) {
 export function signupUser({ email, name, password, passwordConfirmation }) {
     return function(dispatch) {
         return axios
-            .post(`${ROOT_URL}/register`, {
+            .post(`${API_URL}/register`, {
                 email,
                 name,
                 password,
@@ -58,7 +58,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
             .then(response => {
                 AsyncStorage.setItem(
                     'token',
-                    SPECIAL_TOKEN + response.data.token
+                    API_KEY + response.data.token
                 );
                 dispatch({ type: AUTH_USER });
                 return response;
@@ -97,7 +97,7 @@ export function signoutUser() {
 export function fetchAuthUserData() {
     return async function(dispatch) {
         axios
-            .get(`${ROOT_URL}/user`, {
+            .get(`${API_URL}/user`, {
                 headers: { Authorization: await AsyncStorage.getItem('token') }
             })
             .then(response => {
@@ -123,7 +123,7 @@ export function fetchAuthUserData() {
 export function changeUserPassword(email) {
     return function(dispatch) {
         return axios
-            .post(`${ROOT_URL}/account/forgot`, { email: email })
+            .post(`${API_URL}/account/forgot`, { email: email })
             .then(response => {
                 return response;
             })
@@ -139,7 +139,7 @@ export function changeUserPassword(email) {
 export function getActiveClubs() {
     return function(dispatch) {
         return axios
-            .get(`${ROOT_URL}/club/active`)
+            .get(`${API_URL}/club/active`)
             .then(response => {
                 dispatch({ type: ACTIVE_CLUBS, payload: response.data });
                 return response.data;
@@ -159,7 +159,7 @@ export function getActiveClubs() {
 export function orderNewVideo(order) {
     return async function() {
         return axios
-            .post(`${ROOT_URL}/order/add`, {
+            .post(`${API_URL}/order/add`, {
                 stream: order
             })
             .then(response => {
@@ -190,7 +190,7 @@ export function checkUserStatus() {
 export function fetchLiveVideo() {
     return async function(dispatch) {
         return axios
-            .get(`${ROOT_URL}/orders`)
+            .get(`${API_URL}/orders`)
             .then(response => {
                 dispatch({
                     type: LIVE_VIDEO,

@@ -3,7 +3,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Video from 'react-native-video';
-import { VIDEO_URL } from '../../../actions/config';
+import { VIDEO_STREAM_URL } from '../../../actions/config';
 
 // TODO: Add close button to navigate back
 // TODO: add paus button
@@ -91,7 +91,7 @@ export default class VideoPlayer extends React.Component {
                     ) : (
                         <Video
                             source={{
-                                uri: `${VIDEO_URL}/${params.videoUrl}`
+                                uri: `${VIDEO_STREAM_URL}/${params.videoUrl}`
                             }}
                             style={videoStyle}
                             rate={this.state.rate}

@@ -1,14 +1,19 @@
 /**
-* past: ROOT_URL
-*/
+ * past: ROOT_URL
+ */
 export const API_URL = 'https://developers.google.com/api';
 
 /**
-* past: SPECIAL_TOKEN
-*/
+ * past: SPECIAL_TOKEN
+ */
 export const API_KEY = 'KEY ';
 
 /**
-* past: VIDEO_URL
-*/
+ * past: VIDEO_URL
+ */
 export const VIDEO_STREAM_URL = 'https://developers.google.com/youtube/Videos';
+
+/**
+ * if DEBUG_MODE is set to true will disable sign in
+ */
+export const DEBUG_MODE = false;

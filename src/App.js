@@ -4,6 +4,7 @@ import UserTabs from './auth/components/tabs/UserTabs';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import AuthenticateUserScreen from './unAuth/views/authenticateUser/AuthenticateUserScreen';
+import { DEBUG_MODE } from './actions/config';
 
 // TODO: add animation to trigger when signing in
 // TODO: add livestream to signnin
@@ -25,12 +26,12 @@ class App extends React.Component {
     }
 
     render() {
-        this.checkUserStatus();
-        return !this.props.authenticated ? (
-            <AuthenticateUserScreen />
-        ) : (
-            <UserTabs />
-        );
+        if (DEBUG_MODE === true) {
+            return <UserTabs />;
+        } else {
+            this.checkUserStatus();
+            return !this.props.authenticated ? <AuthenticateUserScreen /> : <UserTabs />;
+        }
     }
 }
 

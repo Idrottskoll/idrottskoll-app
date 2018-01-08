@@ -1,14 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    StyleSheet,
-    Alert,
-    Image
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import MainStyles from '../../../assets/styles/MainStyles';
@@ -37,16 +30,11 @@ class MyProfileCard extends React.Component {
                     {
                         text: 'Ja',
                         onPress: () =>
-                            this.props
-                                .changeUserPassword(email)
-                                .then(response => {
-                                    if (response) {
-                                        Alert.alert(
-                                            `${response.data.message}:`,
-                                            email
-                                        );
-                                    }
-                                })
+                            this.props.changeUserPassword(email).then(response => {
+                                if (response) {
+                                    Alert.alert(`${response.data.message}:`, email);
+                                }
+                            })
                     }
                 ],
                 { cancelable: false }
@@ -65,8 +53,7 @@ class MyProfileCard extends React.Component {
                                 flexDirection: 'row',
                                 justifyContent: 'center',
                                 marginVertical: StyleRules.MARGIN * 2
-                            }}
-                        >
+                            }}>
                             <Image
                                 style={{
                                     width: 192,
@@ -80,8 +67,7 @@ class MyProfileCard extends React.Component {
                                     shadowOpacity: 0.1
                                 }}
                                 source={{
-                                    uri:
-                                        'https://www.idrottskoll.se/avatar/default.png'
+                                    uri: 'https://www.idrottskoll.se/avatar/default.png'
                                 }}
                             />
                         </View>
@@ -91,17 +77,11 @@ class MyProfileCard extends React.Component {
                                 <Text style={MainStyles.MAIN_CARD_TITLE}>
                                     {this.props.data.name}
                                 </Text>
-                                <Text style={styles.TEXT_STYLE}>
-                                    {this.props.data.email}
-                                </Text>
+                                <Text style={styles.TEXT_STYLE}>{this.props.data.email}</Text>
                             </View>
                             <View style={styles.USER_DATA}>
-                                <Text style={styles.TEXT_STYLE_BIG}>
-                                    Fakturering
-                                </Text>
-                                <Text style={styles.TEXT_STYLE}>
-                                    Namn: {this.props.data.name}
-                                </Text>
+                                <Text style={styles.TEXT_STYLE_BIG}>Fakturering</Text>
+                                <Text style={styles.TEXT_STYLE}>Namn: {this.props.data.name}</Text>
                             </View>
                             <View style={styles.FOOTER}>
                                 <View>
@@ -112,21 +92,15 @@ class MyProfileCard extends React.Component {
                                     <View>
                                         <TouchableOpacity
                                             onPress={() =>
-                                                this.userRequestedNewPassword(
-                                                    this.props.data.email
-                                                )
-                                            }
-                                        >
+                                                this.userRequestedNewPassword(this.props.data.email)
+                                            }>
                                             <Text
                                                 style={[
                                                     {
-                                                        marginTop:
-                                                            StyleRules.MARGIN /
-                                                            2
+                                                        marginTop: StyleRules.MARGIN / 2
                                                     },
                                                     styles.TEXT_STYLE
-                                                ]}
-                                            >
+                                                ]}>
                                                 Ändra mitt lösenord
                                             </Text>
                                         </TouchableOpacity>

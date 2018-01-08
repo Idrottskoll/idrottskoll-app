@@ -25,10 +25,7 @@ export function signinUser({ email, password }) {
         return axios
             .post(`${API_URL}/login`, { email, password })
             .then(response => {
-                AsyncStorage.setItem(
-                    'token',
-                    API_KEY + response.data.token
-                );
+                AsyncStorage.setItem('token', API_KEY + response.data.token);
                 dispatch({ type: AUTH_USER });
                 return response;
             })
@@ -56,10 +53,7 @@ export function signupUser({ email, name, password, passwordConfirmation }) {
                 passwordConfirmation
             })
             .then(response => {
-                AsyncStorage.setItem(
-                    'token',
-                    API_KEY + response.data.token
-                );
+                AsyncStorage.setItem('token', API_KEY + response.data.token);
                 dispatch({ type: AUTH_USER });
                 return response;
             })
@@ -101,6 +95,7 @@ export function fetchAuthUserData() {
                 headers: { Authorization: await AsyncStorage.getItem('token') }
             })
             .then(response => {
+                console.log(response.data);
                 dispatch({
                     type: FETCH_USER_DATA,
                     // .name will get userName

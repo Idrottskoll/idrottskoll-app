@@ -21,23 +21,19 @@ class Signin extends React.Component {
      */
     handleFormSubmit = async ({ email, password }) => {
         const loding = await this.setState({ loding: !this.state.loding });
-
-        const authenticateUser = await this.props
-            .signinUser({ email, password })
-            .then(response => {
-                if (response.data.token) {
-                    this.props.fetchAuthUserData();
-                }
-            });
+        const authenticateUser = await this.props.signinUser({ email, password }).then(response => {
+            this.setState({ loding: !this.state.loding });
+            if (response.data.token) {
+                this.props.fetchAuthUserData();
+            }
+        });
     };
 
     renderAlert() {
         if (this.props.errorMessage) {
             return (
                 <View style={[MainStyles.FORM_GROUP, MainStyles.ERROR_BOX]}>
-                    <Text style={MainStyles.ERROR_TEXT}>
-                        {this.props.errorMessage}
-                    </Text>
+                    <Text style={MainStyles.ERROR_TEXT}>{this.props.errorMessage}</Text>
                 </View>
             );
         }
@@ -72,8 +68,7 @@ class Signin extends React.Component {
                 {this.renderAlert()}
                 <TouchableOpacity
                     style={MainStyles.AUTH_BUTTON_CONTAINER}
-                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}
-                >
+                    onPress={handleSubmit(this.handleFormSubmit.bind(this))}>
                     <Text style={MainStyles.AUTH_BUTTON_TEXT}>
                         {this.state.loding ? 'Laddar..' : 'Logga in'}
                     </Text>
